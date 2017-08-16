@@ -1,0 +1,114 @@
+#gd_top{
+    	position:fixed;
+    	top:0px;
+    	width:100%;
+    	border-bottom: 1px solid #e8e8e8;
+    }
+    .do_main .view_comment_share {
+	    
+	    border-bottom: 1px solid #e8e8e8;
+	    padding: 10px 0px 8px;
+	    margin-bottom: 8px;
+	    
+	}
+	.do_main {
+	    min-height: 100%;
+	    width: 100%;
+	    max-width:100%;
+	    background-color: #ffffff;
+	    padding-top: 8px;
+	    box-sizing: border-box;
+	    padding-left:10px;
+	    padding-right:10px;
+	    border-top: 1px solid #e8e8e8;
+	    overflow: hidden;
+	}
+	.comment_name_img1 img {
+	    width: 25px;
+	    height: 25px;
+	}
+	.comment_name_img img {
+	    border-radius: 50%;
+	    -webkit-border-radius: 50%;
+	}
+	p {
+	    margin: 0;
+	}
+	.f_12 {
+	    font-size: 12px;
+	    font-weight: 300;
+	}
+	.do_main .comment_content {
+	    color: #666;
+	    max-width:100%;
+	    overflow:hidden;
+	}
+	.do_main .com_con_i {
+	    float:right;
+	    display: block;
+	    font-size: 10px;
+	    color: #cecece;
+	    background: url(../image/p_shijian.png) 0px center no-repeat;
+	    background-size:11px 11px;
+	    padding-left: 13px;
+	    font-style:normal;
+	    margin-top:2px;
+	}
+	.do_main .comment_content_p1{
+		margin-top:6px; color:#000; font-size:15px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;
+	}
+	.do_main .comment_content_p2{
+		margin-top:5px; font-size:13px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;
+	}
+	.do_main .comment_content_pi1{
+		float:right;font-size:12px;height:18px;line-height:15px;padding:1px 3px;border:1px solid #63aee8;color:#63aee8;border-radius:3px;margin-left:3px; font-style:normal;
+	}
+	.do_main .comment_content_pi2 {
+		float:right;font-size:12px;height:18px;line-height:15px;padding:1px 3px;border:1px solid #f4b52f;color:#f4b52f;border-radius:3px;margin-left:3px; font-style:normal;
+	}
+	.do_main .comment_name {
+		float:left; margin:0px 10px 3px 0px;
+	}
+	.do_main .comment_content_pi3 {
+		background-color: #8ecc52;border-radius: 2px !important;padding: .1em .325em;margin-top:-3px;
+	}
+	.do_main .comment_content_p3 {
+		color:#cdcdcd;font-size:12px;width:100%; height:16px;display:block;min-width:300px;
+	}
+	.do_main .comment_content_p3 span{
+		color:#cdcdcd;
+	}
+	.tiezi_number {
+		width:100%; height:46px; text-align:center;line-height:46px;font-size:13px;background:#f4f4f4;
+	}
+	.tiezi_number span,.tiezi_number i {
+		color:#ff9233;
+	}
+	.tiezi_number span {
+		font-size: 18px;
+		display:inline-block;
+	}
+	.am-list-news-ft {
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 15px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	.com_con_img img{
+		width:100%;
+	}
+	.personer2 {
+	    height: 50px;
+	    line-height: 65px;
+	    background-color: #fff;
+	    overflow: hidden;
+	    color:#000;
+	    font-size:16px;
+	    border-bottom:1px solid #e0e0e0;
+	    width:100%;text-align:center;
+	}

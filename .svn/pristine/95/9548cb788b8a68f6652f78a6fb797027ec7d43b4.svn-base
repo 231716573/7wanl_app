@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/coupon.css"/>
+    <style>
+    #newConp_on a, #newConp_out a {
+	    color: #fff;
+	}
+	</style>
+</head>
+<body>
+<div class="am-cf am-g" style="margin-bottom:10px;">
+    <div id="favnav_div">
+        <div class="newConp" id="newConp_on">
+        </div>
+    </div>
+</div>
+<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=coupon&action=couponbyuser',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"status":0
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+			
+        	if(ret){
+        	
+//				alert(JSON.stringify(ret))
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		var newConpCom = $api.byId('newConp_on');
+
+        		for(var i=0;i<ret.data.list.length;i++){
+				    	
+				    	var _obj = ret.data.list[i];
+
+				    	if(_obj.c_type == 1){
+				    	
+				    		
+				    		
+				    		var stratTime = new Date(_obj.s_time*1000);
+							var endTime = new Date(_obj.e_time*1000);
+							
+							var stratTimeGetMonth = parseInt(stratTime.getMonth())+1;
+							var stratTimeGetDate = stratTime.getDate();
+							
+							var endTimeGetMonth = parseInt(endTime.getMonth())+1;
+							var endTimeGetDate = endTime.getDate();
+							
+							if(stratTimeGetMonth <10){
+								stratTimeGetMonth = "0"+stratTimeGetMonth;
+							}
+							if(stratTimeGetDate <10){
+								stratTimeGetDate = "0"+stratTimeGetDate;
+							}
+							if(endTimeGetMonth <10){
+								endTimeGetMonth = "0"+endTimeGetMonth;
+							}
+							if(endTimeGetDate <10){
+								endTimeGetDate = "0"+endTimeGetDate;
+							}
+					
+							var s_time = stratTime.getFullYear() + "-" + stratTimeGetMonth + "-" + stratTimeGetDate;
+							var e_time = endTime.getFullYear() + "-" + endTimeGetMonth + "-" + endTimeGetDate;
+				    		
+				    		var use_range = ""; 
+				    		if(_obj.use_range ==0){
+				    			use_range = "网站跟APP可用";
+				    		}else if(_obj.use_range ==1){
+				    			use_range = "仅网站可用";
+				    		}else if(_obj.use_range ==2){
+				    			use_range = "仅APP可用";
+				    		}
+				    		var newConpComDiv = '<ul class="newConp_nofree"><li><i>¥</i>'+_obj.price_value+'</li><li>优惠券号：'+_obj.coupon_code+'<br><span>'+use_range+'，不限活动</span><br>发行机构：<a>'+_obj.shop_name+'</a><br>使用条件：不限价格<br>有效期限：'+s_time+'至'+e_time+'</li></ul>'
+
+				    	}else if(_obj.c_type == 2){
+				    		
+				    		var stratTime = new Date(_obj.s_time*1000);
+							var endTime = new Date(_obj.e_time*1000);
+							
+							var stratTimeGetMonth = parseInt(stratTime.getMonth())+1;
+							var stratTimeGetDate = stratTime.getDate();
+							
+							var endTimeGetMonth = parseInt(endTime.getMonth())+1;
+							var endTimeGetDate = endTime.getDate();
+//							
+							if(stratTimeGetMonth <10){
+								stratTimeGetMonth = "0"+stratTimeGetMonth;
+							}
+							if(stratTimeGetDate <10){
+								stratTimeGetDate = "0"+stratTimeGetDate;
+							}
+							if(endTimeGetMonth <10){
+								endTimeGetMonth = "0"+endTimeGetMonth;
+							}
+							if(endTimeGetDate <10){
+								endTimeGetDate = "0"+endTimeGetDate;
+							}
+					
+							var s_time = stratTime.getFullYear() + "-" + stratTimeGetMonth + "-" + stratTimeGetDate;
+							var e_time = endTime.getFullYear() + "-" + endTimeGetMonth + "-" + endTimeGetDate;
+//				    		
+				    		var use_range = ""; 
+				    		if(_obj.use_range ==0){
+				    			use_range = "网站跟APP可用";
+				    		}else if(_obj.use_range ==1){
+				    			use_range = "仅APP可用";
+				    		}else if(_obj.use_range ==2){
+				    			use_range = "仅网站可用";
+				    		}
+				    		
+				    		var use_type = "";
+				    		if(_obj.use_type == 1){
+				    			use_type = "家庭组";
+				    		}else if(_obj.use_type == 2){
+				    			use_type = "一大一小";
+				    		}
+				    		
+		    				var newConpComDiv = '<ul class="newConp_free"><li id="newConp_free_liid"><span class="newConp_free_liids">免费</span><span>'+use_type+'</span></li><li>优惠券号：'+_obj.coupon_code+'<br><span class="newConp_free_span">'+use_range+'，指定活动</span><br>发行机构：<a>'+_obj.shop_name+'</a><br>指定活动使用：<a>'+_obj.coupon_product_title+'</a><br>有效期限：'+s_time+'至'+e_time+'</li></ul>'
+				    	
+				    	}
+
+				    	$api.append(newConpCom, newConpComDiv);
+				    	
+				}
+        		
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+	};
+</script>
+</html>

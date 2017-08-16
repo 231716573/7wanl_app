@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+   	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/static/7wanl/css/cart.css"/>
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.am-list-item-hd{
+    		white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size: 14px;color:#333;
+    	}
+    	.overspan{
+    		margin:0px 10px 10px;display:block;
+    	}
+    </style>
+</head>
+<body>
+
+<div class="fav_list">
+    
+    <div class="am-list-news-ft readmore" id="readmore">
+    	<a href="javascript:;">查看更多 <i class="am-icon-frown-o"></i></a>
+	</div>
+
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+
+	
+	apiready = function(){
+		getFavorite();
+		
+		api.setRefreshHeaderInfo({
+		    visible: true,
+		    loadingImg: '../image/refreshing_image_01.png',
+		    bgColor: '#ccc',
+		    textColor: '#fff',
+		    textDown: '下拉刷新...',
+		    textLoadin:'载入中',
+		    textUp: '松手刷新...',
+		    showTime: true
+		}, function (ret, err) {
+		    alert('刷新完毕！');
+		    api.refreshHeaderLoadDone();
+		});
+		
+		var readmore = $api.dom(".readmore");
+	    
+//	    $api.addEvt(readmore, 'click', function(){
+//			getFavoriteMore('readmore','http://test.7wanl.com/7wanlsoa/app/member/getFavoriteActivity.json?uid='+$api.getStorage("userid")+'&accessToken='+$api.getStorage("useraccessToken")+'&pageSize=2&pageNumber=');
+//		});
+		
+		api.addEventListener({
+		    name:'scrolltobottom',
+		    extra:{
+		        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+		    }
+		},function(ret,err){
+		    getFavoriteMore('readmore','http://test.7wanl.com/7wanlsoa/app/member/getFavoriteActivity.json?uid='+$api.getStorage("userid")+'&accessToken='+$api.getStorage("useraccessToken")+'&pageSize=2&pageNumber=');
+		});
+		
+	};
+	
+	function getFavorite(){
+		
+		$api.get('http://test.7wanl.com/7wanlsoa/app/member/getFavoriteActivity.json?uid='+$api.getStorage("userid")+'&accessToken='+$api.getStorage("useraccessToken")+'&pageNumber=1&pageSize=2',
+			function(ret){
+				
+				var newfavoCom = $api.byId('readmore');
+				
+				if(ret.code == 0){
+					
+				    for(var i=0;i<ret.obj.length;i++){
+				    	
+				    	var _obj = ret.obj[i];
+				    	
+				    	var newfavoComDiv = '<div id="newfavoCom"><div id="newfavo" style="border-top:1px solid #e8e8e8;"><ul class="am-list"><a onclick="goActivity('+_obj.activityId+')"><li class="am-g am-list-item-thumbed am-list-item-thumb-left" style="padding-bottom: 1em;"><div class="am-u-sm-4 am-list-thumb"><img src="'+_obj.pic+'" alt="'+_obj.title+'"></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p class="pb00">适用年龄：'+_obj.age+'</p><p class="pb5 pb00">截止报名：'+_obj.applyend+'</p><p class="pb_new"><span class="am-fr" style="line-height:23px;">13人报名</span> '+_obj.price+'</p></div></div></li></a><span class="overspan">'+_obj.startTime+'</span></ul></div></div>';
+
+				    	$api.before(newfavoCom, newfavoComDiv);
+				    	
+				    }
+				
+				}else{
+					alert(ret.msg)
+				}
+			}
+		,'json');
+
+	}
+	
+	var i =2;
+	
+	function getFavoriteMore(id,urli){
+	
+		var objclass = $api.dom("."+id);
+		
+		$api.html(objclass,'加载中...');
+		
+		urli = urli + i;
+
+		i = i+1;
+		
+		$api.get(urli,
+			function(ret){
+				
+				var newfavoCom = $api.byId('readmore');
+				
+				if(ret.code == 0&&ret.obj != ""){
+
+				    for(var i=0;i<ret.obj.length;i++){
+				    	
+				    	var _obj = ret.obj[i];
+				    	
+				    	var newfavoComDiv = '<div id="newfavoCom"><div id="newfavo" style="border-top:1px solid #e8e8e8;"><ul class="am-list"><a onclick="goActivity('+_obj.activityId+')"><li class="am-g am-list-item-thumbed am-list-item-thumb-left" style="padding-bottom: 1em;"><div class="am-u-sm-4 am-list-thumb"><img src="'+_obj.pic+'" alt="'+_obj.title+'"></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p class="pb00">适用年龄：'+_obj.age+'</p><p class="pb5 pb00">截止报名：'+_obj.applyend+'</p><p class="pb_new"><span class="am-fr" style="line-height:23px;">13人报名</span> '+_obj.price+'</p></div></div></li></a><span class="overspan">'+_obj.startTime+'</span></ul></div></div>';
+
+				    	$api.before(newfavoCom, newfavoComDiv);
+
+				    }
+				    
+				    $api.html(objclass,'<a href="javascript:;">查看更多 </a>');
+				
+				}else{
+				    
+			    	$api.html(objclass,'<a href="javascript:;">数据已全部展示完毕  <i class="am-icon-frown-o"></i></a>');
+			    	
+			    }
+			}
+		,'json');
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

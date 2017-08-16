@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/applypay.css"/>
+</head>
+<body>
+<div style="max-width:100%;overflow: hidden;margin-bottom:40px;">
+	<header id="header" class="homeHeader" style="z-index:9999;position:fixed;width:100%;top:0px;padding-top:5px;">
+	    <div class="left" style="margin-top:9px;" tapmode onclick="icoback()"><a class="ico_back"> </a></div>
+	    <div class="cent" style="color:#000;">填写订单</div>
+	</header>
+	<div style="width:100%;height:51px;"></div>
+	<div class="activity_pay">
+		
+	    <div class="view_title">订单信息</div>
+	    <div class="view-titlename am-g" onclick="openWxPay()">
+	    	<div class="am-u-sm-4"><img id="view-titlename-img" alt="活动名称" style="width:100%;" /></div>
+	    	<div class="am-u-sm-8" style="text-align: right;"></div>
+	    </div>
+	    <div class="am-list-item-text">订单号<span class="am-fr" id="dingdanhao"></span></div>
+	    <div class="am-list-item-text adultprice" >大人单价<span class="am-fr" id="adultprice"></span></div>
+	    <div class="am-list-item-text childprice" >小孩单价<span class="am-fr" id="childprice"></span></div>
+	    <div class="am-list-item-text tc_totalprice" >套餐价格<span class="am-fr" id="tc_totalprice"></span></div>
+	    <div class="am-list-item-text">数量<span class="am-fr" id="persennumber"></span></div>
+	    <div class="line-out">
+	    	总价<span class="line-in"><i style="font-size:20px;" id="totalprice"></i></span>
+		</div>
+	
+	    <div class="view_title">支付方式</div>
+	    <ul id="parchecked">
+	    	<div tapmode class="am-list-main alipay click">
+		        <span class="checked am-fr"></span>
+		        <div class="paytype_img"></div>
+		        <input type="radio" name="bank_type" value="alipay" checked="">
+		    </div>
+		    <div tapmode class="am-list-main ylpay click" >
+		        <span class="am-fr"></span>
+		        <div class="paytype_img" style="background-position: left -124px;"></div>
+		        <input type="radio" name="bank_type" value="ylpay" checked="">
+		    </div>
+	    </ul>
+        <p onclick="choosePay()"><button type="submit" class="am-btn am-btn-block">确定支付</button></p>
+
+	</div>
+</div>
+
+<div id="paySuccess" style="display: none;">
+	<div class="paySuccess_head">报名成功</div>
+	<div class="content_body">
+	    <ul>
+	        <li><span>活动名称：</span><i id="paySuccessTitle"></i></li>
+	        <li><span id="paySuccess_personNumber">人员数量：</span></li>
+	        <li class="paySuccess_person"><span id="paySuccess_personPrice">人员费用：</span></li>
+	        <li class="paySuccess_team"><span>套餐费用：</span><i id="paySuccessPriceTeam"></i></li>
+	        <li><span>优惠：</span><i id="paySuccessPriceDiscount">¥ 0.00</i></li>
+	        <li><span>费用统计：</span><i id="paySuccessPriceTotal"></i></li>
+	    </ul>
+	    <div class="returnPay">
+	        <p><span>您已成功报名，请等待商家审核！</span></p>
+	        <p><br><a onclick="CloseWin()">返回首页</a><a>个人中心</a></p>
+	    </div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		var totalprice,type;
+
+		getOrderinfoByApply();
+
+		var amList = $api.domAll(".am-list-main");
+		for(var i=0;i<amList.length;i++){
+			
+			amList[i].index = i;
+			amList[i].onclick=function (){
+				for(var i=0;i<amList.length;i++){
+					amList[i].getElementsByTagName("span")[0].className = 'am-fr';
+				}
+				amList[this.index].getElementsByTagName("span")[0].className = 'checked am-fr';
+			}
+		}
+		
+	};
+	
+	function choosePay(){
+		if($api.first($api.dom(".alipay")).className == "checked am-fr"){
+			// 支付宝付款
+			openAliPay();
+		}else if($api.first($api.dom(".ylpay")).className == "checked am-fr"){
+			// 微信付款
+			openWxPay();
+		}
+	}
+	
+	// 报名成功，返回首页
+	function CloseWin(){
+		api.closeWin();
+	}
+	
+	// 取得订单消息
+	function getOrderinfoByApply(){
+		var uid = GetString("userid");
+		var apply_id = GetString("apply_id");
+		var tp_type = GetString("tp_type");
+		// alert("uid:"+uid+"，apply_id:"+apply_id+"，tp_type:"+tp_type)
+		if(tp_type == "1"){
+			$api.css($api.dom(".adultprice"),"display:block;");
+			$api.css($api.dom(".childprice"),"display:block;");
+			$api.css($api.dom(".tc_totalprice"),"display:none;");
+			type = "activity";
+			
+			$api.css($api.dom(".paySuccess_team"),"display:none;");
+			$api.css($api.dom(".paySuccess_person"),"display:block;");
+			
+		}else if(tp_type == "2"){
+			type = "activity";
+			$api.css($api.dom(".adultprice"),"display:none;");
+			$api.css($api.dom(".childprice"),"display:none;");
+			$api.css($api.dom(".tc_totalprice"),"display:list-item;");
+			
+			$api.css($api.dom(".paySuccess_person"),"display:none;");
+			$api.css($api.dom(".paySuccess_team"),"display:list-item;");
+			
+		}
+		api.ajax({
+	        url:commenturl +'dataapi.php?mod=order&action=orderinfo_by_apply',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":uid,
+		        	"apply_id":apply_id,
+		        	"type":type
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        			api.closeFrame();
+        		}else{
+        			
+        			$api.html($api.byId("dingdanhao"), ret.data.order_no);
+        			$api.html($api.byId("persennumber"), GetString("adultnumber")+"大"+GetString("childnumber")+"小");
+        			$api.html($api.byId("totalprice"), "¥ "+GetString("totalprice"));
+        			totalprice = GetString("totalprice");
+        			
+        			if(tp_type == 1){
+        			
+						$api.html($api.byId("adultprice"), "¥ "+ret.data.apply.price_adult);
+        				$api.html($api.byId("childprice"), "¥ "+ret.data.apply.price_child);
+        				
+        				$api.after($api.byId("paySuccess_personPrice"), "成人：<i>¥ " + ret.data.apply.price_adult + "</i> 小孩：<i>¥ " + ret.data.apply.price_child + "</i>");
+
+					}else if(tp_type == 2){
+
+						$api.html($api.byId("tc_totalprice"), "¥ "+GetString("totalprice"));
+						
+						$api.html($api.dom("#paySuccessPriceTeam"), "¥ "+GetString("totalprice"));
+						
+					}
+
+        			$api.html($api.dom(".view-titlename .am-u-sm-8"), ret.data.title);
+        			
+        			document.getElementById("view-titlename-img").src = "http://129.1.28.1/" + ret.data.activity.pic;
+        			
+        			$api.css(document.getElementById("view-titlename-img"),"height:"+parseFloat($api.cssVal(document.getElementById("view-titlename-img"),"width"))*3/4+"px");
+        			
+        			$api.html($api.dom("#paySuccessTitle"), ret.data.title);
+        			$api.html($api.dom("#paySuccessPriceTotal"), "¥ "+GetString("totalprice"));
+        			
+        			$api.after($api.dom("#paySuccess_personNumber"), "<i>"+GetString("adultnumber")+"</i> 大  <i>"+GetString("childnumber")+"</i> 小");
+        			
+        		}	
+        	}
+        	if(err){
+        		alert(err.msg)
+        		api.closeFrame();
+        	}
+        });
+	}
+	
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeFrame();
+	}
+	
+	// 支付宝支付
+	function openAliPay() {
+
+	    var alipay = api.require('aliPay');
+
+		var aplibody = $api.html($api.dom(".view-titlename .am-u-sm-8"));
+	    var amount = GetString("totalprice");
+	    var tradeNO = document.getElementById("dingdanhao").innerHTML;
+	    
+	    alipay.config({
+	        partner:'2088101817875688',
+	        seller:'zfb@gcihjt.com',
+	        rsaPriKey:'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKj7Zw1LxuNsBoJFyVeDPsrX/I70MRpoVacpUi8c5SHzD+z1O9x/zxaoTgcivl0sErjRtWx6kRG9I2m/Jid6qSIfMQpn0SACRM1q6dLjjudjvGVeCl/bf+8IdqCBkJLiPKfZBVZWV+m58iZJPjDk5ofENzZSkj15b+/Y0OqL49GLAgMBAAECgYAhUtKTsKncF2WBMzntZBhx7/4CQu2cA49Ak8l9OPmGpGQzmnjfluTD1xTsG1HnFdXrVI+ugM0y7lWZePSRPIM1wUVTzKSGi8+m8w09Iapx6n8zrQkA3owRF1vBzrzYfz0nhoXfW/FLFDc8d6+7YS9yeSbjE8n4NXPId1vVubVwIQJBANraDYiSrLI27AcjU6+fCGVYmkWPfatN0x3YHLquqoBAE6V1kKkf9ruKsrvtvVkOQBGdgOWbgTlVowPnYUfk0OUCQQDFqlGw4vP6wa7xwZSyUjTxNxAufkC4sdbCCQ8tMr1v5hnzwHZ8y2uOPo3MnfWMbDa65JQsmzjQs7w/3r02JaGvAkEAv52tvcdWh49I5xMKQblHm5yRLphtGqDAWOAQf29Q/4ua6ALgjwPafuf4iEymvaOZexLheafG5BFT8qYS6eSw9QJBAJVkkLFcFoIi+JIHeNb9gr38m+JH0arF3kZwimPiwYJdKqgrgmH3bKbpaEqJ6BflgcfnEoZUGrDB5zluoxrVfkkCQEfAbBWWQWuEoB6p5upHSrtfO0nITE3uChAMAwYa1GzLZXyEV4e8UXk4I3padSQiWMHzwuhEYKWwXxRndt8N/Fo=',
+			rsaPubKey:'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCx3IerUD7RQvFjqKDaIr9zPX9rboKwCsNUFDJd+6+FndZESqG987FlzznSVX/kC4LnRozkaJmi30K6gDo90JRF3E3hbcCtwB5YjFn0n3Jvh+GHnElCrOzdFEpuN5im733PF2k9U8Z5PDvWj1HXLxB6j6UWS8l11l2B3AlLrO6CpQIDAQAB',
+			notifyURL:'http://test.7wanl.com/7wanl/source/module/api/notify/alipay/notify_url.php'
+        },function(ret,err){
+//      	alert("ret1:"+JSON.stringify(ret))
+        	alipay.pay({
+	            subject: '来自去玩了活动的一笔付款',
+			    body: aplibody,
+			    amount: amount,
+			    tradeNO: tradeNO
+            },function(ret,err){
+            	if(ret.code == "9000"){
+				    $api.css($api.byId("paySuccess"),"display:block;");
+			    }else if(ret.code == "4003"){
+			    	api.alert({
+				        title: '支付结果',
+				        msg: '用户绑定的支付宝账户被冻结或不允许支付！',
+				        buttons: ['确认']
+				    });
+			    }else if(ret.code == "4004" || ret.code == "4005"){
+			    	api.alert({
+				        title: '支付结果',
+				        msg: '用户已解除绑定！',
+				        buttons: ['确认']
+				    });
+			    }else if(ret.code == "6000"){
+			    	api.alert({
+				        title: '支付结果',
+				        msg: '支付服务正在进行升级操作！',
+				        buttons: ['确认']
+				    });
+			    }
+            });
+        });
+	};
+	
+	// 微信支付
+	  function openWxPay() {
+			
+	      var wxPay = api.require('wxPay');
+		  wxPay.config({
+		   	apiKey : 'wx9f75238ffbfa749f',
+		   	mchId : '1361523902',
+		   	partnerKey : 'dRJ5Ir898Bgf65qDHqB9k9dJBZQV4Bk6',
+		   	notifyUrl : 'http://test.7wanl.com/7wanl/source/module/api/notify/wxpay/notify_url.php'
+		  }, function(ret, err) {
+		  	//alert(JSON.stringify(ret)+"，"+JSON.stringify(err))
+		   	if (ret && ret.status) {
+		    	wxPay.pay({
+		    		description : '来自去玩了活动的一笔付款',
+		     		totalFee : 1,
+		     		tradeNo : document.getElementById("dingdanhao").innerHTML
+		    	}, function(ret, err) {
+		    		
+				    if (ret.status) {
+						$api.css($api.byId("paySuccess"),"display:block;");
+						
+				    }
+					if(err){
+				   		alert("微信支付失败")
+				   	}
+		    	});
+		   	}
+		   	if(err.code != 0){
+		   		alert("微信支付失败")
+		   	}
+		});
+	};
+
+	
+</script>
+</html>

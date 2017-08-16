@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<style>
+	.xiachedanp1 {
+		position:absolute;bottom:0px;left:0px; padding:2px 12px;background:#000;width: 100%;opacity:0.5;height:23px;
+	}
+	.xiachedanp2 {
+		position: absolute; bottom: 0px; left: 0px; padding: 2px 10px; color: rgb(255, 255, 255); font-size: 12px; width: 100%; height: 23px;
+	}
+	#header {
+		background:#fff;height:50px;line-height:50px;z-index:999;padding-top:7px;
+	}
+	i { font-style:normal !important;}
+	.xcdadd {
+		float:right;margin-right:15px;font-size:12px;color:#bdbdbd;display: block; width: 220px; height: 31px;line-height: 31px; overflow: hidden; text-align: right;
+	}
+	.serviceTel{
+		float:right;margin-right:15px;font-size:12px;color:#bdbdbd;
+	}
+	.view_more a {
+		color:#333;
+	}
+	.ico_back{
+		display:inline-block;width:20px;height:25px;margin-top:10px;
+	}
+	.am-tabs-nav>.am-active a {
+	    color: #24aba8;
+	    line-height: 50px;
+        font-size: 15px;
+    	font-weight: bold;    
+	}
+	.am-tabs-nav>.am-active {
+	    background-color: #fff;
+	    border: 0;
+	}
+	.am-tabs-nav li {
+	    height: 50px;
+	    text-align:center;
+	}
+	.gettime{
+		float:right;
+		font-size:13px;
+	}
+	.gettime i {
+		color:#24aba8;
+	}
+	.hddd{
+		color:#40b5b2 !important;
+	}
+	.signup{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+		z-index: 99999
+	}
+	.signup_bg{
+		width:100%;
+		height:100%;
+		position: fixed;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background-color: rgba(0,0,0,.6);
+	    z-index:9999;
+	    
+	}
+	.signup_div{
+	    position: fixed;
+	    left: 0;
+	    bottom: 0;
+        max-height: 90% !important;
+    	overflow: scroll;
+    	width: 100%;
+	    border-radius: 0;
+	    -webkit-transition: -webkit-transform 300ms;
+    	transition: transform 300ms;
+	    z-index: 11110;
+	    background-color: #fff;
+	}
+	.modal-active {
+	    -webkit-transform: translateY(0);
+	    -ms-transform: translateY(0);
+	    transform: translateY(0);
+	}
+	.am-modal-out {
+	    -webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	    transform: translateY(100%);
+	}
+	.am-list-item-hdm,.bmjzrq{
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+	}
+	.am-list-news li:last-child{
+		border: none;
+	}
+	.choose_num i {
+	    color: #f9851d !important;
+	    font-size: 15px !important;
+	}
+	.am-icon-file-o1i,.am-icon-file-o2i,.am-icon-file-o3i{
+		display:inline !important;
+		color:#24aba8;
+	}
+	.activity_other .view_more{
+		padding-left:10px !important;
+	}
+	#getaddress,.gettime { display:none; }
+	.activity_main .detailToptuanprice {
+	    padding-bottom: 8px;
+	    padding-left: 10px;
+	    color: #f9851d;
+	    font-size: 16px;
+	}
+	</style>
+</head>
+<body>
+<div style="max-width:100%;overflow: hidden;">
+	<header id="header" class="homeHeader" style="position:fixed;width:100%;top:0px;">
+	    <div class="left" style="margin-top:5px;" tapmode onclick="icoback()"><a class="ico_back" > </a></div>
+	    <div class="cent" style="color:#000;">活动详情</div>
+	    <div class="head-icon" style="padding-right: 0;margin-top:3px;">
+	        <a class="am-icon-share-square-o" tapmode onclick="sharethis()" style="margin-top:7px;"></a>
+	        <a class="am-icon-star-o"></a>
+	    </div>
+	</header>
+	<div style="height: 44px;width:100%;"></div>
+	
+	<!--报名信息-->
+	<div data-am-widget="figure" class="am am-figure am-figure-default am-no-layout am-figure-zoomable gdimg" >
+	    <div class="xcdpic"><img style="height: 200px;" ></div>
+	    <p class="xiachedanp1"></p>
+	    <p class="xiachedanp2"><span class="classTime"><i></i></span>报名截止：<span class="xcdTime" style="display:inline;"></span></p>
+		<i class="tag"></i>
+	</div>
+	<div class="activity_main activity_main_one">
+	    <h2 class="xcdnumber"></h2>
+	    <div class="detailTop-1">
+	        <div class="detailTop-2" style="color:#666;">
+	        	<p class="gettime" id="gettime"><i>其它时间段</i> ></p>
+	            <p class="more-time">活动时间： <span class="xcdstartTime" style="display:inline-block;width:120px;"></span></p>
+	            <p>适用年龄： <span class="xcdage"></span></p>
+	        </div>
+	    </div>
+        <div class="detailTop-price" style="font-size: 14px;">小孩：<i class="xcdpriceChild"></i> 成人：<i class="xcdpriceAdult"></i></div>
+        <div class="detailToptuanprice" style="display:none;"></div>
+    </div>
+    
+    <!--三个图-->
+    <div class="am-avg-sm-3 detail_apply">
+	    <li class="am-icon-file-o11"><span class="am-icon-file-o1"></span><i class="am-icon-file-o1i"></i>个活动名额</li>
+	    <li class="am-icon-file-o11"><span class="am-icon-file-o2"></span><i class="am-icon-file-o2i"></i>人报名参加</li>
+	    <li class="am-icon-file-o11"><span class="am-icon-file-o3"></span><i class="am-icon-file-o3i"></i>人审核通过</li>
+	</div>
+	
+	<ul class="am-tabs-nav am-cf">
+        <li class="am-active am-active_one" tapmode onclick="goActivity()"><a>查看活动图文详情 <span class="quanquan"><i></i></span></a></li>
+    </ul>
+	
+	<!--活动地址以下-->
+	<div class="activity_other" style="margin-bottom:50px;">
+		<p></p>
+        <div class="view_more"><a style="font-size:14px;">活动地址 <i class="xcdadd"></i></a></div>
+        <div class="view_more" id="getaddress"><a class="hddd">查看其它活动地点</a></div>
+        <p></p>
+<!--        <div class="view_more"><a class="xcdhg">往期回顾  <i style="color:#ff0000;"></i></a></div>
+        <p></p>-->
+        <div class="view_more" tapmode onclick="goActivityquestion()" ><a class="xcdyw">全部用户疑问 <i style="color:#ff0000;"><em></em></i></a></div>
+        <p></p>
+        <div class="view_more" tapmode onclick="goActivitycomment()" ><a class="xcdpl">全部评论 <i style="color:#ff0000;"><em></em></i></a></div>
+        <p></p>
+        <div class="view_more"><a onclick="callActPhone()" style="font-size:14px;">客服热线 <i class="serviceTel">4008-330-730</i></a></div>
+        <p style="position:absolute; top:0px; height:10px; width:100%; background:#eee;"></p>
+
+        <div class="view_title" style="color:#999; height:29px;">机构</div>
+
+        <div class="con">
+            <div class="info Fix" tapmode onclick="goShop()">
+                <div class="info-a">
+                    <div class="details">
+                        <div class="tag">
+                            <img class="tagpic" data-bd-imgshare-binded="1">
+                        </div>
+                        <h4 class="tagtitle"></h4>
+                        <div class="intro Fix"><span class="star" style="position:relative;"><span class="fstar"></span><i style="position:absolute;top:0px;right:-39px;color:#fa9943;"><em class="xcdstar"></em>分</i></span></div>
+                    </div>
+                </div>
+                <a class="info-m J_mobile"><i class="mobile"></i></a>
+            </div>
+
+            <ul class="am-avg-sm-3">
+                <li>活动质量<em><i class="xcdshopZL"></i>分</em></li>
+                <li>活动环境<em><i class="xcdshopHJ"></i>分</em></li>
+                <li>服务态度<em><i class="xcdshopTD"></i>分</em></li>
+            </ul>
+            <ul id="apply_btn" data-am-widget="gotop" class="am-avg-sm-2 am-no-layout">
+                <li><span style="background:#3db8b5;color:#fff;font-size:15px;text-align:center;" class="am-btn am-btn-block bor_e8 am-radius" tapmode>我有疑问</span></li>
+                <li id="baoming" tapmode ><span style="font-size:15px;" tapmode class="am-btn am-btn-warning am-radius am-btn-block" >我要报名</span></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="signup">
+    	<div class="signup_bg"></div>
+    	<div class="signup_div" style="overflow-x: hidden;">
+    		<div class="am-list-news-bd">
+                <ul class="am-list">
+                    <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+                        <div class="am-u-sm-4 am-list-thumb" style="padding-left: 10px;">
+                            <img src="" alt="" id="ch_img" data-bd-imgshare-binded="1">
+                        </div>
+                        <div class=" am-u-sm-8 am-list-main" style="padding-left: 5px;">
+                            <h3 class="am-list-item-hd" style="font-size:14px;" id="ch_acttitle"></h3>
+                            <div class="am-list-item-text">
+                                <p>适用年龄： <span id="ch_actage"></span></p>
+                                <p class="bmjzrq">活动时间： <span id="ch_acttime"></span></p>
+                                <div class="detailTop-price" style="font-size:18px;color: #f9851d;">
+                                    <i style="font-size:12px;color: #999;">总计：</i><span class="Buy_join_price" style="display:inline-block;width:100px;" id="ch_actprice"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="select-checkbox" style="display:block;" id="choose_address">
+            	<h2>选择地点</h2>
+                <ul style="margin:0px 10px;" class="am-list-news"  id="ch_address">
+                    <!--<li class="rel_activity_sel sel"></li>-->
+                </ul>
+            </div>
+             <div class="select-checkbox" style="display:block;" id="choose_time">
+            	<h2>选择时间</h2>
+                <ul style="margin:0px 10px;" class="am-list-news" id="ch_time">
+<!--                    <li class="rel_activity_sel sel"></li>-->
+                </ul>
+            </div>
+            <div id="dj_activity">
+            	<div class="activity_main_h2">选择参与人员</div>
+	            <div class="activity_main mb10">
+	                <ul class="choose_num">
+	                    <li>
+	                        <span class="item-label" id="item-label-span">大人：<i id="ch_adultprice"></i></span>
+	                        <p class="amount">
+	                            <span class="changeredu" tapmode data-min="1" id="adultredu">-</span>
+	                            <input type="text" tapmode class="j_amount" id="adultnumber" name="adult_num" value="1">
+	                            <span class="changeadd" tapmode id="adultadd">+</span>
+	                        </p>
+	                    </li>
+	                    <li>
+	                        <span class="item-label" id="item-label-span">小孩：<i id="ch_childprice"></i></span>
+	                        <p class="amount">
+	                            <span class="changeredu" tapmode data-min="1" id="childredu">-</span>
+	                            <input type="text" tapmode class="j_amount" id="childnumber" name="child_num" value="1">
+	                            <span class="changeadd" tapmode id="childadd">+</span>
+	                        </p>
+	                    </li>
+	                </ul>
+	            </div>
+            </div>
+            <div class="select-checkbox" style="display:block;" id="choose_tc">
+            	<h2>选择套餐</h2>
+                <ul style="margin:0px 10px;" class="am-list-news" id="ch_tc">
+                    <!--<li class="sel sel_tp" data-num="1_1" title="一大一小" >一大一小<span>￥2.00</span></li>-->
+                    <!--<li class=" sel_tp" data-num="2_1" title="两大一小" >两大一小<span>￥4.00</span></li>-->
+                    <!--<li class=" sel_tp" data-num="1_2" title="一大两小" >一大两小<span>￥6.00</span></li>-->
+                </ul>
+            </div>
+            <div class="am-share-footer" tapmode >
+                 <button tapmode class="am-btn am-btn-warning am-btn-block am-btn-radius" id="sub_btn" style="color:#fff;">立即报名</button>
+            </div>
+    	</div>
+    </div>
+</div>
+<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+
+	var shopid = "";
+	var relId = "";
+	var relType = "";
+	var adultpri = "";
+	var childpri = "";
+	var tp_type = "";
+	var creditNum = "";
+	var creditNumPrice = "";
+	var unit = "";
+	var applyendTime = "";
+	apiready = function(){
+
+		//适配iOS7+系统状态栏，为传入的DOM元素增加20px的上内边距
+//		$api.fixIos7Bar( $api.dom('header') );
+		api.setStatusBarStyle({
+            style: 'dark',
+            color: '#6ab494'
+        });
+		
+		$api.css($api.dom('.loading'),"display:block");
+		
+		var baoming = $api.byId("baoming");
+		var signup = $api.dom(".signup");
+		var signupBg = $api.dom(".signup_bg");
+		var gettime = $api.byId("gettime");
+		var getaddress = $api.byId("getaddress");
+		
+		$api.css(signup,"display:none");
+	
+		activityView(GetString("activityId"));
+		api.setStatusBarStyle({
+            style: 'dark',
+            color: '#6ab494'
+        });
+        
+        //去到多活动页面
+        $api.addEvt(getaddress, "click",function(){
+        	goAddress(relId);
+        });
+
+        //去到多时间页面
+        $api.addEvt(gettime, "click",function(){
+        	getTime(relId);
+        });
+        
+        
+		//点击报名
+        $api.addEvt(baoming, "click",function(){
+        	var userid = $api.getStorage("userid");
+        	if(userid){
+        
+        		$api.css(signup,"display:block");
+        		chActivity(GetString("activityId"),relType,relId);
+        	
+        	}else{
+
+			    api.openFrame({
+		            name: 'frame32',
+			        url: 'frame32.html?goactivity=1',
+		            bounces: false,
+		            rect: {
+			            x:0,
+			            y:0,
+			            w:api.winWidth,
+			            h:"auto"
+		            }
+	            });
+        		return false;
+        	}
+
+        });
+//      关闭报名
+        $api.addEvt(signupBg, "click",function(){
+        	$api.css(signup,"display:none");
+
+        });
+
+        
+        var adultadd = $api.byId("adultadd");
+        var adultredu = $api.byId("adultredu");
+        var childadd = $api.byId("childadd");
+        var childredu = $api.byId("childredu");
+
+		//立即报名
+        $api.addEvt($api.dom(".am-share-footer"), "click",function(){	
+        	
+        	if($api.byId("sub_btn").disabled == true){
+        		
+        		return false;
+        	}
+        	
+        	var amiconfileo1iNumber = Number($api.html($api.dom(".am-icon-file-o1i")));
+        	var amiconfileo3iNumber = Number($api.html($api.dom(".am-icon-file-o3i")));
+        	
+        	var userid = $api.getStorage("userid");
+        	var adultnumber,childnumber,totalprice;
+        	if(tp_type == "1"){
+        	
+        		var childnumberNumber = Number(document.getElementById("childnumber").value);
+        		var adultnumberNumber = Number(document.getElementById("adultnumber").value);
+        		// 小孩+已报名 > 限定报名
+        		if(unit == 1){
+	        		if( (childnumberNumber+amiconfileo3iNumber) > amiconfileo1iNumber){
+	        			alert("小孩报名人数已超出");
+	        			return false;
+	        		}
+	        		
+	        	// 大人+已报名 > 限定报名
+	        	}else if(unit == 3){
+	        		if( (adultnumberNumber+amiconfileo3iNumber) > amiconfileo1iNumber){
+	        			alert("大人报名人数已超出");
+	        			return false;
+	        		}
+	        		
+	        	// 大人+小孩+已报名 > 限定报名
+	        	}else if(unit == 2){
+	        		if( (adultnumberNumber+childnumberNumber+amiconfileo3iNumber) > amiconfileo1iNumber){
+	        			alert("总报名人数已超出");
+	        			return false;
+	        		}
+	        	}
+        	
+        		adultnumber = document.getElementById("adultnumber").value;
+        		childnumber = document.getElementById("childnumber").value;
+        		totalprice =  Math.round((parseInt(adultnumber) * parseFloat(adultpri) + parseInt(childnumber) * parseFloat(childpri))*100)/100;
+        		
+        		var sel = document.getElementsByClassName('sel')[0];
+
+        		var activity_id = sel ? sel.getAttribute("activityId") : GetString("activityId");
+//      		alert(adultnumber +"，"+adultpri +"，"+childnumber +"，"+childpri)
+        	}else if(tp_type == "2"){
+
+        		var ch_tc = $api.byId("ch_tc");
+        		var ch_tcLi = ch_tc.getElementsByTagName("li");
+		        for(var j=0;j<ch_tcLi.length;j++){
+					
+					if(ch_tcLi[j].className == " sel_tp sel"){
+						adultnumber = $api.attr(ch_tcLi[j], "adult_num");
+        				childnumber = $api.attr(ch_tcLi[j], "child_num");
+        				totalprice =  $api.attr(ch_tcLi[j], "tp_price");
+
+					}
+		        	
+		        }
+
+		        // 小孩+已报名 > 限定报名
+        		if(unit == 1){
+	        		if( (Number(childnumber)+amiconfileo3iNumber) > amiconfileo1iNumber){
+	        			alert("小孩报名人数已超出");
+	        			return false;
+	        		}
+	        		
+	        	// 大人+已报名 > 限定报名
+	        	}else if(unit == 3){
+	        		if( (Number(adultnumber)+amiconfileo3iNumber) > amiconfileo1iNumber){
+	        			alert("大人报名人数已超出");
+	        			return false;
+	        		}
+	        		
+	        	// 大人+小孩+已报名 > 限定报名
+	        	}else if(unit == 2){
+	        		if( (Number(adultnumber)+Number(childnumber)+amiconfileo3iNumber) > amiconfileo1iNumber){
+	        			alert("总报名人数已超出");
+	        			return false;
+	        		}
+	        	}
+		        
+		        var activity_id = GetString("activityId");
+//		        alert("adultnumber："+adultnumber+"，childnumber："+childnumber+"，totalprice："+totalprice);
+        	}
+//      	alert("userid："+userid+"，activity_id："+activity_id+"，adultnumber："+adultnumber+"，childnumber："+childnumber+"，totalprice："+totalprice)
+			if(creditNum != 0){
+
+            	var applyUrl = 'apply.html?'+ 'userid='+userid+'&activity_id='+activity_id+'&adultnumber='+adultnumber+'&childnumber='+childnumber+'&totalprice='+totalprice+'&tp_type='+tp_type+'&creditNum='+creditNum;
+
+            }else{
+            	var applyUrl = 'apply.html?'+ 'userid='+userid+'&activity_id='+activity_id+'&adultnumber='+adultnumber+'&childnumber='+childnumber+'&totalprice='+totalprice+'&tp_type='+tp_type;
+            }
+            api.openFrame({
+	            name: 'apply',
+	            url: applyUrl,
+	            bounces: false,
+	            rect: {
+		            x:0,
+		            y:0,
+		            w:api.winWidth,
+		            h:"auto"
+	            }
+            });
+        });
+	};
+	
+	//	分享
+	function sharethis(){
+	
+		var title = $api.html($api.dom(".xcdnumber"));
+		
+		var url = "http://www.7wanl.com/activity.php?mod=view&activity_id=" + GetString("activityId") + "&mobile=2";
+		
+		var sharedModule = api.require("shareAction");
+		var sharedMsg = {
+		    text : "去玩了活动："+title+"，网站地址："+url+"，赶紧来参加吧！",
+            type : "text"
+		};
+		
+		sharedModule.share(sharedMsg);
+	}
+	
+	//	打客服电话电话
+	function callActPhone(){
+		api.call({
+		    type: 'tel_prompt',
+		    number: '4008-330-730'
+		});
+	}
+	
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+	
+	//	活动基本信息
+	function activityView(actId){
+		
+		var url = "http://192.168.19.239/dataapi.php?mod=activity&action=detail&activity_id="+actId;
+		
+		$api.get(url,function(data){
+//			alert("data:"+actId)
+//			找到对应的东西
+			var xcdTime = $api.dom(".xcdTime");
+			var xcdnumber = $api.dom(".xcdnumber");
+			var xcdstartTime = $api.dom(".xcdstartTime");
+			var xcdage = $api.dom(".xcdage");
+			var xcdpriceAdult = $api.dom(".xcdpriceAdult");
+			var xcdpriceChild = $api.dom(".xcdpriceChild");
+			
+			creditNum = data.data.credit_num;
+			
+			
+			var adultNumber = document.getElementById("adultnumber").value;
+			var childNumber = document.getElementById("childnumber").value;
+			
+			var ActPrice = $api.byId("ch_actprice"); 
+			
+			var xcdpic = $api.dom(".xcdpic img");
+			
+			if(data.code == 0){
+			
+				unit = data.data.unit;
+
+				//免得太乱，分开看舒服点
+				//报名信息
+				applyendTime = data.data.applyend;
+				$api.html(xcdTime,data.data.applye);
+				$api.html(xcdstartTime, data.data.startt);
+
+				$api.html(xcdnumber, data.data.title);
+				$api.html(xcdage, data.data.age_tag);
+				
+				tp_type = data.data.tp_type;
+				if(tp_type == "1"){
+					
+					$api.css($api.dom(".detailTop-price"),"display:block;");
+					$api.css($api.dom(".detailToptuanprice"),"display:none;");
+
+					if(data.data.credit_num == 0){
+						$api.html(xcdpriceAdult, data.data.price_adult);
+						$api.html(xcdpriceChild, data.data.price_child);
+					}else{
+						$api.html(xcdpriceAdult, data.data.credit_num + "丸子");
+						$api.html(xcdpriceChild, data.data.credit_num + "丸子");
+						creditNumPrice = data.data.credit_num *2;
+					}
+
+					// 大人人数添加
+			        $api.addEvt(adultadd, "click",function(){
+			        	adultnumber.value = parseInt(adultnumber.value)+1;
+			        	if(adultnumber.value >= data.data.field.adult_num_max){
+			        		adultnumber.value = data.data.field.adult_num_max;
+			        	}
+			        	if(creditNum == 0){
+			        		$api.text(ActPrice,"¥ " + Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100);
+			        	}else{
+			        		$api.text(ActPrice,Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100 + " 丸子");
+			        	}
+			        });
+			        
+					// 大人人数减少
+			        $api.addEvt(adultredu, "click",function(){
+			        	adultnumber.value = parseInt(adultnumber.value)-1;
+			        	if(adultnumber.value <= data.data.field.adult_num_min){
+			        		adultnumber.value = data.data.field.adult_num_min;
+			        	}
+			        	if(creditNum == 0){
+			        		$api.text(ActPrice, "¥ " + Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100);
+			        	}else{
+			     	   		$api.text(ActPrice, Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100 + " 丸子");
+			        	}
+			        });
+			
+					// 小孩人数添加
+			        $api.addEvt(childadd, "click",function(){
+			        	childnumber.value = parseInt(childnumber.value)+1;
+			        	if(childnumber.value >= data.data.field.child_num_max){
+			        		childnumber.value = data.data.field.child_num_max;
+			        	}
+			        	if(creditNum == 0){
+			        		$api.text(ActPrice, "¥ " + Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100);
+			        	}else{
+			        		$api.text(ActPrice, Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100 + " 丸子");
+			        	}
+			        });
+			        
+					// 小孩人数减少
+			        $api.addEvt(childredu, "click",function(){
+			        	childnumber.value = parseInt(childnumber.value)-1;
+			        	if(childnumber.value <= data.data.field.child_num_min){
+			        		childnumber.value = data.data.field.child_num_min;
+			        	}
+			        	if(creditNum == 0){
+			        		$api.text(ActPrice, "¥ " + Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100);
+			        	}else{
+			        		$api.text(ActPrice, Math.round((parseInt(adultnumber.value) * parseFloat(adultpri) + parseInt(childnumber.value) * parseFloat(childpri))*100)/100 + " 丸子");
+			        	}
+			        });
+					
+				}else{
+					
+					var ch_tc = $api.byId("ch_tc");
+					while(ch_tc.hasChildNodes()){
+        				ch_tc.removeChild(ch_tc.firstChild);
+        			}
+	        			
+					for(var i=0;i<data.data.tp_setting.length;i++){
+						var tp_setting = data.data.tp_setting[i];
+
+						$api.html($api.dom(".detailToptuanprice"),"¥ "+data.data.tp_setting[0].tp_price);
+						
+						var detailToptuanprice = '<li class=" sel_tp" tp_price="'+tp_setting.tp_price+'" adult_num="'+tp_setting.adult_num+'" child_num="'+tp_setting.child_num+'" tapmode data-num="'+tp_setting.adult_num+'_'+tp_setting.child_num+'" title="'+tp_setting.name+'" >'+tp_setting.name+'<span>￥'+tp_setting.tp_price+'</span></li>'
+						
+						$api.append(ch_tc, detailToptuanprice);
+					}
+					
+					$api.addCls(ch_tc.firstChild, "sel");
+					
+					var ch_tcLi = ch_tc.getElementsByTagName("li");
+			        for(var j=0;j<ch_tcLi.length;j++){
+			        	
+			        	ch_tcLi[j].index=j;
+			        	ch_tcLi[j].onclick=function (){
+			        		for(var j=0;j<ch_tcLi.length;j++){
+			        			$api.removeCls(ch_tcLi[j], 'sel');
+			        		}
+			        		$api.addCls(ch_tcLi[this.index], 'sel');
+			        		
+			        		$api.html($api.byId('ch_actprice'), "¥ " + $api.attr(ch_tcLi[this.index], "tp_price"));
+			        	}
+			        }
+					
+					$api.css($api.dom(".detailTop-price"),"display:none;");
+					$api.css($api.dom(".detailToptuanprice"),"display:block;");
+				}
+
+				if($api.html(xcdpriceAdult) =="免费"){
+					if(creditNum == 0){
+						adultpri = 0;
+					}else{
+						adultpri = creditNum;
+					}
+//					alert("priceAdult: "+data.obj.priceAdult)
+				}else{
+					if($api.html(xcdpriceAdult).substring(0,1) == "￥"){
+						adultpri = $api.html(xcdpriceAdult).substring(1);
+					}else{
+						adultpri = $api.html(xcdpriceAdult);
+					}
+				}
+				
+				if($api.html(xcdpriceChild) =="免费"){
+					if(creditNum == 0){
+						childpri = 0;
+					}else{
+						childpri = creditNum;
+					}
+				}else{
+					if($api.html(xcdpriceChild).substring(0,1) == "￥"){
+						childpri = $api.html(xcdpriceChild).substring(1);
+					}else{
+						childpri = $api.html(xcdpriceChild);
+					}
+				}
+
+				//图片信息
+				$api.attr(xcdpic, 'src', "http://129.1.28.1/"+data.data.pic);
+				$api.attr(xcdpic, 'alt', data.data.title);
+				$api.attr(xcdpic, 'data-rel', "http://129.1.28.1/"+data.data.pic);
+				
+				$api.html($api.dom(".xcdadd"), data.data.address);
+				
+				var dataRel;
+				for(var a=0;a<data.data.rel.length;a++){
+					dataRel = data.data.rel[0]
+					
+					relId = dataRel.rel_id;
+					relType = dataRel.rel_type;
+					
+					//检查是否存在多活动、多时间
+					checkMoreTime(relId);
+	        		checkMoreAddress(relId);
+	        		
+	        		$api.css($api.dom('.loading'),"display:none");
+				}
+			}else{
+				alert("发生未知错误，请重新进入")
+			}
+			
+			
+		}
+			
+		,'json');
+		
+		$api.get("http://test.7wanl.com/7wanlsoa/app/activity/getDetail.json?activityId="+actId,function(data){
+
+			var amiconfile1 = $api.dom(".am-icon-file-o1i");
+			var amiconfile2 = $api.dom(".am-icon-file-o2i");
+			var amiconfile3 = $api.dom(".am-icon-file-o3i");
+
+			var xcdhg = $api.dom(".xcdhg em");
+			var xcdyw = $api.dom(".xcdyw em");
+			var xcdpl = $api.dom(".xcdpl em");
+			var serviceTel = $api.dom(".serviceTel");
+			
+			//商家
+			var tagpic = $api.dom(".tagpic");
+			var tagtitle = $api.dom(".tagtitle");
+			var xcdshopZL = $api.dom(".xcdshopZL");
+			var xcdshopHJ = $api.dom(".xcdshopHJ");
+			var xcdshopTD = $api.dom(".xcdshopTD");
+			var xcdstar = $api.dom(".xcdstar");
+			
+			if(data.code == 0){
+			
+				//中间三个图
+				$api.html(amiconfile1, data.obj.number);
+				$api.html(amiconfile2, data.obj.apply);
+				$api.html(amiconfile3, data.obj.verify);
+
+				//商家
+				$api.attr(tagpic, "src", data.obj.shop.logo);
+				
+				shopid = data.obj.shop.shopId;
+				
+				$api.attr(tagpic, "alt", data.obj.shop.name);
+				
+				$api.html(xcdyw, "("+data.obj.questionCount+")");
+				$api.html(xcdpl, "("+data.obj.commentCount+")");
+				$api.html(serviceTel, data.obj.serviceTel);
+				
+				$api.html(tagtitle, data.obj.shop.name);
+				$api.html(xcdshopZL, data.obj.shop.score1/10);
+				$api.html(xcdshopHJ, data.obj.shop.score2/10);
+				$api.html(xcdshopTD, data.obj.shop.score3/10);
+				$api.html(xcdstar, data.obj.shop.star/10);
+				
+				var fstar = $api.dom(".fstar");
+				
+				$api.css(fstar,"width:"+parseInt(2*data.obj.shop.star)+"%;");
+
+			}else{
+				alert("发生未知错误，请重新进入")
+			}
+			
+		}
+			
+		,'json');
+	}
+	
+	//进入每个活动的图文详情页
+	function goActivity(){
+		api.openFrame({
+	        name: 'actview',
+	        url: 'actview.html?activityId='+GetString("activityId")+'&shopid='+shopid,
+	        bounces: false,
+	        rect: {
+		        x: 0,
+		        y: 0,
+		        w: api.winWidth,
+		        h: api.winHeight
+		    }
+        });
+	}
+	
+	//进入疑问页
+	function goActivityquestion(){
+		api.openWin({
+	        name: 'actquestion',
+	        url: 'actquestion.html?activityId='+GetString("activityId")
+	        
+        });
+	}
+	
+	//进入评论页
+	function goActivitycomment(){
+		api.openWin({
+	        name: 'actcomment',
+	        url: 'actcomment.html?activityId='+GetString("activityId")
+	        
+        });
+	}
+	
+	//进入我的商家
+	function goShop(){
+		api.openWin({
+	        name: 'shop',
+	        url: 'shop.html?shopid='+shopid
+	        
+        });
+	}
+	
+	//获取更多时间
+	function getTime(rel){
+
+        api.openFrame({
+	        name: 'getTime',
+	        url: 'getTime.html?relId='+rel,
+	        bounces: false,
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	//获取更多地点
+	function goAddress(rel){
+		api.openFrame({
+	        name: 'getAddress',
+	        url: 'getAddress.html?relId='+rel,
+	        bounces: false,
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	//判断多时间是否出现
+	function checkMoreTime(rel){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/activity/getRelDate.json?relId="+rel,
+		function(ret){
+//			alert("time:"+JSON.stringify(ret))
+			var moretime = $api.dom(".gettime");
+			if(ret.code == 0){
+				$api.css(moretime,"display:block");
+			}else{
+				$api.css(moretime,"display:none");
+			}
+			
+		},'json');
+	}
+	
+	//判断多地点是否出现
+	function checkMoreAddress(rel){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/activity/getRelAddress.json?relId="+rel,
+		function(ret){
+//			alert("address:"+JSON.stringify(ret))
+			var moreaddress = $api.byId("getaddress");
+			if(ret.code == 0){
+				$api.css(moreaddress,"display:block");
+			}else{
+				$api.css(moreaddress,"display:none");
+			}
+		},'json');
+	}
+	
+	//点击我要报名
+	function chActivity(activityid,reltype,rel){
+	
+		var adultNumber = document.getElementById("adultnumber").value;
+		var childNumber = document.getElementById("childnumber").value;
+		
+//		alert('activityId='+activityid+'&relType='+reltype+'&relId='+rel)
+		//alert(Number(applyendTime) + "，" + parseInt((new Date).getTime()/1000))
+		if(parseInt((new Date).getTime()/1000) > Number(applyendTime)){
+			$api.byId("sub_btn").disabled = true;
+			$api.text($api.byId("sub_btn"), "报名截止");
+		}
+
+		api.ajax({
+	        url:'http://test.7wanl.com/7wanlsoa/app/activity/getApplyInit.json?activityId='+activityid+'&relType='+reltype+'&relId='+rel,
+	        method:'post',
+	        data: {
+		        body:'{"adultnumber":"'+adultNumber+'","childnumber":"'+childNumber+'"}'
+		    },
+		    timeout:10,
+		    cache: true
+        },function(ret,err){
+//      	alert(JSON.stringify(ret))
+        	var chActtitle = $api.byId('ch_acttitle'),
+        		chActage = $api.byId('ch_actage'),
+        		chActtime = $api.byId('ch_acttime'),
+        		chActprice = $api.byId('ch_actprice'),
+        		chAdultprice = $api.byId('ch_adultprice'),
+        		chChildprice = $api.byId('ch_childprice'),
+        		chImg =  $api.byId('ch_img');
+        		
+        		
+        		if(tp_type == "2"){
+        			$api.html(chActprice, $api.html($api.dom(".detailToptuanprice")));
+        			$api.css($api.byId("dj_activity"),"display:none;");
+        			$api.css($api.byId("choose_tc"),"display:block;");
+        		}else if(tp_type == "1"){
+        			if(adultNumber == 1 && childNumber == 1){
+        				if(creditNum != 0 ){
+        					$api.html(chActprice, creditNumPrice+" 丸子");
+        				}else{
+        					$api.html(chActprice, '¥ ' + parseFloat(eval(ret.obj.prices.priceAdult) + eval(ret.obj.prices.priceChild)));
+        				}
+        				
+        			}
+        			$api.css($api.byId("dj_activity"),"display:block;");
+        			$api.css($api.byId("choose_tc"),"display:none;");
+        		}
+        		$api.html(chActtitle, ret.obj.title);
+        		$api.html(chActage, ret.obj.age);
+        		$api.html(chActtime, ret.obj.startTime);
+
+        		chImg.src = ret.obj.pic;
+				$api.css(chImg,"width:100%;");
+        		$api.css(chImg,"height:"+parseFloat($api.cssVal(chImg,"width"))*3/4+"px;");
+        		
+        		$api.attr(chImg,'alt',ret.obj.title);
+
+				//报名---大人价格
+        		if(ret.obj.prices.priceAdult == '0.0' || ret.obj.prices.priceAdult == '免费'){
+        			if(creditNum == 0){
+        				$api.html(chAdultprice, '免费');
+        			}else{
+        				$api.html(chAdultprice, creditNum + "丸子");
+        			}
+        		}else{
+					$api.html(chAdultprice, ret.obj.prices.priceAdult);
+        		}
+        		
+				//报名---小孩价格
+        		if(ret.obj.prices.priceChild == '0.0' || ret.obj.prices.priceChild == '免费'){
+        			if(creditNum == 0){
+        				$api.html(chChildprice, '免费');
+        			}else{
+        				$api.html(chChildprice, creditNum + "丸子");
+        			}
+        		}else{
+					$api.html(chChildprice, ret.obj.prices.priceChild);        		
+        		}
+        		
+        		var chooseTime = $api.byId("choose_time");
+        		var chooseAddress = $api.byId("choose_address");
+        		if(ret.obj.rels){
+					//报名时间
+	        		if(ret.obj.rels[0].startTime){
+	        			var chtime = $api.byId("ch_time");
+	        			
+	        			while(chtime.hasChildNodes()){
+	        				chtime.removeChild(chtime.firstChild);
+	        			}
+	        			
+	        			for(var i =0;i<ret.obj.rels.length;i++){
+	        				
+	        				$api.append(chtime, '<li class="rel_activity_sel" tapmode activityId="'+ret.obj.rels[i].activityId+'">'+ret.obj.rels[i].startTime+'</li>');
+	        			}
+	        			var chtimeLi = $api.first(chtime,'li');
+	        			$api.addCls(chtimeLi, 'sel');
+	        			
+	        			var chaddressLi = chtime.getElementsByTagName("li");
+				        for(var j=0;j<chaddressLi.length;j++){
+				        	
+				        	chaddressLi[j].index=j;
+				        	chaddressLi[j].onclick=function (){
+				        		for(var j=0;j<chaddressLi.length;j++){
+				        			$api.removeCls(chaddressLi[j], 'sel');
+				        		}
+				        		$api.addCls(chaddressLi[this.index], 'sel');
+				        	}
+				        }
+	        		}else{
+	        			
+	        			$api.css(chooseTime,"display:none");
+	        		}
+	        		
+					//报名活动
+	        		if(ret.obj.rels[0].address){
+	        			var chtime = $api.byId("ch_address");
+	        			
+	        			while(chtime.hasChildNodes()){
+	        				chtime.removeChild(chtime.firstChild);
+	        			}
+	        			
+	        			for(var i =0;i<ret.obj.rels.length;i++){
+	        				
+	        				$api.append(chtime, '<li class="rel_activity_sel" tapmode activityId="'+ret.obj.rels[i].activityId+'">'+ret.obj.rels[i].address+'</li>');
+	        			}
+	        			
+	        			var chtimeLi = $api.first(chtime,'li');
+	        			$api.addCls(chtimeLi, 'sel');
+	        			
+	        			var chaddressLi = chtime.getElementsByTagName("li");
+				        for(var j=0;j<chaddressLi.length;j++){
+				        	
+				        	chaddressLi[j].index=j;
+				        	chaddressLi[j].onclick=function (){
+				        		for(var j=0;j<chaddressLi.length;j++){
+				        			$api.removeCls(chaddressLi[j], 'sel');
+				        		}
+				        		$api.addCls(chaddressLi[this.index], 'sel');
+				        	}
+				        }
+				        
+	        		}else{
+	        			
+	        			$api.css(chooseAddress,"display:none");
+	        		}
+        		}else{
+        			$api.css(chooseAddress,"display:none");
+        			$api.css(chooseTime,"display:none");
+        		}
+
+        });
+	}
+
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

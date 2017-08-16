@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/framereview.css"/>
+
+</head>
+<body>
+<header id="header" class="header" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="margin-left:13px;">回顾详情</div>
+</header>
+
+<div id="details_all">
+	<div id='details'>
+		<div class="details-header">
+			<i class="comment_content_pi2">精</i>
+			<i class="comment_content_pi1">顶</i>
+			<div class="details-header-img"><img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" /></div>
+			<div class="details-header-div">
+				<p class="details-header-p1">baba小丸子 &nbsp;<em>LV8</em></p>
+				<p class="details-header-p2">2015-09-10  发布</p>
+			</div>
+		</div>
+	</div>
+	<div class="details_head">回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小</div>
+	<div class="details_contain">回顾详情baba小丸子回顾详情baba小丸子详<img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" />
+		情baba小详情baba小详情baba小详情baba小回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小回顾详情
+		aba小丸子详情baba小详情baba小详情baba小详情baba小回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小详情baba小详情baba小详情baba小详情baba小
+	</div>
+	<div class="details_sc">
+		<p><img src="../image/review_sc.jpg" alt="点击收藏" /><br /><i>10</i></p>
+	</div>
+</div>
+<p style="height:10px;width:100%;background:#eee;"></p>
+<div id="details_act">
+	<div class="details_act_head">查看该活动</div>
+	<div class="details_act_content">
+		<img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" />
+		<p>查看该活动查看该活动查看该活动</p>
+		<i></i>
+	</div>
+</div>
+<p style="height:10px;width:100%;background:#eee;"></p>
+<div id="details_comment">
+	<div class="details-comment-header">
+		<div class="details-comment-header-img"><img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" /></div>
+		<div class="details-comment-header-div">
+			<p class="details-comment-header-p1">baba小丸子 &nbsp;<em>LV8</em></p>
+			<p class="details-comment-header-p2">2015-09-10</p>
+		</div>
+	</div>
+	<div class="details_comment_act_head">查看该活动</div>
+</div>
+<div class="pingjia">
+	<img src="../image/review_pl.jpg" alt="" />
+	<p>发表一下你的评价吧</p>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		$api.fixIos7Bar( $api.dom('header') );
+	};
+	
+		
+	//关闭页面
+	function leftClose(){
+    	api.closeWin();
+    }
+</script>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		li {
+			list-style:none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #fff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:4px !important;
+		    left:32px !important;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		.user-info p{
+			padding-top: 8px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 42px;margin-left:-25px;
+		}
+		.am-thumbnails {
+		    margin: 0;
+	        list-style: none;
+	        padding:0;
+		}
+		.am-avg-sm-3>li:nth-of-type(3n+1) {
+		    clear: both;
+		}
+		.am-thumbnails li {
+		    text-align: center;
+		    padding: 10px 0;
+		   	width: 33.33333333%;
+	        display: block;
+		    height: auto;
+		    float: left;
+		    font-size:14px;
+		}
+		.am-thumbnails li i {
+		    display: inline-block;
+		    font-style: normal;
+		}
+		.am-icon-angle-down {
+		    display: inline-block;
+		    content: " ";
+		    vertical-align: middle;
+		    border-style: solid dashed dashed dashed;
+		    border-width: 5px;
+		    border-color:#c5c5c5 transparent transparent transparent;
+		    /*margin-top:-8px;*/
+		    font-family: FontAwesome,sans-serif;
+		    font-weight: 400;
+		    font-style: normal;
+		    line-height: 1;
+		    font-size: inherit;
+		    -webkit-font-smoothing: antialiased;
+		    -moz-osx-font-smoothing: grayscale;
+		    -webkit-transform: translate(0,0);
+		    -ms-transform: translate(0,0);
+		    transform: translate(0,0);
+		    box-sizing: border-box;
+		}
+		.am-icon-angle-down-change {
+			border-color:transparent transparent #24aba8 transparent !important;
+		    margin-top:-8px !important;
+		}
+		.am-thumbnails li em {
+		    float: right;
+		    display: inline-block;
+		    margin-top: 5px;
+		    width: 2px;
+		    height: 13px;
+		    border-right: 1px solid #cdcdcd;
+		    font-style: normal;
+		    box-sizing: border-box;
+		}
+		.item-list h2{
+            height: 48px;
+            line-height: 48px;
+            font-size: 15px;
+            font-weight: 400;
+            color: #6a6a6a;
+            padding: 0 8px;
+            border-bottom: 1px solid #dcdcdc;
+
+        }
+        .item-list li{
+            margin: 10px;
+            overflow: hidden;
+            border:1px solid #E8E8E8;
+        	border-radius: 5px;
+        }
+        .item-list .item-list-img{
+           width: 100%;
+           min-width: 100%;
+           overflow: hidden;
+           min-height: 154px;
+        }
+        .item-list li .item-list-info{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 0px 8px;
+        }
+        .item-list li .item-list-info .item-list-info-1{
+            padding: 5px 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .item-list li .item-list-info .item-list-info-1 h3{
+            color: #333;
+            font-weight: 400;
+            font-size: 16px;
+            -webkit-box-flex: 2;
+            -webkit-flex: 2;
+            flex: 2;
+        }
+        .item-list li .item-list-info .item-list-info-1 span{
+            font-size: 12px;
+            color: #999;
+        }
+        .item-list li .item-list-info .item-list-info-2{
+            padding: 5px 0;
+            line-height: 1.5;
+            
+        }
+        .item-list li .item-list-info .item-list-info-2 p{
+            font-size: 14px;
+            color: #999;
+            overflow : hidden;
+            display: -webkit-flex;
+            display: flex;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+        }
+        .item-list li .item-list-info .item-list-info-3{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-box-align: baseline;
+            -webkit-align-items: baseline;
+            align-items: baseline;
+        }
+        .item-list li .item-list-info .item-list-info-3 .flex{
+            font-size: 12px;
+            color: #999;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .item-list li .item-list-info .item-list-info-3 .flex-1{
+            font-size: 12px;
+            color: #FF5500;
+            display: inline-block;
+            margin:3px 10px 8px 0px;
+        }
+        .item-list li .item-list-info .item-list-info-3 .flex-1 em{
+            font-size: 20px;
+            font-weight: bold;
+            color: #FF5500;
+        }
+        .item-list li .item-list-info .item-list-info-3 .flex-2{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: start;
+            -webkit-justify-content: flex-start;
+            justify-content: flex-start;
+        }
+        .item-list li .item-list-info .item-list-info-3 .flex-2 span{
+            border-radius: 3px;
+            padding: 2px;
+            color: #f49d1a;
+            border: 1px solid #f49d1a;
+        }
+        .item-list li .item-list-info .item-list-info-3 .flex-3{
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-flex: 1.8;
+            -webkit-flex: 1.8;
+            flex: 1.8;
+            -webkit-box-pack: end;
+            -webkit-justify-content: flex-end;
+            justify-content: flex-end;
+            
+        }
+        .item-list-all{
+            font-size: 14px;
+            color: #32b9a8;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            width: 100%;
+            border-top:1px solid #F2F2F2;
+            border-bottom:1px solid #F2F2F2;
+            margin-bottom:10px;
+        }
+        .loading { display:none; }
+        .aba8{
+        	color:#24aba8;
+        }
+    </style>
+</head>
+<body>
+<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+	
+<header id="header" class="header" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="margin-left:13px;"></div>
+</header>
+<ul class="am-avg-sm-3 am-thumbnails" style="color:#999;">
+    <li class="fenlei" tapmode="aba8" onclick="activitySlide()">分类 <i id="am-icon-angle-down" class="am-icon-angle-down"></i><em></em></li>
+    <li>区域 <i id="am-icon-angle-down" class="am-icon-angle-down"></i><em></em></li>
+    <li>适用年龄 <i id="am-icon-angle-down" class="am-icon-angle-down"></i><em></em></li>
+</ul>
+<div style="width:100%;height:35px;"></div>
+<div class="box item-list" style="margin-top:10px;">
+    <ul id="activitylist">
+    	<!--<li class="tap clearfix" tapmode="tap-active">
+			<a onclick="goActivity('+_obj.activityId+')">
+				<div class="item-list-img">
+					<img src="http://www.7wanl.com/data/attachment/portal/201511/18/181345rjhbih3essjfxxuh.jpg.thumb.jpg" alt="'+_obj.title+'" style="width:100%;">
+				</div>
+				<div class="item-list-info">
+					<div class="item-list-info-1 item_list-h3">
+						<h3>周四周四周四周四周四周四周四周四周四周四周四周四周四周四周四周四</h3>
+					</div>
+					<div class="item-list-info-2">
+						<p>活动时间：2015-11-09(周四) 13:20</p>
+						<p>报名截止：2015-11-09 13:20</p>
+					</div>
+					<div class="item-list-info-3">
+						<div class="flex-1">
+							<span><em>¥1005.021</em></span>
+						</div>
+						<div class="flex flex-3">
+						</div>
+					</div>
+				</div>
+			</a>
+		</li>-->
+    	<div class="clearboth" style="clear:both;"></div>
+    </ul>
+</div>      		
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		$api.fixIos7Bar( $api.dom('header') );
+        api.setStatusBarStyle({
+            style: 'dark',
+            color: '#6ab494'
+        });
+        getHeadName(GetString("cateId"))
+        
+        getActivityList(GetString("cityid"),GetString("cateId"),0,0);
+	};
+	
+	function getActivityList(city,cate,area,age){
+		$api.css($api.dom('.loading'),"display:block");
+		
+		api.ajax({
+	        url:'http://test.7wanl.com/7wanlsoa/app/activity/getList.json?cityId='+city+'&cateId='+cate+'&areaId='+area+'&ageId='+age+'&pageNumber=1&pageSize=20',
+	        method:'get',
+	        cache:true,
+	        timeout:10
+        },function(ret,err){
+        	
+        	if(ret){
+        		if(ret.code == 0 ){
+	        		var activitylist = $api.byId("activitylist");
+	        		var $listmore = $api.dom(".clearboth");
+	        		
+	        		for(var i=0;i<ret.obj.length;i++){
+	        		
+	        			var _obj = ret.obj[i];
+	        			
+	        			$api.before($listmore, '<li class="tap clearfix" tapmode="tap-active"><div onclick="goActivity('+_obj.activityId+')"><div class="item-list-img"><img src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class="item-list-info"><div class="item-list-info-1 item_list-h3"><h3>'+_obj.title+'</h3></div><div class="item-list-info-2"><p>活动时间：'+_obj.startTime+'</p><p>报名截止：'+_obj.applyend+'</p></div><div class="item-list-info-3"><div class="flex-1"><span><em>'+_obj.price+'</em></span></div><div class="flex flex-3"></div></div></div></div></li>');
+
+	        		}
+
+					var listmorepic = $api.domAll(".item-list-img img");
+		        
+			        for(var i=0;i<listmorepic.length;i++){
+			        
+			        	$api.css(listmorepic[i],"height:"+parseInt($api.cssVal(listmorepic[i],"width"))*2.5/4+"px")
+			        }
+			        
+	        	}else{
+	        		alert(ret.msg)
+	        	}
+        	}else{
+        		alert("发生错误，请重新加载！")
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+        
+        
+	}
+	
+	//关闭页面
+	function leftClose(){
+    	api.closeWin();
+    }
+    
+    var openFenlei = false;
+    function activitySlide(){
+		openFenlei = !openFenlei;
+		
+		if(openFenlei){
+			var headerHeight = $api.dom('header');
+			var navHeight = $api.dom('.am-thumbnails');
+	
+			api.openFrame({
+		        name: 'activitySlide',
+		        url: 'activitySlide.html',
+		        bgColor: 'rgba(0,0,0,0.5)',
+		        bounces: false,
+	            vScrollBarEnabled: false,
+	            hScrollBarEnabled: false,
+		        rect: {
+			        x:0,
+			        y:$api.offset(headerHeight).h+$api.offset(navHeight).h+40,
+			        w:api.winWidth,
+			        h:api.winHeight-($api.offset(headerHeight).h+$api.offset(navHeight).h+40)
+	        	}
+        	});
+
+        	$api.css($api.dom('.fenlei'),"color:#24aba8;");
+        	$api.addCls($api.dom('.fenlei i'), 'am-icon-angle-down-change');
+        }else{
+        	api.closeFrame({
+	            name: 'activitySlide'
+            });
+            $api.css($api.dom('.fenlei'),"color:#999;");
+            $api.removeCls($api.dom('.fenlei i'), 'am-icon-angle-down-change');
+        }
+    }
+    
+	// 头部名字 
+    function getHeadName(cadeId){
+    
+    	if(cadeId == 0){
+    	
+    		$api.html($api.dom('.cent'), '全部活动');
+    	
+    	}else{
+    	
+	    	$api.get("http://test.7wanl.com/7wanlsoa/app/index/getAllActivityCateList.json",function(ret){
+	
+				for(var i=0;i<ret.obj.length;i++){
+				
+					var _obj = ret.obj[i];
+	
+					for(var m =0;m<_obj.subs.length;m++){
+	
+						if(_obj.subs[m].cateId == cadeId){
+	
+							$api.html($api.dom('.cent'), _obj.subs[m].name);
+							
+						}
+					
+					}
+	
+				}
+				
+			},'json');
+		
+		}
+    	
+    }
+    
+    
+    
+</script>
+</html>

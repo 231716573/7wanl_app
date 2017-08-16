@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	*, :before, :after {
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+    	#header {
+		    background-color: #fff;
+		    height: 50px;
+		    line-height: 53px;
+		    overflow:hidden;
+		    position: relative;
+		    border-bottom: 1px solid #ddd;
+		}
+		header .left {
+			text-align: center;
+		    position: relative;
+		    z-index: 5;
+		    float: left;
+		    font-size: 16px;
+		    color: #ffffff;
+		}
+		header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.ico_back, .go_back {
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 10px;
+		    margin-top:5px;
+		}
+		header .cent {
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    text-align: center;
+		    font-size: 16px;
+		    color: #000;
+		    font-weight: normal;
+		    margin: 0px;
+		    padding-bottom: 5px;
+		}
+		header a, header a:hover {
+		    position: relative;
+		    margin-right: 14px;
+		}
+		.activity_apply fieldset {
+		    margin: 0;
+		    padding: 0;
+		}
+		fieldset {
+		    border: none;
+		}
+		.activity_apply legend {
+		    font-size: 13px;
+		    background-color: #eee;
+		    padding: 0 0 0 10px;
+		    margin-bottom: 0;
+		    height: 29px;
+		    line-height: 28px;
+		    border: none;
+		    color: #999;
+		    display: block;
+   	 		width: 100%;
+		}
+		fieldset legend {
+		    border-top: 1px solid #e5e5e5 !important;
+		}
+		.activity_apply .am-form-group label {
+		    display: table;
+		    width: 25%;
+		    line-height: 40px;
+		    margin-bottom: 0;
+		    font-size: 13px;
+		    color: #bbb;
+		    font-weight: normal;
+		}
+		.activity_apply .am-form-group {
+		    padding: 2px 10px;
+		    border-bottom: 1px solid #E8E8E8;
+		    margin-bottom: 0;
+		    display: -webkit-box;
+		}
+		.activity_apply .am-form-group input {
+		    border: 0;
+		    text-align: right !important;
+		    width: 75% !important;
+		    display:block;
+		    padding: 0.625em;
+		    font-size: 14px;
+		    color: #333;
+		    line-height: 1.3;
+		}
+		.am-form input[type=text],.am-form textarea {
+			display: block;
+		    padding: .625em;
+		    line-height: 1.2;
+		    vertical-align: middle;
+		    background-color: #fff;
+		    background-image: none;
+		    border-radius: 0;
+		}
+		.user_form {
+		    margin-top: -1px;
+		}
+		legend {
+		    display: block;
+		    width: 100%;
+		}
+		.user_form .people_list {
+		    padding: 0 10px;
+		}
+		.user_form .people_list a {
+		    line-height: 30px;
+		    color: #14a6a3;
+		    display: block;
+		}
+		.user_form .people_list a i {
+		    height: 30px;
+		    width: 25px;
+		    display: block;
+		    float: left;
+		    margin: 5px 2px 5px 0px;
+		    border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    text-align: center;
+		}
+		.user_form .people_list a i:before {
+		    content: "+";
+		    display: inline-block;
+		    height: 20px;
+		    width: 20px;
+		    border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    border: 1px solid #14a6a3;
+		    padding-bottom: 10px;
+		    font-size: 16px;
+		    line-height: 14px;
+		    float: left;
+		}
+		.activity_other {
+		    overflow: hidden;
+		}
+		.activity_other .view_title {
+		    background-color: #ececec;
+		    margin-top: -1px;
+		    height: 29px;
+		    line-height: 29px;
+		    padding-left: 10px;
+		    font-size: 13px;
+		    color: #999;
+		}
+		.con .info {
+		    position: relative;
+		    background-color: #fff;
+		    margin: 10px 0;
+		}
+		.activity_apply .con .info .info-a {
+		    width: 100%;
+		}
+		.con .info .info-a {
+		    float: left;
+		    margin: 8px 0 4px;
+		    border-right: 1px solid #e8e8e8;
+		}
+		.con .info .tag {
+		    float: left;
+		    margin: 0 10px;
+		}
+		.con .info .tag img {
+		    width: 60px;
+		}
+		img {
+		    display: block;
+		    max-width: 100%;
+		    height: auto;
+		    border: 0;
+		}
+		.activity_apply .con .info .details h4 {
+		    margin-right: 10px;
+		}
+		.con .info .details h4 {
+		    font-size: 14px;
+		    color: #000;
+		    font-weight: 400;
+		    line-height: 24px;
+		    margin: 0;
+		    white-space: nowrap;
+		    word-wrap: normal;
+		    text-overflow: ellipsis;
+		    overflow: hidden;
+		}	
+		.info-a .details .f_12 {
+		    color: #999;
+		    font-size: 12px;
+		    font-weight: 300;
+		}	
+		.con .am-avg-sm-4, .con .am-avg-sm-3 {
+		    border-top: 1px solid #e8e8e8;
+		    margin: 10px 10px 0px;
+		}
+		[class*=am-avg-] {
+		    display: block;
+		    padding: 0;
+		    list-style: none;
+		}
+		.con .am-avg-sm-4 li, .con .am-avg-sm-3 li {
+		    text-align: center;
+		    margin: 8px 0;
+		    border-right: 1px solid #e8e8e8;
+		    font-size: 12px;
+		    line-height: 23px;
+		    color: #666;
+		}
+		.am-avg-sm-3>li:nth-of-type(3n+1) {
+		    clear: both;
+		}
+		.am-avg-sm-3>li:nth-of-type(n) {
+		    clear: none;
+		}
+		.am-avg-sm-3>li {
+		    width: 33.33333333%;
+		}
+		[class*=am-avg-]>li {
+		    display: block;
+		    height: auto;
+		    float: left;
+		}
+		ul li, .xl li {
+		    list-style: none;
+		}
+		.con .am-avg-sm-3 li em {
+		    display: block;
+		    color: #333;
+		    font-size: 14px;
+		}
+		i, strong, b, em {
+		    font-style: normal;
+		    font-weight: normal;
+		}
+		.con .am-avg-sm-4 li:last-child, .con .am-avg-sm-3 li:last-child {
+		    border: 0;
+		}
+		[class*=am-avg-]:after {
+		    clear: both;
+		}
+		.activity_apply .con .remark {
+		    margin: 0 10px 10px 10px;
+		}
+		.activity_apply .con .remark textarea {
+		    font-size: 13px;
+		    height: 90px;
+		    width:100%;
+		    border:1px solid #e8e8e8;
+		}
+		.preference .up {
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/up.png');
+		    background-position: right center;
+		    background-repeat: no-repeat;
+		    background-size: 15px 10px;
+		}
+		.con .am-avg-sm-3 li:last-child em {
+		    color: #f9851d;
+		}
+		.con .am-avg-sm-4, .con .am-avg-sm-3 {
+		    border-top: 1px solid #e8e8e8;
+		    margin: 10px 10px 0px;
+		}
+		.preference h2 {
+		    margin: 0;
+		    font-size: 14px;
+		    color: #333333;
+		    font-weight: normal;
+		    height: 50px;
+		    line-height: 50px;
+		    padding-left: 8px;
+		    background-color: #e4f9f9;
+		}		
+		.preference li {
+		    padding: 24px 0 24px 8px;
+		    background-color: #eefaff;
+		}
+		.preference li span {
+		    display: inline-block;
+		    width: 22px;
+		    height: 22px;
+		    background-color: #fff;
+		    border: 1px solid #d1d1d1;
+		    float: left;
+		}
+		.preference li label {
+		    margin-left: 10px;
+		    font-size: 14px;
+		    color: #666666;
+		    font-weight: normal;
+		}
+		label {
+		    display: inline-block;
+		    margin-bottom: 5px;
+		    font-weight: 700;
+		}
+		.am-avg-sm-2 {
+		    position: fixed;
+		    bottom: 0px;
+		    z-index: 99;
+		    height: 50px;
+		    width: 100%;
+		    background-color: #fff;
+		}
+		[class*=am-avg-] {
+		    display: block;
+		    padding: 0;
+		    margin: 0;
+		    list-style: none;
+		}
+		.con .am-avg-sm-2 li:first-child {
+		    padding: 0 5px 5px 10px;
+		}
+		.am-avg-sm-2>li:nth-of-type(2n+1) {
+		    clear: both;
+		}
+		.am-avg-sm-2>li:nth-of-type(n) {
+		    clear: none;
+		}
+		.am-avg-sm-2 li {
+		    margin-top: 5px;
+		}
+		.am-avg-sm-2>li {
+		    width: 50%;
+		}
+		[class*=am-avg-]>li {
+		    display: block;
+		    height: auto;
+		    float: left;
+		}
+		.am-avg-sm-2 .bor_e8 {
+		    border: none;
+		    text-align: center;
+		    font-size: 14px;
+		}
+		.am-btn.am-radius {
+		    border-radius: 2px;
+		}
+		.am-btn-block {
+		    display: block;
+		    width: 100%;
+		    padding-left: 0;
+		    padding-right: 0;
+		}
+		.am-btn {
+		    margin-bottom: 0;
+		    padding: .625em 1em;
+		    vertical-align: middle;
+		    font-weight: 400;
+		    line-height: 1.2;
+		    white-space: nowrap;
+		    background-image: none;
+		    cursor: pointer;
+		    outline: 0;
+		    -webkit-appearance: none;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    -webkit-transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		    transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		}		
+		.con .am-avg-sm-2 li:last-child {
+		    padding: 0 10px 5px 5px;
+		}
+		i { font-style:normal !important;}
+		.ico_back{
+			display:inline-block;width:20px;height:25px;margin-top:10px;
+		}
+		.am-btn-block {
+		    display: block;
+		    width: 100%;
+		}
+		.am-btn-warning {
+		    color: #fff;
+		}
+		.am-avg-sm-2 { position: fixed; bottom: 0px; z-index: 99; height: 50px; width: 100%; background-color: #fff; }
+		.am-avg-sm-2 li { margin-top: 5px;}
+		#applybutton{
+			background-color: #fe9130;border-color: #fff;border-radius:4px; width:140px;height:40px;line-height:20px;font-size: 1.1rem;text-align: center;
+		}
+		.user_form .people_list li {
+		    position: relative;
+		    margin: 11px 0;
+		    border-bottom: 1px solid #e8e8e8;
+		    padding-bottom: 10px;
+		    width:100%;
+		   
+		}
+		.user_form .people_list li .click, .user_form .people_list li .unclick {
+		    background-image: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/pay_check.png");
+		    background-position: 18px 4px;
+		    background-repeat: no-repeat;
+		    background-size: auto 21px;
+		    height: 30px;
+		    width: 45px;
+		    display: block;
+		    float: left;
+		    padding-right: 10px;
+		    margin-left: -18px;
+		}
+		.user_form .people_list li input {
+		    display: none;
+		}
+		input[type=radio], input[type=checkbox] {
+		    margin: 0;line-height: normal;
+		}
+		.user_form .people_list li p {
+		    font-size: 12px;
+		    color: #999999;
+		}
+		p {
+		    margin: 0;
+		}
+		.user_form .people_list li p span {
+		    font-size: 15px;
+		    color: #000000;
+		}
+		.user_form .people_list li span.am-fr {
+		    color: #999999;
+		    font-size: 14px;
+		    background-image: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/arr.png");
+		    background-position: right bottom;
+		    background-repeat: no-repeat;
+		    background-size: auto 15px;
+		    padding-right: 15px;
+		    display: inline-block;
+		    height: 20px;
+		    line-height: 20px;
+		    float:right;
+		}
+		.people_view{
+			padding-top:-3px;
+		}
+		.people_view p { width:100%; }
+		.user_form .people_list li .unclick {
+		    width: 51px;
+		    padding-right: 10px;
+		    margin-left: -27px;
+		    background-position: 0px 0px;
+		}
+		.user_form .people_list li .click, .user_form .people_list li .unclick {
+		    background-image: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/pay_check.png");
+		    background-repeat: no-repeat;
+		    background-size: auto 21px;
+		    height: 30px;
+		    display: block;
+		    float: left;
+		}
+		#center_bottom_new,#center_bottom_new_add{
+			padding: 10px 10px 0px;
+    		background-color: #f2f2f2 !important;
+    		text-align: left;
+		}
+		.radio-inline_on {
+		    border: 1px solid #14a6a3;
+		    padding: 5px 18px 5px 12px;
+		    position: relative;
+		    color: #14a6a3;
+		    margin-right: 13px;
+		    margin-bottom: 10px;
+		    margin-left: 0px;
+		    vertical-align: middle;
+		    font-weight: 400;
+		    cursor: pointer;
+		    font-size: 13px;
+		    background-color: #fff;
+		    display: inline-block;
+		}
+		.radio_i_on {
+		    display: inline-block;
+		    position: absolute;
+		    right: -10px;
+		    bottom: -10px;
+		    border-style: solid dashed dashed dashed;
+		    border-width: 10px;
+		    border-color: #14a6a3 transparent transparent transparent;
+		    transform: rotate(-45deg);
+		    -webkit-transform: rotate(-45deg);
+		    -moz-transform: rotate(-45deg);
+		    -ms-transform: rotate(-45deg);
+		}
+		.radio_i_on:after {
+		    content: " ";
+		    display: inline-block;
+		    position: absolute;
+		    right: -4px;
+		    bottom: 4px;
+		    width: 7px;
+		    height: 4px;
+		    border-left: 1px solid white;
+		    border-bottom: 1px solid white;
+		}
+		.big_m_kou {
+		    width: 100%;
+		    border-top: 1px solid #e5e5e5;
+		    border-bottom: 1px solid #e5e5e5;
+		    background-color: #fff;
+		}
+		.big_m_kou ul li {
+		    border-bottom: 1px solid #e5e5e5;
+		    padding: 6px 0px;
+		    color: #010101;
+		    margin: 0px 10px;
+		}
+		.big_m_kou ul p {
+		    float: left;
+		    line-height: 32px;
+		    height: 32px;
+		    color: #999;
+		    width: 43px;
+		    text-align: left;
+		    font-size: 12px;
+		}
+		.big_m_kou ul input[type=text] {
+		    display: inline-block;
+		    width: 80%;
+		    padding: 0rem 0.5rem;
+		    font-size: 14px;
+		    border: none;
+		    color: #010101;
+		    height: 32px;
+		    vertical-align: middle;
+		    background-color: #fff;
+		}
+		#quere,#quere_add {
+		    margin: 0px 10px;
+		}
+		#quere button,#quere_add button {
+		    color: #fff;
+		    font-size: 15px;
+		    background-color: #fe9130;
+		    border-radius: 2px;
+		    -webkit-border-radius: 2px;
+		    display: block;
+		    width: 100%;
+		    padding-left: 0;
+		    padding-right: 0;
+		}
+		.am-btn {
+		    display: inline-block;
+		    margin-bottom: 0;
+		    padding: .625em 1em;
+		    vertical-align: middle;
+		    font-size: 1.4rem;
+		    font-weight: 300;
+		    line-height: 1.2;
+		    text-align: center;
+		    white-space: nowrap;
+		    background-image: none;
+		    border: 1px solid transparent;
+		    border-radius: 0;
+		    cursor: pointer;
+		    outline: 0;
+		    -webkit-appearance: none;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    -webkit-transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		    transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		}
+		.big_m_kou ul li:last-child {
+		    border: none;
+		}
+		.am-btn-del{
+			font-size:14px;position: fixed;top:13px;right:0px;border: 0;background: none;color: #000;display: block;height: 43px;line-height: 43px;padding: 0 10px 0 20px;
+		}
+		.am-popup-inner{
+			background-color:#f2f2f2;height: 100%;overflow: auto;padding-top: 54px;
+		}
+		.addmanfixed,.addmanfixed_add{
+			position:fixed;top:0px;left:0px;width:100%;height:100%;background:black;opacity: 0.7;z-index:9999;
+		}
+		.addman,.addman_add{
+			position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:99999;background:white;
+		}
+		.am-popup-hd{
+			position: fixed;top:0px;width:100%;height:53px;border-bottom:1px solid #dedede;background-color:white;
+		}
+		.am-popup-hd .am-popup-title{
+			font-weight: 400;font-size:15px !important;line-height: 63px;text-align: center;margin: 0 40px;word-wrap: normal;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;
+		}
+		#goback,#goback_add{
+			display:inline-block; position: fixed; top:12px; left:0px;width:28px;height:28px; text-align:center;line-height:30px;
+		}
+		.preference .preference-btn {
+		    height: 40px;
+		    width: 56px;
+		    display: inline-block;
+		    background-color: #f37b1d;
+		    border: 0;
+		    color: #fff;
+		}
+		.preference .active {
+			background-color:#f37b1d !important;
+		}
+		.preference .unactive {
+			background-color:white !important;
+		}
+		.displaypre {
+			display:none;
+		}
+		.radio-inline_link {
+		    border: 1px solid #dadada;
+		    padding: 5px 14px;
+		    position: relative;
+		    color: #444;
+		    margin-right: 13px;
+		}
+		.am-radio-inline, .am-checkbox-inline {
+		    display: inline-block;
+		    margin-bottom: 10px;
+		    vertical-align: middle;
+		    font-weight: 400;
+		    cursor: pointer;
+		    font-size: 13px;
+		}
+		.content_body {
+		    background-color: #ffffff;
+		    padding: 20px 10px;
+		}
+		.content_body ul {
+		    border: 1px solid #e8e8e8;
+		    border-top: 0;
+		}
+		.content_body ul li {
+		    border-top: 1px solid #e8e8e8;
+		    height: 48px;
+		    line-height: 48px;
+		    padding-left: 10px;
+		    overflow: hidden;
+		    padding-right: 5px;
+		}
+		ul li, .xl li {
+		    list-style: none;
+		}
+		.content_body ul li span {
+		    font-weight: 700;
+		}
+		.content_body ul li i {
+		    color: #ff5500;
+		    font-size: 15px;
+		}
+		.content_body .returnPay {
+		    margin-top: 20px;
+		    text-align: center;
+		}
+		.content_body .returnPay p span {
+		    font-size: 16px;
+		    color: #68cb4c;
+		}
+		.content_body .returnPay p a {
+		    margin: 0 10px;
+		    background-color: #68cb4c;
+		    padding: 8px 20px;
+		    color: #ffffff;
+		    border-radius: 3px;
+		    font-size: 15px;
+		}
+		.paySuccess_head{
+			width:100%; height:50px;
+			margin: 0px;padding-bottom: 11px;
+			font-size:16px;text-align:center;
+			color:#000;padding-top:25px; 
+			border-bottom: 1px;border-bottom-style: solid;
+			border-bottom-color: rgb(227, 227, 227);
+		}
+		#paySuccess{
+			position:fixed; z-index: 99999; top:0px; left:0px; width:100%; height:100%;background:#fff;
+		}
+    </style>
+</head>
+<body>
+<div style="max-width:100%;overflow: hidden;">
+	<header id="header" class="homeHeader" style="z-index:999;position:fixed;width:100%;top:0px;padding-top:5px;background-color:#fff;">
+	    <div class="left" style="margin-top:5px;" tapmode onclick="icoback()"><a class="ico_back" tapmode > </a></div>
+	    <div class="cent" style="color:#000;">填写订单</div>
+	</header>
+	<div style="width:100%;height:51px;"></div>
+	<div class="activity_apply">
+		<fieldset>
+	    	<legend>基本资料</legend>
+	        <div class="am-form-group">
+	            <label for="realname">家长姓名</label>
+	            <input type="text" tapmode name="realname" id="realname" style="text-align:left;" value="">
+	        </div>
+	        <div class="am-form-group">
+	            <label for="mobile">联系电话</label>
+	            <input type="text" tapmode name="mobile" id="mobile" style="text-align:left;" value="">
+	        </div>
+	        <div style="display:none;">
+	        	<input type="text" id="resideprovince" /><input type="text" id="residecity" /><input type="text" id="residedist" />
+	        </div>
+	    </fieldset>
+	    <div id="form_project">
+	        <div class="user_form am-cf">
+	            <legend>大人信息</legend>
+	            <ul class="people_list" tapmode id="people_list">
+	                <a href="javascript:;" id="addAdult"><i></i>增加大人信息</a>
+	            </ul>
+	            <!--小孩数量大于0时需添加小孩信息（以处修改是由于1.2米购票问题）-->
+	            <legend>小孩信息</legend>
+	            <ul class="people_list" tapmode id="child_list">
+	                <a href="javascript:;" id="addChild"><i></i>增加小孩信息</a>
+	            </ul>
+	             <!--小孩数量大于0时需添加小孩信息（以处修改是由于1.2米购票问题）-->
+	        </div>
+	    </div>
+	    <div style="clear:both;"></div>
+	    <div class="activity_other">
+	        <div class="view_title"></div>
+	        <div class="con">
+	            <div class="info Fix">
+	                <div class="info-a">
+	                    <div class="details">
+	                        <div class="tag"><img id="acttitleimg" style="width:60px;"/></div>
+	                        <h4 id="acttitle"></h4>
+	                        <div class="intro Fix f_12" id="acttime"></div>
+	                    </div>
+	                </div>
+	            </div>
+	            <ul class="am-avg-sm-3">
+	                <li>活动编号<em id="activityid"></em></li>
+	                <li>参与人数<em id="persenNumber"></em></li>
+	                <li>费用合计<em id="totalprice1"></em></li>
+	            </ul>
+	            <!--身高特殊处理-->
+	            <div class="remark"><textarea rows="3" id="remark" name="remark" placeholder="订单备注"></textarea></div>
+	            <!--身高特殊处理-->
+	            <div class="preference">
+	                <div class="bg"></div>
+	                <h2 class="up" id="qkq">使用抵扣券</h2>
+	                <ul style="display:none;" id="coupon_dk">
+	                   	<li id="coupon_dk_li">
+	                        <div class="pre coupon_qk_lipre" tapmode onclick="coupon_qk_lipre()">
+	                            <span class="unactive"></span>
+	                            <label>使用优惠码</label>
+	                        </div>
+	                        <div id="coupon_qk_lipre" class="displaypre">
+	                            <input class="coupon_qk_li_input" style="width:78%;height:41px;display:inline-block;background:#fff;" name="coupon_code" type="text" value="">
+	                            <button type="button"  tapmode class="preference-btn check_coupon_code check_coupon_code_qk">使用</button>
+	                        </div>
+	                    </li>
+	                </ul>
+	                <div id="coupon_qw">
+	                    <h2 class="up" id="qwq">使用去玩券</h2>
+	                    <ul style="display:none;" id="coupon_qwul">
+	                        <li id="coupon_qw_li">
+	                            <div class="pre coupon_qw_lipre" tapmode onclick="coupon_qw_lipre()">
+	                                <span class="unactive"></span>
+	                                <label>使用优惠码</label>
+	                            </div>
+	                            <div id="coupon_qw_lipre" class="displaypre1">
+	                                <input class="coupon_qw_li_input" style="width:78%;height:41px;display:inline-block;background:#fff;" type="text" name="coupon_code" value="">
+	                                <button type="button" class="preference-btn check_coupon_code check_coupon_code_qw">使用</button>
+	                            </div>
+	                            
+	                        </li>
+	                    </ul>
+	                </div>
+	                <div class="bg"></div>
+	            </div>
+	            <div style="width:100%;height:60px;"></div>
+	            <ul class="am-avg-sm-2" style="border-top:1px solid #e8e8e8;">
+	                <li><span class="am-btn am-btn-block bor_e8 am-radius" style="text-align:left;">总计：<i style="color:#f9851d;" id="settle_payment1" class="settle_payment"></i></span></li>
+	                <li><span class="am-btn am-btn-warning am-radius am-btn-block" id="applybutton">确认订单</span></li>
+	            </ul>
+	        </div>
+	    </div>
+	 </div>
+</div>
+<div class="addmanfixed" style="display:none;"></div>
+<div class="addman" style="display:none;">
+	<div class="am-popup-hd">
+		
+        <button type="submit" class="am-btn-del">删除</button>
+        <h4 class="am-popup-title">人员信息资料</h4>
+    </div>
+    <span class="go_back" id="goback" style="margin-top: 10px;"></span>
+    <div class="am-popup-inner">
+    	<div class="am-list-main bank b_p " id="center_bottom_new">
+	        <div class="radio-inline_on am-radio-inline"><i class="radio_i_on"></i><em></em> </div>
+		</div>
+		<div class="big_m_kou">
+			<ul>
+				<li><p>姓名</p><input type="text" id="realname_block" name="realname" value=""></li>
+			 	<li><p>身份证</p><input type="text" id="idcard" name="idcard" value=""></li>
+			    <li id="mobileblock"><p>手机</p><input type="text" id="demo_date_mobile" name="mobile" value=""></li>
+			    <li id="birthblock"><p>生日</p><input type="text" id="demo_date" name="birthday" value="" placeholder="格式:2016-01-01"></li>
+			</ul>
+		</div>
+		<div id="quere">
+			<button type="submit" name="pwdsubmit" tapmode class="am-btn am-btn-warning am-btn-block" style="margin-top:21px;">确定保存</button>
+		</div>
+    </div>
+</div>
+<div class="addmanfixed_add" style="display:none;"></div>
+<div class="addman_add" style="display:none;">
+	<div class="am-popup-hd">
+        <h4 class="am-popup-title">人员信息资料</h4>
+    </div>
+    <span class="go_back" id="goback_add" style="margin-top: 10px;"></span>
+    <div class="am-popup-inner">
+    	<div class="am-list-main bank b_p " id="center_bottom_new_add">
+	        <div class="radio-inline_link am-radio-inline" tapmode role_id="30"><i class="radio_i_link"></i><em>爸爸</em> </div>
+	        <div class="radio-inline_link am-radio-inline" tapmode role_id="31"><i class="radio_i_link"></i><em>妈妈</em> </div>
+	        <div class="radio-inline_link am-radio-inline" tapmode role_id="32"><i class="radio_i_link"></i><em>爷爷</em> </div>
+	        <div class="radio-inline_link am-radio-inline" tapmode role_id="33"><i class="radio_i_link"></i><em>奶奶</em> </div>
+	        <div class="radio-inline_link am-radio-inline" id="boy" tapmode role_id="34"><i class="radio_i_link"></i><em>男孩</em> </div>
+	        <div class="radio-inline_link am-radio-inline" id="girl" tapmode role_id="35"><i class="radio_i_link"></i><em>女孩</em> </div>
+		</div>
+		<div class="big_m_kou">
+			<ul>
+				<li><p>姓名</p><input type="text" id="realname_block_add" name="realname" value=""></li>
+			    <li id="mobileblock_add"><p>手机</p><input type="text" tapmode id="demo_date_mobile_add" name="mobile" value=""></li>
+			    <li id="birthblock_add"><p>生日</p><input type="text" tapmode id="demo_date_add" name="birthday" value="" placeholder="格式:2016-01-01"></li>
+			</ul>
+		</div>
+		<div id="quere_add">
+			<button type="submit" name="pwdsubmit" tapmode class="am-btn am-btn-warning am-btn-block" style="margin-top:21px;">确定保存</button>
+		</div>
+    </div>
+</div>
+
+<div id="paySuccess" style="display:none;">
+	<div class="paySuccess_head">报名成功</div>
+	<div class="content_body">
+	    <ul>
+	        <li><span>活动名称：</span><i id="paySuccessTitle"></i></li>
+	        <li><span id="paySuccess_personNumber">人员数量：<span></span></span></li>
+	        <li class="paySuccess_person"><span id="paySuccess_personPrice">人员费用：</span></li>
+	        <li class="paySuccess_team"><span>套餐费用：</span><i id="paySuccessPriceTeam"></i></li>
+	        <li><span>优惠：</span><i id="paySuccessPriceDiscount"></i></li>
+	        <li><span>费用统计：</span><i id="paySuccessPriceTotal"></i></li>
+	    </ul>
+	    <div class="returnPay">
+	        <p><span>您已成功报名，请等待商家审核！</span></p>
+	        <p><br><a onclick="CloseWin()">返回首页</a><a>个人中心</a></p>
+	    </div>
+	</div>
+</div>
+
+<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+
+	var tp_type = GetString("tp_type");
+	var youhuiquan = 0;
+	var youhuiquan_price = 0;
+	var youhuiquan_tol_price = 0;
+	var coupon_receive_id = 0;
+	apiready = function(){
+	
+		var xg_pid,xg_uid,xg_username,xg_realname,xg_role_id,xg_mobile,xg_idcard,xg_birthday,xg_role,resideprovince,residecity,residedist,apply_id;
+		
+
+		var persenNumber = $api.html($api.byId("persenNumber"), GetString("adultnumber")+'大'+GetString("childnumber")+'小');
+		$api.after($api.dom("#paySuccess_personNumber"), "<i>"+GetString("adultnumber")+"</i> 大  <i>"+GetString("childnumber")+"</i> 小");
+		
+		$api.html($api.dom("#paySuccessPriceTeam"), "¥ "+GetString("totalprice"));
+		
+		var totalprice = $api.html($api.byId("totalprice"), GetString("totalprice"));
+
+		if(GetString("creditNum")){
+		
+			var totalprice1 = $api.html($api.byId("totalprice1"), GetString("totalprice") + " 丸子");
+			$api.append($api.dom(".settle_payment"), '<i id="totalprice" style="font-size:18px;">' + GetString("totalprice") + '</i> 丸子');
+
+		}else{
+			var totalprice1 = $api.html($api.byId("totalprice1"), '¥ ' + GetString("totalprice"));
+			$api.append($api.dom(".settle_payment"), '¥ <i id="totalprice" style="font-size:18px;">' + GetString("totalprice") + '</i>');
+		}
+		var activityid = $api.html($api.byId("activityid"), GetString("activity_id"));
+		
+		
+		
+		$api.css($api.dom('.loading'),"display:block");
+		
+		// 确认支付
+		$api.addEvt($api.byId("applybutton"), "click",function (){
+			goApplyPay();
+		});
+		
+		// 关闭个人成员
+		$api.addEvt($api.byId("goback"), "click",function (){
+			$api.css($api.dom(".addmanfixed"),"display:none;");
+        	$api.css($api.dom(".addman"),"display:none;");
+		});
+		// 关闭添加个人成员
+		$api.addEvt($api.byId("goback_add"), "click",function (){
+			$api.css($api.dom(".addmanfixed_add"),"display:none;");
+        	$api.css($api.dom(".addman_add"),"display:none;");
+		});
+		
+		// 修改成员
+		$api.addEvt($api.byId("quere"), "click",function (){
+			editpeople();
+		});
+		
+		
+		var center_bottom_new_add = document.getElementById("center_bottom_new_add");
+		var center_bottom_new_add_div = center_bottom_new_add.getElementsByTagName("div");
+		for(var m =0;m<center_bottom_new_add_div.length;m++){
+			center_bottom_new_add_div[m].index=m;
+			center_bottom_new_add_div[m].onclick=function (){
+				for(var m =0;m<center_bottom_new_add_div.length;m++){
+					center_bottom_new_add_div[m].className = "radio-inline_link am-radio-inline";
+					center_bottom_new_add_div[m].getElementsByTagName("i")[0].className = "radio_i_link";
+				}
+				center_bottom_new_add_div[this.index].className = "radio-inline_on am-radio-inline";
+				center_bottom_new_add_div[this.index].getElementsByTagName("i")[0].className = "radio_i_on";
+			}
+		}
+		
+		// 添加大人
+		$api.addEvt($api.byId("addAdult"), "click",function (){
+			$api.css($api.dom(".addmanfixed_add"),"display:block;");
+        	$api.css($api.dom(".addman_add"),"display:block;");
+
+        	document.getElementById("mobileblock_add").style.display = "block";
+        	document.getElementById("birthblock_add").style.display = "none";
+        	
+        	var people_list = document.getElementById("people_list");
+			var people_listLi = people_list.getElementsByTagName("li");
+			
+			for(var j=0;j<center_bottom_new_add_div.length;j++){
+			
+				center_bottom_new_add_div[j].style.display = "inline-block";
+				
+				$api.css($api.byId("boy"),"display:none;");
+        		$api.css($api.byId("girl"),"display:none;");
+        		
+				if(people_listLi[0]){
+	        		for(var i=0;i<people_listLi.length;i++){
+
+						for(var j=0;j<center_bottom_new_add_div.length;j++){
+	        				if($api.attr(people_listLi[i], "role_id") == $api.attr(center_bottom_new_add_div[j], "role_id")){         
+	
+								$api.css(center_bottom_new_add_div[j],"display:none;");
+								
+	        				}
+	        			}
+	        		}
+        		}
+        		
+        	}
+		});
+		
+		// 添加小孩
+		$api.addEvt($api.byId("addChild"), "click",function (){
+			$api.css($api.dom(".addmanfixed_add"),"display:block;");
+        	$api.css($api.dom(".addman_add"),"display:block;");
+
+        	document.getElementById("mobileblock_add").style.display = "none";
+        	document.getElementById("birthblock_add").style.display = "block";
+        	
+        	for(var j=0;j<center_bottom_new_add_div.length;j++){
+        		center_bottom_new_add_div[j].style.display = "none";
+        	}
+        	
+        	$api.css($api.byId("boy"),"display:inline-block;");
+        	$api.css($api.byId("girl"),"display:inline-block;");
+		});
+		
+		
+		// 确定添加成员
+		$api.addEvt($api.byId("quere_add"), "click",function (){
+			addpeople();
+		});
+		
+
+
+		getApplyView();
+		getActDetail();
+		getPeopleList();
+		
+		$api.css($api.dom('.loading'),"display:none");
+	};
+	window.onload=function (){
+		// 抵扣券
+		$api.addEvt($api.byId("qkq"), "click",function (){
+			couponQkApply()
+			$api.css($api.byId("coupon_dk"),"display:block;");
+		});
+		
+		// 去玩券
+		$api.addEvt($api.byId("qwq"), "click",function (){
+			couponQwApply()
+			$api.css($api.byId("coupon_qwul"),"display:block;");
+		});
+		
+		// 验证抵扣券
+		$api.addEvt($api.dom(".check_coupon_code_qk"), "click",function (){
+			yzQkCode();
+		});
+		// 验证去玩券
+		$api.addEvt($api.dom(".check_coupon_code_qw"), "click",function (){
+			yzQwCode();
+		});
+		
+		// 点击抵扣券
+		for(var p=0;p<$api.domAll(".coupondkli").length;p++){
+			($api.domAll(".coupondkli"))[p].addEventListener("click", coupondkli);
+		}
+
+		// 点击去玩券
+		for(var b=0;b<$api.domAll(".coupondwli").length;b++){
+			($api.domAll(".coupondwli"))[b].addEventListener("click", coupondwli);
+		}
+	}
+
+	// 报名成功，返回首页
+	function CloseWin(){
+		api.closeWin();
+	}
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeFrame();
+	}
+	
+	// 获取用户信息
+	function getApplyView(){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=member&action=memberinfo',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":GetString("userid")
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+
+        	if(ret){
+        		$api.val($api.byId("mobile"), ret.data.profile.mobile);
+        		$api.val($api.byId("realname"), ret.data.profile.realname);
+//      		alert(GetString("creditNum"))
+        		
+//      		alert(ret.data.profile.resideprovince+ret.data.profile.residecity+ret.data.profile.residedist)
+				if(ret.data.profile.resideprovince&&ret.data.profile.residecity&&ret.data.profile.residedist){
+        			resideprovince = ret.data.profile.resideprovince;
+        			residecity = ret.data.profile.residecity;
+        			residedist = ret.data.profile.residedist;
+        		}else{
+        			resideprovince = "广东省";
+        			residecity = "广州市";
+        			residedist = "海珠区";
+        		}
+        		
+        	}
+        	if(err){
+        		alert(err.msg)
+        		api.closeFrame();
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+	}
+	
+	//	转换时间戳
+	function getLocalTime(nS) {     
+	   return new Date(parseInt(nS) * 1000);     
+	}
+	
+	//获取活动详情
+	function getActDetail(){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=detail',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"activity_id":GetString("activity_id")
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+//      		alert("time:"+ret.data.starttime);
+				if(ret.code == -1){
+					alert(ret.msg)
+					api.closeFrame();
+				}else{
+					var sDate = new Date(getLocalTime(ret.data.starttime));
+					var eDate = new Date(getLocalTime(ret.data.endtime));
+					var startTime = sDate.getFullYear() + "/" + parseInt(sDate.getMonth()+1) + "/" + sDate.getDate();
+					var endTime = eDate.getFullYear() + "/" + parseInt(eDate.getMonth()+1) + "/" + eDate.getDate();
+					var acttitle = $api.html($api.byId("acttitle"), ret.data.title);
+					var acttime = $api.html($api.byId("acttime"), '活动时间：'+startTime+' - '+endTime);
+					document.getElementById("acttitleimg").src = "http://129.1.28.1/"+ret.data.pic;
+					
+					$api.html($api.byId("paySuccessTitle"), ret.data.title);
+					
+					$api.html($api.byId("paySuccessPriceTotal"), GetString("totalprice"));
+
+					$api.css(document.getElementById("acttitleimg"),"height:"+parseFloat($api.cssVal(document.getElementById("acttitleimg"),"width"))*3/4+"px");
+					
+					if(tp_type == 1){
+        				
+        				$api.after($api.byId("paySuccess_personPrice"), "成人：<i>¥ " + ret.data.price_adult + "</i> 小孩：<i>¥ " + ret.data.price_child + "</i>");
+        				
+        				$api.css($api.dom(".paySuccess_team"),"display:none;");
+						$api.css($api.dom(".paySuccess_person"),"display:list-item;");
+
+					}else if(tp_type == 2){
+						
+						$api.html($api.dom("#paySuccessPriceTeam"), "¥ "+GetString("totalprice"));
+						
+						$api.css($api.dom(".paySuccess_person"),"display:none;");
+						$api.css($api.dom(".paySuccess_team"),"display:list-item;");
+						
+					}
+				}
+        	}
+        	if(err){
+        		alert(err.msg)
+        		api.closeFrame();
+        	}
+        });
+	}
+	
+	//获取成员列表
+	function getPeopleList(){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=member&action=peoplelist',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":GetString("userid")
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+//      		alert(GetString("userid")+"----"+JSON.stringify(ret))
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        			api.closeFrame();
+        		}else{
+        			// 大人
+        			var addAdult = $api.byId("addAdult");
+        			for(var i =0;i<ret.data.adult.length;i++){
+        				var dataAdult = ret.data.adult[i]
+        				
+        				var adultList = '<li role_id="'+dataAdult.role_id+'" people_id="'+dataAdult.people_id+'" id="p_'+dataAdult.people_id+'"><div class="click" tapmode onclick="javascript:if(this.className == \'click\'){ this.setAttribute(\'class\', \'unclick\');}else{this.setAttribute(\'class\', \'click\');}"></div><div class="people_view" tapmode onclick="getPeopleinfo('+dataAdult.people_id+')"><p><span>'+dataAdult.realname+'</span>（'+dataAdult.role+'） <span class="am-fr"></span></p></div></li>'
+        			
+        				$api.before(addAdult, adultList);
+        			}
+        			
+        			// 小孩子
+        			var addChild = $api.byId("addChild");
+        			for(var i =0;i<ret.data.child.length;i++){
+        				var dataChild = ret.data.child[i]
+        				
+        				var childList = '<li role_id="'+dataChild.role_id+'" people_id="'+dataChild.people_id+'" id="p_'+dataChild.people_id+'"><div class="click" tapmode onclick="javascript:if(this.className == \'click\'){this.setAttribute(\'class\', \'unclick\');}else{this.setAttribute(\'class\', \'click\');}"></div><div class="people_view" tapmode onclick="getPeopleinfo('+dataChild.people_id+')"><p><span>'+dataChild.realname+'</span>（'+dataChild.role+'） <span class="am-fr"></span></p></div></li>'
+        			
+        				$api.before(addChild, childList);
+        			}
+        			
+        		}	
+        	}
+        	if(err){
+        		alert(err.msg)
+        		api.closeFrame();
+        	}
+        });
+	}
+	
+	// 确认
+	function goApplyPay(){
+		var userid = $api.getStorage("userid");
+    	var adultnumber = GetString("adultnumber");
+    	var childnumber = GetString("childnumber");
+    	var totalprice =  GetString("totalprice");
+    	
+    	$api.html($api.byId("paySuccessPriceDiscount"), "¥ "+youhuiquan_price);
+    	
+    	if($api.html($api.byId("totalprice1"))== 0){
+    		$api.css($api.byId("paySuccess"),"display:block;");
+    		return false;
+    	}
+
+    	var activity_id = GetString("activity_id");
+    	var realname = $api.val($api.byId("realname"));
+    	if(realname == ""){
+    		alert("请输入用户名");
+    		return false;
+    	}
+    	
+    	var mobile = $api.val($api.byId("mobile"));
+    	if(mobile == ""){
+    		alert("请输入手机号码");
+    		return false;
+    	}
+    	
+    	var remark = document.getElementById("remark").value;
+    	
+    	var people_id = [];
+    	
+		var child_list = document.getElementById("child_list");
+		var child_listLi = child_list.getElementsByTagName("li");
+		
+    	for(var i=0;i<child_listLi.length;i++){
+    	
+			if(child_listLi[i].firstChild.getAttribute("class") == "click"){
+
+				people_id.push($api.attr(child_listLi[i], "people_id"))
+				
+			}
+			
+    	}
+    	
+    	if(people_id.length != childnumber){
+    		alert("请务必选择"+adultnumber+"大"+childnumber+"小");
+    		return false;
+    	}
+    	
+    	var people_list = document.getElementById("people_list");
+		var people_listLi = people_list.getElementsByTagName("li");
+		
+    	for(var i=0;i<people_listLi.length;i++){
+    	
+			if(people_listLi[i].firstChild.getAttribute("class") == "click"){
+
+				people_id.push($api.attr(people_listLi[i], "people_id"))
+				
+			}
+			
+    	}
+//		alert(people_id.length +"、"+ (Number(childnumber)+Number(adultnumber)))
+		if( people_id.length != (Number(childnumber)+Number(adultnumber)) ){
+		
+    		alert("请务必选择"+adultnumber+"大"+childnumber+"小");
+    		return false;
+    	}
+
+		people_id = people_id.join(",");
+		
+		if($api.html($api.dom(".check_coupon_code_qw"))=="取消"){
+			youhuiquan = $api.val($api.dom(".coupon_qk_li_input"));
+			//alert($api.html($api.dom(".check_coupon_code_qw")))
+		}else{
+//			alert("~~~~!!!!!~"+$api.html($api.dom(".coupondkli")))
+			if($api.dom(".coupondkli")){
+				
+				for(var l=0;l<$api.domAll(".coupondkli").length;l++){
+
+					if($api.attr($api.first(($api.domAll(".coupondkli"))[l].firstChild), "class") == "active"){
+
+						youhuiquan = $api.attr(($api.domAll(".coupondkli"))[l], "coupon_id");
+						youhuiquan_price = $api.attr(($api.domAll(".coupondkli"))[l], "youhuiquan_price");
+					}
+				}
+			}else if($api.dom(".coupondwli")){
+			
+				for(var l=0;l<$api.domAll(".coupondwli").length;l++){
+					if($api.attr($api.first(($api.domAll(".coupondwli"))[l].firstChild), "class") == "active"){
+						youhuiquan = $api.attr(($api.domAll(".coupondwli"))[l], "coupon_id");
+						youhuiquan_price = $api.attr(($api.domAll(".coupondwli"))[l], "youhuiquan_price");
+					}
+				}
+			}
+		}
+		
+		
+		var values_activity;
+		
+		if(tp_type ==1){
+			values_activity = { "coupon_receive_id":youhuiquan,"uid":userid,"activity_id":activity_id,"people_id":people_id,"adult_num":adultnumber,"child_num":childnumber,"realname":realname,"mobile":mobile,"remark":remark,"resideprovince":resideprovince,"residecity":residecity,"residedist":residedist };
+		}else{
+			values_activity = { "coupon_receive_id":youhuiquan,"uid":userid,"activity_id":activity_id,"people_id":people_id,"adult_num":adultnumber,"child_num":childnumber,"realname":realname,"mobile":mobile,"remark":remark,"resideprovince":resideprovince,"residecity":residecity,"residedist":residedist,"tp_name":document.getElementById("acttitle").innerHTML,"tp_value":GetString("tp_value"),"tp_price":GetString("totalprice")};
+		}
+		//alert(youhuiquan+","+userid+","+activity_id+","+people_id+","+adultnumber+","+childnumber+","+realname+","+mobile+","+remark+","+resideprovince+","+residecity+","+residedist+",")
+    	api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=apply',
+	        method:"post",
+	        data: {
+		        values:values_activity
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+//      		alert(JSON.stringify(ret))
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        			api.closeFrame();
+        		}else if(ret.code == 0){
+					// alert(userid+ "、" +JSON.stringify(ret.apply_id)+"、"+activity_id+ "、"+people_id+ "、"+adultnumber+ "、"+childnumber+ "、"+realname+ "、"+mobile+ "、"+remark+"、appliyid:"+ret.apply_id)
+					if(GetString("creditNum")){
+						$api.css($api.byId("paySuccess"),"display:block;");
+						$api.html($api.byId("paySuccessPriceTotal"), GetString("totalprice")+" 丸子");
+					}else{
+						
+						var settle_payment1 = document.getElementById("totalprice");
+						//alert(settle_payment1.innerHTML)
+						if(settle_payment1.innerHTML==0){
+							$api.css($api.byId("paySuccess"),"display:block;");
+							$api.html($api.byId("paySuccessPriceTotal"), "¥ 0");
+							$api.html($api.byId("paySuccessPriceDiscount"), $api.html($api.byId("totalprice1")));
+						}else{
+							api.openFrame({
+					            name: 'applypay',
+					            url: 'applypay.html?'+ 'userid='+userid+'&apply_id='+ret.apply_id+'&tp_type='+GetString("tp_type")+'&totalprice='+document.getElementById("totalprice").innerHTML+'&adultnumber='+adultnumber+'&childnumber='+childnumber+'&youhuiquan_price='+youhuiquan_price,
+					            bounces: false,
+					            rect: {
+						            x:0,
+						            y:0,
+						            w:api.winWidth,
+						            h:"auto"
+					            }
+					        });
+				        }
+			        }
+        		}
+        	}
+        	if(err){
+        		alert(err.msg)
+        		api.closeFrame();
+        	}
+        });
+
+	}
+
+	
+	// 获取单个成员信息
+	function getPeopleinfo(p_id){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=member&action=peopleinfo',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":GetString("userid"),
+		        	"pid":p_id
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        		}else{
+        			
+//      			alert(JSON.stringify(ret))
+        			
+        			$api.html($api.dom(".radio-inline_on em"), ret.data.role);
+        			
+        			$api.val($api.byId("realname_block"), ret.data.realname);
+        			$api.val($api.byId("idcard"), ret.data.idcard);
+        			$api.val($api.byId("demo_date"), ret.data.birthday);
+        			$api.val($api.byId("demo_date_mobile"), ret.data.mobile);
+
+					if(ret.data.role=="男孩"||ret.data.role=="女孩"){
+
+						$api.css($api.byId("birthblock"), "display:block;");
+						$api.css($api.byId("mobileblock"), "display:none;");
+					}else{
+						
+						$api.css($api.byId("mobileblock"), "display:block;");
+						$api.css($api.byId("birthblock"), "display:none;");
+					}
+					
+					$api.css($api.dom(".addmanfixed"),"display:block;");
+        			$api.css($api.dom(".addman"),"display:block;");
+        			
+        			xg_pid = ret.data.people_id;
+        			xg_uid = ret.data.uid;
+        			xg_username = ret.data.username;
+					xg_realname = ret.data.realname;
+					xg_role_id = ret.data.role_id;
+					xg_mobile = ret.data.mobile;
+					xg_idcard = ret.data.idcard;
+					xg_birthday = ret.data.birthday;
+					xg_role = ret.data.role;
+        			
+        		}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        });
+	}
+	
+	// 修改成员信息
+	function editpeople(){
+		if(xg_realname != $api.val($api.byId("realname_block")) || xg_idcard != $api.val($api.byId("idcard")) || xg_mobile != $api.val($api.byId("demo_date_mobile")) ){
+			xg_realname = $api.val($api.byId("realname_block"));
+			xg_idcard = $api.val($api.byId("idcard"));
+			xg_mobile = $api.val($api.byId("demo_date_mobile"));
+			xg_birthday = $api.val($api.byId("demo_date"));
+			
+//			alert(xg_pid+"，"+xg_uid+"，"+xg_username+"，"+xg_realname+"，"+xg_role_id+"，"+xg_mobile+"，"+xg_idcard+"，"+xg_birthday)
+
+			if(xg_role != "男孩" && xg_role != "女孩"){
+			
+				// 身份证验证
+				var idcardReg = /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;
+				if(idcardReg.test(xg_idcard) == false){
+					alert("请输入正确身份证号码")
+					return false;
+				}
+				
+				// 手机号码验证
+				var mobileReg = /^1[34578]\d{9}$/;
+				if(mobileReg.test(xg_mobile) == false){
+					alert("请输入正确手机号码")
+					return false;
+				}
+			}
+			
+			api.ajax({
+		        url:'http://192.168.19.239/dataapi.php?mod=member&action=editpeople',
+		        method:"post",
+		        data: {
+			        values:{
+			        	"pid":xg_pid,
+			        	"uid":xg_uid,
+			        	"username":xg_username,
+			        	"realname":xg_realname,
+			        	"role_id":xg_role_id,
+			        	"mobile":xg_mobile,
+			        	"idcard":xg_idcard,
+			        	"birthday":xg_birthday
+			        }
+			    },
+		        cache:true
+	        },function(ret,err){
+	        	if(ret){
+	//      		alert(JSON.stringify(ret))
+	        		if(ret.code == -1){
+	        			alert(ret.msg)
+	        		}else{
+	        			$api.html($api.first($api.dom("#p_"+xg_pid+" p"), "span"), $api.val($api.byId("realname_block")));
+	        			
+	        			$api.css($api.dom(".addmanfixed"),"display:none;");
+	        			$api.css($api.dom(".addman"),"display:none;");
+	        		}
+	        	}
+	        	if(err){
+	        		alert(err.msg)
+	        	}
+	        });
+        }else{
+        	$api.css($api.dom(".addmanfixed"),"display:none;");
+	        $api.css($api.dom(".addman"),"display:none;");
+        }
+	}
+	
+	// 获取可用优惠券
+	function couponQkApply(){
+		
+		$api.remove($api.dom(".coupondkli"));
+
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=coupon&action=coupon_apply',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":GetString("userid"),
+		        	"activity_id":GetString("activity_id"),
+		        	"adult_num":GetString("adultnumber"),
+		        	"child_num":GetString("childnumber"),
+		        	"amount":GetString("totalprice"),
+		        	"range":"app"
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+//      	alert(JSON.stringify(ret))
+        	if(ret){
+//      		alert(ret.data.coupon_dk.length+"，"+ret.data.coupon_qw.length)
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        		}else{
+        			
+        			if(ret.data.coupon_dk.length != 0 ){
+        				for(var i=0;i<ret.data.coupon_dk.length;i++){
+        					var _obj = ret.data.coupon_dk[i]
+        					
+	        				var couponDkLi = $api.byId("coupon_dk_li");
+	        				
+	        				var couponDk = '<li tapmode class="coupondkli" onclick="coupondkli()" price_value='+_obj.price_value+' coupon_id='+_obj.coupon_id+' c_type='+_obj.c_type+'><div class="pre-0"><span class="unactive"></span><label>'+_obj.coupon_name+'</label></div></li>';
+	        				
+	        				$api.before(couponDkLi, couponDk);
+        				}
+        			}
+
+        		}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        });
+	}
+	
+	// 获取可用去玩了优惠券
+	function couponQwApply(){
+
+			$api.remove($api.dom(".coupondwli"));
+		
+			api.ajax({
+		        url:'http://192.168.19.239/dataapi.php?mod=coupon&action=coupon_apply',
+		        method:"post",
+		        data: {
+			        values:{
+			        	"uid":GetString("userid"),
+			        	"activity_id":GetString("activity_id"),
+			        	"adult_num":GetString("adultnumber"),
+			        	"child_num":GetString("childnumber"),
+			        	"amount":GetString("totalprice"),
+			        	"range":"app"
+			        }
+			    },
+		        cache:true
+	        },function(ret,err){
+	        	if(ret){
+	//      		alert(ret.data.coupon_dk.length+"，"+ret.data.coupon_qw.length)
+	        		if(ret.code == -1){
+	        			alert(ret.msg)
+	        		}else{
+	        			
+	        			if(ret.data.coupon_qw.length != 0 ){
+	        				for(var j=0;j<ret.data.coupon_qw.length;j++){
+	        					var _obj = ret.data.coupon_qw[j]
+	        					
+		        				var couponQwLi = $api.byId("coupon_qw_li");
+		        				
+		        				var couponQw = '<li onclick="coupondwli()" tapmode class="coupondwli" coupon_id='+_obj.coupon_id+' c_type='+_obj.c_type+'><div class="pre-0"><span class="unactive"></span><label>'+_obj.coupon_name+'</label></div></li>';
+		        				
+		        				$api.before(couponQwLi, couponQw);
+		        			}
+	        			}
+	        		}
+	        	}
+	        	if(err){
+	        		alert(err.msg)
+	        	}
+	        });
+
+	}
+	
+	// 可用抵扣券的点击
+	function coupondkli(){
+
+		if($api.attr($api.dom(".coupondkli span"), "class") == "unactive"){
+			$api.attr($api.dom(".coupondkli span"), "class","active");
+			$api.attr($api.dom(".coupon_qk_li_input"), "disabled","disabled");
+			$api.attr($api.dom(".check_coupon_code_qk"), "disabled","disabled");
+			
+			if( parseFloat($api.html($api.byId("totalprice"))) - $api.attr($api.dom(".coupondkli"), "price_value") < 0.01 ){
+				$api.html($api.byId("totalprice"), 0)
+				youhuiquan_tol_price = 0;
+			}else{
+				$api.html($api.byId("totalprice"), Math.abs($api.attr($api.dom(".coupondkli"), "price_value") - parseFloat($api.html($api.byId("totalprice")))))
+			}
+			
+		}else{
+			$api.attr($api.dom(".coupondkli span"), "class","unactive");
+			$api.removeAttr($api.dom(".coupon_qk_li_input"), "disabled");
+			$api.removeAttr($api.dom(".check_coupon_code_qk"), "disabled");
+			
+			$api.html($api.byId("totalprice"), GetString("totalprice"))
+		}
+	}
+	//去玩了优惠券的点击
+	function coupondwli(){
+
+		if($api.attr($api.dom(".coupondwli span"), "class") == "unactive"){
+			$api.attr($api.dom(".coupondwli span"), "class","active");
+			$api.attr($api.dom(".coupon_qw_li_input"), "disabled","disabled");
+			$api.attr($api.dom(".check_coupon_code_qw"), "disabled","disabled");
+			
+			if( parseFloat($api.html($api.byId("totalprice"))) - $api.attr($api.dom(".coupondwli"), "price_value") < 0.01 ){
+				$api.html($api.byId("totalprice"), 0)
+				youhuiquan_tol_price = 0;
+			}else{
+				$api.html($api.byId("totalprice"), Math.abs($api.attr($api.dom(".coupondwli"), "price_value") - parseFloat($api.html($api.byId("totalprice")))))
+			}
+			
+		}else{
+			$api.attr($api.dom(".coupondwli span"), "class","unactive");
+			$api.removeAttr($api.dom(".coupon_qw_li_input"), "disabled");
+			$api.removeAttr($api.dom(".check_coupon_code_qw"), "disabled");
+		}
+	}
+	
+	function coupon_qw_lipre(){
+		$api.toggleCls($api.byId("coupon_qw_lipre"), "displaypre");
+		
+		if($api.attr($api.dom(".coupon_qw_lipre span"), "class") == "unactive"){
+			$api.attr($api.dom(".coupon_qw_lipre span"), "class","active");
+		}else{
+			$api.attr($api.dom(".coupon_qw_lipre span"), "class","unactive");
+		}
+	}
+	function coupon_qk_lipre(){
+		
+		$api.toggleCls($api.byId("coupon_qk_lipre"), "displaypre");
+		
+		if($api.attr($api.dom(".coupon_qk_lipre span"), "class") == "unactive"){
+			$api.attr($api.dom(".coupon_qk_lipre span"), "class","active");
+		}else{
+			$api.attr($api.dom(".coupon_qk_lipre span"), "class","unactive");
+		}
+	}
+	
+	
+	//验证抵扣券
+	function yzQkCode(){
+		if($api.html($api.dom(".check_coupon_code_qk")) == "使用"){
+		
+			var coupon_qk_li_input = $api.val($api.dom(".coupon_qk_li_input"));
+			api.ajax({
+		        url:'http://192.168.19.239/dataapi.php?mod=coupon&action=coupon_apply_code',
+		        method:"post",
+		        data: {
+			        values:{
+			        	"code":coupon_qk_li_input,
+			        	"c_type":1,
+			        	"activity_id":GetString("activity_id"),
+			        	"adult_num":GetString("adultnumber"),
+			        	"child_num":GetString("childnumber"),
+			        	"amount":GetString("totalprice"),
+			        	"range":"app"
+			        }
+			    },
+		        cache:true
+	        },function(ret,err){
+	        	if(ret){
+	        	
+	        		if(ret.code == -1){
+	        			alert(ret.msg)
+	        		}else{
+						
+//						alert($api.domAll(".coupondkli").length)
+//						$api.dom(".coupondkli").removeEventListener("click", coupondkli)
+	        			for(var p=0;p<$api.domAll(".coupondkli").length;p++){
+	        				$api.domAll(".coupondkli")[p].removeEventListener("click", coupondkli);
+	        				
+	        			}
+	        			
+	        			alert("优惠券面值"+ret.data.price_value+"元")
+	        			youhuiquan_price = ret.data.price_value;
+	        			$api.html($api.dom(".check_coupon_code_qk"), "取消");
+	        			$api.attr($api.dom(".coupon_qk_li_input"), "disabled","disabled");
+
+	        			if( parseFloat($api.html($api.byId("totalprice"))) - ret.data.price_value <= 0 ){
+	        				$api.html($api.byId("totalprice"), 0)
+	        				youhuiquan_tol_price = 0;
+	        			}else{
+	        				$api.html($api.byId("totalprice"), (ret.data.price_value - parseFloat($api.html($api.byId("totalprice")))).toFixed(2) )
+	        			}
+	        		}
+	        	}
+	        	if(err){
+	        		alert(err.msg)
+	        	}
+	        });
+
+		}else{
+
+			$api.html($api.dom(".check_coupon_code_qk"), "使用");
+			$api.removeAttr($api.dom(".coupon_qk_li_input"), "disabled");
+			$api.html($api.byId("totalprice"), GetString("totalprice"));
+			
+			for(var p=0;p<$api.domAll(".coupondkli").length;p++){
+				($api.domAll(".coupondkli"))[p].addEventListener("click", coupondkli);
+			}
+
+		}
+	}
+	
+	//验证去玩券
+	function yzQwCode(){
+		
+		if($api.html($api.dom(".check_coupon_code_qw"), "使用")){
+	
+			var coupon_qk_li_input = $api.val($api.dom(".coupon_qw_li_input"));
+			api.ajax({
+		        url:'http://192.168.19.239/dataapi.php?mod=coupon&action=coupon_apply_code',
+		        method:"post",
+		        data: {
+			        values:{
+			        	"code":coupon_qk_li_input,
+			        	"c_type":2,
+			        	"activity_id":GetString("activity_id"),
+			        	"adult_num":GetString("adultnumber"),
+			        	"child_num":GetString("childnumber"),
+			        	"amount":GetString("totalprice"),
+			        	"range":"app"
+			        }
+			    },
+		        cache:true
+	        },function(ret,err){
+	        	if(ret){
+	
+	        		if(ret.code == -1){
+	        			alert(ret.msg)
+	        		}else{
+	        		
+	        			for(var p=0;p<$api.domAll(".coupondwli").length;p++){
+	        				($api.domAll(".coupondwli"))[p].removeEventListener("click", coupondwli);
+	        			}
+	        			
+	        			alert("优惠券面值"+ret.data.price_value+"元")
+	        			youhuiquan_price = ret.data.price_value
+	        			$api.html($api.dom(".check_coupon_code_qw"), "取消");
+	        			$api.attr($api.dom(".coupon_qw_li_input"), "disabled","disabled");
+	        			
+	        			if( parseFloat($api.html($api.byId("totalprice"))) - ret.data.price_value <= 0 ){
+	        				$api.html($api.byId("totalprice"), 0)
+	        				youhuiquan_tol_price = 0;
+	        			}else{
+	        				$api.html( $api.byId("totalprice"), (ret.data.price_value - parseFloat($api.html($api.byId("totalprice")))).toFixed(2) )
+	        			}
+	
+	        		}
+	        	}
+	        	if(err){
+	        		alert(err.msg)
+	        	}
+	        });
+        
+        }else{
+            // 取消去玩券
+			$api.html($api.dom(".check_coupon_code_qw"), "使用");
+			$api.removeAttr($api.dom(".coupon_qw_li_input"), "disabled");
+			$api.html($api.byId("totalprice"), GetString("totalprice"))
+			
+			for(var p=0;p<$api.domAll(".coupondwli").length;p++){
+				($api.domAll(".coupondwli"))[p].addEventListener("click", coupondwli);
+			}
+		}
+	}
+	
+	// 添加成员
+	function addpeople(){
+		var role_id;
+		var center_bottom_new_add = document.getElementById("center_bottom_new_add");
+		var center_bottom_new_add_div = center_bottom_new_add.getElementsByTagName("div");
+		for(var i=0;i<center_bottom_new_add_div.length;i++){
+			if(center_bottom_new_add_div[i].className == "radio-inline_on am-radio-inline"){
+				role_id = center_bottom_new_add_div[i].getAttribute("role_id");
+			}
+		}
+		
+		if(role_id == undefined){
+			alert("请填写完整信息");
+			return false;
+		}
+		
+		var realnameblockadd = /^[\u4E00-\u9FA5]+$/;
+		if(realnameblockadd.test(document.getElementById("realname_block_add").value) == false){
+			alert("请填写中文字");
+			return false;
+		}
+
+		if(role_id != 34 && role_id != 35){
+			// 手机号码验证
+			var mobileAddReg = /^1[34578]\d{9}$/;
+			if(mobileAddReg.test(document.getElementById("demo_date_mobile_add").value) == false){
+				alert("请输入正确手机号码")
+				return false;
+			}
+
+		}else{
+			// 生日格式验证
+			var dateAddReg = /^\d{4}\-\d{2}\-\d{2}$/;
+			if(dateAddReg.test(document.getElementById("demo_date_add").value) == false){
+				alert("请输入正确生日格式")
+				return false;
+			}
+		}
+
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=member&action=addpeople',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"username":document.getElementById("realname").value,
+		        	"realname":document.getElementById("realname_block_add").value,
+		        	"role_id":role_id,
+		        	"mobile":document.getElementById("demo_date_mobile_add").value,
+		        	"birthday":document.getElementById("demo_date_add").value
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        		}else{
+//      			alert(JSON.stringify(ret))
+        			
+        			if(role_id == 34 || role_id == 35){
+        			
+        				var addChild = $api.byId("addChild");
+        				if(role_id == 34){
+        				
+        					var ChildList = '<li role_id="34" people_id="'+ret.people_id+'" id="p_'+ret.people_id+'"><div class="click" tapmode onclick="javascript:if(this.className == \'click\'){ this.setAttribute(\'class\', \'unclick\');}else{this.setAttribute(\'class\', \'click\');}"></div><div class="people_view" tapmode onclick="getPeopleinfo('+ret.people_id+')"><p><span>'+document.getElementById("realname_block_add").value+'</span>（男孩） <span class="am-fr"></span></p></div></li>'
+        				
+        				}else if(role_id == 35){
+        				
+        					var ChildList = '<li role_id="35" people_id="'+ret.people_id+'" id="p_'+ret.people_id+'"><div class="click" tapmode onclick="javascript:if(this.className == \'click\'){ this.setAttribute(\'class\', \'unclick\');}else{this.setAttribute(\'class\', \'click\');}"></div><div class="people_view" tapmode onclick="getPeopleinfo('+ret.people_id+')"><p><span>'+document.getElementById("realname_block_add").value+'</span>（女孩） <span class="am-fr"></span></p></div></li>'
+        			
+        				}
+        				$api.before(addChild, ChildList);
+        				
+        				$api.css($api.dom(".addmanfixed_add"),"display:none;");
+        				$api.css($api.dom(".addman_add"),"display:none;");
+        				
+        			}else{
+        				
+        				var addAdult = $api.byId("addAdult");
+        				var center_bottom_new_addDiv = document.getElementById("center_bottom_new_add").getElementsByTagName("div");
+        				for(var m=0;m<center_bottom_new_addDiv.length;m++){
+
+        					if(role_id == center_bottom_new_addDiv[m].getAttribute("role_id")){
+        					
+        						var center_bottom_new_addDivEm = center_bottom_new_addDiv[m].childNodes[1].innerHTML;
+        						
+//      						alert("12345678:"+center_bottom_new_addDivEm)
+        						var AdultList = '<li role_id="'+role_id+'" people_id="'+ret.people_id+'" id="p_'+ret.people_id+'"><div class="click" tapmode onclick="javascript:if(this.className == \'click\'){ this.setAttribute(\'class\', \'unclick\');}else{this.setAttribute(\'class\', \'click\');}"></div><div class="people_view" tapmode onclick="getPeopleinfo('+ret.people_id+')"><p><span>'+document.getElementById("realname_block_add").value+'</span>（'+center_bottom_new_addDivEm+'） <span class="am-fr"></span></p></div></li>'
+        						center_bottom_new_addDiv[m].style.display = "none";
+        						
+        					}
+        				}
+        				$api.before(addAdult, AdultList);
+        				
+        				$api.css($api.dom(".addmanfixed_add"),"display:none;");
+        				$api.css($api.dom(".addman_add"),"display:none;");
+        				
+        			}
+        			
+        			document.getElementById("realname_block_add").value = "";
+        			document.getElementById("demo_date_mobile_add").value = "";
+        			document.getElementById("demo_date_add").value = "";
+        		}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        });
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>
+
+

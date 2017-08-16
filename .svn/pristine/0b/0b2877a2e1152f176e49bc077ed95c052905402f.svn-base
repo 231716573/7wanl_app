@@ -1,0 +1,132 @@
+body{
+	    	width:100%; overflow: hidden;
+	    }
+    	body {
+		    background: #fff;
+		    word-break: break-all;
+		    word-wrap: break-word;
+		    font-size: 12px;
+		    font-family: "微软雅黑","宋体",Verdana;
+		    line-height: 150%;
+		    margin: 0px;
+		    padding: 0px;
+		    color: #404040;
+		}
+    	#refund-detail div {
+		    border-top: 1px solid #e3e3e3;
+		    border-bottom: 1px solid #e3e3e3;
+		    margin-top: 10px;
+		}
+		h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+		    margin: 0;
+		    padding: 0;
+		    border: none;
+		    list-style-type: none;
+		    font-style: normal;
+		    font-weight: normal;
+		}
+		*, :before, :after {
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+		* {
+		    margin: 0;
+		    padding: 0;
+		    word-wrap: break-word;
+		}
+		#refund-detail h2 {
+		    background-color: #f6f6f6;
+		    padding: 6px 10px;
+		    color: #999999;
+		    font-size: 12px;
+		    font-weight: normal;
+		}
+		#refund-detail .msg {
+		    margin: 0 10px;
+		    color: #666666;
+		    font-size: 14px;
+		    padding: 12px 0;
+		    position: relative;
+		    border-bottom: 1px solid #e3e3e3;
+		}
+		#refund-detail .col-1 {
+		    color: #f9851d;
+		}
+		#refund-detail span {
+		    position: absolute;
+		    right: 0;
+		    color: #333333;
+		    font-size: 12px;
+		    display: inline-block;
+		    width: 230px;
+		    text-align: right;
+		}
+		.col-1 {
+		    color: #999;
+		    padding-left: 10px;
+		    line-height: 22px;
+		}
+		em, cite, i {
+		    font-style: normal;
+		}
+		#refund-detail .no-border {
+		    border: 0;
+		}
+		#refund-detail ul {
+		    border-left: 1px solid #c2c2c2;
+		    margin: 10px 10px 30px;
+		    position: relative;
+		    padding-left: 10px;
+		    color: #999;
+		}
+		#ull_lli li {
+		    position: relative;
+		}
+		ul li, .xl li {
+		    list-style: none;
+		}
+		
+		#refund-detail i {
+		    display: block;
+		    width: 10px;
+		    height: 10px;
+		    border-radius: 50%;
+		    background-color: #c2c2c2;
+		    position: absolute;
+		    left: -15px;
+		    border: 2px solid #fff;
+		}
+		#refund-detail h3 {
+		    font-weight: normal;
+		    height: 38px;
+		    line-height: 40px;
+		    font-size: 15px;
+		    color: #666;
+		}
+		#refund-detail span {
+		    position: absolute;
+		    right: 0;
+		    color: #333333;
+		    font-size: 12px;
+		    display: inline-block;
+		    width: 230px;
+		    text-align: right;
+		}
+		#refund-detail li p {
+		    font-size: 12px;
+		    line-height: 1.2em;
+		    border-bottom: 1px solid #e3e3e3;
+		    padding-bottom: 10px;
+		}
+		#ull_lli .color_15a6a3, #ull_lli .color_15a6a3 h3, #ull_lli .color_15a6a3 span {
+		    color: #15a6a3;
+		}
+		#refund-top{
+			margin-top: 0px !important;height:52px;padding-top:20px;width:100%;font-size:16px;text-align:center;line-height:26px;color:#000;
+		}
+		.left {
+	    	height:40px; width:43px; position:absolute;left:-5px; top:22px;
+	    }
+	    .left a {
+	    	display:inline-block;height:13px; width:13px;border-top:1px solid #000;border-left:1px solid #000;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);
+	    }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	html,body{
+    		max-width:100%;
+    		max-height:100%;
+    		overflow:hidden;
+    	}
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		li {
+			list-style:none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #fff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:4px !important;
+		    left:32px !important;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		.user-info p{
+			padding-top: 8px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 42px;margin-left:-25px;
+		}
+    </style>
+</head>
+<body>
+	<header id="header" class="header" data-am-sticky="" style="border-bottom:1px solid rgb(195, 195, 195);">
+	    <div class="left"><a class="ico_back" onclick='icoback()'></a></div>
+	    <div class="cent" style="margin-left:13px;">美食DIY</div>
+	</header>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		bmap();
+	};
+	
+	function bmap(){
+		api.openFrame({
+		    name: 'bmap',
+		    url: 'bmap.hrml',
+		    bounces : false,
+	        vScrollBarEnabled : false,
+	        hScrollBarEnabled : false,
+	        bgColor: 'rgba(0,0,0,0)',
+		    rect: {
+			    x:0,
+			    y:100,
+			    w:'auto',
+			    h:'auto'
+		    }
+	    });
+	}
+	
+	
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+</script>
+</html>

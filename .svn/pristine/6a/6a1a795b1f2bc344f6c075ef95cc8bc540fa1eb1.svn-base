@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	i { font-style:normal !important;}
+    	#newclickul{
+    		display: -webkit-box; padding-top: 0px; height: 44px !important; min-height: 44px !important; top: 42px; z-index: 99; position: absolute;
+    	}
+    	#header {
+			background:#fff;height:42px;line-height:41px;margin-top:12px;
+		}
+    	.ico_back{
+			display:inline-block;width:20px;height:25px;margin-top:10px;
+		}
+		.check2{
+			color:#666;line-height:25px;margin-top:17px;letter-spacing:0.6px;display:none;margin-left: 10px;margin-right: 10px;
+		}
+		.check1{
+			margin-left: 10px;margin-right: 10px;margin-top: 15px;
+		}
+		#newul {
+			display: block; padding-bottom: 55px; background-color: rgb(255, 255, 255);
+		}
+		.do_main .am-active {
+		    border-bottom: 2px solid #14a6a3;
+		}
+		.do_main a {
+		    font-size: 16px;
+		    color: #818181;
+		}
+		.do_main li {
+		    -webkit-box-flex: 1;
+		    -webkit-flex: 1;
+		    -ms-flex: 1;
+		    flex: 1;
+		    text-align: center;
+		    height: 42px;
+		    line-height: 40px;
+		}
+		.do_main .am-active a {
+		    color: #14a6a3;
+		}
+		.am-list-item-text p i:before {
+		    font-size: 12px;
+		    content: "" !important;
+		    color: #FF5500;
+		}
+		.am-avg-sm-2 li:first-child {
+		    padding: 0 5px 5px 10px;
+		}
+		.am-avg-sm-2 li:last-child {
+		    padding: 0 10px 5px 5px;
+		}
+		.viewtitle{
+			overflow:hidden;
+			white-space:nowrap;
+			text-overflow:ellipsis;
+		}
+    </style>
+</head>
+<body>
+
+	<header id="header" class="homeHeader">
+	    <div class="left"><a class="ico_back" onclick="icoback()"> </a></div>
+	    <div class="cent" style="color:#000;">活动详情</div>
+	    <div class="head-icon" style="padding-right: 0;">
+	        <a class="am-icon-share-square-o" data-am-modal="{target: '#am-share'}"></a>
+	        <a class="am-icon-star-o"></a>
+	    </div>
+	</header>
+	<ul class="do_main" id="newclickul">
+        <li tapmode="hover" class="am-active"><a>活动详情</a></li>
+        <li tapmode="hover" class=""><a>服务约定</a></li>
+        <li tapmode="hover" class="" id="moreact"><a>其他活动</a></li>
+    </ul>
+    <ul id="newul">
+        <li class="check1">
+            <div class="view_content"></div>
+            	
+        </li>
+        <li class="check2">
+        	<div class="view_content2"></div>
+        </li>    
+        <li id="newli_3" style="display:none;margin-left: 10px;margin-right: 10px;" class="am-active">
+            <ul class="view_content3">
+               
+                <div class="clearboth" style="clear:both;"></div>
+           </ul>
+    </ul>
+    <ul id="apply_btn" data-am-widget="gotop" class="am-avg-sm-2 am-no-layout">
+        <li><span style="background:#3db8b5;color:#fff;font-size:15px;text-align:center;" class="am-btn am-btn-block bor_e8 am-radius" data-am-modal="{target: '#my_question'}">我有疑问</span></li>
+        <li><span style="font-size:15px;" class="am-btn am-btn-warning am-radius am-btn-block" data-am-modal="{target: '#am-share-applyform'}">我要报名</span></li>
+    </ul>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		activityCont(GetString("activityId"));
+		activityagreement(GetString("activityId"))
+		
+		var newUl = document.getElementById('newul');
+        var newL = newUl.getElementsByTagName('li');
+        var newClickUl = document.getElementById('newclickul');
+        var ncbI = newClickUl.getElementsByTagName('li');
+
+        var i = 0;
+
+        for(i=0;i<ncbI.length;i++){
+
+            ncbI[i].onclick=function(){
+
+                for(i=0;i<ncbI.length;i++){
+
+                    if (this==ncbI[i]) {
+                        newL[i].style.display="block";
+                        ncbI[i].className = "am-active";
+                    }else{
+                        newL[i].style.display="none";
+                        ncbI[i].className = "";
+                    }
+                }
+            }
+        }
+        
+        var moreact = $api.dom("#moreact");
+        $api.addEvt(moreact, "click", function(){
+        	activitymore()
+        });
+		
+	};
+	
+	window.onscroll = function(e){
+		var e =e || window.event;
+		var scrolltop=document.documentElement.scrollTop||document.body.scrollTop;
+		
+		var newclickul = $api.dom("#newclickul");
+
+		if(scrolltop>42){
+			$api.before(newclickul, '<div style="width:100%;height:22px;background:#fff;z-index:9999;top:0px;position:fixed;"></div>');
+			$api.css(newclickul,"z-index:9999;top:22px;position:fixed;");
+		}else{
+			
+			$api.css(newclickul,"z-index:99;top:42px;position:absolute;");
+		}
+	}
+
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+//	活动详情
+	function activityCont(actId){
+		var url = "http://test.7wanl.com/7wanlsoa/app/activity/getContent.json?activityId="+actId;
+		
+		$api.get(url,function(data){
+		
+//			alert("data:"+JSON.stringify(data))
+			
+			var viewcontent = $api.dom(".view_content")
+
+			if(data.code == 0){
+			
+				$api.html(viewcontent, data.obj.content);
+				
+			}else{
+				$api.html(viewcontent, "<p style='text-align:center;width:100%;'>暂无内容</p>");
+			}
+		},'json');
+	}
+	
+//	服务约定
+	function activityagreement(actId){
+		var url = "http://test.7wanl.com/7wanlsoa/app/activity/getAgreement.json?activityId="+actId;
+		
+		$api.get(url,function(data){
+			
+//			alert("data:"+JSON.stringify(data))
+			var viewcontent = $api.dom(".view_content2")
+			
+			if(data.code == 0){
+			
+				$api.html(viewcontent, data.obj.agreement);
+				
+			}else{
+				$api.html(viewcontent, "<p style='text-align:center;width:100%;'>暂无内容</p>");
+			}
+			
+		},'json');
+	}
+	
+//	其他活动
+	function activitymore(){
+		var url = "http://test.7wanl.com/7wanlsoa/app/activity/getOtherListByShopId.json?shopId="+GetString("shopid")+"&pageNumber=1&pageSize=10";
+		
+		$api.get(url,function(data){
+			
+//			alert("data:"+JSON.stringify(data))
+			
+			var viewcontent = $api.dom(".clearboth");
+			
+			if(data.code == 0){
+			
+				for(var i=0;i<data.obj.length;i++){
+				
+					var _obj = data.obj[i];
+				
+					$api.before(viewcontent, '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" onclick="goActivity('+_obj.activityId+')"><div class="am-u-sm-4 am-list-thumb imgloading"><img class="viewpic" src="'+_obj.pic+'" alt="'+_obj.title+'" data-bd-imgshare-binded="1"></div><div class=" am-u-sm-8 am-list-main" style="margin-top: -6px;padding-left:10px;"><h3 class="am-list-item-hd viewtitle" style="margin-bottom:0px;font-weight: 400;">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：<em class="viewage">'+_obj.age+'</em></p><p class="pb5">截止报名：<em class="viewend">'+_obj.applyend+'</em></p><p> <i class="viewprice">'+_obj.price+'</i></p></div></div></li>');
+
+				}
+				var listmorepic = $api.domAll(".imgloading img");
+		        
+		        for(var i=0;i<listmorepic.length;i++){
+		        
+		        	$api.css(listmorepic[i],"width:100%;height:"+parseInt($api.cssVal(listmorepic[i],"width"))*3/4+"px")
+		        }
+			}else{
+			
+				var viewcon = $api.dom(".view_content3");
+				$api.html(viewcon, "<p style='text-align:center;width:100%;'>暂无内容</p>");
+			}
+			
+			
+		},'json');
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

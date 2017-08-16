@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/style.css">
+	<style>
+	#header {
+		background:#fff;height:46px;line-height:45px;margin-top:12px;
+	}
+	i { font-style:normal !important;}
+
+	.ico_back{
+		display:inline-block;width:20px;height:25px;margin-top:10px;
+	}
+	.am-accordion-gapped .am-accordion-title{
+		padding: 1rem;
+	}
+	.b-star{
+		height: 10px;
+	}
+	#imgsrc{
+		width:100%;margin:0 5% 0 0;
+	}
+	.b-star{
+		display:inline-block;margin-top:8px;
+	}
+	#plnumber{
+		display:inline-block;margin-bottom:8px;
+	}
+	#zlp{
+		font-size:12px;
+	}
+	#yysjs{
+		font-size:13px;
+	}
+	.am-list-item-thumb-left{
+		border-bottom:1px solid #E8E8E8;
+	}
+	</style>
+
+
+</head>
+<body>
+<header id="header" class="homeHeader" style="border-bottom:1px solid rgb(232, 232, 232);">
+    <div class="left"><a class="ico_back" onclick="icoback()"> </a></div>
+    <div class="cent" style="color:#000;">教育机构</div>
+    <div class="head-icon" style="padding-right: 0;">
+        <a class="am-icon-share-square-o" data-am-modal="{target: '#am-share'}"></a>
+        <a class="am-icon-star-o" href="shop.php?mod=favorite&amp;type=activity&amp;id=2877&amp;formhash=075359bf&amp;mobile=2"></a>
+    </div>
+</header>
+<div data-am-widget="list_news" class="am-list-news am-list-news-default">
+	<div class="am-list-news-bd" style="margin-left:10px;">
+		<ul class="am-list">
+			<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+				<div class="am-u-sm-4" style="padding-left:0"> <img id="imgsrc" src="" data-bd-imgshare-binded="1"> </div>
+					<div class="am-u-sm-8 am-list-main">
+						<h3 class="am-list-item-hd" id="listitemhd"></h3>
+						<div class="am-list-item-text">
+							<div class="b-star"><div class="f-star" style="width:96%"></div>
+						</div>  
+						<div id="plnumber"></div>
+						<p id="zlp">质量：4.7 分 环境：4.8 分 服务：4.9 分 </p>
+						<p>营业时间： <span id="yysjs"></span></p>
+					</div>
+				</div>
+			</li>
+			<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" style="border-bottom:1px solid #E8E8E8;">
+				<div class="am-u-sm-10 am-list-main"> <a style="color:#4C4C4C;" href="" id="shopaddress" class="am-icon-map-marker"></a> </div>
+				<div class="am-u-sm-2 am-list-thumb"> <a href="" class="am-icon-phone" id="iconphone"></a></div>
+			</li>
+		</ul>
+	</div>
+	<div class="shop_other">
+		<section data-am-widget="accordion" class="am-accordion am-accordion-gapped shop_other">
+			<dl class="am-accordion-item" onclick="shopIntro()">
+				<dt class="am-accordion-title">商家详情</dt>
+			</dl>
+			<dl class="am-accordion-item" onclick="shopActivity()">
+				<dt class="am-accordion-title">商家活动</dt>
+			</dl>
+			<dl class="am-accordion-item">
+				<dt class="am-accordion-title">商家课程</dt>
+			</dl>
+			<dl class="am-accordion-item">
+				<dt class="am-accordion-title">名师机构</dt>
+			</dl>
+			<dl class="am-accordion-item" onclick="shopComment()">
+				<dt class="am-accordion-title">全部点评</dt>
+			</dl>
+
+		</section>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		getShop();
+		
+		var header = $api.byId('header');
+		
+		var headerHeight = $api.offset(header).h;
+	};
+	
+	function getShop(){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/shop/getDetail.json?shopId="+GetString("shopid"),function(ret){
+			var imgsrc = $api.byId("imgsrc"),
+				listitemhd = $api.byId("listitemhd"),
+				plnumber = $api.byId("plnumber"),
+				zlp = $api.byId("zlp"),
+				yysjs = $api.byId("yysjs"),
+				shopaddress = $api.byId("shopaddress"),
+				iconphone = $api.byId("iconphone");;
+				
+				imgsrc.src=ret.obj.logo;
+				listitemhd.innerHTML = ret.obj.name;
+				plnumber.innerHTML = ret.obj.comment.count + " 条评论";
+				yysjs.innerHTML = ret.obj.bisihour;
+				$api.attr(iconphone, "href", "tel:"+ret.obj.serviceTel);
+				shopaddress.innerHTML = " " + ret.obj.address;
+				$api.attr(shopaddress, "href", "http://apis.map.qq.com/uri/v1/marker?marker=coord:"+ret.obj.lat+","+ret.obj.lng+";title:"+ret.obj.name+";addr:{"+ret.obj.address);
+			
+		},'json');
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+//	商家详情
+	function shopIntro(){
+		api.openFrame({
+	        name: 'shopintro',
+	        url: 'shopintro.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	//商家活动
+	function shopActivity(){
+		api.openFrame({
+	        name: 'shopActivity',
+	        url: 'shopActivity.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+
+	//商家评论
+	function shopComment(){
+		api.openFrame({
+	        name: 'shopcomment',
+	        url: 'shopcomment.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<style>
+	.xiachedanp1 {
+		position:absolute;bottom:0px;left:0px; padding:2px 12px;background:#000;width: 100%;opacity:0.5;height:23px;
+	}
+	.xiachedanp2 {
+		position: absolute; bottom: 0px; left: 0px; padding: 2px 10px; color: rgb(255, 255, 255); font-size: 12px; width: 100%; height: 23px;
+	}
+	#header {
+		background:#fff;height:46px;line-height:45px;margin-top:12px;
+	}
+	i { font-style:normal !important;}
+	.xcdadd {
+		float:right;margin-right:15px;font-size:12px;color:#bdbdbd;display: block; width: 220px; height: 31px;line-height: 31px; overflow: hidden; text-align: right;
+	}
+	.serviceTel{
+		float:right;margin-right:15px;font-size:12px;color:#bdbdbd;
+	}
+	.view_more a {
+		color:#333;
+	}
+	.ico_back{
+		display:inline-block;width:20px;height:25px;margin-top:10px;
+	}
+	.am-tabs-nav>.am-active a {
+	    color: #24aba8;
+	    line-height: 50px;
+        font-size: 15px;
+    	font-weight: bold;    
+	}
+	.am-tabs-nav>.am-active {
+	    background-color: #ffffff;
+	    border: 0;
+	}
+	.am-tabs-nav li {
+	    height: 50px;
+	    text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<header id="header" class="homeHeader">
+	    <div class="left"><a class="ico_back" onclick="icoback()"> </a></div>
+	    <div class="cent" style="color:#000;">活动详情</div>
+	    <div class="head-icon" style="padding-right: 0;">
+	        <a class="am-icon-share-square-o" data-am-modal="{target: '#am-share'}"></a>
+	        <a class="am-icon-star-o" href="shop.php?mod=favorite&amp;type=activity&amp;id=2877&amp;formhash=075359bf&amp;mobile=2"></a>
+	    </div>
+	</header>
+	
+	
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+
+	var shopid = "";
+	apiready = function(){
+		activityView(GetString("activityId"))
+		api.setStatusBarStyle({
+            style: 'dark',
+            color: '#6ab494'
+        });
+	};
+	
+//	打客服电话电话
+	function callActPhone(){
+		api.call({
+		    type: 'tel_prompt',
+		    number: '4008-330-730'
+		});
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+	
+//	活动基本信息
+	function activityView(actId){
+		
+		var url = "http://test.7wanl.com/7wanlsoa/app/activity/getDetail.json?activityId="+actId;
+		
+		$api.get(url,function(data){
+//			alert("data:"+JSON.stringify(data))
+//			找到对应的东西
+			var xcdTime = $api.dom(".xcdTime");
+			var xcdnumber = $api.dom(".xcdnumber");
+			var xcdstartTime = $api.dom(".xcdstartTime");
+			var xcdage = $api.dom(".xcdage");
+			var xcdpriceAdult = $api.dom(".xcdpriceAdult");
+			var xcdpriceChild = $api.dom(".xcdpriceChild");
+			var amiconfile1 = $api.dom(".am-icon-file-o1i");
+			var amiconfile2 = $api.dom(".am-icon-file-o2i");
+			var amiconfile3 = $api.dom(".am-icon-file-o3i");
+			
+			var xcdhg = $api.dom(".xcdhg em");
+			var xcdyw = $api.dom(".xcdyw em");
+			var xcdpl = $api.dom(".xcdpl em");
+			var serviceTel = $api.dom(".serviceTel");
+			
+			var xcdpic = $api.dom(".xcdpic img");
+			
+//			商家
+			var tagpic = $api.dom(".tagpic");
+			var tagtitle = $api.dom(".tagtitle");
+			var xcdshopZL = $api.dom(".xcdshopZL");
+			var xcdshopHJ = $api.dom(".xcdshopHJ");
+			var xcdshopTD = $api.dom(".xcdshopTD");
+			var xcdstar = $api.dom(".xcdstar");
+			
+			if(data.code == 0){
+				
+				
+//				免得太乱，分开看舒服点
+				//报名信息
+				$api.html(xcdTime,data.obj.applyend);
+				$api.html(xcdnumber, data.obj.title);
+				$api.html(xcdstartTime, data.obj.startTime);
+				$api.html(xcdage, data.obj.age);
+				$api.html(xcdpriceAdult, data.obj.priceAdult);
+				$api.html(xcdpriceChild, data.obj.priceChild);
+				
+				//图片信息
+				$api.attr(xcdpic, 'src', data.obj.pic);
+				$api.attr(xcdpic, 'alt', data.obj.title);
+				$api.attr(xcdpic, 'data-rel', data.obj.pic);
+				
+				//中间三个图
+				$api.html(amiconfile1, data.obj.number);
+				$api.html(amiconfile2, data.obj.apply);
+				$api.html(amiconfile3, data.obj.verify);
+				
+				$api.html(serviceTel, data.obj.serviceTel);
+				$api.html(xcdyw, data.obj.questionCount);
+				$api.html(xcdpl, data.obj.commentCount);
+				
+//				商家
+
+				$api.attr(tagpic, "src", data.obj.shop.logo);
+				
+				shopid = data.obj.shop.shopId;
+//				alert("shopid:"+shopid)
+				
+				$api.attr(tagpic, "alt", data.obj.shop.name);
+				
+				$api.html(tagtitle, data.obj.shop.name);
+				$api.html(xcdshopZL, data.obj.shop.score1);
+				$api.html(xcdshopHJ, data.obj.shop.score2);
+				$api.html(xcdshopTD, data.obj.shop.score3);
+				$api.html(xcdstar, data.obj.shop.star);
+				
+			}else{
+				alert("发生未知错误，请重新进入")
+			}
+		}
+			
+		,'json');
+	}
+	
+	//进入每个活动的详情页
+	function goActivity(){
+		api.openWin({
+	        name: 'actview',
+	        url: 'actview.html?activityId='+GetString("activityId")+'&shopid='+shopid
+	        
+        });
+	}
+	
+	//进入疑问页
+	function goActivityquestion(){
+		api.openWin({
+	        name: 'actquestion',
+	        url: 'actquestion.html?activityId='+GetString("activityId")
+	        
+        });
+	}
+	
+	//进入评论页
+	function goActivitycomment(){
+		api.openWin({
+	        name: 'actcomment',
+	        url: 'actcomment.html?activityId='+GetString("activityId")
+	        
+        });
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

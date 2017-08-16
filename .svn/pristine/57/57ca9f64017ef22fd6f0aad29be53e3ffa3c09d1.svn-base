@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>文档</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    
+    <style>
+    *, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+    .headernav {
+	    height: 162px;
+	    position: relative;
+	    font-size: 10px;
+	    background: #0aadae url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/headernavBG.jpg) no-repeat;
+	}
+	.headernav .headerimg {
+	    text-align: center;
+	    position: absolute;
+	    left: 50%;
+	    top: 30px;
+	    margin-left: -23px;
+	    width: 45px;
+	    height: 45px;
+	}
+	.headernav .nick {
+	    width: 100%;
+	    height: 70px;
+	    position: absolute;
+	    top: 80px;
+	}
+	.headernav .nick div {
+	    width: 100%;
+	    color: white;
+	    text-align: center;
+	}
+	.headernav .nick div .nickname {
+	    text-transform: capitalize;
+	    font-size: 15px;
+	    margin-right: 10px;
+	}
+	.headernav ul {
+	    width: 100%;
+	    height: 35px;
+	    position: absolute;
+	    bottom: 5px;
+	    color: #a2e2e1;
+	    font-size: 12px;
+	}
+	.headernav ul li {
+	    position: relative;
+	    text-align: center;
+	    width: 33.33333%;
+	    font-weight: normal;
+	}
+	.floatl {
+	    float: left;
+	}
+	.headerimg img {
+	    border-radius: 50%;
+	    border: 1px solid #22bebb;
+	    width: 45px;
+	    height: 45px;
+	    display: block;
+	}
+	.headernav ul li em {
+	    display: inline-block;
+	    width: 1px;
+	    height: 13px;
+	    background: #a2e2e1;
+	    position: absolute;
+	    right: 0px;
+	    top: 13px;
+	}
+	.headernav ul li i {
+	    color: white;
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	.headernavbg {
+	    background-color: white;
+	    width: 100%;
+	    height: 44px;
+	    position: absolute;
+	    bottom: 0px;
+	    opacity: 0.1;
+	    z-index: 10;
+	}
+	.personerp {
+			position:absolute;
+			top:12px;
+			right:10px;
+			display:inline-block;
+			background: url(../image/shezhi.png) center center no-repeat;
+			background-size:100% 100%;
+			width:16px;
+			height:16px;
+		}
+	.homebody {
+	    width: 100%;
+	    clear: both;
+	    margin-top: 14px;
+	    background: #fff;
+	    border-top: 1px solid #e8e8e8;
+    }
+    .homebody .c1 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/11.png) 0px center no-repeat;
+	    background-size: 16px 20px;
+	}
+	.homebody .c2 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/22.png) 0px center no-repeat;
+	    background-size: 14px 18px;
+	}
+	.homebody .c7 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/77.png) 5px center no-repeat;
+	    background-size: 9px 18px;
+	}
+	.homebody .c8 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/88.png) 0px center no-repeat;
+	    background-size: 18px 15px;
+	}
+	.homebody .c3 {
+	    margin-top: 0px;
+	    position: relative;
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/33.png) 0px center no-repeat;
+	    background-size: 17px 19px;
+	}
+	.homebody .c4 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/44.png) 0px center no-repeat;
+	    background-size: 18px 17px;
+	}
+	.homebody .c6 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/66.png) 0px center no-repeat;
+	    background-size: 20px 18px;
+	}
+	.homebody .c5 {
+	    background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/55.png) 0px center no-repeat;
+	    background-size: 15px 18px;
+	}
+	.am-cf:before, .am-cf:after {
+	    content: " ";
+	    display: table;
+	}
+	.am-cf:after {
+	    clear: both;
+	}
+	.homebody p {
+	    width: 100%;
+	    height: 15px;
+	    border-top: 1px solid #e5e5e5;
+	    border-bottom: 1px solid #e5e5e5;
+	}
+	.homebody a {
+	    display: block;
+	    width: 96%;
+	    height: 44px;
+	    font-size: 14px;
+	    line-height: 44px;
+	    margin-left: 2%;
+	    margin-right: 2%;
+    }
+    .homebody i {
+	    display: inline-block;
+	    width: 90%;
+	    margin-left: 27px;
+	    height: auto;
+	    border-bottom: 1px solid #e3e3e3;
+	    color: #666;
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	.homebody em {
+	    display: block;
+	    float: right;
+	    width: 9px;
+	    height: 9px;
+	    margin-top: 17px;
+	    border-right: 2px solid #c3c3c3;
+	    border-bottom: 2px solid #c3c3c3;
+	    transform: rotate(-45deg);
+	    -webkit-transform: rotate(-45deg);
+	    -moz-transform: rotate(-45deg);
+	    -ms-transform: rotate(-45deg);
+	}
+	.homebody_msg {
+	    float: right;
+	    margin-right: 8px;
+	    margin-top: 18px;
+	    display: block;
+	    width: 8px;
+	    height: 8px;
+	    border-radius: 50%;
+	    background-color: #f83f3f;
+	}
+    </style>
+</head>
+<body>
+    <div class="headernav">
+    	
+		<div class="headerimg"><img id="headerimg" onclick="loginIn()" /></div>
+		<p class="personerp"></p>
+		<div class="nick">
+		<div><span class="nickname" id='nickname'></span><span style="display:none;" class="am-badge am-badge-warning am-radius">银牌会员</span></div>
+		</div>
+		<div class="nick_ul"><ul><li class="floatl"><em></em><span>丸子<br><i id="wanzi"></i></span></li>
+		<li class="floatl"><em></em><span>经验值<br><i id="jingyan"></i></span></li>
+		<li class="floatl"><span>账户余额(元)<br><i id="yue"></i></span></li></ul>
+		</div>
+		<div class="headernavbg"></div>
+	</div>
+	<div class="homebody">
+	    <a class="c1" onclick="myactivity()">
+	        <i>我的活动<em></em><span class="homebody_msg"></span></i>
+	    </a>
+	    <a class="c2" onclick="mycourse()">
+	        <i>我的课程<em></em><span class="homebody_msg"></span></i>
+	    </a>
+	    <p></p>
+	    <a class="c7" onclick="myteam()">
+	        <i>我的定制<em></em></i>
+	    </a>
+	    <a class="c8" onclick="mycoupon()">
+	        <i>我的优惠劵<em></em></i>
+	    </a>
+	    <p></p>
+	    <a class="c3" onclick="mymessage()">
+	        <i>我的消息<em></em></i>
+	    </a>
+	    <a class="c4" onclick="myfavorite()">
+	        <i>我的收藏<em></em></i>
+	    </a>
+	    <a class="c6" onclick="mycomment()">
+	        <i>我的评价<em></em></i>
+	    </a>
+	    <a class="c5" onclick="myview()">
+	        <i>我的帖子<em></em></i>
+	    </a>
+	    <p></p>
+	    <a class="c8" onclick="myaccount()">
+	        <i>我的账户</i>
+	    </a>
+	    <div class="am-cf"></div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+var url = "http://test.7wanl.com/7wanlsoa/app/member/getIndex.json?uid="+GetString("uid")+"&accessToken="+GetString("accessToken");
+
+apiready = function (){
+	getUserMsg();
+	
+}
+
+// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+
+var userid = "";
+
+function getUserMsg(){
+	api.ajax({
+	    url:url,
+	    method:"get",
+	    cache:true,
+    },function(ret,err){
+    	
+    	if(ret){
+    		if(ret.code == 0){
+    			var nickname = document.getElementById("nickname");
+    			var wanzi = document.getElementById("wanzi");
+    			var jingyan = document.getElementById("jingyan");
+    			var yue = document.getElementById("yue");
+    			var headerimg = document.getElementById("headerimg");
+    			
+    			nickname.innerHTML = ret.obj.userName;
+    			wanzi.innerHTML = ret.obj.balls;
+    			jingyan.innerHTML = ret.obj.experiences;
+    			yue.innerHTML = ret.obj.balance;
+    			headerimg.src = ret.obj.userAvatar;
+    			
+    			userid = ret.obj.uid;
+    			
+    		}else{
+    			alert(ret.msg)
+    		}
+    	}else{
+            alert(err.msg)
+        }
+    	
+    });
+}
+
+// 我的活动
+function myactivity(){
+	api.openWin({
+		name:"myactivity",
+		url:'myactivity.html?userid='+userid,
+		animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+	})
+}
+
+// 我的课程
+function mycourse(){
+	api.openWin({
+		name:"mycourse",
+		url:'mycourse.html?userid='+userid,
+		animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+	})
+}
+
+// 我的团队定制
+function myteam(){
+	api.openWin({
+	    name: 'myteam',
+	    url: 'myteam.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+//我的优惠劵
+function mycoupon(){
+	api.openWin({
+	    name: 'mycoupon',
+	    url: 'mycoupon.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+//我的消息
+function mymessage(){
+	api.openWin({
+	    name: 'mymessage',
+	    url: 'mymessage.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+// 我的收藏
+function myfavorite(){
+	api.openWin({
+	    name: 'myfavorite',
+	    url: 'myfavorite.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+//我的评价
+function mycomment(){
+	api.openWin({
+	    name: 'mycomment',
+	    url: 'mycomment.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+// 我的帖子
+function myview(){
+	api.openWin({
+	    name: 'myview',
+	    url: 'myview.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+// 我的账户
+function myaccount(){
+	api.openWin({
+	    name: 'myaccount',
+	    url: 'myaccount.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+function loginIn(){
+
+    api.openWin({
+        name: 'frame32',
+        url: 'frame32.html'
+    });
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>

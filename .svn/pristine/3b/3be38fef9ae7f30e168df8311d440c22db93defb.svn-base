@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>底部导航</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/index.css"/>
+</head>
+<body>
+<div id="wrap" class="flex-wrap flex-vertical">
+    <header id="headerTop">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </header>
+    
+    
+    <div id="main" class="flex-con">
+
+    </div>
+    <div id="footer" class="border-t">
+        <ul class="flex-wrap" >
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" >首页</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >附近</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >回顾</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >我的</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript">
+	var headerHeight, cityArrow, footerHeight;
+	
+    apiready = function () {
+    	getNewTokken();
+
+        funIniGroup();
+        
+        var header = $api.byId("headerTop");
+        var footer = $api.byId("footer");
+
+        headerHeight = $api.offset(header).h;
+        footerHeight = $api.offset(footer).h;
+        cityArrow = $api.dom(".citychange .am-icon-angle-down");
+        
+    }
+    
+    function getNewTokken(){
+    	if($api.getStorage("userid")){
+//  		alert("进入了userid")
+    		if(parseInt( (new Date()).getTime() - $api.getStorage("usertime") ) >= (2*60*60*1000)){
+    		
+//  			alert("进入了time的判断")
+				api.ajax({
+			        url:'http://test.7wanl.com/7wanlsoa/app/ucenter/login.json',
+			        method:'post',
+			        data: {
+				        body:'{"account":"'+$api.getStorage("username")+'","password":"'+$api.getStorage("userpassword")+'"}'
+				    },
+				    timeout:10
+		        },function(ret,err){
+		        	if (ret) {
+		        		 if(ret.code == 0){
+							
+				         	// 保存新的 new date 和 tooken  到localStorage
+				         	$api.setStorage("useraccessToken",ret.obj.accessToken);
+				         	$api.setStorage("usertime",(new Date).getTime());
+				         	
+				         }
+				    } else {
+				         alert(JSON.stringify(err));
+				    }
+		        });
+		        
+    		}else{
+//  			alert("进入了time的判断的else")
+    		}
+    	}
+    }
+
+    function funIniGroup(){
+    	
+        var eHeaderLis = $api.domAll('header li'),
+            frames = [];
+            
+        for (var i = 0,len = eHeaderLis.length; i < len; i++) {
+        	
+        	var url = './html/frame'+i+'.html?'+"uid=" + $api.getStorage("userid") + "&accessToken=" + $api.getStorage("useraccessToken") +"&cityid=289";
+        	
+        	if($api.getStorage('cityid')){
+        		url = './html/frame'+i+'.html?'+"uid=" + $api.getStorage("userid") + "&accessToken=" + $api.getStorage("useraccessToken") +"&cityid="+$api.getStorage('cityid');
+        	}
+        
+        	if(i == 3){
+        		var userid = $api.getStorage("userid");
+        		
+//      		yHeight = yHeight-44;
+        		
+        		if(userid){
+		    		url = 'html/frame3.html'
+		    	}else{
+		    		url = 'html/frame32.html'
+		    	}
+		    	
+        	}
+			frames.push( { 
+                name: 'frame'+i, 
+                url:  url,
+                bgColor : 'rgba(0,0,0,.2)',
+                bounces:true
+            } )
+        }
+        
+        
+        api.openFrameGroup({
+            name: 'group',
+            scrollEnabled: false,
+            rect: {
+                x: 0, 
+                y: 0, 
+                w: api.winWidth, 
+                h: $api.dom('#main').offsetHeight
+            },
+            index: 0,
+            frames: frames
+        }, function (ret, err) {
+
+        });
+    }
+
+    // 随意切换按钮
+    function randomSwitchBtn( tag ) {
+        if( tag == $api.dom('#footer li.active') )return;
+        var eFootLis = $api.domAll('#footer li'),
+            eHeaderLis = $api.domAll('header li'),
+            index = 0;
+        for (var i = 0,len = eFootLis.length; i < len; i++) {
+            if( tag == eFootLis[i] ){
+                index = i;
+            }else{
+                $api.removeCls(eFootLis[i], 'active');
+                $api.removeCls(eHeaderLis[i], 'active');
+            }
+        }
+        $api.addCls( eFootLis[index], 'active');
+        $api.addCls( eHeaderLis[index], 'active');
+        api.setFrameGroupIndex({
+            name: 'group',
+            index: index
+        });
+    }
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	
+	
+	function openMap(){
+		api.openWin({
+	        name: 'bmap',
+	        url: 'html/bmap.html'
+        });
+	}
+	
+	
+	
+	
+	
+	
+</script>

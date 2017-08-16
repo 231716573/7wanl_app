@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.f_123{
+    		background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;
+    	}
+    	.go_back {
+		    width: 12px; height: 22px;background-position: 0px -185px;
+		}
+		#pl_yw_hg {
+    		height: 32px;line-height: 24px;width: 100%;text-align: center;font-size: 16px;color: #000;border-bottom: 1px solid #e3e3e3;margin-bottom: 10px;position: relative;
+		}
+    	.comment_content{
+    		margin-top:5px; font-size:13px;
+    	}
+    	.comment_name{
+    		float:left; margin:0px 10px 3px 0px;
+    	}
+    	.comment_name_img img {
+		    width: 45px;
+		    height: 45px;
+		    border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		}
+		.pj_images img { 
+		    margin-top:10px;
+		    margin-right: 5px !important; 
+		    width: 80px !important;
+		    height:60px !important;
+		    float: left !important;
+		}
+		
+		@media screen and (max-width: 360px) {
+		    .pj_images img { 
+		        width: 70px !important;
+		        height:53px !important;
+		    }
+		}
+		@media screen and (min-width: 410px) {
+		    .pj_images img { 
+		        width: 92px !important;
+		        height:69px !important;
+		    }
+		}
+		.am-figure-zoomable:after{
+			display:none;
+		}
+    </style>
+</head>
+<body>
+<div style="width:100%;height:30px;background-color:#fff;"></div>
+<div class="do_main" style="margin-top:13px;border-top: none;">
+    <div id="pl_yw_hg"><span class="go_back am-fl" onclick="icoback()"></span>全部评论</div>
+    <div class="clearboth" style="clear:both;"></div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		conmentcon();
+	};
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	
+	function conmentcon(){
+		var url = "http://test.7wanl.com/7wanlsoa/app/comment/getList.json?activityId="+GetString("activityId")+"&pageNumber=1&pageSize=30";
+		
+		$api.get(url,function(data){
+			
+			var viewcontent = $api.dom(".clearboth");
+			
+			if(data.code == 0){
+				
+				for(var i=0;i<data.obj.length;i++){
+					
+					var _obj = data.obj[i];
+			
+					$api.before(viewcontent, '<div class="view_comment am-cf"><p class="comment_name" ><span class="comment_name_img"><img src="'+_obj.userAvatar+'"></span></p><p>'+_obj.userName+' &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12 f_123">'+_obj.userLevel+'</em><br><span class="star" style="display:inline-block;"><span class="fstar" style="width: 40%"></span></span></p><p class="comment_content">'+_obj.message+'</p><div class="pj_images img-list"><div data-am-widget="figure" class="am am-figure am-figure-default am-no-layout am-figure-zoomable img-list-div'+i+'" ></div></div></div>');
+							
+					var imglistdiv = $api.dom(".img-list-div"+i);
+					
+					if(_obj.pic != undefined){
+						for(var j=0;j<_obj.pic.length;j++){
+
+							$api.append(imglistdiv,'<img src="'+_obj.pic[j]+'">');
+						}
+					}
+				}
+				
+			}else{
+				$api.before(viewcontent, '<div class="view_comment_none" style="margin: 40px 10px;font-size: 16px;text-align: center;">暂未有评论！你来说一说吧~</div>');
+			}
+			
+			
+		},'json');	
+	}
+</script>
+</html>

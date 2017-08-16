@@ -1,0 +1,44 @@
+.f_123{
+    		background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;
+    	}
+    	.go_back {
+		    width: 12px; height: 22px;background-position: 0px -185px;
+		}
+		#pl_yw_hg {
+    		height: 32px;line-height: 24px;width: 100%;text-align: center;font-size: 16px;color: #000;border-bottom: 1px solid #e3e3e3;margin-bottom: 10px;position: relative;
+		}
+    	.comment_content{
+    		margin-top:5px; font-size:13px;
+    	}
+    	.comment_name{
+    		float:left; margin:0px 10px 3px 0px;
+    	}
+    	.comment_name_img img {
+		    width: 45px;
+		    height: 45px;
+		    border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		}
+		.pj_images img { 
+		    margin-top:10px;
+		    margin-right: 5px !important; 
+		    width: 80px !important;
+		    height:60px !important;
+		    float: left !important;
+		}
+		
+		@media screen and (max-width: 360px) {
+		    .pj_images img { 
+		        width: 70px !important;
+		        height:53px !important;
+		    }
+		}
+		@media screen and (min-width: 410px) {
+		    .pj_images img { 
+		        width: 92px !important;
+		        height:69px !important;
+		    }
+		}
+		.am-figure-zoomable:after{
+			display:none;
+		}

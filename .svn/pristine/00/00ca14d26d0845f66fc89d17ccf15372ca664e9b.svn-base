@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>端API</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/frame1.css"/>
+</head>
+<body>
+
+    <div style="height:100px;width:100%;"></div>
+	
+	<div id="gd_top">
+		<div class="personer2">
+	    	<i id="personer2i" style="font-style:normal;">广州</i> <span class="sliderspan"></span><p onclick="openMap()"></p>
+	    </div>
+	
+		<div class="dingwei">
+			<p>您所在的区域：<em></em></p>
+			<a tapmode onclick="locationAgain()">重新定位</a>
+		</div>
+	</div>
+    <div class="am-list-news am-list-news-default am-no-layout">
+        <div class="am-list-news-bd" style="margin:0px 10px;">
+            <ul class="am-list am-list-fujin">
+            	
+				
+                <div class="clearboth" style="clear:both;"></div>
+           </ul>
+           <div class="am-list-news-ft" id="readmore" >
+                <a href="javascript:;" class="readmore"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>
+           </div>
+        </div>
+    </div>
+</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/comment.js"></script>
+	<script type="text/javascript" src="../script/commenturl.js"></script>
+	<script>
+    var i =2;
+    var oldDate = new Date();
+    var lng = "";
+    var lat = "";
+
+	apiready = function(){
+	
+		
+		
+		//定位
+        var bMap = api.require("bMap");
+        
+        bMap.getLocation({
+		    accuracy: '100m',
+		    autoStop: true,
+		    filter: 1
+		}, function(ret, err){
+			
+//			alert(JSON.stringify(ret))
+			
+		    if(ret.status){
+		    
+				var url = "http://test.7wanl.com/7wanlsoa/app/location/getActivityList.json?cityId="+$api.getStorage('cityid')+"&lng="+ret.lon+"&lat="+ret.lat+"&pageSize=5&pageNumber=1";
+		        
+		        getNameFromCoords(ret.lon,ret.lat);
+    			//加载活动
+				loadActivity(url);
+				
+				lng = ret.lon;
+				lat = ret.lat;
+		        
+		    }else{
+		        alert(err.code);
+		    }
+		});
+		
+    	var readmore = $api.dom(".readmore");
+    	
+	    
+		//加载更多
+//	    $api.addEvt(readmore, 'click', function(){
+//			getlistmore('readmore','http://test.7wanl.com/7wanlsoa/app/location/getActivityList.json?cityId='+$api.getStorage('cityid')+'&lng='+lng+'&lat='+lat+'&pageSize=5&pageNumber=');
+//		});
+		api.addEventListener({
+		    name:'scrolltobottom',
+		    extra:{
+		        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+		    }
+		},function(ret,err){
+		    getlistmore('readmore','http://test.7wanl.com/7wanlsoa/app/location/getActivityList.json?cityId='+$api.getStorage('cityid')+'&lng='+lng+'&lat='+lat+'&pageSize=5&pageNumber=');
+		});
+		
+
+		//下拉刷新
+//		api.setRefreshHeaderInfo({
+//		    visible: true,
+//		    loadingImg: '../image/refreshing_image_01.png',
+//		    bgColor: '#ccc',
+//		    textColor: '#fff',
+//		    textDown: '下拉刷新...',
+//		    textLoadin:'加载中...',
+//		    textUp: '松手刷新...',
+//		    showTime: true
+//		}, function (ret, err) {
+//		    alert('刷新完毕！');
+//		    api.refreshHeaderLoadDone();
+//		});
+		
+//		$api.fixIos7Bar( $api.dom('header') );
+//      api.setStatusBarStyle({
+//          style: 'dark'
+//      });
+//      
+        
+		
+
+    }
+    
+//  百度地图定位
+	function getNameFromCoords(lng,lat){
+		var bMap = api.require("bMap");
+		bMap.getNameFromCoords({
+		    lon : lng,
+			lat : lat
+		},function(ret,err){
+		    if(ret.status){
+//		        alert(JSON.stringify(ret));
+		        
+		        var theAddress = $api.dom(".dingwei p em");
+		        if(ret.streetName){
+		        	$api.html(theAddress, ret.streetName);
+		        }
+		        
+		        //顶部市区
+				var personer2i = $api.byId("personer2i");
+				if(ret.city){
+					$api.html(personer2i, ret.city);
+				}
+		        
+		    }
+		});
+	}
+    
+    //加载活动
+    function loadActivity(url){
+    
+    	var objclass = $api.dom(".readmore")
+
+    	$api.html(objclass,'加载中...');
+    	
+    	$api.get(url,function(data){
+			
+		  	if(data.code == 0){
+    				
+				for(var i=0;i<data.obj.length;i++){
+				
+					var _obj = data.obj[i];
+				
+					var $listmore = $api.dom(".clearboth");
+
+					var newyear = (_obj.applyend).substring(0,4);
+					var newmonth = (_obj.applyend).substring(5,7);
+					var newdate = (_obj.applyend).substring(8,10);
+					var newhours = (_obj.applyend).substring(11,13);
+					var newminute = (_obj.applyend).substring(14,16);
+					
+					var newDate = new Date(newyear,(newmonth-1),newdate,newhours,newminute);
+				
+					var second = (newDate.getTime()-oldDate.getTime())/1000;
+				
+					var day = parseInt(second/86400);
+				
+					second%=86400;
+				
+					var hours = parseInt(second/3600);
+					
+//					$api.before($listmore,'<li onclick="goActivity('+_obj.activityId+')" tapmode class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div class="am-u-sm-4 am-list-thumb"><img class="am-list-fujinimg" src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：'+_obj.age+'</p><p class="pb5">活动时间：'+_obj.startTime+'</p><p><span class="am-fr" style="line-height:23px;line-height:23px;display: inline-block;width: 135px;text-align: right;height: 23px;">'+_obj.distance+'</span><i>'+_obj.price+'</i></p></div></div></li>')
+					$api.before($listmore,'<li onclick="goActivity('+_obj.activityId+')" tapmode class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div class="am-u-sm-4 am-list-thumb" style="position: relative;"><img class="am-list-fujinimg" src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;overflow:hidden;"><div style="width:90%;position:absolute;bottom:0px;height:18px;background:#000;opacity: 0.5;"></div><div style="width:100%;position:absolute;bottom:0px;height:18px;line-height:18px;font-size:10px;color:white;text-indent: 0.5em;">'+_obj.distance+'</div></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：'+_obj.age+'</p><p class="pb5">活动时间：'+_obj.startTime+'</p><p><span class="am-fr" id="aam-fr">还剩下'+day+'天'+hours+'小时</span><i>'+_obj.price+'</i></p></div></div></li>')
+				
+				}	
+				
+				var listmorepic = $api.domAll(".am-list-fujin li img");
+		        
+		        for(var i=0;i<listmorepic.length;i++){
+		        
+		        	$api.css(listmorepic[i],"height:"+parseInt($api.cssVal(listmorepic[i],"width"))*3/4+"px")
+		        }
+    				
+    			$api.html(objclass,'<a href="javascript:;"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>');
+    			
+    		}else{
+    		
+    			$api.html(objclass,'没有更多数据');
+    			
+    		}
+		},'json');
+    }
+    
+
+    
+    //加载更多活动
+    function getlistmore(id,url){
+	
+	    var objclass = $api.dom("."+id);
+	    
+	    $api.html(objclass,'加载中...');
+	    
+	    url = url + i;
+	    i = i +1;
+	    
+	    $api.get(url,function(data){
+	    
+//	    	alert(JSON.stringify(data))
+	        
+	        if(data.code == 0){
+		        for(var i=0;i<data.obj.length;i++){
+		        
+		        	var _obj = data.obj[i];
+					var $listmore = $api.dom(".clearboth");
+					
+					var newyear = (_obj.applyend).substring(0,4);
+					var newmonth = (_obj.applyend).substring(5,7);
+					var newdate = (_obj.applyend).substring(8,10);
+					var newhours = (_obj.applyend).substring(11,13);
+					var newminute = (_obj.applyend).substring(14,16);
+					
+					var newDate = new Date(newyear,(newmonth-1),newdate,newhours,newminute);
+				
+					var second = (newDate.getTime()-oldDate.getTime())/1000;
+				
+					var day = parseInt(second/86400);
+				
+					second%=86400;
+				
+					var hours = parseInt(second/3600);
+					
+//					$api.before($listmore,'<li onclick="goActivity('+_obj.activityId+')" tapmode class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div class="am-u-sm-4 am-list-thumb"><img class="am-list-fujinimg" src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：'+_obj.age+'</p><p class="pb5">活动时间：'+_obj.startTime+'</p><p><span class="am-fr" style="line-height:23px;line-height:23px;display: inline-block;width: 135px;text-align: right;height: 23px;">'+_obj.distance+'</span><i>'+_obj.price+'</i></p></div></div></li>')
+					$api.before($listmore,'<li onclick="goActivity('+_obj.activityId+')" tapmode class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div class="am-u-sm-4 am-list-thumb" style="position: relative;"><img class="am-list-fujinimg" src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;overflow:hidden;"><div style="width:90%;position:absolute;bottom:0px;height:18px;background:#000;opacity: 0.5;"></div><div style="width:100%;position:absolute;bottom:0px;height:18px;line-height:18px;font-size:10px;color:white;text-indent: 0.5em;">'+_obj.distance+'</div></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：'+_obj.age+'</p><p class="pb5">活动时间：'+_obj.startTime+'</p><p><span class="am-fr" id="aam-fr">还剩下'+day+'天'+hours+'小时</span><i>'+_obj.price+'</i></p></div></div></li>')
+				
+		        }
+		        
+		        var listmorepic = $api.domAll(".am-list-fujin li img");
+		        
+		        for(var i=0;i<listmorepic.length;i++){
+//		        	alert("height:"+)
+		        	$api.css(listmorepic[i],"height:"+parseInt($api.cssVal(listmorepic[i],"width"))*3/4+"px")
+		        }
+
+		        $api.html(objclass,'<a href="javascript:;"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>');
+	
+		    }else{
+				$api.html(objclass,'没有更多数据');
+		    }
+	   	},'json');
+	}
+	
+//	重新定位
+	function locationAgain(){
+		window.location.reload()
+	}
+	
+	function openMap(){
+		api.openWin({
+	        name: 'bmap',
+	        url: 'bmap.html'
+        });
+	}
+	
+	
+	
+	
+	</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/actcomment.css"/>
+    
+</head>
+<body>
+<div class="do_main" style="margin-top:13px;border-top: none;">
+    <div id="pl_yw_hg" style="text-align: center;" tapmode onclick="icoback()"><span class="go_back am-fl" ></span>全部评论</div>
+    <div class="clearboth" style="clear:both;"></div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		conmentcon();
+	};
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+
+	
+	
+	function conmentcon(){
+		var url = "http://test.7wanl.com/7wanlsoa/app/comment/getList.json?activityId="+GetString("activityId")+"&pageNumber=1&pageSize=30";
+		
+		$api.get(url,function(data){
+			
+			var viewcontent = $api.dom(".clearboth");
+			
+			if(data.code == 0){
+				
+				for(var i=0;i<data.obj.length;i++){
+					
+					var _obj = data.obj[i];
+			
+					$api.before(viewcontent, '<div class="view_comment am-cf"><p class="comment_name" ><span class="comment_name_img"><img src="'+_obj.userAvatar+'"></span></p><p>'+_obj.userName+' &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12 f_123">'+_obj.userLevel+'</em><br><span class="star" style="display:inline-block;"><span class="fstar" style="width: 40%"></span></span></p><p class="comment_content">'+_obj.message+'</p><div class="pj_images img-list"><div data-am-widget="figure" class="am am-figure am-figure-default am-no-layout am-figure-zoomable img-list-div'+i+'" ></div></div></div>');
+							
+					var imglistdiv = $api.dom(".img-list-div"+i);
+					
+					if(_obj.pic != undefined){
+						for(var j=0;j<_obj.pic.length;j++){
+
+							$api.append(imglistdiv,'<img src="'+_obj.pic[j]+'">');
+						}
+					}
+				}
+				
+			}else{
+				$api.before(viewcontent, '<div class="view_comment_none" style="margin: 40px 10px;font-size: 16px;text-align: center;">暂未有评论！你来说一说吧~</div>');
+			}
+			
+			
+		},'json');	
+	}
+</script>
+</html>

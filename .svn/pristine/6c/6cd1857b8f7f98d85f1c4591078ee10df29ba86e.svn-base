@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    .new_activity {
+	    margin: 10px 10px;
+	}
+	.newAt_div {
+	    padding-bottom: 7px;
+	    border-bottom: 1px solid #e3e3e3;
+	    position: relative;
+	}
+	h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+	    margin: 0;
+	    padding: 0;
+	    border: none;
+	    list-style-type: none;
+	    font-style: normal;
+	    font-weight: normal;
+	}
+	*, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	.newAt_div img {
+	    float: left;
+	    margin-right: 5px;
+	    width: 100px;
+	    height: 70px;
+	    border: none;
+	}
+	.newAt_div_c_p1 {
+	    font-size: 14px;
+	    height: 18px;
+	    line-height: 18px;
+	    color: #000;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+	.newAt_div_c_p2 {
+	    font-size:12px;
+	    height: 38px;
+	    line-height: 17px;
+	    color: #666;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+	.newAt_div_c_p3 {
+	    font-size: 16px;
+	    height: 16px;
+	    line-height: 16px;
+	    color: #f9851d;
+	}
+	.newAt_div_c_p3 .newAt_div_c_paysuc {
+	    float: right;
+	    color: #999;
+	    font-size: 12px;
+	}
+	.newAt_div_c_p3 span {
+	    width: 6px;
+	    height: 8px;
+	    display: inline-block;
+	    background: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/rmb.jpg") no-repeat;
+	    background-size: 100%;
+	}
+	.newAt_div_fr {
+	    width: 100%;
+	    text-align: right;
+	    margin: 8px 0px;
+	}
+	a:link, a:visited, a:hover {
+	    color: #4C4C4C;
+	    text-decoration: none;
+	}
+	button, input:not([type=radio]):not([type=checkbox]), select {
+	    vertical-align: middle;
+	}
+	.newAt_div_fr .newAt_div_fr_del {
+	    color: #666;
+	    background-color: #fff;
+	    border: 1px solid #c4c4c4;
+	}
+	button, html input[type=button], input[type=reset], input[type=submit] {
+	    -webkit-appearance: button;
+	    cursor: pointer;
+	    font-size: 12px;
+	}
+	.newAt_div_fr input {
+	    margin-left: 10px;
+	    padding: 6px 10px;
+	    border-radius: 3px;
+	    -webkit-border-radius: 3px;
+	    min-width: 57px;
+	}
+	input, select {
+	    font-family: "微软雅黑",Arial;
+	}
+	.newAt_div_fr .newAt_div_fr_del {
+	    color: #666;
+	    background-color: #fff;
+	    border: 1px solid #c4c4c4;
+	}
+	.am-list-news-ft {
+	    background: #fff;
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 13px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	.kongxx {
+	    height: 10px;
+	    width: 100%;
+	    background-color: #eee;
+	}
+    </style>
+</head>
+<body>
+<div class="list-content">
+	<div class="more_list">
+	     <div class="am-list-news-ft" id="readmore">
+	        <a href="javascript:void(0);">查看更多</a>
+	    </div>
+	</div>
+
+	
+</div>
+<div class="loading"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/formyact.js"></script>
+<script type="text/javascript">
+	var pageNum = 1;
+	var newDate = new Date();
+	apiready = function(){
+
+		var readmore = $api.dom('#readmore');
+
+        commentlist();
+        
+        api.addEventListener({
+		    name:'scrolltobottom',
+		    extra:{
+		        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+		    }
+		},function(ret,err){
+		    getCommentMore('readmore',pageNum);
+		});
+		
+
+	};
+	
+	
+	function commentlist(){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=applylist',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"page":pageNum
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		if(ret.data.list){
+					for(var i=0;i<ret.data.list.length;i++){
+	
+	        			var _obj = ret.data.list[i];
+	        			
+	        			if(_obj.apply_status == 1){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">待审核</i>';
+	        			}else if(_obj.apply_status == 2){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc" style="color:22d157;">审核通过</i>';
+	        			}else if(_obj.apply_status == 3){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">未付款</i>';
+	        			}else if(_obj.apply_status == 4){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已付款</i>';
+	        			}else if(_obj.apply_status == 5){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已验证</i>';
+	        			}else if(_obj.apply_status == 6){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已评价</i>';
+	        			}else if(_obj.apply_status == 7){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc" style="color:#f95252;">退款中</i>';
+	        			}else if(_obj.apply_status == 8){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已退款</i>';
+	        			}else if(_obj.apply_status == 9){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">审核不通过</i>';
+	        			}else if(_obj.apply_status == 10){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">活动取消</i>';
+	        			}
+	        			
+	        			var newAt_div = '<a style="color:#4c4c4c;" tapmode onclick="cancelSign('+_obj.apply_id+','+_obj.uid+')" class="followmod" ><input type="button" value="取消报名"  class="newAt_div_fr_del"></a>';
+	        			
+	        			var arr = _obj.endtime.split(/[- :]/);
+	        			var arrStart = _obj.starttime.split(/[- :]/);
+						
+	        			var oldDate = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4]);
+	        			var StartDate = new Date(arrStart[0], arrStart[1]-1, arrStart[2], arrStart[3], arrStart[4]);
+	        			
+	        			if(newDate.getTime() < oldDate.getTime() && _obj.apply_status == 3){
+	        				newAt_div = '<a tapmode><input type="button" value="去支付" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a><a tapmode style="color:#4c4c4c;" onclick="cancelSign('+_obj.apply_id+','+_obj.uid+')" class="followmod" ><input type="button" value="取消报名" class="newAt_div_fr_del"></a>';
+	        			}else if(_obj.activity_status == 2 && (_obj.apply_status == 4||_obj.apply_status == 2||_obj.apply_status == 5) && StartDate.getTime() <= newDate.getTime()){
+	        				newAt_div += '<a tapmode onclick="gosubComment('+_obj.activity_id+')" style="color:#4c4c4c;" class="followmod" ><input type="button" value="评价活动" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a>'
+	        			}else if(_obj.refundable == true && _obj.refund_status != 4 && _obj.apply_status == 4 && oldDate.getTime() >newDate.getTime()){
+	        				newAt_div += '<a tapmode style="color:#4c4c4c;" class="followmod" onclick="gosubrefund('+_obj.apply_id+','+_obj.uid+',\''+encodeURI(encodeURI(_obj.title))+'\','+_obj.amount+')" ><input type="button" value="申请退款" class="newAt_div_fr_del"></a>'
+	        			}else if(_obj.refund_status == 4 ){
+	        				newAt_div += '<a tapmode style="color:#4c4c4c;" class="followmod" ><input type="button" value="退款失败" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a>'
+	        			}else if(_obj.refund_status != 4 && _obj.apply_status == 8){
+	        				newAt_div += '<a tapmode style="color:#4c4c4c;" class="followmod" ><input type="button" value="退款详情" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a>'
+	        			}
+
+	        			//创建div
+	        			var pjlistCon = '<div class="new_activity"><div class="newAt_div" tapmode onclick="goMyActView('+_obj.apply_id+','+_obj.uid+')"><img src="http://129.1.28.1/'+_obj.pic+'" alt="'+_obj.title+'"><div class="newAt_div_c"><p class="newAt_div_c_p1">'+_obj.title+'</p><p class="newAt_div_c_p2">适合年龄：19岁<br>活动时间:'+_obj.dateline+'</p><p class="newAt_div_c_p3">'+newAt_div_c_paysuc+'<span></span> '+_obj.amount+'</p></div></div><div class="newAt_div_fr" style="height:30px;">'+newAt_div+'</div></div><p class="kongxx"></p>'
+	        			
+						//设置.pjlist_contain_img img 的高度
+						var pjlist_contain_imgImg = $api.dom(".newAt_div img");
+						
+						$api.css(pjlist_contain_imgImg,"height:"+parseFloat(pjlist_contain_imgImg,"width")*3/4+"px")
+						
+	        			$api.before(readmore, pjlistCon);
+        			}
+        			pageNum += 1;
+				}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+	}
+	//查看更多
+	function getCommentMore(id){
+	
+		var objclass = $api.dom("#"+id);
+		
+		$api.html(objclass,'<a href="javascript:void(0);">加载中...</a>');
+		
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=applylist',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"page":pageNum
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(pageNum+"，"+JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		if(ret.data.list){
+					for(var i=0;i<ret.data.list.length;i++){
+	
+	        			var _obj = ret.data.list[i];
+	        			
+	        			if(_obj.apply_status == 1){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">待审核</i>';
+	        			}else if(_obj.apply_status == 2){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc" style="color:22d157;">审核通过</i>';
+	        			}else if(_obj.apply_status == 3){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">未付款</i>';
+	        			}else if(_obj.apply_status == 4){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已付款</i>';
+	        			}else if(_obj.apply_status == 5){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已验证</i>';
+	        			}else if(_obj.apply_status == 6){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已评价</i>';
+	        			}else if(_obj.apply_status == 7){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc" style="color:#f95252;">退款中</i>';
+	        			}else if(_obj.apply_status == 8){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">已退款</i>';
+	        			}else if(_obj.apply_status == 9){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">审核不通过</i>';
+	        			}else if(_obj.apply_status == 10){
+	        				var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">活动取消</i>';
+	        			}
+	        			
+	        			var newAt_div = '<a style="color:#4c4c4c;" tapmode onclick="cancelSign('+_obj.apply_id+','+_obj.uid+')" class="followmod" ><input type="button" value="取消报名" class="newAt_div_fr_del"></a>';
+	        			
+	        			var arr = _obj.endtime.split(/[- :]/);
+	        			var arrStart = _obj.starttime.split(/[- :]/);
+						
+	        			var oldDate = new Date(arr[0], arr[1]-1, arr[2], arr[3], arr[4]);
+	        			var StartDate = new Date(arrStart[0], arrStart[1]-1, arrStart[2], arrStart[3], arrStart[4]);
+	        			
+	        			if(newDate.getTime() < oldDate.getTime() && _obj.apply_status == 3){
+	        				newAt_div = '<a tapmode><input type="button" value="去支付" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a><a tapmode style="color:#4c4c4c;" onclick="cancelSign('+_obj.apply_id+','+_obj.uid+')" class="followmod" ><input type="button" value="取消报名" class="newAt_div_fr_del"></a>';
+	        			}else if(_obj.activity_status == 2 && (_obj.apply_status == 4||_obj.apply_status == 2||_obj.apply_status == 5) && StartDate.getTime() <= newDate.getTime()){
+	        				newAt_div += '<a tapmode onclick="gosubComment('+_obj.activity_id+')" style="color:#4c4c4c;" class="followmod" ><input type="button" value="评价活动" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a>'
+	        			}else if(_obj.refundable == true && _obj.refund_status != 4 && _obj.apply_status == 4 && oldDate.getTime() >newDate.getTime()){
+	        				newAt_div += '<a tapmode style="color:#4c4c4c;" class="followmod" onclick="gosubrefund('+_obj.apply_id+','+_obj.uid+',\''+encodeURI(_obj.title)+'\','+_obj.amount+')" ><input type="button" value="申请退款" class="newAt_div_fr_del"></a>'
+	        			}else if(_obj.refund_status == 4 ){
+	        				newAt_div += '<a tapmode style="color:#4c4c4c;" class="followmod" ><input type="button" value="退款失败" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a>'
+	        			}else if(_obj.refund_status != 4 && _obj.apply_status == 8){
+	        				newAt_div += '<a tapmode style="color:#4c4c4c;" class="followmod" ><input type="button" value="退款详情" style="border-color:#14a6a3;color:#14a6a3;" class="newAt_div_fr_del"></a>'
+	        			}
+	        			
+	        			//创建div
+	        			var pjlistCon = '<div class="new_activity"><div class="newAt_div" tapmode onclick="goMyActView('+_obj.apply_id+','+_obj.uid+')"><img src="http://129.1.28.1/'+_obj.pic+'" alt="'+_obj.title+'"><div class="newAt_div_c"><p class="newAt_div_c_p1">'+_obj.title+'</p><p class="newAt_div_c_p2">适合年龄：<br>活动时间:'+_obj.dateline+'</p><p class="newAt_div_c_p3">'+newAt_div_c_paysuc+'<span></span> '+_obj.amount+'</p></div></div><div class="newAt_div_fr" style="height:30px;">'+newAt_div+'</div></div><p class="kongxx"></p>'
+	        			
+						//设置.newAt_div img 的高度
+						var pjlist_contain_imgImg = $api.dom(".newAt_div img");
+						
+						$api.css(pjlist_contain_imgImg,"height:"+parseFloat(pjlist_contain_imgImg,"width")*3/4+"px")
+	
+	        			$api.before(readmore, pjlistCon);
+	        			$api.html(objclass,'<a href="javascript:void(0);">查看更多</a>');
+	        		}
+	        		
+	        		pageNum += 1;
+        		}
+
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.html(objclass,'<a href="javascript:void(0);">没有更多数据...</a>');
+        	
+//      	alert("pageNum:"+pageNum)
+        });
+    }
+
+    
+    function gosubComment(activityId){
+
+    	api.openFrame({
+		    name: 'subcomment',
+		    url: 'subcomment.html?activityId='+activityId,
+		    rect: {
+		        x: 0,
+		        y: 0,
+		        w: "auto",
+		        h: 'auto'
+		    },
+		    bounces: false,
+		    bgColor: 'rgba(0,0,0,0)',
+		    vScrollBarEnabled: false,
+		    hScrollBarEnabled: false
+		});
+		
+    }
+    
+    function gosubrefund(apply_id,uid,actname,price){
+
+    	api.openFrame({
+		    name: 'subrefund',
+		    url: 'subrefund.html?uid='+uid+'&applyId='+apply_id+'&actname='+actname+'&price='+price,
+		    rect: {
+		        x: 0,
+		        y: 0,
+		        w: "auto",
+		        h: 'auto'
+		    },
+		    bounces: false,
+		    bgColor: 'rgba(0,0,0,0)',
+		    vScrollBarEnabled: false,
+		    hScrollBarEnabled: false
+		});
+		
+    }
+</script>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/searchact.css"/>
+	<style>
+    	.loading { display:none; }
+    </style>
+</head>
+<body>
+<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+	
+<div class="search-parent">
+	<div class="am-modal-active" id="my-seach">
+		<div class="my-seach-do" id="showSearch"><span id="startSearch">搜索</span> &nbsp;&nbsp;<span  onclick="closeWin()">取消</span></div>
+		<div class="my-seach-div"><input type="text" id="my-seach-value" class="my-seach-div-input" placeholder="请输入活动/帖子/课程" /></div>
+	</div>
+	<div class="am-modal-div-activity">
+		<ul class="am-modal-activity" id="ammodalactivity" style="margin-top:20px;">
+			<li name='diy'>美食DIY</li><li name='科普'>科普博览</li><li name='体验'>职业体验</li><li name='美术'>美术手工</li><li name='脑'>脑力开发</li><li name='亲子'>亲子游</li>
+		</ul>
+		<ul class="am-list" id="am-list">
+			<!--<li class="am-g am-list-item-thumb-left" onclick="">
+                <div class="am-list-thumb"><img src="http://www.7wanl.com/data/attachment/portal/201604/06/170732rqcmgipgkzklcfrb.jpg" style="height: 66px;"></div>
+                <div class="am-list-main">
+                    <h3 class="am-list-item-hd">1传扬中华瑰宝，当个小小书法家000</h3>
+            		<div class="am-list-item-text">
+	                	<p class="am-list-item-textp1">适用年龄：<em>4~15岁</em></p>
+	                	<p class="pb5">活动时间：<em>2016-4-17 15:00</em></p>
+	                	<p class="am-list-item-textp3"><span class="am-fr">已报名6/8总名额</span><i> 5.00</i></p>
+	            	</div>
+                </div>
+            </li>-->
+		</ul>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+	
+		$api.fixIos7Bar( $api.dom('.search-parent') );
+		api.setStatusBarStyle({
+            style: 'dark',
+            color: '#fff'
+        });
+		
+		var startSearch = $api.byId("startSearch"),
+			endSearch = $api.byId("endSearch"),
+			showSearch = $api.byId("showSearch"),
+			ammodalactivity = $api.byId("ammodalactivity");
+		
+//		搜索按钮
+		$api.addEvt(startSearch, "click", function(){
+		
+			removeAllChild();
+			
+			getTitleActivity(document.getElementById("my-seach-value").value);
+
+			ammodalactivity.style.display = "none";
+			
+		});
+
+//		input框内容变化
+		var sv = document.getElementById("my-seach-value")
+        sv.onkeyup=function(){
+           var s=sv.value.length;
+           if(s == 0){
+           		removeAllChild();
+           		
+                ammodalactivity.style.display = "block";
+
+           }
+        }
+        
+        ammodalactivityLi();
+
+	};
+	
+//	ammodalactivity下的li的点击
+	function ammodalactivityLi(){
+		var ammodalactivityLi = ammodalactivity.getElementsByTagName("li")
+		
+        for(var i=0;i<ammodalactivityLi.length;i++){
+        	ammodalactivityLi[i].index=i;
+        	ammodalactivityLi[i].onclick=function (){
+
+        		removeAllChild();
+//      		alert("name:"+ammodalactivityLi[this.index].getAttribute("name"));
+        		getTitleActivity(ammodalactivityLi[this.index].getAttribute("name"));
+
+        	}
+        	
+        }
+	}
+	
+//	删除所有子节点
+	function removeAllChild(){
+	    var amlist = document.getElementById("am-list");
+	    while(amlist.hasChildNodes()) {
+	        amlist.removeChild(amlist.firstChild);
+	    }
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+//	关掉页面
+	function closeWin(){
+		api.closeFrame();
+	}
+	
+
+//	加载内容
+	function getTitleActivity(myseachvalue){
+		
+		$api.css($api.dom('.loading'),"display:block");
+		
+		if(GetString("cityid")){
+			var person = '{"cityId":"'+GetString("cityid")+'","title":"'+myseachvalue+'"}';
+			var url = "http://test.7wanl.com/7wanlsoa/app/activity/getListByTitle.json?cityId="+GetString("cityid")+"&title="+myseachvalue+"&pageNumber=1&pageSize=20"
+		}else{
+			var person = '{"cityId":"289","title":"'+myseachvalue+'"}';
+			var url = "http://test.7wanl.com/7wanlsoa/app/activity/getListByTitle.json?cityId=289&title="+myseachvalue+"&pageNumber=1&pageSize=20"
+		}
+		
+		api.ajax({
+	        url:url,
+	        method:"post",
+	        data: {
+		        body:person
+		    },
+	        timeout: 10,
+	        cache: true
+        },function(ret,err){
+        	if(ret){
+        		if(ret.code == 0){
+        			
+        			var amlist = $api.dom('.am-list');
+        			
+        			for(var i=0;i<ret.obj.length;i++){
+        				var _obj = ret.obj[i];
+        				
+        				var amlistLi = '<li class="am-g am-list-item-thumb-left" onclick="goActivity('+_obj.activityId+')"><div class="am-list-thumb"><img src="'+_obj.pic+'" style="height: 66px;"></div><div class="am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p class="am-list-item-textp1">适用年龄：'+_obj.age+'</p><p>活动时间：'+_obj.startTime+'</p><p class="pb5">报名截止：'+_obj.applyend+'</p><p class="am-list-item-textp3"><i>'+_obj.price+'</i></p></div></div></li>';
+        			
+        				$api.append(amlist, amlistLi);
+        			}
+        		}else{
+        			alert(ret.msg)
+        		}
+        	}else{
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        	
+        });
+	}
+	
+	
+	//进入每个活动的详情页
+	function goActivity(activityId){
+		api.openWin({
+	        name: 'activity',
+	        url: 'activity.html?activityId='+activityId,
+	        
+        });
+	}
+	
+	
+	
+	
+</script>
+</html>

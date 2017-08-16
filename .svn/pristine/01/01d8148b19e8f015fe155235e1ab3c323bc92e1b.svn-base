@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+
+    ul{
+    	width:100px;
+    	display:inline-block;
+
+    }
+    ul li{
+    	display:inline-block;
+    	width:100px;
+    	padding:10px;
+    	background: #ececec;
+    }
+    p{
+    	width:100%;
+    	background-color:black;
+    	opacity: 0.5;
+    	height:100%;
+    	position:fixed;
+    	z-index: 10;
+    }
+    </style>
+</head>
+<body>
+<ul>
+	<li>美食DIY</li>
+	<li>科普知识</li>
+	<li>职业体验</li>
+	<li>美术手工</li>
+	<li>亲子游</li>
+</ul>
+<p></p>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+	};
+</script>
+</html>

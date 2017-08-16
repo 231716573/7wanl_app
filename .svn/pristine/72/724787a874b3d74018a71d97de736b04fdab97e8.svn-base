@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/static/7wanl/css/cart.css"/>
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/style.css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #fff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:4px !important;
+		    left:32px !important;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		.user-info p{
+			padding-top: 8px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 44px;margin-left:-25px;
+		}
+		#zhmx_mx_ul i { 
+			font-style:normal;
+		}
+		.b2{
+			border-color:#17a7a4;
+		}
+		.favnav .colori{
+			color:#4C4C4C;
+		}
+		.favnav a {
+			color:#17a7a4;
+			border-bottom: 1px solid #ddd;
+		}
+		.favnav li,.am-u-sm-4 {
+			width:20% !important;
+			font-size: 14px;
+			font-weight: 400;
+		}
+    </style>
+</head>
+<body>
+<div style="width:100%;height:10px;background-color:#fff;"></div>
+<header id="header" class="header" data-am-sticky="" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="margin-left:13px;">我的活动</div>
+</header>
+<div class="am-g favnav" style="height:45px;line-height:45px;">
+    <a class="am-u-sm-4 am-text-center am-text-default colori menu" tapmode onclick="fnNavChange(0)">全部</a>
+    <a class="am-u-sm-4 am-text-center am-text-default menu" tapmode onclick="fnNavChange(1)">未审核</a>
+    <a class="am-u-sm-4 am-text-center am-text-default menu" tapmode onclick="fnNavChange(2)">未付款</a>
+    <a class="am-u-sm-4 am-text-center am-text-default menu" tapmode onclick="fnNavChange(3)">未评价</a>
+    <a class="am-u-sm-4 am-text-center am-text-default menu" tapmode onclick="fnNavChange(4)">已退款</a>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		fnInit();
+		fnOpenList();
+	};
+	
+	var navHeight, headerHeight,navs;
+	
+	function fnInit(){
+		var nav = $api.dom('.favnav'),
+			header = $api.byId('header');
+			
+//		$api.fixStatusBar(header);
+		
+		headerHeight = $api.offset(header).h;
+		navHeight = $api.offset(nav).h;
+		
+		navs = $api.domAll(nav, '.menu');
+		
+	}
+		
+	function fnOpenList(){
+		var frames = [];
+		
+		for(var i=0;i<navs.length;i++){
+			frames.push({
+				name:'myact'+i,
+				url:'myact'+i+'.html',
+				bgColor: 'rgba(0,0,0,.2)'
+			});
+		}
+		api.openFrameGroup({
+	        name: 'myactivity',
+	        scrollEnabled: true,
+	        rect: {
+	        	x: 0,
+	        	y: headerHeight + navHeight + 10,
+	        	w: api.winWidth,
+	        	h: 'auto'
+	        },
+	        index: 0,
+	        frames: frames
+        },function(ret,err){
+        	
+        	for(var i=0;i<navs.length;i++){
+
+	        	if(i == ret.index){
+	        		$api.removeCls(navs[i], 'colori');
+	        		$api.append(navs[i], '<i class="b2 b2'+i+'">');
+	        	}else{
+	        		$api.addCls(navs[i], 'colori');
+	        		$api.remove($api.dom('.b2'+i));
+
+	        	}
+        	}
+        });
+	};
+	
+	function fnNavChange(index){
+		
+		api.setFrameGroupIndex({
+	        name: 'myactivity',
+	        index:index,
+	        scroll:true
+        });
+	}
+	
+	
+	function leftClose(){
+    	api.closeWin();
+    }
+
+</script>
+</html>

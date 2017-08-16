@@ -1,0 +1,1 @@
+var commenturl = "http://www.7wanl.com/";

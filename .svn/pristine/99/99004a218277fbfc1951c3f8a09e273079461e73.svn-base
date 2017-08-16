@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+	<style>
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #ffffff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:2px;
+		    left:31px;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 42px;margin-left:-25px;
+		}
+		#namePhone {height:118px !important;}
+		#cymm div i {
+			margin-top:8px;
+		}
+    </style>
+</head>
+<body>
+<div style="width:100%;height:10px;background-color:#fff;"></div>
+
+<header id="header" class="header" data-am-sticky="">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent">个人资料</div>
+</header>
+<div style="width: 100%; height: 24px; border-top:1px solid #c3c3c3; background-color: #f6f6f6;overflow: hidden;"></div>
+<div id="namePhone">
+	<div class="namePhone_div">
+		<div><img id="namePhone_div_img" src="" zsrc="" style="display: inline; visibility: visible;"></div>
+		<div class="namePhone_div_div2" style="line-height:23px;"><p id="namePhone_div_div2_em1"></p><p id="namePhone_div_div2_em2">fddfdsfdsfdsfds</p></div>
+	</div>
+	<div class="namePhone_2">
+		<span></span> <i class="namePhone_2_i" id="namePhone_2_i" style="font-style: normal;"></i>
+	</div>
+</div>
+<p class="kongxi"></p>
+<div id="cymm">
+	<div class="dlmm" style="border-bottom:1px solid #e5e5e5;"><span id="dlmmspan" style="float: right;margin-right:0px;margin-top:2px;"></span><em>身份证</em></div>
+	<div class="dlmm" onclick="setPassword()"><i></i><em>登陆密码</em></div>
+</div>
+<div style"color:#fff;" class="out_this_msg"><a style"color:#fff;" class="dialog" onclick="exitsto()">退出当前账号</a></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+
+		getPersonMsg();
+	};
+	
+	function getPersonMsg(){
+		$api.get('http://test.7wanl.com/7wanlsoa/app/member/getMemberProfile.json?uid='+$api.getStorage("userid")+'&accessToken='+$api.getStorage("useraccessToken"),
+		function(ret){
+			var namePhonedivimg = document.getElementById("namePhone_div_img"),
+				namePhonedivdiv2em1 = document.getElementById("namePhone_div_div2_em1"),
+				namePhonedivdiv2em2 = document.getElementById("namePhone_div_div2_em2"),
+				namePhone2i = document.getElementById("namePhone_2_i"),
+				dlmmspan = document.getElementById("dlmmspan");
+			
+				namePhonedivimg.src=ret.obj.userAvatar;
+				namePhonedivdiv2em1.innerHTML = ret.obj.userName;
+				namePhonedivdiv2em2.innerHTML = ret.obj.role + ret.obj.moble;
+				namePhone2i.innerHTML = " 居住区域：" + ret.obj.province + ret.obj.city + ret.obj.dist;		
+				dlmmspan.innerHTML = ret.obj.idcard;
+				
+		},'json');
+	}
+	
+	function setPassword(){
+		api.openWin({
+	        name: 'setpassword',
+	        url: 'setpassword.html'
+        });
+	}
+	
+	function leftClose(){
+    	api.closeWin();
+    }
+	
+	function exitsto(){
+		$api.rmStorage("userid");
+		
+		api.openWin({
+	        name: 'frame32',
+	        url: 'frame32.html',
+	        bounces:false
+        });
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

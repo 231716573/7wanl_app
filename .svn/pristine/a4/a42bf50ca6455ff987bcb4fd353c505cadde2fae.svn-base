@@ -1,0 +1,221 @@
+.am-list-news-default {
+	    margin: 0;
+	    background: #fff;
+	}
+	.am-slider-default, .am-list {
+	    margin: 0;
+	    padding-left: 0;
+	}
+	.am-list-news-default .am-list .am-list-item-desced {
+	    border-bottom: 1px solid #e5e5e5;
+	}
+	.am-list-news-default .am-list .am-list-item-desced {
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	}
+	.am-list-news-default .am-list>li {
+	    border: 0;
+	    margin-bottom: 0;
+	}
+	.am-list-news-default .am-g {
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	.am-list>li {
+	    position: relative;
+	    display: block;
+	    background-color: #fff;
+	}
+	.am-list-item-thumbed {
+	    padding-top: 1em;
+	}
+	.am-g:before, .am-g:after {
+	    content: " ";
+	    display: table;
+	}
+	.am-g {
+	    margin: 0 auto;
+	    width: 100%;
+	}
+	.am-list-news-default .am-list .am-list-item-thumb-left .am-list-thumb {
+	    padding-left: 0;
+	}
+	.am-list-news-default .am-list-item-thumb-left .am-list-thumb {
+	    max-height: inherit;
+	}
+
+	.am-list-news-default .am-list .am-list-thumb img {
+	    width: 100%;
+	    display: block;
+	}
+	input, textarea, img {
+	    vertical-align: middle;
+	    font-family: Arial, "Microsoft Yahei";
+	}
+	img {
+	    box-sizing: border-box;
+	    max-width: 100%;
+	    border: 0;
+	}
+	.am-list-news-default .am-list .am-list-item-desced .am-list-main {
+	    padding: 0;
+	}
+	[class*=am-u-]+[class*=am-u-]:last-child {
+	    float: right;
+	}
+	.am-u-sm-8 {
+	    margin-top: -3px;
+	}
+	@media only screen
+	.am-u-sm-8 {
+	    width: 66.66666667%;
+	}
+	.am-list-news-default .am-list-item-hd {
+	    height: 20px;
+	    line-height: 25px;
+	    overflow: hidden;
+	    display: block;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    font-size: 16px;
+	    color: #333;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	}
+	.am-list-news-default .am-list-item-hd {
+	    font-weight: 400;
+	}
+	.am-list-news .am-list-item-hd {
+	    margin: 0;
+	}
+	.am-list-news-default .am-list .am-list-item-desced .am-list-item-text {
+	    margin-top: .5rem;
+	    color: #757575;
+	}
+	.am-list-news-default .am-list .am-list-item-text {
+	    max-height: inherit;
+	}
+	.am-list-news-default .am-list .am-list-item-text {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    line-height: 1.3em;
+	    -webkit-line-clamp: 2;
+	}
+	.am-list-item-text {
+	    font-size: 1.3rem;
+	    margin: 0;
+	}
+	.am-list-item-text p {
+	    margin: 0;
+	    font-size: 12px;
+	    line-height: 18px;
+	    color: #999;
+	}
+	.pb5 {
+	    padding-bottom: 5px;
+	}
+	.am-fr {
+	    color: #bbb;
+	    line-height: 38px;
+	    height: 23px;
+	}
+	.am-fr {
+	    float: right;
+	}
+	.am-list-item-text p i {
+	    font-size: 16px;
+	    color: #ff9233;
+	}
+	em, cite, i {
+	    font-style: normal;
+	}
+	.am-list-news-ft {
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 15px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	[class*=am-icon-] {
+	    display: inline-block;
+	}
+	.am-icon-angle-double-down:before {
+	    content: "\f103";
+	}
+	.dingwei{
+		margin:0px 10px;
+		background:#fff;
+		height:50px;
+		color:#000;
+		line-height: 50px;
+		position:relative;
+	}
+	.dingwei p {
+		padding-left:22px;
+		background:url(../image/icon_address_blue@2x.png) 0 center no-repeat;
+		background-size:20px 20px;
+		font-size:15px;
+	}
+	.dingwei a {
+		position:absolute;
+		display:inline-block;
+		right:0px;
+		top:8px;
+		text-align:center;
+		border-radius:5px;
+		height:35px;
+		line-height:35px;
+		padding:0px 7px;
+		background:#ff9233;
+		color:#fff;
+		font-size:16px;
+	}
+	.personer2 {
+		position: relative;
+	    height: 50px;
+	    line-height: 65px;
+	    background-color: #fff;
+	    overflow: hidden;
+	    color:#14a6a3;
+	    border-bottom:1px solid #e0e0e0;
+	    width:100%;text-align:center;
+	}
+	.personer2 p {
+		position:absolute;
+		width:22.5px;
+		height:21px;
+		right:10px;
+		top:5px;
+		background:url(../image/dinwei.jpg) center center no-repeat;
+		background-size:100% 100%;
+	}
+	.sliderspan {
+	    height: 0;
+	    zoom: 1;
+	    display: inline-block;
+	    width: 0;
+	    margin-bottom: -10px;
+	    padding-top: 7px;
+	    border-style: dashed dashed solid dashed;
+	    border-width: 6px;
+	    border-color: #14a6a3 transparent transparent transparent;
+	}
+	
+	#gd_top{
+    	position:fixed;
+    	top:0px;
+    	width:100%;
+    	z-index:9999;
+    }
+    #aam-fr{
+    	line-height:23px;line-height:23px;display: inline-block;width: 135px;text-align: right;height: 23px;
+    }
+
+
+

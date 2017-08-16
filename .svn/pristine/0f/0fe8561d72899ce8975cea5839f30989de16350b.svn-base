@@ -1,0 +1,142 @@
+html,body {
+	        height: 100%;
+	        min-height:100%;
+	        background-color: transparent;
+	    }
+	    .search-parent{
+	    	width:100%;
+	    	height:100%;
+	    	background-color:#f3f3f3;
+	    }
+	    .am-modal-active {
+	    	height:44px;
+	    	line-height:44px;
+	    	background:#fff;
+	    	width:100%;
+	    	padding-left:10px;
+	    	box-sizing:border-box;
+	    	position:relative;
+	    	border-bottom:1px solid #c3c3c3;
+	    }
+		.my-seach-do,.my-seach-close{
+			float:right;
+			font-size:14px;
+			width:90px;
+			text-align:center;
+			height:40px;
+			line-height:45px;
+			background-color:#fff;
+			color:#15a6a3;
+			
+		}
+		.my-seach-div{
+			display:block;
+			margin-right:90px;
+			
+		}
+		.my-seach-div-input{
+			width:100%;
+			padding-left:30px;
+			box-sizing:border-box;
+			height:30px;
+			line-height:30px;
+			font-size: 13px;
+			background:#ebebeb url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png") -138px -50px no-repeat;
+		    background-size: 163px auto;
+		}
+		.am-modal-div-activity{
+			margin:00px 10px;
+		}
+		.am-modal-activity{
+			width:100%;
+			margin:0px auto;
+			border:1px solid #e4eae8;
+			-webkit-box-sizing: border-box;
+    		box-sizing: border-box;
+		}
+		.am-modal-activity li {
+			width:33.33%;
+			display:inline-block;
+			box-sizing:border-box;
+			text-align:center;
+			height:40px;
+			line-height:40px;
+			margin:0px;
+			color:#676767;
+			font-size:13px;
+			background-color:#fff;
+			border-right:1px dotted #e4eae8;
+			border-bottom:1px dotted #e4eae8;
+		}
+		.am-modal-activity li:nth-child(3n){
+			border-right:none
+		}
+		.am-modal-activity li:nth-child(3)~li {
+			border-bottom:none
+		}
+		.am-list-item-thumb-left{
+			border-bottom: 1px solid #e5e5e5;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+		}
+		.am-list-thumb{
+			padding-right: 1rem;
+   	 		float: left;
+   	 		width: 33.33333333%;
+		}
+		.am-list-thumb img{
+		    width: 100%;
+    		display: block;
+		}
+		.am-list-main{margin-top: -3px;}
+		.am-list-item-hd{    
+			height: 20px;
+		    line-height: 25px;
+		    overflow: hidden;
+		    display: block;
+		    -webkit-line-clamp: 1;
+		    -webkit-box-orient: vertical;
+		    font-size: 14px;
+		    color: #333;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		}
+		.am-list-item-text{
+			margin-top:.5rem;
+	    	color: #757575;
+	    	overflow: hidden;
+		    text-overflow: ellipsis;
+		    display: -webkit-box;
+		    -webkit-box-orient: vertical;
+		    line-height: 1.3em;
+		    -webkit-line-clamp: 2;
+		    font-size: 1.3rem;
+    	}
+    	.am-list-item-text p {
+		    margin: 0;
+		    font-size: 12px;
+		    line-height: 18px;
+		    color: #999;
+		}
+		.pb5 {
+		    padding-bottom: 5px;
+		}
+		.am-list-item-text p i {
+		    font-size: 18px;
+		    color: #FF5500;
+		}
+		i{
+			font-style:normal;
+		}
+		.am-g:after{
+			clear:both;
+		}
+		.am-list-item-text .am-fr{
+			line-height: 23px;
+		    display: inline-block;
+		    width: 135px;
+		    text-align: right;
+		    height: 23px;
+		    color: #bbb;
+		    float: right;
+		}

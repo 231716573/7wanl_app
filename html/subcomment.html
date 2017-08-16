@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/subcomment.css"/>
+    
+</head>
+<body>
+<div id="forHeader">
+	<header>
+		<div class="left" onclick="closeWin()"><a></a></div>
+		全部评价
+	</header>
+</div>
+
+<div class="do_main">
+<!--	<div class="view_comment am-cf">
+	    <p class="comment_name" style="float:left; margin:0px 10px 3px 0px;">
+	       <span class="comment_name_img"><img src="http://129.1.28.1/7wanl/uc_server/avatar.php?uid=21794&amp;size=middle"></span> 
+	    </p>
+		<p> 榴莲一号 &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12" style="background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;">LV9</em>
+			<br /><span class="star" style="display:inline-block;"><span class="fstar" style="width: 40%"></span></span>
+	    </p>
+	    <p class="comment_content" style="margin-top:5px; font-size:13px;">我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我</p>
+		<div class="pj_images img-list">
+	        <div class="am am-figure am-figure-default am-no-layout am-figure-zoomable" >
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	        </div>
+	    </div>
+	</div>-->
+	<div class="pushComment"></div>
+</div>
+<div class="view_comment_none" style="display:none;">暂未有评论！你来说一说吧~</div>
+<div style="margin:10px 10px 50px 10px;"><span class="am-btn am-btn-warning am-radius am-btn-block">我要评论</span></div>
+<div class="loading"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	var pageNum = 1;
+	apiready = function(){
+		getComment();
+	};
+	
+	function getComment(){
+		api.ajax({
+	        url:commenturl +'dataapi.php?mod=comment&action=activitycomment',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"activity_id":GetString("activityId"),
+		        	"page":1
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			//alert(GetString("activityId")+JSON.stringify(ret))
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		if(ret.data.count != 0){
+        			var pushComment = $api.dom(".pushComment");
+        			
+        			for(var i=0;i<ret.data.list.length;i++){
+        				var _obj = ret.data.list[i];
+        				
+        				var pj_imagesImg = "";
+        				
+        				if(_obj.pic){
+	        				for(var j=0;j<_obj.pic.length;j++){
+	        					pj_imagesImg += '<img src="http://129.1.28.1/'+_obj.pic[j]+'" />';
+	        				}
+        				}
+        				
+        				var commentDiv = '<div class="view_comment am-cf"><p class="comment_name" style="float:left; margin:0px 10px 3px 0px;"><span class="comment_name_img"><img src="http://129.1.28.1/'+_obj.pic+'"></span> </p><p> '+_obj.username+' &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12" style="background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;">LV'+_obj.memberinfo.level+'</em><br /><span class="star" style="display:inline-block;"><span class="fstar" style="width: '+_obj.star+'%"></span></span></p><p class="comment_content" style="margin-top:5px; font-size:13px;">'+_obj.message+'</p><div class="pj_images img-list"><div class="am am-figure am-figure-default am-no-layout am-figure-zoomable" >'+pj_imagesImg+'</div></div></div>'
+        				
+        				var listmorepic = $api.domAll(".pj_images img");
+		        
+				        for(var m=0;m<listmorepic.length;m++){
+				        
+				        	$api.css(listmorepic[m],"height:"+parseFloat($api.cssVal(listmorepic[m],"width"))*3/4+"px")
+				        	
+				        }
+        				
+        				$api.before(pushComment, commentDiv);
+        			}
+        		}else{
+        			$api.css($api.dom(".view_comment_none"),"display:block;");
+        		}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+	}
+	
+	function closeWin(){
+		api.closeWin();
+	} 
+</script>
+</html>

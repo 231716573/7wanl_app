@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	html,body {
+	        height: 100%;
+	        min-height: 100%;
+	        background-color: transparent;
+	    }
+	    .title {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 96px;
+        }
+        
+        .title-text {
+            position: relative;
+            box-sizing: border-box;
+            width: auto;
+            height: 96px;
+            margin: 0 32px;
+            padding-top: 64px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #0d9a97;
+            color: #000;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .city-list {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+        }
+        
+        .city {
+            position: relative;
+            width: 100%;
+            height: 55px;
+            line-height: 55px;
+            text-align: center;
+            font-size: 22px;
+            color: #000;
+        }
+        
+        .highlight {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+	<section class="title">
+        <div class="title-text">请选择地区</div>
+    </section>
+    <section id="list" class="city-list">
+    	<!--<div class="city" onclick="fnOnCityClick(289)" tapmode="highlight">广州</div>-->
+    </section>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+	apiready = function () {
+		getCity();
+	}
+	
+	function getCity(){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/city/getList.json",
+		function (ret){
+			var list = $api.byId("list");
+			
+			for(var i=0;i<ret.obj.length;i++){
+				var _obj = ret.obj[i];
+				
+				$api.append(list, '<div class="city" onclick="fnOnCityClick(\'' + _obj.id + '\', \'' + _obj.name + '\')" tapmode="highlight">'+_obj.name+'</div>');
+			}
+		}
+		,'json');
+	}
+	
+	function fnOnCityClick(cityid,cityname){
+		
+		$api.setStorage('cityid',cityid);
+		$api.setStorage('cityname',cityname);
+		
+        api.execScript({
+            
+            script:'selectCity('+cityid+',\''+cityname+'\');'
+        });
+    };
+	
+	
+	
+	
+	
+	
+</script>
+</html>

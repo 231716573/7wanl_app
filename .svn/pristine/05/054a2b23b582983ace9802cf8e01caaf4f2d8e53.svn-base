@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/myactivityview.css"/>
+    
+</head>
+<body>
+<div id="forHeader">
+	<header>
+		<div class="left" onclick="closeWin()"><a></a></div>
+		我的活动
+	</header>
+</div>
+<div class="list-content" style="padding-top:60px;width:100%;overflow:hidden;">
+	<div class="am-g am-u-sm-12 list-border-b" style="padding:14px 10px; ">
+		<img id="myactImg">
+		<p class="am-g-haha" style="word-break:break-all;word-wrap:break-word;" id="myactTitle"></p>
+		<p class="am-g-haha am-g-ha">订单号：<span class="line-in" style="width:96px;" id="myactCode"></span></p>
+		<p class="am-g-haha am-g-ha">支付时间：<span class="line-in" id="myactTime"></span></p>
+    </div>
+	<div class="dingdan">
+		<div>报名编号<br><span class="line-in" id="myactDingCode"></span><em></em></div>
+		<div>参与人数<br><span class="line-in" id="myactDingNumber"></span><em></em></div>
+		<div>支付总价<br><span class="line-in" id="myactDingPrice"></span></div>
+	</div>
+	<div class="am-g list-border-b10 am-u-sm-12"></div>
+	<div class="am-g list-border-b am-u-sm-12 line-out" style="margin-left:10px;line-height:44px;height:44px;font-size:13px;color:#666;padding-top: 0px;">
+		订单状态：<strong class="zt-col line-in" id="myactDingZt"></strong>
+	</div>
+	<div class="am-g list-border-b10 am-u-sm-12"></div>
+	<div class="am-g am-g am-u-sm-12 yanzhengma" id="yzm" style="padding: 10px 10px 0px;text-align:center;display: none;">
+		<i style="font-size: 12px;display:inline-block;float:right;color:#17a7a4;" id="yanzhengmaqingkuang"></i>
+		<div style="text-align:left;color:#000;font-size:14px;"><span class="yzm_hd">验证码</span>&nbsp;<span id="yanzhengmacode"></span></div>
+		<div style="margin:10px 0px 0px;border-top:1px solid #e3e3e3;border-bottom:1px solid #e3e3e3;"><img  id="yanzhengmaimg" style="display: inline; visibility: visible;"></div>
+	</div>
+	<div style="margin:0px 10px;">
+		<div class=" list-border-b line-out am-u-sm-12" style="padding:0px; line-height:44px;height:44px;">
+			<div class="pj_di" >活动地址</div>
+			<span class="line-in line-in-span" id="myactAddress"></span>
+		</div>
+		<div class=" list-border-b line-out am-u-sm-12" style="padding:0px; line-height:44px;height:44px;">
+			<div>开始时间</div><span class="line-in" id="myactsTime"></span>
+		</div>
+			<div class=" list-border-b line-out am-u-sm-12" style=" line-height:44px;height:44px;padding-top: 0px;">
+			<div>结束时间</div><span class="line-in" id="myacteTime"></span>
+		</div>
+	</div>
+	<h2 class="am-g list-border-b am-u-sm-12" style="font-size:13px;background-color:#eee;color:#999;padding:5px 10px;">参与人信息<span style="font-size:12px;" id="myactcanjia">（1大 1小）</span></h2>
+<!--    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">擦擦哈 (女孩)</p>
+    	<p class="col1">证件号：123456789123456789</p>
+        <p class="col1">手　机：13531456789</p>
+    </div>-->
+    <div id="addpeople"></div>
+</div>
+
+<div class="loading"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+
+		signUp(GetString("apply_id"),GetString("uid"));
+	};
+	//报名详情
+    function signUp(applyId,userId){
+
+    	api.ajax({
+	        url:commenturl +'dataapi.php?mod=activity&action=applydetail',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":userId,
+		        	"apply_id":applyId
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+			
+        		if(ret.data.code && ret.data.code != ""){
+        		
+        			if(ret.data.apply_status==2||ret.data.apply_status==4||ret.data.apply_status==5||ret.data.apply_status==6){
+	//      			alert(ret.data.code)
+	        			$api.css($api.byId("yzm"),"display:block;");
+	        			//验证码情况
+		        		
+		        		if(ret.data.apply_status==5||ret.data.apply_status==6){
+		        			$api.html($api.byId("yanzhengmaqingkuang"), "已签到");
+		        		}else{
+		        			$api.html($api.byId("yanzhengmaqingkuang"), "未验证");
+		        		}
+		        		
+		        		$api.html($api.byId("yanzhengmacode"), ret.data.code);
+		        		document.getElementById("yanzhengmaimg").src = ret.data.qrfile;
+	        		}
+        		}
+				
+				//活动详情
+        		document.getElementById("myactImg").src = "http://129.1.28.1/"+ret.data.pic;
+        		$api.html($api.byId("myactTitle"), ret.data.activity_title);
+        		$api.html($api.byId("myactCode"), ret.data.code);
+        		$api.html($api.byId("myactTime"), ret.data.pay_time);
+        		
+        		$api.html($api.byId("myactDingCode"), ret.data.apply_id);
+        		$api.html($api.byId("myactDingNumber"), ret.data.adult_num+"大"+ret.data.child_num+"小");
+        		$api.html($api.byId("myactcanjia"), "（"+ret.data.adult_num+"大"+ret.data.child_num+"小）");
+        		if(ret.data.amount=="0.00"){
+        			$api.html($api.byId("myactDingPrice"), "免费");
+        		}else{
+        			$api.html($api.byId("myactDingPrice"), ret.data.amount);
+        		}
+        		if(ret.data.apply_status==1){
+        			$api.html($api.byId("myactDingZt"), "待审核");
+        		}else if(ret.data.apply_status==2){
+        			$api.html($api.byId("myactDingZt"), "已通过");
+        		}else if(ret.data.apply_status==3){
+        			$api.html($api.byId("myactDingZt"), "待付款");
+        		}else if(ret.data.apply_status==4){
+        			$api.html($api.byId("myactDingZt"), "已付款");
+        		}else if(ret.data.apply_status==5){
+        			$api.html($api.byId("myactDingZt"), "已验证");
+        		}else if(ret.data.apply_status==6){
+        			$api.html($api.byId("myactDingZt"), "已评价");
+        		}else if(ret.data.apply_status==7){
+        			$api.html($api.byId("myactDingZt"), "退款中");
+        		}else if(ret.data.apply_status==8){
+        			$api.html($api.byId("myactDingZt"), "已退款");
+        		}else if(ret.data.apply_status==9){
+        			$api.html($api.byId("myactDingZt"), "不通过");
+        		}else if(ret.data.apply_status==10){
+        			$api.html($api.byId("myactDingZt"), "活动取消");
+        		}
+        		
+        		$api.html($api.byId("myactAddress"), ret.data.activity_addr);
+        		$api.html($api.byId("myactsTime"), ret.data.activity_start_time);
+        		$api.html($api.byId("myacteTime"), ret.data.activity_end_time);
+        		
+        		
+//        		alert(JSON.stringify(ret.data.apply_peoples))
+        		var addpeople = $api.byId("addpeople");
+        		
+        		for(var i=0;i<ret.data.apply_peoples.length;i++){
+        			var _obj = ret.data.apply_peoples[i];
+        			
+//      			alert(_obj)
+        			var addpeopleView = '<div class="list-border-b am-u-sm-12 myact" ><p class="my_activity_name">'+_obj.realname+' ('+_obj.role_id+')</p><p class="col1">证件号：'+_obj.idcard+'</p><p class="col1">手　机：'+_obj.mobile+'</p></div>';
+        			
+        			$api.before(addpeople, addpeopleView);
+        		}
+        		
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+    }
+    
+    function closeWin(){
+		api.closeWin();
+	} 
+</script>
+</html>

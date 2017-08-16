@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/my_account.css" />
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css" />
+    
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #ffffff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:4px !important;
+		    left:42px !important;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		.user-info p{
+			padding-top: 8px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 44px;margin-left:-25px;
+		}
+		#zhmx_mx_ul i { 
+			font-style:normal;
+		}
+		#zhmx_mx{
+			top: 46px;
+		}
+    </style>
+</head>
+<body>
+<div style="width:100%;height:10px;background-color:#fff;"></div>
+
+<div class="am-sticky-placeholder" style="height: 44px; margin: 0px;">
+	<header id="header" style="border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(195, 195, 195); margin: 0px; background-color: rgb(255, 255, 255);" class="homeHeader" data-am-sticky="">
+    	 <div class="left" style="margin-left:11px;"><a class="ico_back" onclick='leftClose()'></a></div>
+    	<div class="cent">我的账户</div>
+	</header>
+</div>
+
+<div id="zhmx_mx" style="display: block;border-top:1px solid #c3c3c3;">
+	<ul id="zhmx_mx_ul">
+		
+	</ul>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		getAccount();
+	};
+	
+	function getAccount(){
+	
+		$api.get("http://test.7wanl.com/7wanlsoa/app/member/getAccountDetail.json?uid="+$api.getStorage("userid")+"&accessToken="+$api.getStorage("useraccessToken"),
+		function (ret){
+			var userfont = document.getElementById("zhmx_mx_ul");
+			
+			if(ret.code ==0){
+			
+				for(var i=0;i<ret.obj.length;i++){
+					
+					var _obj = ret.obj[i];
+					
+					if(_obj.type == "充值"){
+					
+						$api.append(userfont, '<li><p>+ <i>'+_obj.amount+'</i></p><p>'+_obj.type+'<br><span>'+_obj.dateline+'</span></p></li>');
+					
+					}else{
+						
+						$api.append(userfont, '<li><p>- <i>'+_obj.amount+'</i></p><p>'+_obj.type+'<br><span>'+_obj.dateline+'</span></p></li>');
+						
+					}
+					
+				}
+				
+			}else{
+				$api.append(userfont, '<p class="no_data_img" style="text-align:center;"></p><p style="text-align:center;" class="no_data_tit">暂无相关数据</p>');
+			}
+		},'json');
+	}
+	
+	function leftClose(){
+    	api.closeWin();
+    }
+    
+    
+</script>
+</html>

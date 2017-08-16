@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	*, :before, :after {
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+    	#header {
+		    background-color: #fff;
+		    height: 50px;
+		    line-height: 53px;
+		    overflow:hidden;
+		    position: relative;
+		    border-bottom: 1px solid #ddd;
+		}
+		header .left {
+			text-align: center;
+		    position: relative;
+		    z-index: 5;
+		    float: left;
+		    font-size: 16px;
+		    color: #ffffff;
+		}
+		header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.ico_back, .go_back {
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 10px;
+		    display: inline-block;
+		    width:23px;
+		    height:23px;
+		    margin-top:0px;
+		}
+		
+		header .cent {
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    text-align: center;
+		    font-size: 16px;
+		    color: #000;
+		    font-weight: normal;
+		    margin: 0px;
+		    padding-bottom: 5px;
+		}
+		header a, header a:hover {
+		    position: relative;
+		    margin-right: 14px;
+		}
+		.activity_pay {
+		    background-color: #ffffff;
+		    padding-bottom: 15px;
+		}
+		.activity_pay .view_title {
+		    background-color: #e8e8e8;
+		    line-height: 30px;
+		    padding-left: 10px;
+		    color: #999;
+		    font-size: 14px;
+		}
+		.am-list-item-thumbed {
+		    padding-top: 1em;
+		}
+		.am-list-item-desced {
+		    padding-bottom: 1rem;
+		}
+		.am-g {
+		    margin: 0 auto;
+		    width: 100%;
+		}
+		.am-g:before, .am-g:after {
+		    content: " ";
+		    display: table;
+		}
+		.am-u-sm-4 {
+		    width: 33.33333333%;
+		}
+		[class*=am-u-] {
+		    width: 100%;
+		    padding-left: 1rem;
+		    padding-right: 1rem;
+		    float: left;
+		    position: relative;
+		}
+		img {
+		    display: block;
+		    max-width: 100%;
+		    vertical-align: middle;
+    		font-family: Arial, "Microsoft Yahei";
+    		height: auto;
+    		margin: 0;
+    		padding: 0;
+		}
+		.activity_pay .am-u-sm-8 {
+		    padding: 0 10px 0 0;
+		}
+		.am-u-sm-8 {
+		    margin-top: -3px;
+		}
+		.am-u-sm-8 {
+		    width: 66.66666667%;
+		}
+		.activity_pay .am-list-item-text {
+		    line-height: 45px;
+		    border-top: 1px solid #e8e8e8;
+		    margin: 0 10px;
+		    font-size: 14px;
+		    color: #333;
+		}
+		.am-list-item-text span {
+		    display: inline-block;
+		    width: 200px;
+		    height: 40px;
+		    text-align: right;
+		    font-size: 14px;
+		}
+		.am-fr {
+		    line-height: 43px;
+		    color: #bbb;
+		    float: right;
+		}
+		.line-out {
+		    position: relative;
+		    height: 50px;
+		    line-height: 50px;
+		    margin: 0px 10px;
+		    background-color: #ffffff;
+		    font-size: 15px;
+		    color: #333;
+		    border-top: 1px solid #e8e8e8;
+		}
+		.line-in {
+		    position: absolute;
+		    right: 4px;
+		}
+		i, strong, b, em {
+		    font-style: normal;
+		    font-weight: normal;
+		}
+		.activity_pay .view_title {
+		    background-color: #e8e8e8;
+		    line-height: 30px;
+		    padding-left: 10px;
+		    color: #999;
+		}
+		.activity_pay .am-list-main {
+		    margin: 10px;
+		    height: 45px;
+		    line-height: 45px;
+		    font-size: 16px;
+		    overflow: hidden;
+		    border-bottom: 1px solid #e8e8e8;
+		}
+		.click .checked {
+		    width: 33px;
+		    background-position: left center;
+		}
+		.am-list-main .checked {
+		    background: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/pay_check.png") no-repeat;
+		    height: 35px;
+		    display: block;
+		}
+		.am-btn-block{
+		    display: block !important;
+		    width: 100%;
+		    padding-left: 0;
+		    padding-right: 0;
+		    border-radius: 3px;
+		}
+		.am-btn-warning{
+		    color: #fff;
+		    background-color: #f37b1d;
+		    border-color: #f37b1d;
+		}
+		.activity_pay p {
+		    margin: 0 10px;
+		    position: fixed;bottom:0px;width: 94%; height: 46px;background-color: #fff;
+		}
+		.am-btn {
+		    
+		    margin-bottom: 0;
+		    padding: 0.425em 0.875em;
+		    vertical-align: middle;
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.2;
+		    text-align: center;
+		    white-space: nowrap;
+		    background-image: none;
+		    border: 1px solid transparent;
+		    border-radius: 0;
+		    cursor: pointer;
+		    outline: 0;
+		    -webkit-appearance: none;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    -webkit-transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		    transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		}    
+		.view-titlename{
+			padding-top: 1em;
+			padding-bottom: 0.875rem;
+			margin: 0 auto;
+    		width: 100%;
+		}
+		.am-u-sm-4{
+			padding-left: 0.875rem;
+		    padding-right: 0.875rem;
+		    float: left;
+		    position: relative;
+		    box-sizing: border-box;
+		    width: 33.33333333%;
+		}
+		.am-u-sm-8{
+			padding: 0 10px 0 0;
+			margin-top: -3px;
+			width: 66.66666667%;
+			box-sizing: border-box;
+		}
+		img {
+		    display: block;
+		    max-width: 100%;
+		    height:auto;
+		}
+		.am-g:after {
+		    clear: both;
+		}
+		.activity_pay .am-list-main {
+		    margin: 10px;
+		    height: 45px;
+		    line-height: 45px;
+		    font-size: 16px;
+		    overflow: hidden;
+		    border-bottom: 1px solid #e8e8e8;
+		}
+		.click .checked {
+		    width: 33px;
+		    background-position: left center;
+		}
+		.am-list-main .checked {
+		    background-image: url("http://129.1.28.1/template/7wanl_wap_v1.1/image/touch/activity/pay_check.png");
+		    height: 35px;
+		    width: 34px;
+		    display: block;
+		    background-position: right center;
+		}
+		.alipay .paytype_img, .wxpay .paytype_img,.ylpay .paytype_img {
+		    background-image: url("http://129.1.28.1/template/7wanl_wap_v1.1/image/touch/paytype.png");
+		    background-repeat: no-repeat;
+		    background-position: left -10px;
+		    width: 166px;
+		    height: 55px;
+		    display: block;
+		}
+		.click .checked {
+		    width: 33px;
+		    background-position: left center;
+		}
+    </style>
+</head>
+<body>
+<div style="max-width:100%;overflow: hidden;margin-bottom:40px;">
+	<header id="header" class="homeHeader" style="z-index:9999;position:fixed;width:100%;top:0px;padding-top:5px;">
+	    <div class="left" style="margin-top:10px;" tapmode onclick="icoback()"><a class="ico_back"> </a></div>
+	    <div class="cent" style="color:#000;">填写订单</div>
+	</header>
+	<div style="width:100%;height:51px;"></div>
+	<div class="activity_pay">
+		
+	    <div class="view_title">订单信息</div>
+	    <div class="view-titlename am-g" onclick="openWxPay()">
+	    	<div class="am-u-sm-4"><img id="view-titlename-img" src="" alt="活动名称" /></div>
+	    	<div class="am-u-sm-8" style="text-align: right;"></div>
+	    </div>
+	    <div class="am-list-item-text">订单号<span class="am-fr" id="dingdanhao"></span></div>
+	    <div class="am-list-item-text">大人单价<span class="am-fr" id="adultprice"></span></div>
+	    <div class="am-list-item-text">小孩单价<span class="am-fr" id="childprice"></span></div>
+	    <div class="am-list-item-text">数量<span class="am-fr" id="persennumber"></span></div>
+	    <div class="line-out">
+	    	总价<span class="line-in" style="color:#f37b1d;display: inline-block;width: 200px;text-align: right;"><i style="font-size:20px;" id="totalprice"></i></span>
+		</div>
+	
+	    <div class="view_title">支付方式</div>
+	    <ul id="parchecked">
+	    	<div tapmode class="am-list-main alipay click">
+		        <span class="checked am-fr"></span>
+		        <div class="paytype_img"></div>
+		        <input type="radio" name="bank_type" value="alipay" checked="">
+		    </div>
+		    <div tapmode class="am-list-main wxpay click" >
+		        <span class="am-fr"></span>
+		        <div class="paytype_img" style="background-position: left -70px;"></div>
+		        <input type="radio" name="bank_type" value="wxpay" checked="">
+		    </div>
+		    <div tapmode class="am-list-main ylpay click">
+		        <span class="am-fr"></span>
+		        <div class="paytype_img" style="background-position: left -124px;"></div>
+		        <input type="radio" name="bank_type" value="ylpay" checked="">
+		    </div>
+	    </ul>
+        <p onclick="openAliPay()"><button type="submit" class="am-btn am-btn-warning am-btn-block am-radius">确定支付</button></p>
+
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		var totalprice;
+		var aplibody = "";
+		
+		getOrderinfoByApply();
+
+		var amList = $api.domAll(".am-list-main");
+		for(var i=0;i<amList.length;i++){
+			
+			amList[i].index = i;
+			amList[i].onclick=function (){
+				for(var i=0;i<amList.length;i++){
+					amList[i].getElementsByTagName("span")[0].className = 'am-fr';
+				}
+				amList[this.index].getElementsByTagName("span")[0].className = 'checked am-fr';
+			}
+		}
+		
+	};
+	// 取得订单消息
+	function getOrderinfoByApply(){
+		var uid = GetString("userid");
+		var apply_id = GetString("apply_id");
+//		alert("uid:"+uid)
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=order&action=orderinfo_by_apply',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":uid,
+		        	"apply_id":apply_id,
+		        	"type":"activity"
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+        	if(ret){
+        		if(ret.code == -1){
+        			alert(ret.msg)
+        		}else{
+        		
+        			$api.html($api.byId("dingdanhao"), ret.data.order_no);
+        			$api.html($api.byId("adultprice"), "¥ "+ret.data.apply.price_adult);
+        			$api.html($api.byId("childprice"), "¥ "+ret.data.apply.price_child);
+        			$api.html($api.byId("persennumber"), ret.data.apply.adult_num+"大"+ret.data.apply.child_num+"小");
+        			
+        			$api.html($api.byId("totalprice"), "¥ "+ret.data.price_total);
+        			totalprice = ret.data.price_total;
+        			
+        			$api.html($api.dom(".view-titlename .am-u-sm-8"), ret.data.title);
+        			
+        			document.getElementById("view-titlename-img").src = ret.data.activity.pic;
+        			
+        		}	
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        });
+	}
+	
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeFrame();
+	}
+	
+	// 支付宝支付
+	function openAliPay() {
+	    var alipay = api.require('aliPay');
+
+	    var amount = "0.01";
+	    var tradeNO = document.getElementById("dingdanhao").innerHTML;
+	    
+	    alipay.config({
+	        partner:'2088101817875688',
+	        seller:'zfb@gcihjt.com',
+	        rsaPriKey:'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAKj7Zw1LxuNsBoJFyVeDPsrX/I70MRpoVacpUi8c5SHzD+z1O9x/zxaoTgcivl0sErjRtWx6kRG9I2m/Jid6qSIfMQpn0SACRM1q6dLjjudjvGVeCl/bf+8IdqCBkJLiPKfZBVZWV+m58iZJPjDk5ofENzZSkj15b+/Y0OqL49GLAgMBAAECgYAhUtKTsKncF2WBMzntZBhx7/4CQu2cA49Ak8l9OPmGpGQzmnjfluTD1xTsG1HnFdXrVI+ugM0y7lWZePSRPIM1wUVTzKSGi8+m8w09Iapx6n8zrQkA3owRF1vBzrzYfz0nhoXfW/FLFDc8d6+7YS9yeSbjE8n4NXPId1vVubVwIQJBANraDYiSrLI27AcjU6+fCGVYmkWPfatN0x3YHLquqoBAE6V1kKkf9ruKsrvtvVkOQBGdgOWbgTlVowPnYUfk0OUCQQDFqlGw4vP6wa7xwZSyUjTxNxAufkC4sdbCCQ8tMr1v5hnzwHZ8y2uOPo3MnfWMbDa65JQsmzjQs7w/3r02JaGvAkEAv52tvcdWh49I5xMKQblHm5yRLphtGqDAWOAQf29Q/4ua6ALgjwPafuf4iEymvaOZexLheafG5BFT8qYS6eSw9QJBAJVkkLFcFoIi+JIHeNb9gr38m+JH0arF3kZwimPiwYJdKqgrgmH3bKbpaEqJ6BflgcfnEoZUGrDB5zluoxrVfkkCQEfAbBWWQWuEoB6p5upHSrtfO0nITE3uChAMAwYa1GzLZXyEV4e8UXk4I3padSQiWMHzwuhEYKWwXxRndt8N/Fo=',
+			rsaPubKey:'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCx3IerUD7RQvFjqKDaIr9zPX9rboKwCsNUFDJd+6+FndZESqG987FlzznSVX/kC4LnRozkaJmi30K6gDo90JRF3E3hbcCtwB5YjFn0n3Jvh+GHnElCrOzdFEpuN5im733PF2k9U8Z5PDvWj1HXLxB6j6UWS8l11l2B3AlLrO6CpQIDAQAB',
+			notifyURL:'http://test.7wanl.com/7wanl/source/module/shop/shop_notify.php'
+        },function(ret,err){
+//      	alert("ret1:"+JSON.stringify(ret))
+        	alipay.pay({
+	            subject: '来自去玩了活动的一笔付款',
+			    body: aplibody,
+			    amount: amount,
+			    tradeNO: tradeNO
+            },function(ret,err){
+            	api.alert({
+			        title: '支付结果',
+			        msg: ret.code,
+			        buttons: ['确认']
+			    });
+			    
+            });
+        });
+	};
+	
+	// 微信支付
+	  function openWxPay() {
+	      var wxPay = api.require('wxPay');
+		  wxPay.config({
+		   	apiKey : 'wx73b7cddf63a427f8',
+		   	mchId : '1247149801',
+		   	partnerKey : 'eovneiIONEnieINiWECninomeGINLZpv',
+		   	notifyUrl : 'http://test.7wanl.com/7wanl/api/trade/notify_wxpay.php'
+		  }, function(ret, err) {
+		   	if (ret.status) {
+		    	alert('配置商户支付参数成功1：'+ret.status);
+		    	wxPay.pay({
+		    		description : '去玩了活动',
+		     		totalFee : "1",
+		     		tradeNo : '1217752501201407033233368018'
+		    	}, function(ret, err) {
+		    		
+				    if (ret.status) {
+//				    	alert('支付成功');
+						alert("ret1:"+JSON.stringify(ret))
+				    } else {
+//				      	alert(err.code);
+//				      	alert(err.msg);
+				      	alert("err1:"+JSON.stringify(err))
+				    }
+					
+		    	});
+		   	}else{
+		   		alert("3211:"+err.code);
+		   	}
+		});
+	};
+	
+	// 银联支付
+    function unionPay(){
+    	var timestamp=1234567890;//这里是订单号
+	    var number1 = 123;//这里是付款金额
+	    var unPay = api.require('unionPay');
+	    api.ajax({
+	        url: 'http://'+window.__URL1+'/YLpayment/sdk/demo/AppConsume.php',//从自己做的接口(自己的接口通讯银联)获取tn号
+	        method: 'post',
+	        dataType: 'json',
+	        returnAll:false,
+	        data:{
+	            values: {liu_sn:timestamp,money:number1,tag:'充值'}//提交商户后台生成的订单ID
+	        }
+	    },function(ret,err){
+	        api.hideProgress();
+	        if (ret.tn) {   
+	            unPay.pay({
+	                tn: ret.tn,
+	                devMode: false
+	            }, function(ret, err){
+	               if(ret.result=="success") {
+	                  alert('充值成功');
+	                  return;                    
+	               }else{
+	                   // api.alert({msg : ("充值失败")});
+	               }
+	            });
+	        }
+	    });
+    }
+	
+</script>
+</html>

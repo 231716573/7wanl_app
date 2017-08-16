@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>开发</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <style>
+    .do_main .view_comment_share {
+	    border-top: 1px solid #e8e8e8;
+	    border-bottom: 1px solid #e8e8e8;
+	    padding: 10px 0px 8px;
+	    margin-bottom: 8px;
+	    
+	}
+	.do_main {
+	    min-height: 100%;
+	    width: 100%;
+	    max-width:100%;
+	    background-color: #ffffff;
+	    padding-top: 8px;
+	    border-top: 1px solid #e8e8e8;
+	    overflow: hidden;
+	    box-sizing: border-box;
+	}
+	.comment_name_img1 img {
+	    width: 25px;
+	    height: 25px;
+	}
+	.comment_name_img img {
+	    border-radius: 50%;
+	    -webkit-border-radius: 50%;
+	}
+	p {
+	    margin: 0;
+	}
+	.f_12 {
+	    font-size: 12px;
+	    font-weight: 300;
+	}
+	.do_main .comment_content {
+	    color: #666;
+	    max-width:100%;
+	    overflow:hidden;
+	}
+	.do_main .com_con_i {
+	    float:right;
+	    display: block;
+	    font-size: 10px;
+	    color: #cecece;
+	    background: url(../image/p_shijian.png) 0px center no-repeat;
+	    background-size:11px 11px;
+	    padding-left: 13px;
+	    font-style:normal;
+	    margin-top:2px;
+	}
+	.do_main .comment_content_p1{
+		margin-top:6px; color:#000; font-size:15px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;
+	}
+	.do_main .comment_content_p2{
+		margin-top:5px; font-size:13px;white-space: nowrap; overflow: hidden; text-overflow:ellipsis;
+	}
+	.do_main .comment_content_pi1{
+		float:right;font-size:12px;height:18px;line-height:15px;padding:1px 3px;border:1px solid #63aee8;color:#63aee8;border-radius:3px;margin-left:3px; font-style:normal;
+	}
+	.do_main .comment_content_pi2 {
+		float:right;font-size:12px;height:18px;line-height:15px;padding:1px 3px;border:1px solid #f4b52f;color:#f4b52f;border-radius:3px;margin-left:3px; font-style:normal;
+	}
+	.do_main .comment_name {
+		float:left; margin:0px 10px 3px 0px;
+	}
+	.do_main .comment_content_pi3 {
+		background-color: #8ecc52;border-radius: 2px !important;padding: .1em .325em;margin-top:-3px;
+	}
+	.do_main .comment_content_p3 {
+		color:#cdcdcd;font-size:12px;width:100%; height:16px;display:block;min-width:300px;
+	}
+	.do_main .comment_content_p3 span{
+		color:#cdcdcd;
+	}
+	.tiezi_number {
+		width:100%; height:46px; text-align:center;line-height:46px;font-size:13px;background:#f4f4f4;
+	}
+	.tiezi_number span,.tiezi_number i {
+		color:#ff9233;
+	}
+	.tiezi_number span {
+		font-size: 18px;
+		display:inline-block;
+	}
+	.am-list-news-ft {
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 15px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	
+    </style>
+</head>
+<body>
+	<div class="tiezi_number">
+		<div><img src="../image/tz_num.jpg" style="width:12px;height:11px;" /> <span></span> 个帖子  今日<i></i> 个</div>
+	</div>
+	
+    <div style="margin:0px 10px;">
+    	<div class="do_main">
+		    <div class="clearboth" style="clear:both;"></div>
+	    </div>
+    </div>
+    <div class="am-list-news-ft" id="readmore">
+        <a href="javascript:;" class="readmore"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>
+    </div>
+</body>
+<script type="text/javascript" src="../script/jquery-1.11.1.min.js"></script>
+<script>
+
+	$(function (){
+    
+    	$(".readmore").bind("click",function (){
+    	
+	    	getlistmore('readmore','http://129.1.28.1:8080/7wanlsoa/app/review/getActivityReviewList.json?pageSize=5&pageNumber=');
+	    })
+    })
+
+var url = "http://129.1.28.1:8080/7wanlsoa/app/review/getActivityReviewList.json?pageNumber=1&pageSize=5";
+	
+var i =2;
+
+function getlistmore(id,url){
+	
+	    var objclass = $("."+id);
+	    
+	    objclass.html("加载中...");
+	    
+	    url = url + i;
+	    i++;
+	    
+	    $.getJSON(url,function(data){
+	    
+	    	
+	        
+	        if(data.code == 0){
+		        $.each(data.obj.resultList,function (index,_obj){
+		        
+					var $domainclear = $(".clearboth")
+					
+					var domainmore = $('<div class="view_comment am-cf view_comment_share"><a href="+_obj.url+"><p class="comment_name"><span class="comment_name_img comment_name_img1"><img src="'+_obj.userAvatar+'" zsrc="'+_obj.userAvatar+'" data-bd-imgshare-binded="1" style="display: inline; visibility: visible;"></span> </p><p class="comment_name_dj">'+_obj.userName+' &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12 comment_content_pi3">'+_obj.userLevel+'</em></p><p class="comment_content comment_content_p1" style="max-width:100%;overflow:hidden;">'+_obj.subject+'</p><p class="comment_content comment_content_p2" style="max-width:100%;overflow:hidden;">'+_obj.subject+'</p><p class="comment_content com_con_img"><img src="'+_obj.cover+'" /></p><p class="comment_content comment_content_p3" style="margin-top:5px;"><i class="com_con_i">'+_obj.publishTime+'</i><span class="am-icon-eye am-fl" style="margin-right:20px;"> '+_obj.views+'</span><span class="am-icon-comment" > '+_obj.replies+'</span></p></a></div>')
+
+					$domainclear.before(domainmore)
+
+				})
+		        objclass.html('<a href="javascript:;"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>');
+	
+		    }else{
+		    	objclass.html("没有更多数据");
+		    }
+	    });
+	}
+
+$(function (){
+	alert("url:"+url)
+	$.getJSON(
+		url,
+		function (data){
+			alert("data:")
+			if(data.code == 0){
+				$.each(data.obj.resultList,function (index,_obj){
+					var $domainclear = $(".clearboth")
+					
+					var domainmore = $('<div class="view_comment am-cf view_comment_share"><a href="+_obj.url+"><p class="comment_name"><span class="comment_name_img comment_name_img1"><img src="'+_obj.userAvatar+'" zsrc="'+_obj.userAvatar+'" data-bd-imgshare-binded="1" style="display: inline; visibility: visible;"></span> </p><p class="comment_name_dj">'+_obj.userName+' &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12 comment_content_pi3">'+_obj.userLevel+'</em></p><p class="comment_content comment_content_p1" style="max-width:100%;overflow:hidden;">'+_obj.subject+'</p><p class="comment_content comment_content_p2" style="max-width:100%;overflow:hidden;">'+_obj.subject+'</p><p class="comment_content com_con_img"><img src="'+_obj.cover+'" /></p><p class="comment_content comment_content_p3" style="margin-top:5px;"><i class="com_con_i">'+_obj.publishTime+'</i><span class="am-icon-eye am-fl" style="margin-right:20px;"> '+_obj.views+'</span><span class="am-icon-comment" > '+_obj.replies+'</span></p></a></div>')
+
+					$domainclear.before(domainmore)
+
+				})
+				
+				$('.tiezi_number span').html(data.obj.totalCount)
+				$('.tiezi_number i').html(data.obj.todayCount)
+				
+			}else{
+				alert("发生未知参数错误")
+			}
+		}
+	)
+	
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

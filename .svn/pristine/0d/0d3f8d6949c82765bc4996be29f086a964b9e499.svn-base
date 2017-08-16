@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<security>
+  <item name="key" value="value000"/>
+  <item name="key1" value="value111"/>
+  <item name="key2" value="value222"/>
+  <item name="key3" value="value333"/>
+  <item name="weiXin_pay_appId" value="******"/>
+  <item name="weiXin_pay_mchId" value="******"/>
+  <item name="weiXin_pay_partnerKey" value="******"/>
+  <item name="weiXin_pay_notifyUrl" value="http://www.apicloud.com"/>
+	
+	<item name="aliPay_partner" value="2088101817875688"/>
+	<item name="aliPay_seller" value="zfb@gcihjt.com"/>
+	<item name="aliPay_rsaPriKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCo+2cNS8bjbAaCRclXgz7K1/yO9DEaaFWnKVIvHOUh8w/s9Tvcf88WqE4HIr5dLBK40bVsepERvSNpvyYneqkiHzEKZ9EgAkTNaunS447nY7xlXgpf23/vCHaggZCS4jyn2QVWVlfpufImST4w5OaHxDc2UpI9eW/v2NDqi+PRiwIDAQAB"/>
+	<item name="aliPay_rsaPubKey" value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCnxj/9qwVfgoUh/y2W89L6BkRAFljhNhgPdyPuBV64bfQNN1PjbCzkIM6qRdKBoLPXmKKMiFYnkd6rAoprih3/PrQEB/VsW8OoM8fxn67UDYuyBTqA23MML9q1+ilIZwBC2AQ2UBVOrFXfFl75p6/B5KsiNG9zpgmLCUYuLkxpLQIDAQAB"/>
+	<item name="aliPay_notifyURL" value="http://test.7wanl.com/7wanl/source/module/shop/shop_notify.php"/>
+</security>

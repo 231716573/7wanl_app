@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	#login_from ul li{
+    		padding-left:25px !important;
+    		background-size:15px 15px !important;
+    	}
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #ffffff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:17px;
+		    left:10px;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+    </style>
+</head>
+<body>
+	<div style="width:100%;height:10px;background-color:#fff;"></div>
+	<div class="header">
+		<div class="left" ><a class="ico_back" onclick='leftClose()'></a></div>
+	    <div class="nav" style="text-align:center;">
+	        <span>登录</span>
+	    </div>
+	</div>
+	<div class="loginbox">
+		<form method="post" action="" name="form1">
+		<div id="layer_login_LNn2k">
+			<div class="login_from" id="login_from">
+				<ul>
+					<li style="background:url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/member/images/login_text.png) 3px 15px no-repeat;"><input id="username" type="text" value="" tabindex="1" class="px p_fre account" size="30" autocomplete="off" name="username" placeholder="请输入用户名\手机号" fwin="login"></li>
+					<li style="background:url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/member/images/login_password.png) 3px 15px no-repeat;"><input id="userpassword" type="password" tabindex="2" class="px p_fre password" size="30" value="" name="password" placeholder="请输入密码" fwin="login"></li>
+				</ul>
+			</div>
+			<div class="btn_login mbw" id="btn_login" onclick="loginIn()"><button tabindex="3" value="true" name="submit" type="submit" class="formdialog pn pnc"><span style="color: #FFF;">登录</span></button></div>
+
+			<p class="reg_link am-cf" style="padding: 10px ;">
+		        <a class="am-fl">注册</a>
+		        <a class="am-fr" onclick="loginlostpw()">忘记密码？</a>
+		    </p>
+		    <p class="other_login">
+		    	<i></i>&nbsp;<span>其他方式登录</span>&nbsp;<i></i>
+		    </p>
+	        <div id="qq_login"><p class="qq_login" style="background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/member/images/qq.png) 14px 10px no-repeat;" onclick="location.href='http://www.7wanl.com/connect.php?mod=login&amp;op=init&amp;referer=http%3A%2F%2Fwww.7wanl.com%2Fportal.php%3Fmobile%3D2&amp;statfrom=login_simple'">使用QQ帐号登录</p></div>
+	    </div>
+	    </form>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+	
+		var storage = window.localStorage;  
+	    var getname = storage["username"];  
+	    var getPwd  = storage["userpassword"];  
+	
+        if((("" != getname)||(null != getname)||(undefined != getname)) && (("" != getPwd)||(null != getPwd)||(undefined != getPwd))){  
+        
+            //lacoste  已经保存 登陆信息 直接登陆  
+            $api.val($api.dom("#username"), getname);
+            $api.val($api.dom("#userpassword"), getPwd);
+        }  
+
+	};
+
+	var newurl ="";
+	
+//	'+userpassword+'  '+userpassword+'
+	function loginIn(){
+	
+		var username = document.getElementById("username").value;
+		var userpassword = document.getElementById("userpassword").value;
+		
+		var person = '{"account":"'+username+'","password":"'+userpassword+'"}';
+	
+		api.ajax({
+	        url:'http://test.7wanl.com/7wanlsoa/app/ucenter/login.json',
+	        method:'post',
+	        data: {
+		        body:person
+		    }
+        },function(ret,err){
+        	if (ret) {
+        		 if(ret.code == 0){
+					
+					var storage = window.localStorage;
+					
+		         	// 保存到localStorage
+					storage["username"] = document.getElementById("username").value;
+					storage["userpassword"] = document.getElementById("userpassword").value;
+
+		         	newurl = "uid=" + ret.obj.uid + "&accessToken=" + ret.obj.accessToken;
+		         	
+		         	loginframe31(newurl);
+		         	
+		         	alert(ret.msg);
+		         	
+		         }else{
+		         	
+		         	alert(ret.msg);
+		         	
+		         }
+		    } else {
+		         alert(JSON.stringify(err));
+		    }
+        });
+	}
+	
+	
+	function loginframe31(url){
+
+        api.openWin({
+	        name: 'index',
+	        url: '../index.html?'+url
+	        
+        });
+//      api.openFrame({
+//	        name: 'frame3',
+//	        url: 'frame3.html?'+url,
+//	        rect: {
+//		        x:0,
+//		        y:50,
+//		        w:0,
+//		        h:0
+//	        }
+//      });
+	}
+	
+	
+	
+//	忘记密码
+	function loginlostpw(){
+
+        api.openWin({
+	        name: 'lostpw',
+	        url: 'lostpw.html'
+        });
+	}
+	
+	
+	function leftClose(){
+    	api.closeWin();
+    }
+	
+	
+	
+	
+	
+</script>
+</html>

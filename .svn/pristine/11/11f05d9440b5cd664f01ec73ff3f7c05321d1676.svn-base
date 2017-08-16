@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    #forHeader {
+    	position:fixed; z-index:9999; width:100%;
+    }
+    header {
+    	height:52px;padding-top:20px; border-bottom:1px solid rgb(195, 195, 195);position: relative;text-align:center;line-height:25px;background-color:#fff;
+    }
+    .left {
+    	height:40px; width:43px; position:absolute;left:-5px; top:22px;
+    }
+    .left a {
+    	display:inline-block;height:13px; width:13px;border-top:1px solid #000;border-left:1px solid #000;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);
+    }
+    html,body{
+    	width:100%;
+    	height:auto;
+    	overflow:hidden;
+    }
+    .list-content {
+	    background-color: #fff;
+	}
+	a:link, a:visited, a:hover {
+	    color: #999;
+	    text-decoration: none;
+	}
+	h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+	    margin: 0;
+	    padding: 0;
+	    border: none;
+	    list-style-type: none;
+	    font-style: normal;
+	    font-weight: normal;
+	}
+	*, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	* {
+	    margin: 0;
+	    padding: 0;
+	    word-wrap: break-word;
+	}
+	.pic-list, .am-g, .am-list-news-ft {
+	    width: 100%;
+	    background-color: #ffffff;
+	}
+	[class*=am-u-] {
+	    float: left;
+	    position: relative;
+	}
+	.am-g {
+	    margin: 0 auto;
+	    width: 100%;
+	}
+	.am-g:before, .am-g:after {
+	    content: " ";
+	    display: table;
+	}
+	img, a img {
+	    border: none;
+	    margin: 0;
+	    padding: 0;
+	}
+	.list-content .am-g-haha {
+	    line-height: 23px;
+	    font-size: 14px;
+	    color: #000;
+	}
+	.list-content .am-g-ha {
+	    font-size: 12px;
+	    color: #999;
+	    line-height:23px;
+	}
+	.dingdan {
+	    margin: 0px 1%;
+	    text-align: center;
+	}
+	.dingdan div {
+	    float: left;
+	    font-size: 12px;
+	    width: 33%;
+	    padding: 8px 2%;
+	    line-height: 23px;
+	    color: #999;
+	    position: relative;
+	}
+	.dingdan div span {
+	    color: #404040;
+	}
+	.dingdan em {
+	    display: inline-block;
+	    width: 2px;
+	    height: 25px;
+	    border-right: 1px solid #e5e5e5;
+	    position: absolute;
+	    right: 0px;
+	    top: 18px;
+	}
+	em, cite, i {
+	    font-style: normal;
+	}
+	.list-border-b {
+	    border-bottom: 1px solid #eee;
+	    padding-top: 5px;
+	    padding-bottom: 10px;
+	}
+	.list-border-b10 {
+	    border-bottom: 10px solid #eee;
+	}
+	.am-g:after {
+	    clear: both;
+	}
+	.am-g:before, .am-g:after {
+	    content: " ";
+	    display: table;
+	}
+	.zt-col {
+	    color: #17a7a4;
+	}
+	.line-out div {
+	    display: inline-block;
+	    width: 80px;
+	    text-align: center;
+	    background: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/pj_shijian.jpg") 0px center no-repeat;
+	    color: #999;
+	}
+	.line-out span {
+	    font-size: 13px;
+	}
+	.my_activity_name {
+	    padding-left: 16px;
+	    font-size: 15px;
+	    background: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/my_activity_name.jpg") 0px center no-repeat;
+	}
+	.col1 {
+	    color: #999;
+	}
+	.list-border-b div{
+		font: 12px/1.6 Microsoft YaHei, Helvetica, sans-serif;
+	}
+	.myact{
+		padding-bottom:10px;margin:0px 10px;
+	}
+	.myact p {
+		font: 14px/1.6 Microsoft YaHei, Helvetica, sans-serif;
+	}
+	.am-u-sm-12 {
+	    width: 100%;
+	}
+	#myactImg{
+		height:70px;width:100px;float:left;margin-right:8px;
+	}
+	#myactDingPrice{
+		width:40px;color:#f9851d;
+	}
+	#myactDingNumber{
+		font-size:13px;
+	}
+	#myactAddress{
+		display: inline-block; width: 200px; height:16px;overflow: hidden;line-height: 17px;
+	}
+    </style>
+</head>
+<body>
+<div id="forHeader">
+	<header>
+		<div class="left" onclick="closeWin()"><a></a></div>
+		我的活动
+	</header>
+</div>
+<div class="list-content" style="padding-top:60px;">
+	<div class="am-g am-u-sm-12 list-border-b" style="padding:14px 10px; ">
+		<img id="myactImg">
+		<p class="am-g-haha" id="myactTitle"></p>
+		<p class="am-g-haha am-g-ha">订单号：<span class="line-in" style="width:96px;" id="myactCode"></span></p>
+		<p class="am-g-haha am-g-ha">支付时间：<span class="line-in" id="myactTime"></span></p>
+    </div>
+	<div class="dingdan">
+		<div>报名编号<br><span class="line-in" id="myactDingCode"></span><em></em></div>
+		<div>参与人数<br><span class="line-in" id="myactDingNumber"></span><em></em></div>
+		<div>支付总价<br><span class="line-in" id="myactDingPrice"></span></div>
+	</div>
+	<div class="am-g list-border-b10 am-u-sm-12"></div>
+	<div class="am-g list-border-b am-u-sm-12 line-out" style="margin-left:10px;line-height:44px;height:44px;font-size:13px;color:#666;padding-top: 0px;">
+		订单状态：<strong class="zt-col line-in" id="myactDingZt"></strong>
+	</div>
+	<div class="am-g list-border-b10 am-u-sm-12"></div>
+
+	<div style="margin:0px 10px;">
+		<div class=" list-border-b line-out am-u-sm-12" style="padding:0px; line-height:44px;height:44px;">
+			<div class="pj_di" >活动地址</div>
+			<span class="line-in line-in-span" id="myactAddress"></span>
+		</div>
+		<div class=" list-border-b line-out am-u-sm-12" style="padding:0px; line-height:44px;height:44px;">
+			<div>开始时间</div><span class="line-in" id="myactsTime"></span>
+		</div>
+			<div class=" list-border-b line-out am-u-sm-12" style=" line-height:44px;height:44px;padding-top: 0px;">
+			<div>结束时间</div><span class="line-in" id="myacteTime"></span>
+		</div>
+	</div>
+	<h2 class="am-g list-border-b am-u-sm-12" style="font-size:13px;background-color:#eee;color:#999;padding:5px 10px;">参与人信息<span style="font-size:12px;" id="myactcanjia">（1大 1小）</span></h2>
+    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">擦擦哈 (女孩)</p>
+    	<p class="col1">证件号：123456789123456789</p>
+        <p class="col1">手　机：13531456789</p>
+    </div>
+    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">擦擦哈 (女孩)</p>
+    	<p class="col1">证件号：123456789123456789</p>
+        <p class="col1">手　机：13531456789</p>
+    </div>
+    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">擦擦哈 (女孩)</p>
+    	<p class="col1">证件号：123456789123456789</p>
+        <p class="col1">手　机：13531456789</p>
+    </div>
+    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">史蒂芬 (爸爸)</p>
+    	<p class="col1">证件号：441283199102212772</p>
+        <p class="col1">手　机：15915779842</p>
+    </div>
+    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">史蒂芬 (爸爸)</p>
+    	<p class="col1">证件号：441283199102212772</p>
+        <p class="col1">手　机：15915779842</p>
+    </div>
+    <div class="list-border-b am-u-sm-12 myact" >
+    	<p class="my_activity_name">史蒂芬 (爸爸)</p>
+    	<p class="col1">证件号：441283199102212772</p>
+        <p class="col1">手　机：15915779842</p>
+    </div>
+</div>
+
+<div class="loading" style="position:fixed;top:40%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+
+		signUp(GetString("apply_id"),GetString("uid"));
+	};
+	//报名详情
+    function signUp(applyId,userId){
+
+    	api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=applydetail',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":userId,
+		        	"apply_id":applyId
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		
+        		document.getElementById("myactImg").src = "http://129.1.28.1/"+ret.data.pic;
+        		$api.html($api.byId("myactTitle"), ret.data.activity_title);
+        		$api.html($api.byId("myactCode"), ret.data.code);
+        		$api.html($api.byId("myactTime"), ret.data.pay_time);
+        		
+        		$api.html($api.byId("myactDingCode"), ret.data.activity_id);
+        		$api.html($api.byId("myactDingNumber"), ret.data.adult_num+"大"+ret.data.child_num+"小");
+        		$api.html($api.byId("myactcanjia"), "（"+ret.data.adult_num+"大"+ret.data.child_num+"小）");
+        		if(ret.data.tp_price=="0.00"){
+        			$api.html($api.byId("myactDingPrice"), "免费");
+        		}else{
+        			$api.html($api.byId("myactDingPrice"), ret.data.tp_price);
+        		}
+        		if(ret.data.apply_status==1){
+        			$api.html($api.byId("myactDingZt"), "待审核");
+        		}else if(ret.data.apply_status==2){
+        			$api.html($api.byId("myactDingZt"), "已通过");
+        		}else if(ret.data.apply_status==3){
+        			$api.html($api.byId("myactDingZt"), "待付款");
+        		}else if(ret.data.apply_status==4){
+        			$api.html($api.byId("myactDingZt"), "已付款");
+        		}else if(ret.data.apply_status==5){
+        			$api.html($api.byId("myactDingZt"), "已验证");
+        		}else if(ret.data.apply_status==6){
+        			$api.html($api.byId("myactDingZt"), "已评价");
+        		}else if(ret.data.apply_status==7){
+        			$api.html($api.byId("myactDingZt"), "退款中");
+        		}else if(ret.data.apply_status==8){
+        			$api.html($api.byId("myactDingZt"), "已退款");
+        		}else if(ret.data.apply_status==9){
+        			$api.html($api.byId("myactDingZt"), "不通过");
+        		}else if(ret.data.apply_status==10){
+        			$api.html($api.byId("myactDingZt"), "活动取消");
+        		}
+        		
+        		$api.html($api.byId("myactAddress"), ret.data.activity_addr);
+        		$api.html($api.byId("myactsTime"), ret.data.activity_start_time);
+        		$api.html($api.byId("myacteTime"), ret.data.activity_end_time);
+        		
+        		
+        		//alert(ret.data.apply_peoples)
+        		for(var i=0;i<ret.data.apply_peoples.length;i++){
+        			var _obj = ret.data.apply_peoples[i];
+        			
+//      			alert(_obj)
+        		}
+        		
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+    }
+    
+    function closeWin(){
+		api.closeFrame();;
+	} 
+</script>
+</html>

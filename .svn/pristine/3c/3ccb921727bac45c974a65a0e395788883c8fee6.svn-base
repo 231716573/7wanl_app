@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/home/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #ffffff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:3px;
+		    left:32px;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 44px;margin-left:-25px;
+		}
+    </style>
+</head>
+<body>
+<div style="width:100%;height:10px;background-color:#fff;"></div>
+
+<header id="header" class="header" data-am-sticky="">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent">个人资料</div>
+</header>
+<form class="am-form am-form-horizontal am-margin-top frame_profile spacecp-profile-form" action="home.php?mod=spacecp&amp;ac=profile" method="post" autocomplete="off">
+  <input type="hidden" name="formhash" value="71df4f93">
+  <input type="hidden" name="passwordsubmit" value="true">
+  <div class="am-form-group">
+    <div class="am-u-sm-12 sm_topborder">
+      <input type="password" name="oldpassword" id="oldpassword" placeholder="当前密码">
+    </div>
+  </div>
+
+  <div class="am-form-group">
+    <div class="am-u-sm-12">
+      <input type="password" name="newpassword" id="newpassword" placeholder="新密码">
+    </div>
+  </div>
+
+  <div class="am-form-group sm_bottomborder">
+    <div class="am-u-sm-12">
+      <input type="password" style="border:none;" name="newpassword2" id="newpassword2" placeholder="确认新密码">
+    </div>
+  </div>
+
+  <div class="am-form-group">
+    <div class="am-u-sm-12">
+      <button type="submit" name="pwdsubmit" class="am-btn am-btn-warning am-btn-block sm_topm">确认保存</button>
+    </div>
+  </div>
+</form>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		
+	};
+	
+	
+	function leftClose(){
+    	api.closeWin();
+    }
+</script>
+</html>

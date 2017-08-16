@@ -1,0 +1,315 @@
+*, :before, :after {
+		    -webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		}
+    	#header {
+		    background-color: #fff;
+		    height: 50px;
+		    line-height: 53px;
+		    overflow:hidden;
+		    position: relative;
+		    border-bottom: 1px solid #ddd;
+		}
+		header .left {
+			text-align: center;
+		    position: relative;
+		    z-index: 5;
+		    float: left;
+		    font-size: 16px;
+		    color: #ffffff;
+		}
+		header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.ico_back, .go_back {
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 10px;
+		    display: inline-block;
+		    width:23px;
+		    height:23px;
+		    margin-top:0px;
+		}
+		
+		header .cent {
+		    position: absolute;
+		    width: 100%;
+		    height: 100%;
+		    text-align: center;
+		    font-size: 16px;
+		    color: #000;
+		    font-weight: normal;
+		    margin: 0px;
+		    padding-bottom: 5px;
+		}
+		header a, header a:hover {
+		    position: relative;
+		    margin-right: 14px;
+		}
+		.activity_pay {
+		    background-color: #ffffff;
+		    padding-bottom: 15px;
+		}
+		.activity_pay .view_title {
+		    background-color: #e8e8e8;
+		    line-height: 30px;
+		    padding-left: 10px;
+		    color: #999;
+		    font-size: 14px;
+		}
+		.am-list-item-thumbed {
+		    padding-top: 1em;
+		}
+		.am-list-item-desced {
+		    padding-bottom: 1rem;
+		}
+		.am-g {
+		    margin: 0 auto;
+		    width: 100%;
+		}
+		.am-g:before, .am-g:after {
+		    content: " ";
+		    display: table;
+		}
+		.am-u-sm-4 {
+		    width: 33.33333333%;
+		}
+		[class*=am-u-] {
+		    width: 100%;
+		    padding-left: 1rem;
+		    padding-right: 1rem;
+		    float: left;
+		    position: relative;
+		}
+		img {
+		    display: block;
+		    max-width: 100%;
+		    vertical-align: middle;
+    		font-family: Arial, "Microsoft Yahei";
+    		height: auto;
+    		margin: 0;
+    		padding: 0;
+		}
+		.activity_pay .am-u-sm-8 {
+		    padding: 0 10px 0 0;
+		}
+		.am-u-sm-8 {
+		    margin-top: -3px;
+		}
+		.am-u-sm-8 {
+		    width: 66.66666667%;
+		}
+		.activity_pay .am-list-item-text {
+		    line-height: 45px;
+		    border-top: 1px solid #e8e8e8;
+		    margin: 0 10px;
+		    font-size: 14px;
+		    color: #333;
+		}
+		.am-list-item-text span {
+		    display: inline-block;
+		    width: 200px;
+		    height: 40px;
+		    text-align: right;
+		    font-size: 14px;
+		}
+		.am-fr {
+		    line-height: 43px;
+		    color: #bbb;
+		    float: right;
+		}
+		.line-out {
+		    position: relative;
+		    height: 50px;
+		    line-height: 50px;
+		    margin: 0px 10px;
+		    background-color: #ffffff;
+		    font-size: 15px;
+		    color: #333;
+		    border-top: 1px solid #e8e8e8;
+		}
+		.line-in {
+		    position: absolute;
+		    right: 4px;color:#f37b1d;display: inline-block;width: 200px;text-align: right;
+		}
+		i, strong, b, em {
+		    font-style: normal;
+		    font-weight: normal;
+		}
+		.activity_pay .view_title {
+		    background-color: #e8e8e8;
+		    line-height: 30px;
+		    padding-left: 10px;
+		    color: #999;
+		}
+		.activity_pay .am-list-main {
+		    margin: 10px;
+		    height: 45px;
+		    line-height: 45px;
+		    font-size: 16px;
+		    overflow: hidden;
+		    border-bottom: 1px solid #e8e8e8;
+		}
+		.click .checked {
+		    width: 33px;
+		    background-position: left center;
+		}
+		.am-list-main .checked {
+		    background: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/pay_check.png") no-repeat;
+		    height: 35px;
+		    display: block;
+		}
+		.am-btn-block{
+		    display: block !important;
+		    width: 100%;
+		    padding-left: 0;
+		    padding-right: 0;
+		    border-radius: 3px;
+		    color: #fff;
+		    background-color: #f37b1d;
+		    border-color: #f37b1d;
+		}
+		.activity_pay p {
+		    margin: 0 10px;
+		    position: fixed;bottom:0px;width: 94%; height: 46px;background-color: #fff;
+		}
+		.am-btn {
+		    margin-bottom: 0;
+		    padding: 0.625em 0.875em;
+		    vertical-align: middle;
+		    font-size: 1rem;
+		    font-weight: 400;
+		    line-height: 1.2;
+		    text-align: center;
+		    white-space: nowrap;
+		    background-image: none;
+		    border: 1px solid transparent;
+		    border-radius: 0;
+		    cursor: pointer;
+		    outline: 0;
+		    -webkit-appearance: none;
+		    -webkit-user-select: none;
+		    -moz-user-select: none;
+		    -ms-user-select: none;
+		    user-select: none;
+		    -webkit-transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		    transition: background-color 300ms ease-out,border-color 300ms ease-out;
+		}    
+		.view-titlename{
+			padding-top: 1em;
+			padding-bottom: 0.875rem;
+			margin: 0 auto;
+    		width: 100%;
+		}
+		.am-u-sm-4{
+			padding-left: 0.875rem;
+		    padding-right: 0.875rem;
+		    float: left;
+		    position: relative;
+		    box-sizing: border-box;
+		    width: 33.33333333%;
+		}
+		.am-u-sm-8{
+			padding: 0 10px 0 0;
+			margin-top: -3px;
+			width: 66.66666667%;
+			box-sizing: border-box;
+		}
+		img {
+		    display: block;
+		    max-width: 100%;
+		    height:auto;
+		}
+		.am-g:after {
+		    clear: both;
+		}
+		.activity_pay .am-list-main {
+		    margin: 10px;
+		    height: 45px;
+		    line-height: 45px;
+		    font-size: 16px;
+		    overflow: hidden;
+		    border-bottom: 1px solid #e8e8e8;
+		}
+		.click .checked {
+		    width: 33px;
+		    background-position: left center;
+		}
+		.am-list-main .checked {
+		    background-image: url("http://129.1.28.1/template/7wanl_wap_v1.1/image/touch/activity/pay_check.png");
+		    height: 35px;
+		    width: 34px;
+		    display: block;
+		    background-position: right center;
+		}
+		.alipay .paytype_img, .wxpay .paytype_img,.ylpay .paytype_img {
+		    background-image: url("../image/paytype.png");
+		    background-repeat: no-repeat;
+		    background-position: left -10px;
+		    width: 166px;
+		    height: 55px;
+		    display: block;
+		}
+		.click .checked {
+		    width: 33px;
+		    background-position: left center;
+		}
+		.content_body {
+		    background-color: #ffffff;
+		    padding: 20px 10px;
+		}
+		.content_body ul {
+		    border: 1px solid #e8e8e8;
+		    border-top: 0;
+		}
+		.content_body ul li {
+		    border-top: 1px solid #e8e8e8;
+		    height: 48px;
+		    line-height: 48px;
+		    padding-left: 10px;
+		    overflow: hidden;
+		    padding-right: 5px;
+		}
+		ul li, .xl li {
+		    list-style: none;
+		}
+		.content_body ul li span {
+		    font-weight: 700;
+		}
+		.content_body ul li i {
+		    color: #ff5500;
+		    font-size: 15px;
+		}
+		.content_body .returnPay {
+		    margin-top: 20px;
+		    text-align: center;
+		}
+		.content_body .returnPay p span {
+		    font-size: 16px;
+		    color: #68cb4c;
+		}
+		.content_body .returnPay p a {
+		    margin: 0 10px;
+		    background-color: #68cb4c;
+		    padding: 8px 20px;
+		    color: #ffffff;
+		    border-radius: 3px;
+		    font-size: 15px;
+		}
+		.paySuccess_head{
+			width:100%; height:50px;
+			margin: 0px;padding-bottom: 11px;
+			font-size:16px;text-align:center;
+			color:#000;padding-top:20px; 
+			border-bottom: 1px;border-bottom-style: solid;
+			border-bottom-color: rgb(227, 227, 227);
+		}
+		#paySuccess{
+			position:fixed; z-index: 99999; top:0px; left:0px; width:100%; height:100%;background:#fff;
+		}

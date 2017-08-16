@@ -1,0 +1,117 @@
+.new_activity {
+	    margin: 10px 10px;
+	}
+	.newAt_div {
+	    padding-bottom: 7px;
+	    border-bottom: 1px solid #e3e3e3;
+	    position: relative;
+	}
+	h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+	    margin: 0;
+	    padding: 0;
+	    border: none;
+	    list-style-type: none;
+	    font-style: normal;
+	    font-weight: normal;
+	}
+	*, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	.newAt_div img {
+	    float: left;
+	    margin-right: 5px;
+	    width: 100px;
+	    height: 70px;
+	    border: none;
+	}
+	.newAt_div_c_p1 {
+	    font-size: 14px;
+	    height: 18px;
+	    line-height: 18px;
+	    color: #000;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+	.newAt_div_c_p2 {
+	    font-size:12px;
+	    height: 38px;
+	    line-height: 17px;
+	    color: #666;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+	.newAt_div_c_p3 {
+	    font-size: 16px;
+	    height: 16px;
+	    line-height: 16px;
+	    color: #f9851d;
+	}
+	.newAt_div_c_p3 .newAt_div_c_paysuc {
+	    float: right;
+	    color: #999;
+	    font-size: 12px;
+	}
+	.newAt_div_c_p3 span {
+	    width: 6px;
+	    height: 8px;
+	    display: inline-block;
+	    background: url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/rmb.jpg") no-repeat;
+	    background-size: 100%;
+	}
+	.newAt_div_fr {
+	    width: 100%;
+	    text-align: right;
+	    margin: 8px 0px;
+	}
+	a:link, a:visited, a:hover {
+	    color: #4C4C4C;
+	    text-decoration: none;
+	}
+	button, input:not([type=radio]):not([type=checkbox]), select {
+	    vertical-align: middle;
+	}
+	.newAt_div_fr .newAt_div_fr_del {
+	    color: #666;
+	    background-color: #fff;
+	    border: 1px solid #c4c4c4;
+	}
+	button, html input[type=button], input[type=reset], input[type=submit] {
+	    -webkit-appearance: button;
+	    cursor: pointer;
+	    font-size: 12px;
+	}
+	.newAt_div_fr input {
+	    margin-left: 10px;
+	    padding: 6px 10px;
+	    border-radius: 3px;
+	    -webkit-border-radius: 3px;
+	    min-width: 57px;
+	}
+	input, select {
+	    font-family: "微软雅黑",Arial;
+	}
+	.newAt_div_fr .newAt_div_fr_del {
+	    color: #666;
+	    background-color: #fff;
+	    border: 1px solid #c4c4c4;
+	}
+	.am-list-news-ft {
+	    background: #fff;
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 13px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	.kongxx {
+	    height: 10px;
+	    width: 100%;
+	    background-color: #eee;
+	}

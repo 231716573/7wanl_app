@@ -1,0 +1,42 @@
+html,body {
+        height: 100%;
+        min-height: 100%;
+        background-color: transparent;
+    }
+    #navUl{
+    	width:100px;
+    	float:left;
+    	height:330px;
+    	background: #ececec;
+    	overflow-y:auto;
+    }
+    #navUl .actclass{
+    	display:inline-block;
+    	width:100px;
+    	padding:12px 10px;
+    	background: #ececec;
+    	color: #636363;
+    	border-right:1px solid #e1e1e1;
+    	box-sizing:border-box;
+    }
+    #navUl .navUlAct{
+    	background: #fff;
+    	color: #14a6a3;
+    	border-top:1px solid #e1e1e1;
+    	border-bottom:1px solid #e1e1e1;
+    	border-right:1px solid #fff;
+    }
+    #navChildUl{
+    	padding-bottom:10px;
+    	background: #fff;
+    	padding-right:10px;
+    	height:320px;
+    	overflow-y:auto;
+    }
+    #navChildUl div{
+    	padding:11px 5px;
+    	margin-left:10px;
+    	border-bottom:1px solid #e1e1e1;
+    	color: #636363;
+    	box-sizing:border-box;
+    }

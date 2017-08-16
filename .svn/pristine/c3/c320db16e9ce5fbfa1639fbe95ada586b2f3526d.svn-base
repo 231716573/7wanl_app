@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<style>
+	.xiachedanp1 {
+		position:absolute;bottom:0px;left:0px; padding:2px 12px;background:gray;width: 100%;opacity:0.5;height:23px;
+	}
+	.xiachedanp2 {
+		position: absolute; bottom: 0px; left: 0px; padding: 2px 10px; color: rgb(255, 255, 255); font-size: 12px; width: 100%; height: 23px;
+	}
+	#header {
+		background:#fff;height:42px;line-height:41px;margin-top:12px;
+	}
+	i { font-style:normal !important;}
+	.xcdadd {
+		float:right;margin-right:15px;font-size:12px;color:#bdbdbd;display: block; width: 220px; height: 31px;line-height: 31px; overflow: hidden; text-align: right;
+	}
+	.serviceTel{
+		float:right;margin-right:15px;font-size:12px;color:#bdbdbd;
+	}
+	.view_more a {
+		color:#333;
+	}
+	.ico_back{
+		display:inline-block;width:20px;height:25px;margin-top:10px;
+	}
+	.am-tabs-nav>.am-active a {
+	    color: #24aba8;
+	    line-height: 50px;
+        font-size: 15px;
+    	font-weight: bold;    
+	}
+	.am-tabs-nav>.am-active {
+	    background-color: #ffffff;
+	    border: 0;
+	}
+	.am-tabs-nav li {
+	    height: 50px;
+	    text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<header id="header" class="homeHeader">
+	    <div class="left"><a class="ico_back" onclick="icoback()"> </a></div>
+	    <div class="cent" style="color:#000;">活动详情</div>
+	    <div class="head-icon" style="padding-right: 0;">
+	        <a class="am-icon-share-square-o" data-am-modal="{target: '#am-share'}"></a>
+	        <a class="am-icon-star-o" href="shop.php?mod=favorite&amp;type=activity&amp;id=2877&amp;formhash=075359bf&amp;mobile=2"></a>
+	    </div>
+	</header>
+	
+	<!--报名信息-->
+	<div data-am-widget="figure" class="am am-figure am-figure-default am-no-layout am-figure-zoomable gdimg" data-am-figure="{pureview: 'true'}">
+	    <div class="xcdpic"><img style="height: 200px;" data-bd-imgshare-binded="1" data-am-pureviewed="1"></div>
+	    <p class="xiachedanp1"></p>
+	    <p class="xiachedanp2"><span class="classTime"><i></i></span>报名截止:<span class="xcdTime"></span></p>
+		<i class="tag"></i>
+	</div>
+	<div class="activity_main activity_main_one">
+	    <h1 class="xcdnumber"></h1>
+	    <div class="detailTop-1">
+	        <div class="detailTop-2" style="color:#666;">
+	            <p class="more-time">活动时间： <span class="xcdstartTime"></span></p>
+	            <p>适用年龄： <span class="xcdage"></span></p>
+	        </div>
+	    </div>
+        <div class="detailTop-price">小孩：<i class="xcdpriceChild"></i> 成人：<i class="xcdpriceAdult"></i></div>
+    </div>
+    
+    <!--三个图-->
+    <div class="am-avg-sm-3 detail_apply">
+	    <li class="am-icon-file-o11"><span class="am-icon-file-o1"></span><i class="am-icon-file-o1i"></i>个活动名额</li>
+	    <li class="am-icon-file-o11"><span class="am-icon-file-o2"></span><i class="am-icon-file-o2i"></i>人报名参加</li>
+	    <li class="am-icon-file-o11"><span class="am-icon-file-o3"></span><i class="am-icon-file-o3i"></i>人审核通过</li>
+	</div>
+	
+	<ul class="am-tabs-nav am-cf">
+        <li class="am-active am-active_one"><a>查看活动图文详情 <span class="quanquan"><i></i></span></a></li>
+    </ul>
+	
+	<!--活动地址以下-->
+	<div class="activity_other" style="margin-bottom:50px;">
+		<p></p>
+        <div class="view_more"><a style="font-size:14px;">活动地址 <i class="xcdadd">天河区 黄村奥体路52号广东体育职业技术学院</i></a></div>
+        <p></p>
+<!--        <div class="view_more"><a class="xcdhg">往期回顾  <i style="color:#ff0000;"></i></a></div>
+        <p></p>-->
+        <div class="view_more"><a class="xcdyw">全部用户疑问 <i style="color:#ff0000;">(<em></em>)</i></a></div>
+        <p></p>
+        <div class="view_more"><a class="xcdpl">全部评论 <i style="color:#ff0000;">(<em></em>)</i></a></div>
+        <p></p>
+        <div class="view_more"><a href="tel://4008-330-730" mce_href="tel://4008-330-730" style="font-size:14px;">客服热线 <i class="serviceTel">4008-330-730</i></a></div>
+        <p style="position:absolute; top:0px; height:10px; width:100%; background:#eee;"></p>
+
+        <div class="view_title" style="color:#999; height:29px;">机构</div>
+
+        <div class="con">
+            <div class="info Fix">
+                <div class="info-a">
+                    <div class="details">
+                        <div class="tag">
+                            <img class="tagpic" data-bd-imgshare-binded="1">
+                        </div>
+                        <h4 class="tagtitle"></h4>
+                        <div class="intro Fix"><span class="star" style="position:relative;"><span class="fstar" style="width: 0%"></span><i style="position:absolute;top:0px;right:-37px;color:#fa9943;"><em class="xcdstar"></em>分</i></span></div>
+                    </div>
+                </div>
+                <a class="info-m J_mobile" data-href="tel:13751729272" href="tel:13751729272"><i class="mobile"></i></a>
+            </div>
+
+            <ul class="am-avg-sm-3">
+                <li>活动质量<em><i class="xcdshopZL"></i>分</em></li>
+                <li>活动环境<em><i class="xcdshopHJ"></i>分</em></li>
+                <li>服务态度<em><i class="xcdshopTD"></i>分</em></li>
+            </ul>
+            <ul id="apply_btn" data-am-widget="gotop" class="am-avg-sm-2 am-no-layout">
+                <li><span style="background:#3db8b5;color:#fff;font-size:15px;text-align:center;" class="am-btn am-btn-block bor_e8 am-radius" data-am-modal="{target: '#my_question'}">我有疑问</span></li>
+                <li><span style="font-size:15px;" class="am-btn am-btn-warning am-radius am-btn-block" data-am-modal="{target: '#am-share-applyform'}">我要报名</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+
+
+	apiready = function(){
+		activityView(GetString("activityId"))
+		
+	};
+	
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+	
+//	活动基本信息
+	function activityView(actId){
+		
+		var url = "http://test.7wanl.com/7wanlsoa/app/activity/getDetail.json?activityId="+actId;
+		
+		$api.get(url,function(data){
+//			alert("data:"+JSON.stringify(data))
+//			找到对应的东西
+			var xcdTime = $api.dom(".xcdTime");
+			var xcdnumber = $api.dom(".xcdnumber");
+			var xcdstartTime = $api.dom(".xcdstartTime");
+			var xcdage = $api.dom(".xcdage");
+			var xcdpriceAdult = $api.dom(".xcdpriceAdult");
+			var xcdpriceChild = $api.dom(".xcdpriceChild");
+			var amiconfile1 = $api.dom(".am-icon-file-o1i");
+			var amiconfile2 = $api.dom(".am-icon-file-o2i");
+			var amiconfile3 = $api.dom(".am-icon-file-o3i");
+			
+			var xcdhg = $api.dom(".xcdhg em");
+			var xcdyw = $api.dom(".xcdyw em");
+			var xcdpl = $api.dom(".xcdpl em");
+			var serviceTel = $api.dom(".serviceTel");
+			
+			var xcdpic = $api.dom(".xcdpic img");
+			
+//			商家
+			var tagpic = $api.dom(".tagpic");
+			var tagtitle = $api.dom(".tagtitle");
+			var xcdshopZL = $api.dom(".xcdshopZL");
+			var xcdshopHJ = $api.dom(".xcdshopHJ");
+			var xcdshopTD = $api.dom(".xcdshopTD");
+			var xcdstar = $api.dom(".xcdstar");
+			
+			if(data.code == 0){
+				
+				
+//				免得太乱，分开看舒服点
+				//报名信息
+				$api.html(xcdTime,data.obj.applyend);
+				$api.html(xcdnumber, data.obj.title);
+				$api.html(xcdstartTime, data.obj.startTime);
+				$api.html(xcdage, data.obj.age);
+				$api.html(xcdpriceAdult, data.obj.priceAdult);
+				$api.html(xcdpriceChild, data.obj.priceChild);
+				
+				//图片信息
+				$api.attr(xcdpic, 'src', data.obj.pic);
+				$api.attr(xcdpic, 'alt', data.obj.title);
+				$api.attr(xcdpic, 'data-rel', data.obj.pic);
+				
+				//中间三个图
+				$api.html(amiconfile1, data.obj.number);
+				$api.html(amiconfile2, data.obj.apply);
+				$api.html(amiconfile3, data.obj.verify);
+				
+				$api.html(serviceTel, data.obj.serviceTel);
+				$api.html(xcdyw, data.obj.questionCount);
+				$api.html(xcdpl, data.obj.commentCount);
+				
+//				商家
+
+				$api.attr(tagpic, "src", data.obj.shop.logo);
+				$api.attr(tagpic, "alt", data.obj.shop.name);
+				
+				$api.html(tagtitle, data.obj.shop.name);
+				$api.html(xcdshopZL, data.obj.shop.score1);
+				$api.html(xcdshopHJ, data.obj.shop.score2);
+				$api.html(xcdshopTD, data.obj.shop.score3);
+				$api.html(xcdstar, data.obj.shop.star);
+				
+			}else{
+				alert("发生未知错误，请重新进入")
+			}
+		}
+			
+		,'json');
+	}
+	
+	//进入每个活动的详情页
+	function goActivity(activityId){
+		api.openWin({
+	        name: 'actview',
+	        url: 'actview.html?activityId='+activityId,
+	        
+        });
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

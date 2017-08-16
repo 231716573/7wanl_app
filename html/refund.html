@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/refund.css"/>
+</head>
+<body>
+<div id="refund-detail">
+    <div id="refund-top"><p class="left" onclick="closeWin()"><a></a></p>退款流程</div>
+	<div>
+		<p class="msg">退款金额<span class="col-1" style="display:inline-block;font-size:1rem;">￥<em style="font-size:16px;display:inline-block;" id="refundprice"></em></span></p>
+		<p class="msg">订单号<span style="color:#333; font-size:14px;" id="refundcode"></span></p>
+		<p class="msg no-border">退回账户<span style="color:#333; font-size:15px;" id="refundwx"></span></p>
+	</div>
+	<h2>退款流程</h2>
+	<div style="margin:0">
+		<ul id="ull_lli">
+			<li>
+				<i style="top:15px;"></i>
+				<h3>提交申请<span id="refundbeforeTime"></span></h3>
+				<p id="refundbeforemsg"></p>
+			</li>
+			<li>
+				<i style="top:15px;"></i>
+				<h3>审核退款<span id="refundcenterTime"></span></h3>
+				<p id="refundcentermsg"></p>
+			</li>
+			<li class="color_15a6a3">
+				<i style="top:15px;background-color:#15a6a3;z-index:99;"></i>
+				<h3>支付平台退款<span id="refundafterTime"></span></h3>
+				<p id="refundaftermsg"></p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="loading" style="position:fixed;top:40%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		api.ajax({
+	        url:commenturl +'dataapi.php?mod=order&action=refunddetail',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":GetString("uid"),
+		        	"apply_id":GetString("apply_id"),
+		        	"type":"activity"
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			//alert(GetString("uid")+GetString("apply_id"))
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		$api.html($api.byId("refundprice"), ret.data.amount);
+        		$api.html($api.byId("refundcode"), ret.data.order_no);
+        		$api.html($api.byId("refundwx"), ret.data.pay_type);
+        		
+        		if(ret.data.log[0]){
+        			$api.html($api.byId("refundbeforeTime"), ret.data.log[0].dateline);
+        		}
+        		if(ret.data.log[0]){
+        			$api.html($api.byId("refundbeforemsg"), ret.data.log[0].text);
+        		}
+        		if(ret.data.log[1]){
+        			$api.html($api.byId("refundcenterTime"), ret.data.log[1].dateline);
+        		}
+        		if(ret.data.log[1]){
+        			$api.html($api.byId("refundcentermsg"), ret.data.log[1].text);
+        		}
+        		if(ret.data.log[2]){
+        			$api.html($api.byId("refundafterTime"), ret.data.log[2].dateline);
+        		}
+        		if(ret.data.log[2]){
+        			$api.html($api.byId("refundaftermsg"), ret.data.log[2].text);
+        		}
+
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+	};
+	
+	function closeWin(){
+		api.closeWin();
+	} 
+</script>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    body{
+    	width:100%; overflow: hidden;
+    }
+    #forHeader {
+    	position:fixed; z-index:9999; width:100%;
+    }
+    header {
+    	height:40px; padding-top: 20px;border-bottom:1px solid rgb(195, 195, 195);position: relative;text-align:center;line-height:39px;background-color:#fff;
+    }
+    .left {
+    	height:40px; width:43px; position:absolute;left:0px; top:20px;
+    }
+    .left a {
+    	display:inline-block;height:15px; width:15px;border-top:1px solid #000;border-left:1px solid #000;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);
+    }
+    #new_pjlist {
+	    background-color: #fff;margin:0px 10px;
+	}
+	* {
+	    margin: 0;
+	    padding: 0;
+	    word-wrap: break-word;
+	}
+	.pjlist_con {
+	    width: 100%;
+	    padding: 10px 0px 13px;
+	    border-bottom: 1px solid #e0e0e0;
+	}
+	.pjlist_con h2 {
+	    font-size: 15px;
+	    color: #000;
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    margin-bottom: 0px;
+	    font-weight: 400;
+	    margin: 0;
+	}
+	.star, .fstar {
+	    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/star.bd.png');
+	    background-repeat: no-repeat;
+	    height: 22px;
+	    width: 60px;
+	    display: block;
+	    background-position: -60px -540px;
+	}
+	.fstar {
+	    background-position: 0 -540px;
+	}
+	.pjlist_contain {
+	    color: #666666;
+	    font-size: 14px;
+	}
+	p {
+	    margin: 0;
+	}
+	.pjlist_time {
+	    color: #bbb;
+	    font-size: 12px;
+	}
+	.am-list-news-ft {
+	    background: #fff;
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 13px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	.pjlist_contain_img{
+		margin-top:5px;
+		margin-bottom:5px;
+	}
+	.pjlist_contain_img img {
+		width:24%;
+		height:auto;
+	}
+    </style>
+</head>
+<body>
+
+<div id="forHeader">
+	<header>
+		<div class="left" onclick="closeWin()"><a></a></div>
+		我的评价
+	</header>
+</div>
+<div class="comment-list" style="padding-top:60px;">
+<!--    <div id="new_pjlist">
+        <div class="pjlist_con">
+            <h2>活动5.01元</h2>
+            <div class="star"><span class="fstar" style="width: 80%"></span></div>
+            <div class="pjlist_contain">
+                <p>顶顶顶顶顶的的顶顶顶顶顶的顶顶顶顶顶的</p>
+                <p class="pjlist_contain_img">
+                	<img src="http://129.1.28.1/data/attachment/portal/201607/13/103134ynlnkhq9tikilsfn.png" alt="" />
+                	<img src="http://129.1.28.1/data/attachment/portal/201607/13/103134ynlnkhq9tikilsfn.png" alt="" />
+                	<img src="http://129.1.28.1/data/attachment/portal/201607/13/103134ynlnkhq9tikilsfn.png" alt="" />
+                	<img src="http://129.1.28.1/data/attachment/portal/201607/13/103134ynlnkhq9tikilsfn.png" alt="" />
+                	<img src="http://129.1.28.1/data/attachment/portal/201607/13/103134ynlnkhq9tikilsfn.png" alt="" />
+                </p>
+            </div> 
+            <div class="pjlist_time">2015-11-20 10:50</div>
+        </div>
+    </div>-->
+    <div class="am-list-news-ft" id="readmore">
+        <a href="javascript:void(0);">查看更多</a>
+    </div>
+</div>
+
+<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	var pageNum = 1;
+	apiready = function(){
+		
+		var readmore = $api.byId('readmore');
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=comment&action=commentbyuser',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"page":pageNum
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+				
+        		for(var i=0;i<ret.data.list.length;i++){
+
+        			var _obj = ret.data.list[i];
+        			
+        			//拼接图片
+        			var pjlistContainImg = '<p class="pjlist_contain_img">';  
+        			
+        			if(_obj.pic != null){
+        			
+	        			for(var j=0;j<_obj.pic.length;j++){
+	        				pjlistContainImg += '<img src="http://129.1.28.1/'+(_obj.pic)[j]+'" /> ';
+	        			}
+	        			
+        			}
+        			
+					pjlistContainImg += '</p>';
+        			
+        			//创建评论
+        			var pjlistCon = '<div id="new_pjlist"><div class="pjlist_con"><h2>'+_obj.title+'</h2><div class="star"><span class="fstar" style="width: '+_obj.star+'%"></span></div><div class="pjlist_contain"><p>'+_obj.message+'</p>'+pjlistContainImg+'</div> <div class="pjlist_time">'+_obj.dateline+'</div></div></div>'
+
+					//设置.pjlist_contain_img img 的高度
+					var pjlist_contain_imgImg = $api.domAll(".pjlist_contain_img img");
+					
+        			for(var m=0;m<pjlist_contain_imgImg.length;m++){
+        			
+        				$api.css(pjlist_contain_imgImg[m],"height:"+parseFloat($api.cssVal(pjlist_contain_imgImg[m],"width"))*3/4+"px")
+        				
+        			}
+        			
+        			$api.before(readmore, pjlistCon);
+        		}
+        		pageNum += 1;
+
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+//      	alert("pageNum:"+pageNum)
+        });
+		
+		api.addEventListener({
+		    name:'scrolltobottom',
+		    extra:{
+		        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+		    }
+		},function(ret,err){
+		    getCommentMore('readmore',pageNum);
+		});
+	};
+	
+	function closeWin(){
+		api.closeWin();
+	} 
+	
+	//查看更多
+	function getCommentMore(id){
+	
+		var objclass = $api.dom("#"+id);
+		
+		$api.html(objclass,'<a href="javascript:void(0);">加载中...</a>');
+		
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=comment&action=commentbyuser',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"page":pageNum
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+				if(ret.data.list != null){
+	        		for(var i=0;i<ret.data.list.length;i++){
+	
+	        			var _obj = ret.data.list[i];
+	        			
+	        			//拼接图片
+	        			var pjlistContainImg = '<p class="pjlist_contain_img">';  
+	        			
+	        			if(_obj.pic != null){
+	        			
+		        			for(var j=0;j<_obj.pic.length;j++){
+		        				pjlistContainImg += '<img src="http://129.1.28.1/'+(_obj.pic)[j]+'" /> ';
+		        			}
+		        			
+	        			}
+	        			
+						pjlistContainImg += '</p>';
+	        			
+	        			//创建评论
+	        			var pjlistCon = '<div id="new_pjlist"><div class="pjlist_con"><h2>'+_obj.title+'</h2><div class="star"><span class="fstar" style="width: '+_obj.star+'%"></span></div><div class="pjlist_contain"><p>'+_obj.message+'</p>'+pjlistContainImg+'</div> <div class="pjlist_time">'+_obj.dateline+'</div></div></div>'
+	
+						//设置.pjlist_contain_img img 的高度
+						var pjlist_contain_imgImg = $api.domAll(".pjlist_contain_img img");
+						
+	        			for(var m=0;m<pjlist_contain_imgImg.length;m++){
+	        			
+	        				$api.css(pjlist_contain_imgImg[m],"height:"+parseFloat($api.cssVal(pjlist_contain_imgImg[m],"width"))*3/4+"px")
+	        				
+	        			}
+	        			
+	        			$api.before(readmore, pjlistCon);
+	        			$api.html(objclass,'<a href="javascript:void(0);">查看更多</a>');
+	        		}
+	        		pageNum += 1;
+        		}else{
+        			$api.html(objclass,'<a href="javascript:void(0);">没有更多数据...</a>');
+        		}
+
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        	
+//      	alert("pageNum:"+pageNum)
+        });
+		
+	}
+</script>
+</html>

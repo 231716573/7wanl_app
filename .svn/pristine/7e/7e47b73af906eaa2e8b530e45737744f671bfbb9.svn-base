@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/shop.css"/>
+
+
+</head>
+<body>
+<div style="height:50px;width:100%;"></div>
+<header id="header" class="homeHeader">
+    <div class="left"><a class="ico_back" onclick="leftClose()"> </a></div>
+    <div class="cent" style="color:#000;">商家详情</div>
+    <div class="head-icon" style="padding-right: 0;">
+        <a class="am-icon-share-square-o" onclick="sharethis()"></a>
+        <a class="am-icon-star-o"></a>
+    </div>
+</header>
+<div class="am-list-news am-list-news-default">
+	<div class="am-list-news-bd" style="margin-left:10px;">
+		<ul class="am-list">
+			<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left">
+				<div class="am-u-sm-4" style="padding-left:0"> <img id="imgsrc" src="" data-bd-imgshare-binded="1"> </div>
+				<div class="am-u-sm-8 am-list-main">
+					<h3 class="am-list-item-hd" id="listitemhd"></h3>
+					<div class="am-list-item-text">
+						<div class="b-star" style="height:12px;"><div class="f-star"></div></div>  
+						<p id="plnumber"></p>
+						<p id="zlp"></p>
+						<p id="yysjs_p"></p>
+					</div>
+				</div>
+			</li>
+<!--			<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" style="border-bottom:1px solid #E8E8E8;">
+				<div class="am-u-sm-12 am-list-main"> <a style="color:#4C4C4C;" href="" id="shopaddress" class="am-icon-map-marker"></a> </div>
+				<div class="am-u-sm-12 am-list-thumb"> <a href="" class="am-icon-phone" id="iconphone"></a></div>
+			</li>-->
+		</ul>
+	</div>
+	<div class="shop_other">
+		<section data-am-widget="accordion" class="am-accordion am-accordion-gapped shop_other">
+			<dl class="am-accordion-item" >
+				<dt class="am-accordion-title"><div class="am-list-main" ><a href="" id="shopaddress" class="am-icon-map-marker"></a></div></dt>
+			</dl>
+			<span style="display:block;margin:0px 10px;height:2px;border-bottom:1px solid #E8E8E8;"></span>
+			<dl class="am-accordion-item" >
+				<dt class="am-accordion-title"><a id="iconphone" class="am-icon-phone" style="color:#4C4C4C;display:inline;"></a></dt>
+			</dl>
+			<p></p>
+			<dl class="am-accordion-item" onclick="shopIntro()">
+				<dt class="am-accordion-title">商家描述</dt>
+			</dl>
+			<p></p>
+			<dl class="am-accordion-item" onclick="shopActivity()">
+				<dt class="am-accordion-title">商家活动</dt>
+			</dl>
+			<div style="clear：both;"></div>
+			<div class="shopfirstchild">
+				<div class="am-u-sm-4 am-list-thumb"> <img id="shop-firstchild-pic" src="" data-bd-imgshare-binded="1"> </div>
+				<div class="am-u-sm-8 am-list-main" style="padding-left:0px;">
+					<h3 class="am-list-item-hd" id="shop-firstchild-div0" style="margin-bottom:0px;"></h3>
+					<div class="am-list-item-text">
+						<div class="shop-firstchild-div1"></div>
+						<div class="shop-firstchild-div2"></div>
+						<div class="shop-firstchild-div3"></div>
+					</div>
+				</div>
+			</div>
+			<div style="clear：both;"></div>
+			<dl class="am-accordion-item" onclick="shopActivity()">
+				<dt class="am-accordion-title"><i style="color:#14a6a3;">查看全部活动</i></dt>
+			</dl>
+			<p></p>
+			<dl class="am-accordion-item" onclick="shopReview()">
+				<dt class="am-accordion-title">回顾分享</dt>
+			</dl>
+			<div style="clear：both;"></div>
+			<div class="do_main">
+				<div style="margin-bottom:10px;">
+					<i class="comment_content_pi1">顶</i>
+					<i class="comment_content_pi2">精</i>
+					<img src="" alt="" class="comment_name_img1img"/>
+					<div class="comment_name_dj"><i></i> &nbsp;<em class="comment_content_pi3"></em></div>
+				</div>
+				<div>
+					<div class="comment_content_p1"></div>
+					<div class="comment_content_p2"></div>
+					<div class="com_con_img"><img src="" alt="" /></div>
+				</div>
+				<div>
+					<div class="comment_content comment_content_p3" style="margin-top:5px;">
+						<span class="com_con_i"></span>
+						<span class="am-icon-eye am-fl" style="margin-right:20px;"> </span>
+						<span class="am-icon-comment"> </span>
+					</div>
+				</div>
+			</div>
+			<div style="clear：both;"></div>
+			<dl class="am-accordion-item" onclick="shopReview()">
+				<dt class="am-accordion-title"><i style="color:#14a6a3;">查看其他回顾</i></dt>
+			</dl>
+			<p></p>
+			<dl class="am-accordion-item" onclick="shopComment()">
+				<dt class="am-accordion-title">全部点评</dt>
+			</dl>
+			<div style="clear：both;"></div>
+			<div class="do_main">
+				<div style="margin-bottom:10px;">
+					<img src="" alt="" class="review_img1img"/>
+					<div class="review_name_dj1"><i></i> &nbsp;<em class="review_content_pi3"></em></div>
+					<div class="review_name_dj2"><i></i> &nbsp;<em class="review_content_pi31">4分</em></div>
+				</div>
+				<div>
+					<div class="review_name_nr"></div>
+					<div class="review_name_picc">
+					</div>
+				</div>
+			</div>
+			<div style="clear：both;"></div>
+			<dl class="am-accordion-item" onclick="shopComment()">
+				<dt class="am-accordion-title"><i style="color:#14a6a3;">查看其他评论</i></dt>
+			</dl>
+		</section>
+	</div>
+</div>
+</body>
+
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		getShop();
+		
+		var header = $api.byId('header');
+		
+		var headerHeight = $api.offset(header).h;
+	};
+	
+	//	分享
+	function sharethis(){
+	
+		var title = $api.html($api.dom(".xcdnumber"));
+		
+		var url = "http://www.7wanl.com/activity.php?mod=view&activity_id=" + GetString("activityId") + "&mobile=2";
+		
+		var sharedModule = api.require("shareAction");
+		var sharedMsg = {
+		    text : "去玩了活动："+title+"，网站地址："+url+"，赶紧来参加吧！",
+            type : "text"
+		};
+		
+		sharedModule.share(sharedMsg);
+	}
+	
+	function getShop(){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/shop/getDetail.json?shopId="+GetString("shopid"),function(ret){
+			var imgsrc = $api.byId("imgsrc"),
+				listitemhd = $api.byId("listitemhd"),
+				plnumber = $api.byId("plnumber"),
+				zlp = $api.byId("zlp"),
+				yysjs = $api.byId("yysjs_p"),
+				shopaddress = $api.byId("shopaddress"),
+				iconphone = $api.byId("iconphone"),
+				amiconphone = $api.dom('.am-icon-phone'),
+				shopfirstchild = $api.dom(".shopfirstchild"),
+				shopfirstchildpic = $api.byId("shop-firstchild-pic"),
+				shopfirstchilddiv0 = $api.dom('#shop-firstchild-div0'),
+				shopfirstchilddiv1 = $api.dom('.shop-firstchild-div1'),
+				shopfirstchilddiv2 = $api.dom('.shop-firstchild-div2'),
+				shopfirstchilddiv3 = $api.dom('.shop-firstchild-div3'),
+				commentnameimg1 = $api.dom('.comment_name_img1img'),
+				comment_name_dj = $api.dom('.comment_name_dj i'),
+				comment_content_pi3 = $api.dom('.comment_content_pi3'),
+				comment_content_p1 = $api.dom('.comment_content_p1'),
+				comment_content_p2 = $api.dom('.comment_content_p2'),
+				com_con_img = $api.dom('.com_con_img img'),
+				amiconeye = $api.dom('.am-icon-eye'),
+				amiconcomment = $api.dom('.am-icon-comment'),
+				com_con_i = $api.dom('.com_con_i'),
+				review_img1img = $api.dom(".review_img1img");
+				review_name_dj1 = $api.dom(".review_name_dj1 i"),
+				review_content_pi3 = $api.dom(".review_content_pi3"),
+				review_name_dj2 = $api.dom(".review_name_dj2 em"),
+				review_name_nr = $api.dom(".review_name_nr"),
+				review_name_picc = $api.dom(".review_name_picc");
+				
+//				alert("shop:"+GetString("shopid")+"、yysjs:"+ret.obj.cateName)ret.obj.cateName
+				
+				imgsrc.src=ret.obj.logo;
+				listitemhd.innerHTML = ret.obj.name;
+				plnumber.innerHTML = ret.obj.comment.count + " 条评论";
+				
+				if(ret.obj.cateName != ""){
+					$api.html(yysjs, '<span id="yysjs">'+ret.obj.cateName+'</span>');
+				}
+				$api.attr(iconphone, "href", "tel:"+ret.obj.serviceTel);
+				$api.html(amiconphone," "+ret.obj.serviceTel);
+				shopaddress.innerHTML = " " + ret.obj.address;
+				$api.attr(shopaddress, "href", "http://apis.map.qq.com/uri/v1/marker?marker=coord:"+ret.obj.lat+","+ret.obj.lng+";title:"+ret.obj.name+";addr:{"+ret.obj.address);
+			
+//				商家活动
+				shopfirstchildpic.src = ret.obj.activity.pic;
+				$api.html(shopfirstchilddiv0, ret.obj.activity.title);
+				$api.html(shopfirstchilddiv1, '适用年龄： <span>'+ret.obj.activity.age+'</span>');
+				$api.html(shopfirstchilddiv2, '活动时间： <span>'+ret.obj.activity.startTime+'</span>');
+				$api.html(shopfirstchilddiv3, '<i style="font-size:16px;color:#FF5500;">'+ret.obj.activity.price+'</i>');
+				$api.addEvt(shopfirstchild, "click",function (){
+					goActivity(ret.obj.activity.activityId)
+				});
+				
+//				商家回顾
+				commentnameimg1.src = ret.obj.review.userAvatar;
+				comment_name_dj.innerHTML = ret.obj.review.userName;
+				comment_content_pi3.innerHTML = ret.obj.review.userLevel;
+				comment_content_p1.innerHTML = ret.obj.review.subject;
+				comment_content_p2.innerHTML = ret.obj.review.subject;
+				com_con_img.src = ret.obj.review.cover;
+				amiconeye.innerHTML = " " + ret.obj.review.views;
+				amiconcomment.innerHTML = " " + ret.obj.review.replies;
+				com_con_i.innerHTML = ret.obj.review.publishTime;
+				
+//				商家评论
+				review_img1img.src = ret.obj.comment.userAvatar;	
+				review_name_dj1.innerHTML = ret.obj.comment.userName;
+				review_content_pi3.innerHTML = ret.obj.comment.userLevel;
+				review_name_dj2.innerHTML = (ret.obj.star/10) + "分";
+				review_name_nr.innerHTML = ret.obj.comment.message;
+				
+				var fstar = $api.dom(".f-star");	
+				$api.css(fstar,"width:"+parseInt(2*ret.obj.star)+"%;");
+				
+				if(ret.obj.comment.pic){
+					for(var j=0;j<ret.obj.comment.pic.length;j++){
+						$api.append(review_name_picc,'<img src="'+ret.obj.comment.pic[j]+'"/>');
+					}
+				}
+				
+		},'json');
+		
+		
+	}
+	
+	
+//	商家详情
+	function shopIntro(){
+		api.openFrame({
+	        name: 'shopintro',
+	        url: 'shopintro.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	//商家活动
+	function shopActivity(){
+		api.openFrame({
+	        name: 'shopActivity',
+	        url: 'shopActivity.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+
+	//商家评论
+	function shopComment(){
+		api.openFrame({
+	        name: 'shopcomment',
+	        url: 'shopcomment.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	//商家回顾
+	function shopReview(){
+		api.openFrame({
+	        name: 'shopReview',
+	        url: 'shopReview.html?shopId='+GetString("shopid"),
+	        bounces: false,
+	        bgColor: 'rgba(0,0,0,1)',
+	        rect: {
+		        x:0,
+		        y:0,
+		        w:'auto',
+		        h:'auto'
+	        }
+        });
+	}
+	
+	function leftClose(){
+		api.closeWin();
+	}
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

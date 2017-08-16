@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/myact.css"/>
+</head>
+<body>
+<div class="list-content">
+	<div class="more_list">
+	     <div class="am-list-news-ft" id="readmore">
+	        <a href="javascript:void(0);">查看更多</a>
+	    </div>
+	</div>
+
+	
+</div>
+<div class="loading" style="position:fixed;top:40%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	var pageNum = 1;
+	apiready = function(){
+
+		var readmore = $api.dom('#readmore');
+
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=applylist',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"page":pageNum,
+		        	"status":1
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		if(ret.data.list){
+					for(var i=0;i<ret.data.list.length;i++){
+	
+	        			var _obj = ret.data.list[i];
+
+	        			var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">待审核</i>';
+
+	        			var newAt_div = '<a style="color:#4c4c4c;" id="followmod" ><input type="button" value="取消报名" class="newAt_div_fr_del"></a>'
+
+	        			//创建div
+	        			var pjlistCon = '<div class="new_activity"><div class="newAt_div"><img src="http://129.1.28.1/'+_obj.pic+'" alt="'+_obj.title+'"><div class="newAt_div_c"><p class="newAt_div_c_p1">'+_obj.title+'</p><p class="newAt_div_c_p2">适合年龄：<br>活动时间:'+_obj.dateline+'</p><p class="newAt_div_c_p3">'+newAt_div_c_paysuc+'<span></span> '+_obj.amount+'</p></div></div><div class="newAt_div_fr" style="height:30px;">'+newAt_div+'</div></div><p class="kongxx"></p>'
+	        			
+						//设置.pjlist_contain_img img 的高度
+						var pjlist_contain_imgImg = $api.dom(".newAt_div img");
+						
+						$api.css(pjlist_contain_imgImg,"height:"+parseFloat(pjlist_contain_imgImg,"width")*3/4+"px")
+						
+	        			$api.before(readmore, pjlistCon);
+        			}
+        			pageNum += 1;
+				}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+        
+        
+        api.addEventListener({
+		    name:'scrolltobottom',
+		    extra:{
+		        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+		    }
+		},function(ret,err){
+		    getCommentMore('readmore',pageNum);
+		});
+
+	};
+	
+	//查看更多
+	function getCommentMore(id){
+	
+		var objclass = $api.dom("#"+id);
+		
+		$api.html(objclass,'<a href="javascript:void(0);">加载中...</a>');
+		
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=applylist',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":$api.getStorage("userid"),
+		        	"page":pageNum,
+		        	"status":1
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			
+//			alert(pageNum+"，"+JSON.stringify(ret))
+			
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		if(ret.data.list){
+					for(var i=0;i<ret.data.list.length;i++){
+	
+	        			var _obj = ret.data.list[i];
+	        			
+	        			var newAt_div_c_paysuc = '<i class="newAt_div_c_paysuc">待审核</i>';
+	        			
+	        			var newAt_div = '<a style="color:#4c4c4c;" id="followmod" ><input type="button" value="取消报名" class="newAt_div_fr_del"></a>'
+
+	        			//创建div
+	        			var pjlistCon = '<div class="new_activity"><div class="newAt_div"><img src="http://129.1.28.1/'+_obj.pic+'" alt="'+_obj.title+'"><div class="newAt_div_c"><p class="newAt_div_c_p1">'+_obj.title+'</p><p class="newAt_div_c_p2">适合年龄：<br>活动时间:'+_obj.dateline+'</p><p class="newAt_div_c_p3">'+newAt_div_c_paysuc+'<span></span> '+_obj.amount+'</p></div></div><div class="newAt_div_fr" style="height:30px;">'+newAt_div+'</div></div><p class="kongxx"></p>'
+	        			
+						//设置.newAt_div img 的高度
+						var pjlist_contain_imgImg = $api.dom(".newAt_div img");
+						
+						$api.css(pjlist_contain_imgImg,"height:"+parseFloat(pjlist_contain_imgImg,"width")*3/4+"px")
+	
+	        			$api.before(readmore, pjlistCon);
+	        			$api.html(objclass,'<a href="javascript:void(0);">查看更多</a>');
+	        		}
+	        		
+	        		pageNum += 1;
+        		}
+
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        	$api.html(objclass,'<a href="javascript:void(0);">没有更多数据...</a>');
+        	
+//      	alert("pageNum:"+pageNum)
+        });
+    }
+</script>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    * {
+	    margin: 0;
+	    padding: 0;  
+	    word-wrap: break-word;
+	}
+	*, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	#refund-apply .b-bottom {
+	    border-bottom: 1px solid #e4e4e4;
+	    position: relative;
+	}
+	#refund-apply p {
+	    padding: 11px 10px;
+	    color: #333333;
+	    font-size: 14px;
+	}
+	p {
+	    margin: 0;
+	}
+	#refund-apply .money {
+	    position: absolute;
+	    right: 10px;
+	    color: #f9851d;
+	    margin-top: -4px;
+	}
+	#refund-apply div {
+	    background-color: #eeeeee;
+	    padding: 4px 10px;
+	    color: #999999;
+	    font-size: 13px;
+	    border-top: 1px solid #e4e4e4;
+	    border-bottom: 1px solid #e4e4e4;
+	}
+	#refund-apply .col-1 {
+	    color: #14a6a3;
+	}
+	#refund-apply i {
+	    height: 1.9em;
+	    line-height: 1.9em;
+	    display: block;
+	    font-style: normal;
+	}
+	#refund-apply .f-c-2 {
+	    color: #666666;
+	    font-size: 12px;
+	}
+	#refund-apply .refund-list {
+	    margin: 0 10px;
+	}
+	ul {
+	    padding: 0;
+	    margin: 0;
+	}
+	#refund-apply .refund-list li {
+	    padding: 10px 0px;
+	    height: 43px;
+	    line-height: 40px;
+	    border-bottom: 1px solid #e4e4e4;
+	    position: relative;
+	    color: #333333;
+	    font-size: 14px;
+	}
+	#refund-apply .refund-list span {
+	    display: block;
+	    width: 24px;
+	    height: 24px;
+	    border: 1px solid #d7d7d7;
+	    position: absolute;
+	    top: 50%;
+	    right: 10px;
+	    margin-top: -12px;
+	    border-radius: 50px;
+	}
+	#refund-apply input[type='radio'] {
+	    display: none;
+	}
+	input[type=radio], input[type=checkbox] {
+	    margin: 0;
+	}
+	#refund-apply .sub-btn {
+	    background-color: #fe9130;
+	    display: block;
+	    padding: 8px 0;
+	    text-align: center;
+	    margin: 30px 10px;
+	    color: #fff;
+	    border-radius: 3px;
+	    -webkit-border-radius: 3px;
+	}
+	#refund-apply .refund-list .active {
+	    background: #14a6a3 url("http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/correct.png") center center no-repeat;
+	    background-size: 12px 8px;
+	}
+	#forHeader {
+    	position:fixed; z-index:9999; width:100%;
+    }
+    header {
+    	height:52px;padding-top:20px; border-bottom:1px solid rgb(195, 195, 195);position: relative;text-align:center;line-height:25px;background-color:#fff;
+    }
+    .left {
+    	height:40px; width:43px; position:absolute;left:-5px; top:22px;
+    }
+    .left a {
+    	display:inline-block;height:13px; width:13px;border-top:1px solid #000;border-left:1px solid #000;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);
+    }
+    .am-form-field{
+    	border: 1px solid #ccc;
+    	display: block;
+    	width: 100%;
+    	padding: 0.625em;
+    	color: #555;
+    	background-color: #fff;
+    	line-height: 1.6;
+    }
+    </style>
+</head>
+<body>
+<div id="forHeader">
+	<header>
+		<div class="left" onclick="closeWin()"><a></a></div>
+		我要退款
+	</header>
+</div>
+<section id="refund-apply" style="padding-top:52px;">
+	<p class="b-bottom" id="refundTitle"></p>
+	<p>退款金额<span class="money">￥&nbsp;<em class="tk_em" id="refundprice"></em></span></p>
+	<div>退款方式</div>
+	<p>
+		<i class="col-1">原路返回</i>
+		<i class="f-c-2">退款将在7个工作日完成，暂不收取手续费</i>
+	</p>
+	<div>退款原因</div>
+	<ul id="refundList" class="refund-list">
+		<li tapmode>
+			<i>买错了</i>
+			<span class=""></span>
+			<input name="reason_sel" type="radio" value="买错了" checked="true">
+		</li>
+		<li tapmode>
+			<i>与我参与的其他活动有时间冲突</i>
+			<span class="active"></span>
+			<input name="reason_sel" type="radio" value="与我参与的其他活动有时间冲突">
+		</li>
+		<li tapmode>
+			<i>计划有变，没时间参加活动</i>
+			<span class=""></span>
+			<input name="reason_sel" type="radio" value="计划有变，没时间参加活动">
+		</li>
+		<li tapmode>
+			<i>其他原因</i>
+			<span class=""></span>
+			<input name="reason_sel" type="radio" value="other">
+		</li>
+		<li tapmode>
+			<i style="display:none;"></i>
+			<span  style="display:none;"></span>
+			<input type="text" name="reason" disabled id="othername" class="am-form-field am-input-sm" placeholder="其它原因请填写">
+			
+		</li>
+	</ul>
+	<a class="sub-btn" href="javascript:void(0);" onclick="validatrefund()">申请退款</a>
+</section>
+
+<div class="loading"></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+
+		$api.html($api.byId("refundTitle"), decodeURI(GetString("actname")));
+		$api.html($api.byId("refundprice"), GetString("price"));
+		
+		var refundList = document.getElementById("refundList").getElementsByTagName("li");
+		for(var i=0;i<refundList.length-1;i++){
+			refundList[i].index=i;
+			refundList[i].onclick=function (){
+				for(var i=0;i<refundList.length-1;i++){
+					$api.removeCls($api.eq(refundList[i], 2), "active");
+				}
+				$api.addCls($api.eq(refundList[this.index], 2), "active");
+				
+				if(this.index==3){
+					$api.byId("othername").disabled=false;
+				}else{
+					$api.byId("othername").disabled=true;
+				}
+			}
+		}
+		$api.css($api.dom('.loading'),"display:none");
+	};
+	
+	function validatrefund(){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=order&action=refund',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":GetString("uid"),
+		        	"apply_id":GetString("applyId"),
+		        	"type":"activity"
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+//			alert(JSON.stringify(ret))
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}else if(ret.code ==0){
+        			alert(ret.msg)
+        		}
+
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	
+        });
+	}
+	
+	function closeWin(){
+		api.closeFrame();
+	} 
+</script>
+</html>

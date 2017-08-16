@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	body{
+    		width:100%;
+    	}
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		li {
+			list-style:none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #fff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:4px !important;
+		    left:32px !important;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		.user-info p{
+			padding-top: 8px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:42px;line-height: 42px;margin-left:-25px;
+		}
+		.main{
+			height:400px;
+		}
+		.address{
+			width:96%;
+			margin:0px 2%;
+			line-height:25px;
+			text-align:left;
+		}
+    </style>
+</head>
+<body>
+<header id="header" class="header" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="margin-left:13px;">地图定位</div>
+</header>
+<div class="main"></div>
+<div class="address"></div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+
+	var headerHeight = $api.offset($api.dom('header'));
+
+	apiready = function(){
+		var bMap = api.require("bMap");
+//		$api.fixIos7Bar( $api.dom('header') );
+		
+		$api.fixStatusBar($api.dom('header'));
+
+		bMap.getLocation({
+		    accuracy: '100m',
+		    autoStop: true,
+		    filter: 1
+		}, function(ret, err){
+		    if(ret.status){
+
+		        bmapOpen(ret.lon,ret.lat)
+		        
+		    }else{
+		        alert(err.code);
+		    }
+		});
+
+	};
+	
+	function bmapOpen(lng,lat){
+		var bMap = api.require("bMap");
+		bMap.open({
+			rect : {
+				x : 0,
+				y : headerHeight.h+20,
+				w : api.winWidth,
+				h : 400
+			},
+			center : {
+				lon : lng,
+				lat : lat
+			},
+			zoomLevel : 10,
+			showUserLocation : true,
+			fixedOn : '',
+			fixed : true
+		}, function(ret) {
+
+			if (ret.status) {
+//				api.alert({
+//					msg : ''
+//				}, function(ret, err) {
+//				});
+			}
+		});
+		
+		bMap.getNameFromCoords({
+		    lon : lng,
+			lat : lat
+		},function(ret,err){
+		    if(ret.status){
+//		        alert(JSON.stringify(ret));
+		        var theAddress = $api.dom(".address");
+		        $api.html(theAddress, '你所在位置：' + ret.address);
+		        
+		    }
+		});
+		
+		bMap.show();
+		
+		bMap.showUserLocation({
+		    isShow: true,
+		    trackingMode: 'follow'
+		});
+		
+	}
+	
+	//关闭页面
+	function leftClose(){
+    	api.closeWin();
+    }
+</script>
+</html>

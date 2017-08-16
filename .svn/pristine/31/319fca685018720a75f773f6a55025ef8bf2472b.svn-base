@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/activity/style.css">
+	<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	#pl_yw_hg {
+    		height: 32px;line-height: 24px;width: 100%;text-align: center;font-size: 16px;color: #000;border-bottom: 1px solid #e3e3e3;margin-bottom: 10px;position: relative;
+		}
+		.go_back {
+		    width: 12px; height: 22px;
+		}
+		.comment_name {
+			font-size:15px;color:#000;margin-top:2px;
+		}
+		.comment_content{
+			font-size:13px;line-height:23px;margin-bottom:2px;
+		}
+		.f_123{
+			background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;
+		}
+		
+    </style>
+</head>
+<body>
+	<div style="width:100%;height:20px;background-color:#fff;"></div>
+	<div class='domain' id="domain">
+		<div id="pl_yw_hg">
+			<span class="go_back am-fl" onclick="icoback()"></span>
+			所有用户疑问
+			<div><span class="am-btn " data-am-modal="{target: '#my_question'}"></span></div>
+		</div>
+		
+		
+		<div class="clearboth" style="clear:both;"></div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		questioncon();
+	};
+	
+	//关掉--类似退一步
+	function icoback(){
+		api.closeWin();
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	
+	function questioncon(){
+		var url = "http://test.7wanl.com/7wanlsoa/app/question/getList.json?activityId="+GetString("activityId")+"&pageNumber=1&pageSize=30";
+		
+		$api.get(url,function(data){
+			
+//			alert("data:"+JSON.stringify(data))
+			var viewcontent = $api.dom(".clearboth");
+			
+			if(data.code == 0){
+				
+				for(var i=0;i<data.obj.length;i++){
+				
+					var _obj = data.obj[i];
+				
+					$api.before(viewcontent, '<div class="view_comment am-cf" style="border-bottom: 1px solid #e8e8e8;padding: 0px 10px 8px;margin-bottom: 8px !important;"><p class="comment_name"><span class="am-fr" style="line-height:23px;font-size: 12px;color: #bbb;">'+_obj.addTime+'</span>'+_obj.username+' <em class="am-badge am-badge-success am-round am-badge-primary f_12 f_123">'+_obj.userLevel+'</em></p><p class="comment_content">'+_obj.message+'</p></div>');
+					
+				}
+				
+			}else{
+				$api.before(viewcontent, '<div class="view_comment_none" style="margin: 40px 10px;font-size: 16px;text-align: center;">暂无疑问！<br>欢迎您把您的困惑告诉我们。</div>');
+			}
+			
+			
+		},'json');	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

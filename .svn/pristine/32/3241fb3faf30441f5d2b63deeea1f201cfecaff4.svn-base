@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/style.css">
+	<style>
+	#header {
+		background:#fff;height:46px;line-height:45px;margin-top:12px;
+	}
+	i { font-style:normal !important;}
+	.ico_back{
+		display:inline-block;width:20px;height:25px;margin-top:13px;
+	}
+	.am-list-item-hd{
+		white-space: nowrap;
+    	text-overflow: ellipsis;
+	}
+	.am-accordion-content{
+		padding:10px 0px 0px 0px !important;
+	}
+	.am-list-item-text div{
+		white-space: nowrap;
+    	text-overflow: ellipsis;
+    	overflow:hidden;
+	}
+	</style>
+</head>
+
+<body>
+<header id="header" class="header" data-am-sticky="" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="color:#000;">商家活动</div>
+</header>
+<div class="am-accordion-content" style="background-color:#fff;">
+	<ul class="am-list" id="am-list">
+		<!--<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" onclick="">
+			<div class="am-u-sm-4 am-list-thumb"> <img src="http://www.7wanl.com/data/attachment/portal/201604/11/175813gnnhx5v7mscndkqs.jpg" data-bd-imgshare-binded="1"> </div>
+			<div class="am-u-sm-8 am-list-main">
+				<h3 class="am-list-item-hd" style="margin-bottom:0px;">乐玩高尔夫，我们都是小绅士 ...</h3>
+				<div class="am-list-item-text">
+					<div>适用年龄： <span>6~12岁</span></div>
+					<div><i>免费</i></div>
+				</div>
+			</div>
+		</li>-->
+	</ul>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		shopActivity();
+	};
+	
+	function shopActivity(){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/shop/getActivityList.json?shopId="+GetString("shopId")+"&pageNumber=1&pageSize=15",function(ret){
+			
+			if(ret.code == 0){
+				var amlist = $api.byId("am-list");
+				
+				for(var i=0;i<ret.obj.length;i++){
+				
+					var _obj = ret.obj[i]; 
+					
+					var amlistLi = '<li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" onclick="goActivity('+_obj.activityId+')"><div class="am-u-sm-4 am-list-thumb"> <img src="'+_obj.pic+'" data-bd-imgshare-binded="1"> </div><div class="am-u-sm-8 am-list-main"><h3 class="am-list-item-hd" style="margin-bottom:0px;">'+_obj.title+'</h3><div class="am-list-item-text"><div style="font-size:13px;">适用年龄: <span>'+_obj.age+'</span></div><div style="font-size:13px;">活动时间: <span>'+_obj.startTime+'</span></div><div><i style="color: #f9851d;font-size:16px;">'+_obj.price+'</i></div></div></div></li>';
+					
+					$api.append(amlist, amlistLi);
+				}
+			}else{
+				alert(ret.msg)
+			}
+		},'json');
+	}
+	
+	//进入每个活动的详情页
+	function goActivity(activityId){
+		api.openWin({
+	        name: 'activity',
+	        url: 'activity.html?activityId='+activityId
+	        
+        });
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	function leftClose(){
+		api.closeFrame();
+	}
+</script>
+</html>

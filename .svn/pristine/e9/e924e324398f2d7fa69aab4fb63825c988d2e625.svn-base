@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>底部导航</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <style>
+        header{ background-color: #f2f2f2; }
+        header ul li { height: 50px; line-height: 50px; text-align: center; display: none; color: #323237; position: relative;font-size: 18px;  }
+        header ul li.active{ display: block; }
+        #footer{  background-color: #f2f2f2; }
+        #footer ul li{  padding-top: 36px; padding-bottom: 4px; background: url() no-repeat center 2px; background-size: auto 30px; text-align: center; }
+        #footer ul li.active{ color: #6ab494; }
+        #footer ul li:nth-child(1){ background-image: url(image/bottombtn0101.png); }
+        #footer ul li:nth-child(2){ background-image: url(image/bottombtn0201.png); }
+        #footer ul li:nth-child(3){ background-image: url(image/bottombtn0301.png); }
+        #footer ul li:nth-child(4){ background-image: url(image/bottombtn0401.png); }
+        #footer ul li:nth-child(1).active{ background-image: url(image/bottombtn0102.png); }
+        #footer ul li:nth-child(2).active{ background-image: url(image/bottombtn0202.png); }
+        #footer ul li:nth-child(3).active{ background-image: url(image/bottombtn0302.png); }
+        #footer ul li:nth-child(4).active{ background-image: url(image/bottombtn0402.png); }
+        #header{
+            height: 46px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #3ac0b5;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+
+            -webkit-flex-direction: row;
+            flex-direction: row;
+
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+
+            -webkit-box-align: center; 
+            -webkit-align-items: center;
+            align-items: center;
+            border-bottom: 1px solid #2ba399;
+        }
+        
+        .place{
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 5px;
+            line-height: 46px;
+        }
+        .map{
+            display: inline-block;
+            line-height: 46px;
+        }
+        .search-bar{
+            height: 32px;
+            line-height: 32px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+
+            -webkit-box-flex: 1; 
+            -webkit-flex: 1;
+            flex: 1;
+            border-radius: 50px;
+            background-color: #2ba399;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .search-bar input{
+        	-webkit-box-flex: 1; 
+            -webkit-flex: 1;
+            flex: 1;
+            outline: none;
+            color: #fff;
+            border: none;
+            background-color: transparent;
+        }
+
+        /*icon*/
+        .i-arrow-down{
+            display: inline-block;
+            padding: 10px;
+            background: url(image/category_triangle_h@2x(1).png) no-repeat center center;
+            -webkit-background-size: 12px;
+            background-size: 12px;
+            vertical-align: middle;
+        }
+        .i-search{
+        	display: inline-block;
+            padding: 16px;
+            background: url(image/icon_next@3x.png) no-repeat center center;
+            -webkit-background-size: 24px;
+            background-size: 24px;
+            vertical-align: top;
+        }
+        .i-map{
+            display: inline-block;
+            padding: 20px;
+            background: url(image/icon_home@2x(1).png) no-repeat center center;
+            -webkit-background-size: 24px;
+            background-size: 24px;
+            vertical-align: top;
+        }
+        .i-map-two{
+            display: inline-block;
+            padding: 20px;
+            background: url(image/icon_home@2x(1).png) no-repeat center center;
+            -webkit-background-size: 24px;
+            background-size: 24px;
+            vertical-align: top;
+        }
+        #header {
+		    position: relative;
+		    height: 44px;
+		    line-height: 44px;
+		    background-color: #14a6a3;
+		    overflow: hidden;
+	    }
+	    .head-icon a, header .left {
+		    text-align: center;
+		}
+		#header .left {
+		    float:left;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #ffffff;
+		    margin-bottom:8px;
+		}
+		#header .left span.citychange {
+		    padding-left: 10px;
+		}
+		#header .cent {
+		    display: flex;
+            -webkit-box-flex: 1; 
+            -webkit-flex: 1;
+            flex: 1;
+		    height: 100%;
+		    text-align: center;
+		    font-size: 16px;
+		    color: #000;
+		    font-weight: normal;
+		    margin: 0px;
+		    padding-bottom: 11px;
+		}
+		#seach {
+		    background: #0d9a97 url(image/search.png) 15px center no-repeat;
+		    color: #aaeae9;
+		    height: 29px;
+		    font-size: 12px;
+		    width:80%;
+		    background-size: 9px 9px;
+		    display: inline-block;
+		    margin: 9px 10px 0 10px;
+		    border-radius: 14px;
+		    line-height: 28px;
+		    text-align: left;
+		    padding-left: 30px;
+		}
+		.head-icon {
+		    z-index: 5;
+		    float:right;
+		    padding-top: 8px;
+		    margin-bottom:2px;
+		}
+		#ico_new {
+		    background: url(image/header_new.png) 0px center no-repeat;
+		    background-size: 23px 23px;
+		    width: 23px;
+		    margin: 5px 10px 0px 0px;
+		    height: 23px;
+		    display: inline-block;
+		}
+		#ico_my {
+		    background: url(image/header.png) 0px center no-repeat;
+		    background-size: 23px 23px;
+		    width: 23px;
+		    margin: 5px 10px 0px 0px;
+		    height: 23px;
+		    position: relative;
+		}
+		.am-icon-angle-down{
+			display:inline-block;
+			width:7px;
+			height:7px;
+			border-left:2px solid #fff;
+			border-bottom:2px solid #fff;
+			transform:rotate(-45deg);
+			-ms-transform:rotate(-45deg); 	/* IE 9 */
+			-moz-transform:rotate(-45deg); 	/* Firefox */
+			-webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+			-o-transform:rotate(-45deg);
+			margin-bottom:4px;
+		}
+		.personer {
+			position: relative;
+		    height: 44px;
+		    line-height: 44px;
+		    background-color: #14a6a3;
+		    overflow: hidden;
+		    color:#fff;
+		}
+		.sliderspan {
+		    height: 0;
+		    zoom: 1;
+		    display: inline-block;
+		    width: 0;
+		    margin-bottom: -10px;
+		    padding-top: 7px;
+		    border-style: dashed dashed solid dashed;
+		    border-width: 6px;
+		    border-color: #14a6a3 transparent transparent transparent;
+		}
+		.personer2 {
+			position: relative;
+		    height: 44px;
+		    line-height: 44px;
+		    background-color: #fff;
+		    overflow: hidden;
+		    color:#14a6a3;
+		    border-bottom:1px solid #e0e0e0;
+		}
+		.personer2 p {
+			position:absolute;
+			width:22.5px;
+			height:21px;
+			right:10px;
+			top:13px;
+			background:url(image/dinwei.jpg) center center no-repeat;
+			background-size:100% 100%;
+		}
+    </style>
+</head>
+<body>
+<div id="wrap" class="flex-wrap flex-vertical">
+    <header >
+        <ul>
+            <li class="border-b active" >
+<!--            	<div id="header">
+	        		<div class="btn place" tapmode="topbar-active">北京<i class="i-arrow-down"></i></div>
+	        		<div class="search-bar" tapmode="" onclick="alert(1)">
+	            		<i class="i-search"></i>
+	            		<input type="text" placeholder="请输入活动/帖子/课程" readonly>
+	        		</div>
+	        		<div class="btn map" tapmode="topbar-active">
+	        			<i class="i-map-two"></i>
+	            		<i class="i-map"></i>
+	        		</div>
+	    		</div>-->
+	    		<div class="am-sticky-placeholder" style="height: 44px; margin: 0px;"><div data-am-sticky="" style="margin: 0px;">
+				    <div id="header" class="homeHeader">
+				        <div class="left" data-am-modal="{target: '#citychange'}"><span class="citychange">广州市 <i class="am-icon-angle-down"></i></span> </div>
+				        <div class="cent">
+				            <div id="seach" class="seach" data-am-modal="{target: '#my-seach'}">请输入活动/帖子/课程</div>
+				        </div>
+				        <div class="head-icon"><a href="shop.php?mod=my&amp;ac=code&amp;mobile=2" class="ico_my" id="ico_new"></a><a href="shop.php?mod=my&amp;mobile=2" class="ico_my" id="ico_my"></a></div>
+				    </div>
+				</div></div>
+            </li>
+            <li class="border-b personer2" >广州 <span class="sliderspan"></span><p></p></li>
+            <li class="border-b personer2" style="color:#000;">活动回顾</li>
+            <li class="border-b personer" >个人中心 <span></span></li>
+        </ul>
+    </header>
+    
+    
+    <div id="main" class="flex-con">
+
+    </div>
+    <div id="footer" class="border-t">
+        <ul class="flex-wrap" >
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con active" >首页</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >附近</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >回顾</li>
+            <li tapmode="hover" onclick="randomSwitchBtn( this );" class="flex-con" >我的</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="script/api.js"></script>
+<script type="text/javascript">
+    apiready = function () {
+        $api.fixStatusBar( $api.dom('header') );
+        api.setStatusBarStyle({
+            style: 'dark',
+            color: '#6ab494'
+        });
+        funIniGroup();
+    }
+
+    function funIniGroup(){
+        var eHeaderLis = $api.domAll('header li'),
+            frames = [];
+        for (var i = 0,len = eHeaderLis.length; i < len; i++) {
+                frames.push( { 
+                    name: 'frame'+i, 
+                    url: './html/frame'+i+'.html', 
+                    bgColor : 'rgba(0,0,0,.2)',
+                    bounces:true
+                } )
+        }
+        api.openFrameGroup({
+            name: 'group',
+            scrollEnabled: false,
+            rect: {
+                x: 0, 
+                y: $api.dom('header').offsetHeight, 
+                w: api.winWidth, 
+                h: $api.dom('#main').offsetHeight
+            },
+            index: 0,
+            frames: frames
+        }, function (ret, err) {
+
+        });
+    }
+
+    // 随意切换按钮
+    function randomSwitchBtn( tag ) {
+        if( tag == $api.dom('#footer li.active') )return;
+        var eFootLis = $api.domAll('#footer li'),
+            eHeaderLis = $api.domAll('header li'),
+            index = 0;
+        for (var i = 0,len = eFootLis.length; i < len; i++) {
+            if( tag == eFootLis[i] ){
+                index = i;
+            }else{
+                $api.removeCls(eFootLis[i], 'active');
+                $api.removeCls(eHeaderLis[i], 'active');
+            }
+        }
+        $api.addCls( eFootLis[index], 'active');
+        $api.addCls( eHeaderLis[index], 'active');
+        api.setFrameGroupIndex({
+            name: 'group',
+            index: index
+        });
+    }
+</script>

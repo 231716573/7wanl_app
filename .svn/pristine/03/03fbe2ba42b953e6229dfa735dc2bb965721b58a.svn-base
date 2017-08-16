@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+	html,body {
+        height: 100%;
+        min-height: 100%;
+        background-color: transparent;
+    }
+    #navUl{
+    	width:100px;
+    	float:left;
+    	height:330px;
+    	background: #ececec;
+    	overflow-y:scroll;
+    }
+    #navUl .actclass{
+    	display:inline-block;
+    	width:100px;
+    	padding:12px 10px;
+    	background: #ececec;
+    	color: #636363;
+    	border-right:1px solid #e1e1e1;
+    	box-sizing:border-box;
+    }
+    #navUl .navUlAct{
+    	background: #fff;
+    	color: #14a6a3;
+    	border-top:1px solid #e1e1e1;
+    	border-bottom:1px solid #e1e1e1;
+    	border-right:1px solid #fff;
+    }
+    #navChildUl{
+    	padding-bottom:10px;
+    	background: #fff;
+    	padding-right:10px;
+    	height:320px;
+    	overflow-y:scroll;
+    }
+    #navChildUl div{
+    	padding:11px 5px;
+    	margin-left:10px;
+    	border-bottom:1px solid #e1e1e1;
+    	color: #636363;
+    	box-sizing:border-box;
+    }
+    
+    </style>
+</head>
+<body>
+<div id="navUl">
+</div>
+<div id="navChildUl">
+
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+	
+		actclass()
+
+	};
+	
+	
+	//	添加活动头部
+	function actclass(){
+		var myClass = $api.byId("navUl");
+		
+		$api.get('http://test.7wanl.com/7wanlsoa/app/index/getAllParentActivityCateList.json',function(ret){
+		
+			$api.append(myClass,'<div class="actclass" tapmode="" onclick="goActivitydiy(0)">全 部</div>');
+		
+			for(var i=0;i<ret.obj.length;i++){
+				
+				$api.append(myClass,'<div class="actclass act_div'+i+'" tapmode="" cateid='+ret.obj[i].cateId+'>'+ret.obj[i].name+'</div>');
+				
+			}
+			
+			var navUldiv = $api.domAll("#navUl div");
+			
+			for(var j=0;j<navUldiv.length;j++){
+				
+				navUldiv[j].index=j
+				
+				$api.addEvt(navUldiv[j],"click",function (){
+				
+					for(var j=0;j<navUldiv.length;j++){
+						$api.removeCls(navUldiv[j], 'navUlAct');
+					}
+					
+					$api.addCls(navUldiv[this.index], 'navUlAct');
+					
+					removeAllChild();
+					
+					actclassChild($api.attr(navUldiv[this.index],"cateid"))
+					
+				});
+				
+			}
+			
+		},'json');
+
+	}
+	
+	function actclassChild(cadeId){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/index/getAllActivityCateList.json",function(ret){
+		
+			for(var i=0;i<ret.obj.length;i++){
+			
+				var _obj = ret.obj[i];
+				
+				var liHTML = '';
+				
+				if(_obj.cateId == cadeId){
+				
+					for(var m =0;m<_obj.subs.length;m++){
+						
+						liHTML+='<div tapmode="" onclick="goActivitydiy('+_obj.subs[m].cateId+')">'+_obj.subs[m].name+'</div>';
+					}
+				
+				}
+				
+				$api.append($api.byId('navChildUl'), liHTML);
+			}
+			
+		},'json');
+	}
+	
+	function goActivitydiy(cateId){
+
+		if($api.getStorage('cityid')){
+
+			api.openWin({
+		        name: 'activitydiy',
+		        url: 'activitydiy.html?cateId='+cateId+'&cityid='+$api.getStorage('cityid')
+	        });
+        
+        }else{
+
+        	api.openWin({
+		        name: 'activitydiy',
+		        url: 'activitydiy.html?cateId='+cateId+'&cityid=289'
+	        });
+        }
+        
+        api.execScript({
+        	name:'activitydiy',
+	        script: 'activitySlide();'
+        });
+	}
+	
+	//	删除所有子节点
+	function removeAllChild(){
+	    var amlist = document.getElementById("navChildUl");
+	    while(amlist.hasChildNodes()) {
+	        amlist.removeChild(amlist.firstChild);
+	    }
+	}
+</script>
+</html>

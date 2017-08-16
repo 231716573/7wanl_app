@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>端API</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+	
+    <style>
+    .am-list-news-default {
+	    margin: 0;
+	    background: #fff;
+	}
+	.am-slider-default, .am-list {
+	    margin: 0;
+	    padding-left: 0;
+	}
+	.am-list-news-default .am-list .am-list-item-desced {
+	    border-bottom: 1px solid #e5e5e5;
+	}
+	.am-list-news-default .am-list .am-list-item-desced {
+	    padding-top: 1rem;
+	    padding-bottom: 1rem;
+	}
+	.am-list-news-default .am-list>li {
+	    border: 0;
+	    margin-bottom: 0;
+	}
+	.am-list-news-default .am-g {
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	.am-list>li {
+	    position: relative;
+	    display: block;
+	    background-color: #fff;
+	}
+	.am-list-item-thumbed {
+	    padding-top: 1em;
+	}
+	.am-g:before, .am-g:after {
+	    content: " ";
+	    display: table;
+	}
+	.am-g {
+	    margin: 0 auto;
+	    width: 100%;
+	}
+	.am-list-news-default .am-list .am-list-item-thumb-left .am-list-thumb {
+	    padding-left: 0;
+	}
+	.am-list-news-default .am-list-item-thumb-left .am-list-thumb {
+	    max-height: inherit;
+	}
+
+	.am-list-news-default .am-list .am-list-thumb img {
+	    width: 100%;
+	    display: block;
+	}
+	input, textarea, img {
+	    vertical-align: middle;
+	    font-family: Arial, "Microsoft Yahei";
+	}
+	img {
+	    box-sizing: border-box;
+	    max-width: 100%;
+	    border: 0;
+	}
+	.am-list-news-default .am-list .am-list-item-desced .am-list-main {
+	    padding: 0;
+	}
+	[class*=am-u-]+[class*=am-u-]:last-child {
+	    float: right;
+	}
+	.am-u-sm-8 {
+	    margin-top: -3px;
+	}
+	@media only screen
+	.am-u-sm-8 {
+	    width: 66.66666667%;
+	}
+	.am-list-news-default .am-list-item-hd {
+	    height: 20px;
+	    line-height: 25px;
+	    overflow: hidden;
+	    display: block;
+	    -webkit-line-clamp: 1;
+	    -webkit-box-orient: vertical;
+	    font-size: 16px;
+	    color: #333;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+	}
+	.am-list-news-default .am-list-item-hd {
+	    font-weight: 400;
+	}
+	.am-list-news .am-list-item-hd {
+	    margin: 0;
+	}
+	.am-list-news-default .am-list .am-list-item-desced .am-list-item-text {
+	    margin-top: .5rem;
+	    color: #757575;
+	}
+	.am-list-news-default .am-list .am-list-item-text {
+	    max-height: inherit;
+	}
+	.am-list-news-default .am-list .am-list-item-text {
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    line-height: 1.3em;
+	    -webkit-line-clamp: 2;
+	}
+	.am-list-item-text {
+	    font-size: 1.3rem;
+	    margin: 0;
+	}
+	.am-list-item-text p {
+	    margin: 0;
+	    font-size: 12px;
+	    line-height: 18px;
+	    color: #999;
+	}
+	.pb5 {
+	    padding-bottom: 5px;
+	}
+	.am-fr {
+	    color: #bbb;
+	    line-height: 38px;
+	    height: 23px;
+	}
+	.am-fr {
+	    float: right;
+	}
+	.am-list-item-text p i {
+	    font-size: 18px;
+	    color: #ff9233;
+	}
+	activity.phpmedia="all"
+	em, cite, i {
+	    font-style: normal;
+	}
+	.am-list-item-text p i {
+	    font-size: 18px;
+	    color: #ff9233;
+	}
+	.am-list-item-text p i {
+		font-style:normal;
+	}
+	.am-list-news-ft {
+	    text-align: center;
+	}
+	#readmore a {
+	    height: 45px;
+	    line-height: 42px;
+	    font-size: 15px;
+	    display: block;
+	    color: #999;
+	    background: #fff;
+	}
+	[class*=am-icon-] {
+	    display: inline-block;
+	}
+	.am-icon-angle-double-down:before {
+	    content: "\f103";
+	}
+	.dingwei{
+		margin:0px 10px;
+		background:#fff;
+		height:50px;
+		color:#000;
+		line-height: 50px;
+	}
+	.dingwei p {
+		padding-left:22px;
+		background:url(../image/icon_address_blue@2x.png) 0 center no-repeat;
+		background-size:20px 20px;
+		font-size:15px;
+	}
+	.dingwei a {
+		position:absolute;
+		display:inline-block;
+		right:10px;
+		top:8px;
+		text-align:center;
+		border-radius:5px;
+		height:35px;
+		line-height:35px;
+		padding:0px 7px;
+		background:#ff9233;
+		color:#fff;
+		font-size:16px;
+	}
+    </style>
+</head>
+<body>
+	<div class="dingwei">
+		<p>您所在的区域： 客村</p>
+		<a tapmode onclick="locationAgain()">重新定位</a>
+	</div>
+    <div data-am-widget="list_news" class="am-list-news am-list-news-default am-no-layout">
+        <div class="am-list-news-bd" style="margin:0px 10px;">
+            <ul class="am-list am-list-fujin">
+                <div class="clearboth" style="clear:both;"></div>
+           </ul>
+           <div class="am-list-news-ft" id="readmore" >
+                <a href="javascript:;" class="readmore"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>
+           </div>
+        </div>
+    </div>
+</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script>
+    var i =2;
+    
+    var lng = "";
+    var lat = "";
+	
+	apiready = function(){
+		
+		//定位
+		api.startLocation({
+	        accuracy:'100m',
+	        autoStop: true
+        },function(ret,err){
+        	if( ret ){
+		        lng = ret.longitude;
+		        lat = ret.latitude;
+		        
+		        var url = "http://test.7wanl.com/7wanlsoa/app/location/getActivityList.json?cityId=289&lng="+lng+"&lat="+lat+"&pageSize=5&pageNumber=1";
+		        
+    			//加载活动
+				loadActivity(url);
+		    }else{
+		         alert("发生错误，请重新加载！");
+		    }
+        });
+		
+    	var readmore = $api.dom(".readmore");
+
+    	var listmorepic = $api.dom(".am-list-fujin img");
+    				
+		var listmorepicWidth = $api.cssVal(listmorepic,"width");
+		
+		$api.css(listmorepic,"height:"+listmorepicWidth+"*3/4");
+	    
+	    
+		//加载更多
+	    $api.addEvt(readmore, 'click', function(){
+			getlistmore('readmore','http://test.7wanl.com/7wanlsoa/app/location/getActivityList.json?cityId=289&lng='+lng+'&lat='+lat+'&pageSize=5&pageNumber=');
+		});
+
+		//下拉刷新
+		api.setRefreshHeaderInfo({
+		    visible: true,
+		    loadingImg: '../image/refreshing_image_01.png',
+		    bgColor: '#ccc',
+		    textColor: '#fff',
+		    textDown: '下拉刷新...',
+		    textLoadin:'加载中...',
+		    textUp: '松手刷新...',
+		    showTime: true
+		}, function (ret, err) {
+		    alert('刷新完毕！');
+		    api.refreshHeaderLoadDone();
+		});
+    }
+    
+    //加载活动
+    function loadActivity(url){
+    	$api.get(url,function(data){
+			
+		  	if(data.code == 0){
+    				
+				for(var i=0;i<data.obj.length;i++){
+				
+					var _obj = data.obj[i];
+				
+					var $listmore = $api.dom(".clearboth");
+					
+					$api.before($listmore,'<li onclick="goActivity('+_obj.activityId+')" tapmode class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div class="am-u-sm-4 am-list-thumb"><img class="am-list-fujinimg" src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：'+_obj.age+'</p><p class="pb5">活动时间：'+_obj.startTime+'</p><p><span class="am-fr" style="line-height:23px;line-height:23px;display: inline-block;width: 135px;text-align: right;height: 23px;">截止:'+_obj.applyend+'</span><i>'+_obj.price+'</i></p></div></div></li>')
+				
+				}	
+    				
+    		}else{
+    			alert("发生未知错误，请重新进入1")
+    		}	
+		},'json');
+    }
+    
+    //进入每个活动的详情页
+	function goActivity(activityId){
+		api.openWin({
+	        name: 'activity',
+	        url: 'activity.html?activityId='+activityId
+	        
+        });
+	}
+    
+    //加载更多活动
+    function getlistmore(id,url){
+	
+	    var objclass = $api.dom("."+id);
+	    
+	    $api.html(objclass,'加载中...');
+	    
+	    url = url + i;
+	    i++;
+	    
+	    $api.get(url,function(data){
+	        
+	        if(data.code == 0){
+		        for(var i=0;i<data.obj.length;i++){
+		        
+		        	var _obj = data.obj[i];
+					var $listmore = $api.dom(".clearboth");
+
+					$api.before($listmore,'<li onclick="goActivity('+_obj.activityId+')" tapmode class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left"><div class="am-u-sm-4 am-list-thumb"><img class="am-list-fujinimg" src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class=" am-u-sm-8 am-list-main"><h3 class="am-list-item-hd">'+_obj.title+'</h3><div class="am-list-item-text"><p>适用年龄：'+_obj.age+'</p><p class="pb5">活动时间：'+_obj.startTime+'</p><p><span class="am-fr" style="line-height:23px;line-height:23px;display: inline-block;width: 135px;text-align: right;height: 23px;">截止:'+_obj.applyend+'</span><i>'+_obj.price+'</i></p></div></div></li>')
+    				
+		        	var listmorepic = $api.dom(".am-list-fujinimg");
+    				
+    				var listmorepicWidth = $api.cssVal(listmorepic,"width");
+    				
+    				$api.css(listmorepic,"height:"+listmorepicWidth+"*3/4");
+		        
+		        }
+		        $api.html(objclass,'<a href="javascript:;"><span>查看更多</span> <i class="am-icon-angle-double-down"></i></a>');
+	
+		    }else{
+				$api.html(objclass,'没有更多数据');
+		    }
+	   	},'json');
+	}
+	
+//	重新定位
+	function locationAgain(){
+		window.location.reload()
+	}
+	</script>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		li {
+			list-style:none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #fff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:4px !important;
+		    left:32px !important;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+    	#header{
+			background-color:#fff;text-align: center;height:35px;line-height: 30px;margin-left:-25px;
+		}
+		#details_all,#details_act,#details_comment{
+			margin:0px 10px;
+		}
+		i{
+			font-style:normal;
+		}
+		.details-header i {
+			display:inline-block;float:right;font-size:12px;height:16px;line-height:15px;padding:1px 3px;border-radius:3px;margin-left:3px; 
+		}
+		.details-header .comment_content_pi1{
+			border:1px solid #63aee8;color:#63aee8;
+		}
+		.details-header .comment_content_pi2 {
+			border:1px solid #f4b52f;color:#f4b52f;
+		}
+		.details-header-p1 em,.details-comment-header-p1 em{
+			display:inline-block;background-color: #8ecc52;border-radius: 2px !important;padding: .1em .325em;margin-top:-3px;font-size:11px;color:#fff;
+		}
+		.details-header-img img,.details-comment-header-img img{
+		    width: 35px;
+		    height: 35px;
+		    border-radius:50%;
+		}
+		.details-header-img,.details-comment-header-img{
+			float:left;
+			margin-right:5px;
+			margin-top:2px;
+		}
+		.details-header-p1,.details-comment-header-p1{
+			font-size:16px;
+			color:#000;
+		}
+		.details-header-p2,.details-comment-header-p2{
+			font-size:12px;
+			color:#ccc;
+		}
+		#details{
+			margin:15px 0px;
+		}
+		.details-header,.details-comment-header{
+			padding:10px 0;
+			border-bottom:1px solid #e3e3e3;
+		}
+		.details_contain img{
+			max-width:100%;
+			height:auto;
+		}
+		.details_sc{
+			text-align:center;
+			margin:20px 0px;
+		}
+		.details_sc p{
+			display:inline-block;
+			width:50px;
+			height:50px;
+			border:1px dashed #e3e3e3;
+			border-radius: 50%;
+			text-align:center;
+			color:#989898;
+		}
+		.details_head{
+			font-size:16px;
+			color:#000;
+			margin-bottom:5px;
+		}
+		.details_contain{
+			font-size:14px;
+			color:#787878;
+			max-width:100%;
+			line-height:24px;
+		}
+		.details_sc p img {
+			width:20px;
+			height:20px;
+			margin-top:4px;
+		}
+		.details_act_head{
+			padding:10px 0px;
+			border-bottom:1px solid #e3e3e3;
+			font-size:14px;
+			color:#666;
+		}
+		.details_comment_act_head{
+			padding:10px 0px;
+			font-size:14px;
+			color:#24aba8;
+			position:relative;
+		}
+		.details_comment_act_head:after{
+			content:" ";
+			display:inline-block;
+			position:absolute;
+			width:10px;
+			height:10px;
+			border-right:2px solid #c3c3c3;
+			border-top:2px solid #c3c3c3;
+			-webkit-transform: rotate(45deg);
+		    -moz-transform: rotate(45deg);
+		    -ms-transform: rotate(45deg);
+		    -o-transform: rotate(45deg);
+		    transform: rotate(45deg);
+			right:0;
+			top:45%;
+		}
+		.details_act_content{
+			margin:12px 0px;
+			height:80px;
+			position:relative;
+		}
+		.details_act_content i{
+			position:absolute;
+			display:inline-block;
+			width:10px;
+			height:10px;
+			border-right:2px solid #c3c3c3;
+			border-top:2px solid #c3c3c3;
+			-webkit-transform: rotate(45deg);
+		    -moz-transform: rotate(45deg);
+		    -ms-transform: rotate(45deg);
+		    -o-transform: rotate(45deg);
+		    transform: rotate(45deg);
+			right:0;
+			top:45%;
+			
+		}
+		.details_act_content img{
+			float:left;
+			margin-right:5px;
+			width:33%;
+			height:auto;
+			border-radius:5px;
+		}
+		.details_act_content p{
+			color:#000;
+			font-size: 15px;
+			width:65%;
+			line-height:30px;
+			margin-left:33%;
+		}
+		.pingjia{
+			border:1px solid #dfdfdf;
+			padding: 15px 0px;
+			background-color:#f1f1f1;
+		}
+		.pingjia img{
+			float:left;
+			margin-left:20px;
+			margin-right:10px;
+			width:25px;
+			height:25px;
+		}
+		.pingjia p{
+			font-size:15px;
+			color:#b4b4b4;
+			width:80%;
+			margin-left:50px;
+			height:30px;
+			line-height:30px;
+			background-color:#fff;
+		}
+    </style>
+</head>
+<body>
+<header id="header" class="header" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="margin-left:13px;">回顾详情</div>
+</header>
+
+<div id="details_all">
+	<div id='details'>
+		<div class="details-header">
+			<i class="comment_content_pi2">精</i>
+			<i class="comment_content_pi1">顶</i>
+			<div class="details-header-img"><img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" /></div>
+			<div class="details-header-div">
+				<p class="details-header-p1">baba小丸子 &nbsp;<em>LV8</em></p>
+				<p class="details-header-p2">2015-09-10  发布</p>
+			</div>
+		</div>
+	</div>
+	<div class="details_head">回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小</div>
+	<div class="details_contain">回顾详情baba小丸子回顾详情baba小丸子详<img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" />
+		情baba小详情baba小详情baba小详情baba小回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小回顾详情
+		aba小丸子详情baba小详情baba小详情baba小详情baba小回顾详情baba小丸子详情baba小详情baba小详情baba小详情baba小详情baba小详情baba小详情baba小详情baba小
+	</div>
+	<div class="details_sc">
+		<p><img src="../image/review_sc.jpg" alt="点击收藏" /><br /><i>10</i></p>
+	</div>
+</div>
+<p style="height:10px;width:100%;background:#eee;"></p>
+<div id="details_act">
+	<div class="details_act_head">查看该活动</div>
+	<div class="details_act_content">
+		<img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" />
+		<p>查看该活动查看该活动查看该活动</p>
+		<i></i>
+	</div>
+</div>
+<p style="height:10px;width:100%;background:#eee;"></p>
+<div id="details_comment">
+	<div class="details-comment-header">
+		<div class="details-comment-header-img"><img src="http://www.7wanl.com/data/attachment/portal/201604/27/170554c3114m111qcu1c2i.jpg" alt="" /></div>
+		<div class="details-comment-header-div">
+			<p class="details-comment-header-p1">baba小丸子 &nbsp;<em>LV8</em></p>
+			<p class="details-comment-header-p2">2015-09-10</p>
+		</div>
+	</div>
+	<div class="details_comment_act_head">查看该活动</div>
+</div>
+<div class="pingjia">
+	<img src="../image/review_pl.jpg" alt="" />
+	<p>发表一下你的评价吧</p>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		$api.fixIos7Bar( $api.dom('header') );
+	};
+	
+		
+	//关闭页面
+	function leftClose(){
+    	api.closeWin();
+    }
+</script>
+</html>

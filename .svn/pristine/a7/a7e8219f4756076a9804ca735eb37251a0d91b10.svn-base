@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/style.css">
+    <style>
+	#header {
+		background:#fff;height:46px;line-height:45px;margin-top:12px;
+	}
+	i { font-style:normal !important;}
+	.ico_back{
+		display:inline-block;width:20px;height:25px;margin-top:13px;
+	}
+	.am-list-item-hd{
+		white-space: nowrap;
+    	text-overflow: ellipsis;
+	}
+	.am-accordion-content{
+		padding: 8px;
+		margin-top: 0;
+		font-size: 1.4rem;
+	}
+	</style>
+</head>
+<body>
+<header id="header" class="header" data-am-sticky="" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="color:#000;">商家详情</div>
+</header>
+<div class="am-accordion-content" id="accordion-content" style="background-color:#fff;">
+	
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		shopIntro();
+	};
+	
+	function shopIntro(){
+		var accordionContent = $api.byId("accordion-content");
+
+		$api.get("http://test.7wanl.com/7wanlsoa/app/shop/getIntro.json?shopId="+GetString("shopId"),function(ret){
+
+			accordionContent.innerHTML = ret.obj.intro;
+		},'json');
+	}
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	function leftClose(){
+		api.closeFrame();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

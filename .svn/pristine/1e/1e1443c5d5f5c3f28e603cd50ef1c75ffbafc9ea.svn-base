@@ -1,0 +1,49 @@
+    //取消报名
+    function cancelSign(applyId,userId){
+   
+    	api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=activity&action=removeapply',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"uid":userId,
+		        	"apply_id":applyId
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}else if(ret.code==0){
+        			alert(ret.msg)
+        		}
+        		
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        });
+    }
+    
+    function goMyActView(applyId,userId){
+
+    	api.openFrame({
+		    name: 'myactivityview',
+		    url: 'myactivityview.html?apply_id='+applyId+"&uid="+userId,
+		    rect: {
+		        x: 0,
+		        y: 0,
+		        w: "auto",
+		        h: 'auto'
+		    },
+		    bounces: false,
+		    bgColor: 'rgba(0,0,0,0)',
+		    vScrollBarEnabled: false,
+		    hScrollBarEnabled: false
+		});
+		
+    }

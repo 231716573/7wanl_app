@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css"/>
+    <style>
+    	#newclickul{
+    		display: -webkit-box; padding-top: 0px; height: 44px !important; min-height: 44px !important; top: 42px; z-index: 99; position: absolute;
+    	}
+    	.ico_back{
+			display:inline-block;width:20px;height:25px;margin-top:10px;
+		}
+		.check2{
+			color:#666;line-height:25px;margin-top:17px;letter-spacing:0.6px;display:none;margin-left: 10px;margin-right: 10px;
+		}
+		.check1{
+			margin-left: 10px;margin-right: 10px;margin-top: 15px;
+		}
+		#newul {
+			display: block; padding-bottom: 55px; background-color: rgb(255, 255, 255);
+		}
+    </style>
+</head>
+<body>
+
+	<header id="header" class="homeHeader">
+	    <div class="left"><a class="ico_back" onclick="icoback()"> </a></div>
+	    <div class="cent" style="color:#000;">活动详情</div>
+	    <div class="head-icon" style="padding-right: 0;">
+	        <a class="am-icon-share-square-o" data-am-modal="{target: '#am-share'}"></a>
+	        <a class="am-icon-star-o" href="shop.php?mod=favorite&amp;type=activity&amp;id=2877&amp;formhash=075359bf&amp;mobile=2"></a>
+	    </div>
+	</header>
+	<ul class="do_main" id="newclickul">
+        <li class="am-active"><a>活动详情</a></li>
+        <li class=""><a>服务约定</a></li>
+        <li class=""><a>其他活动</a></li>
+    </ul>
+    <ul id="newul" style="">
+            <li class="check1">
+                <div class="view_content"></div>
+                	
+            </li>
+            <li class="check2">
+            	<div class="view_content2"></div>
+            </li>    
+            <li id="newli_3" style="display:none;margin-left: 10px;margin-right: 10px;" class="am-active">
+                <ul class="view_content3">
+                   <li class="am-g am-list-item-desced am-list-item-thumbed am-list-item-thumb-left" onclick=" location='activity.php?mod=view&amp;activity_id=2963'">
+                        <div class="am-u-sm-4 am-list-thumb imgloading"><img src="data/attachment/portal/201604/01/132200ebiduqwnnhw4gqzn.jpg" alt="亲子潜水体验，首场优惠来袭！" data-bd-imgshare-binded="1"></div>
+                        <div class=" am-u-sm-8 am-list-main" style="margin-top: -6px;padding-left:10px;">
+                            <h3 class="am-list-item-hd" style="margin-bottom:0px;font-weight: 400;">亲子潜水体验，首场优惠来袭！</h3>
+                            <div class="am-list-item-text">
+                                <p>适用年龄：7岁以上</p>
+                                <p class="pb5">截止报名：2016-4-22 12:00</p>
+                                <p><i> 18.00</i></p>
+                            </div>
+                        </div>
+                    </li>
+        </ul>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		activityCont(GetString("activityId"))
+		
+	};
+	
+	// 取得url参数
+	function GetString(name){
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	
+	function activityCont(actId){
+		var url = "http://test.7wanl.com/7wanlsoa/app/activity/getContent.json?activityId="+actId;
+		
+		$api.get(url,fnSuc
+			
+		,'json');
+	}
+</script>
+</html>

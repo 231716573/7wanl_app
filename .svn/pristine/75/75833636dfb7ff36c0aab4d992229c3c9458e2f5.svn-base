@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+    html,body{
+    	width:100%;
+    	height:auto;
+    	overflow:hidden;
+    }
+    .list-content {
+	    background-color: #fff;
+	}
+	a:link, a:visited, a:hover {
+	    color: #999;
+	    text-decoration: none;
+	}
+	h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+	    margin: 0;
+	    padding: 0;
+	    border: none;
+	    list-style-type: none;
+	    font-style: normal;
+	    font-weight: normal;
+	}
+	*, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	* {
+	    margin: 0;
+	    padding: 0;
+	    word-wrap: break-word;
+	}
+    #forHeader {
+    	position:fixed; z-index:9999; width:100%;
+    }
+    header {
+    	height:52px;padding-top:20px; border-bottom:1px solid rgb(195, 195, 195);position: relative;text-align:center;line-height:25px;background-color:#fff;
+    }
+    .left {
+    	height:40px; width:43px; position:absolute;left:-5px; top:22px;
+    }
+    .left a {
+    	display:inline-block;height:13px; width:13px;border-top:1px solid #000;border-left:1px solid #000;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);
+    }
+    .view_comment_none {
+    	padding-top:60px;margin: 40px 10px;font-size: 16px;text-align: center;
+    }
+    .am-btn.am-radius {
+	    border-radius: 2px;
+	}
+	.am-radius {
+	    border-radius: 2px;
+	}
+	.am-btn-block {
+	    display: block;
+	    width: 100%;
+	    padding-left: 0;
+	    padding-right: 0;
+	}
+	.am-btn-warning {
+	    color: #fff;
+	    background-color: #f37b1d;
+	    border-color: #f37b1d;
+	}
+	.am-btn {
+	    display: inline-block;
+	    margin-bottom: 0;
+	    height:40px;
+	    vertical-align: middle;
+	    text-align:center;
+	    font-size: 16px;
+	    font-weight: 400;
+	    line-height: 40px;
+	}
+	.am-cf:before, .am-cf:after {
+	    content: " ";
+	    display: table;
+	}
+	*, :before, :after {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	}
+	.do_main .view_comment {
+	    border-bottom: 1px solid #e8e8e8;
+	    padding: 0px 10px 8px;
+	    margin-bottom: 8px;
+	}
+	.comment_name_img img {
+	    width: 45px;
+	    height: 45px;
+	    border-radius: 50%;
+	    -webkit-border-radius: 50%;
+	}
+	img {
+	    display: inline-block;
+	    max-width: 100%;
+	}
+	p {
+	    margin: 0;
+	}
+	.f_12 {
+	    font-size: 12px;
+	    font-weight: 300;
+	}
+	.am-badge {
+	    display: inline-block;
+	    min-width: 10px;
+	    color: #fff;
+	    line-height: 1;
+	    vertical-align: baseline;
+	    white-space: nowrap;
+	    text-align: center;
+	    background-color: #999;
+	    border-radius: 0;
+	}
+	i, strong, b, em {
+	    font-style: normal;
+	    font-weight: normal;
+	}
+	.star, .fstar {
+	    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/star.bd.png');
+	    background-repeat: no-repeat;
+	    height: 22px;
+	    width: 60px;
+	    display: block;
+	    background-position: -60px -540px;
+	}
+	.fstar {
+	    background-position: 0 -540px;
+	}
+	.do_main .comment_content {
+	    color: #666;
+	    margin-top:7px;
+	    margin-bottom:7px;
+	}
+	.am-figure-default, .am-figure-default img {
+	    margin: 0;
+	    border: 0;
+	    padding: 0;
+	    position: relative;
+	}
+	.am-figure-zoomable {
+	    position: relative;
+	    cursor: pointer;
+	}
+	.pj_images img {
+	    width: 23% !important;
+	    height: auto;
+	}
+	.do_main {
+		padding-top:60px;
+	}
+    </style>
+</head>
+<body>
+<div id="forHeader">
+	<header>
+		<div class="left" onclick="closeWin()"><a></a></div>
+		全部评价
+	</header>
+</div>
+
+<div class="do_main">
+<!--	<div class="view_comment am-cf">
+	    <p class="comment_name" style="float:left; margin:0px 10px 3px 0px;">
+	       <span class="comment_name_img"><img src="http://129.1.28.1/7wanl/uc_server/avatar.php?uid=21794&amp;size=middle"></span> 
+	    </p>
+		<p> 榴莲一号 &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12" style="background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;">LV9</em>
+			<br /><span class="star" style="display:inline-block;"><span class="fstar" style="width: 40%"></span></span>
+	    </p>
+	    <p class="comment_content" style="margin-top:5px; font-size:13px;">我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我我</p>
+		<div class="pj_images img-list">
+	        <div class="am am-figure am-figure-default am-no-layout am-figure-zoomable" >
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	             <img src="data/attachment/portal/201605/17/091504m8xupt8mff71zjz7.png" />
+	        </div>
+	    </div>
+	</div>-->
+	<div class="pushComment"></div>
+</div>
+<div class="view_comment_none" style="display:none;">暂未有评论！你来说一说吧~</div>
+<div style="margin:10px 10px 50px 10px;"><span class="am-btn am-btn-warning am-radius am-btn-block">我要评论</span></div>
+<div class="loading"></div>
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	var pageNum = 1;
+	apiready = function(){
+		getComment();
+	};
+	
+	function getComment(){
+		api.ajax({
+	        url:'http://192.168.19.239/dataapi.php?mod=comment&action=activitycomment',
+	        method:"post",
+	        data: {
+		        values:{
+		        	"activity_id":GetString("activityId"),
+		        	"page":1
+		        }
+		    },
+	        cache:true
+        },function(ret,err){
+			//alert(GetString("activityId")+JSON.stringify(ret))
+        	if(ret){
+        		
+        		if(ret.code==-1){
+        			alert(ret.msg)
+        			return false;
+        		}
+        		if(ret.data.count != 0){
+        			var pushComment = $api.dom(".pushComment");
+        			
+        			for(var i=0;i<ret.data.list.length;i++){
+        				var _obj = ret.data.list[i];
+        				
+        				var pj_imagesImg = "";
+        				
+        				if(_obj.pic){
+	        				for(var j=0;j<_obj.pic.length;j++){
+	        					pj_imagesImg += '<img src="http://129.1.28.1/'+_obj.pic[j]+'" />';
+	        				}
+        				}
+        				
+        				var commentDiv = '<div class="view_comment am-cf"><p class="comment_name" style="float:left; margin:0px 10px 3px 0px;"><span class="comment_name_img"><img src="http://129.1.28.1/'+_obj.pic+'"></span> </p><p> '+_obj.username+' &nbsp;<em class="am-badge am-badge-success am-round am-badge-primary f_12" style="background-color: #8ecc52;border-radius: 3px;padding: .1em .325em;">LV'+_obj.memberinfo.level+'</em><br /><span class="star" style="display:inline-block;"><span class="fstar" style="width: '+_obj.star+'%"></span></span></p><p class="comment_content" style="margin-top:5px; font-size:13px;">'+_obj.message+'</p><div class="pj_images img-list"><div class="am am-figure am-figure-default am-no-layout am-figure-zoomable" >'+pj_imagesImg+'</div></div></div>'
+        				
+        				var listmorepic = $api.domAll(".pj_images img");
+		        
+				        for(var m=0;m<listmorepic.length;m++){
+				        
+				        	$api.css(listmorepic[m],"height:"+parseFloat($api.cssVal(listmorepic[m],"width"))*3/4+"px")
+				        	
+				        }
+        				
+        				$api.before(pushComment, commentDiv);
+        			}
+        		}else{
+        			$api.css($api.dom(".view_comment_none"),"display:block;");
+        		}
+        	}
+        	if(err){
+        		alert(err.msg)
+        	}
+        	$api.css($api.dom('.loading'),"display:none");
+        });
+	}
+	
+	function closeWin(){
+		api.closeFrame();;
+	} 
+</script>
+</html>

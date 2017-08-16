@@ -1,0 +1,43 @@
+#login_from ul li{
+    		padding-left:25px !important;
+    		background-size:15px 15px !important;
+    	}
+    	.header .left a.ico_back {
+		    padding-right: 26px;
+		    
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		.header .left {
+		    position: relative;
+		    z-index: 5;
+		    font-size: 16px;
+		    color: #ffffff;
+		    float: left;
+		    text-align: center;
+		    width: 30px;
+		    height:30px;
+		    top:13px;
+		    left:10px;
+		}
+		.ico_back {
+			display:inline-block;
+			width:20px;
+			height:20px;
+		    background-image: url('http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/m-icon.png');
+		    background-repeat: no-repeat;
+		    background-size: 300px;
+		    background-position: 0px -187px;
+		    margin-left: 0px;
+		}
+		.nav{
+			text-align:center;
+		}
+		.nav span{
+			margin-left:-27px;display:inline-block;
+		}
+		.qq_login{
+			background: url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/member/images/qq.png) 14px 10px no-repeat;
+		}

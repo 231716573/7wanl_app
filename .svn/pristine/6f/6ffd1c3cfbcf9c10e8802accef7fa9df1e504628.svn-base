@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/style.css">
+	<link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/shop/style.css">
+	<style>
+		#header {
+			background:#fff;height:46px;line-height:45px;margin-top:12px;
+		}
+		i { font-style:normal !important;}
+		.ico_back{
+			display:inline-block;width:20px;height:25px;margin-top:13px;
+		}
+		.am-list-main{
+			margin:0; padding:0;margin-top: -7px;
+		}
+		.b-star{
+			top:4px;display:inline-block;
+		}
+		.f-star{
+			width:100%;
+		}
+		.am-list-thumb{
+			margin:0; padding:0;
+		}
+	</style>
+</head>
+<body>
+<header id="header" class="header" data-am-sticky="" style="border-bottom:1px solid rgb(195, 195, 195);">
+    <div class="left"><a class="ico_back" onclick='leftClose()'></a></div>
+    <div class="cent" style="color:#000;">全部点评</div>
+</header>
+<div class="am-accordion-content" style="background-color:#fff;padding-top:10px;">
+	<ul class="am-g" id="am-list" style="margin:0; padding:0">
+		<!--<li class="common_list_li">
+			<div class="am-u-sm-2 am-list-thumb"><img src="http://www.7wanl.com/uc_server/avatar.php?uid=72806&amp;size=small" data-bd-imgshare-binded="1"></div>
+			<div class="am-u-sm-10 am-list-main">
+				<ol>
+					<li>
+						<span class="act_commonName">qwl_323551:</span>
+						<span class="userRank_Bg">LV1</span>
+						<div class="b-star"><div class="f-star"></div></div> 
+					</li>
+					<li><span class="act_commoDate">2016-4-10 19:25</span></li>
+					<li class="act_common_content">工作人员很用心，很好的活动，场地有点小了，寻找彩蛋环节都施展不开，下次最好在户外</li>
+				</ol>
+			</div>
+			<div class="clear"></div>
+		</li>-->
+
+	</ul>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/commenturl.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		shopActivity();
+		alert("id:"+GetString("shopId"))
+	};
+	
+	
+	
+	function shopActivity(){
+		$api.get("http://test.7wanl.com/7wanlsoa/app/shop/getCommentList.json?shopId="+GetString("shopId")+"&pageNumber=1&pageSize=15",function(ret){
+			
+			if(ret.code == 0){
+				var amlist = $api.byId("am-list");
+				
+				for(var i=0;i<ret.obj.length;i++){
+				
+					var _obj = ret.obj[i]; 
+					
+					var amlistLi = '<li class="common_list_li"><div class="am-u-sm-2 am-list-thumb"><img src="'+_obj.userAvatar+'" data-bd-imgshare-binded="1"></div><div class="am-u-sm-10 am-list-main"><ol><li><span class="act_commonName">'+_obj.userName+'</span><span class="userRank_Bg">'+_obj.userLevel+'</span><div class="b-star"><div class="f-star"></div></div> </li><li><span class="act_commoDate">'+_obj.addTime+'</span></li><li class="act_common_content">'+_obj.message+'</li></ol></div><div class="clear"></div></li>';
+					
+					$api.append(amlist, amlistLi);
+				}
+			}else{
+				alert(ret.msg);
+			}
+		},'json');
+	}
+	
+	//进入每个活动的详情页
+	function goActivity(activityId){
+		api.openWin({
+	        name: 'activity',
+	        url: 'activity.html?activityId='+activityId
+	        
+        });
+	}
+	
+	// 取得url参数
+	function GetString(name){
+	
+	    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+	    var r = window.location.search.substr(1).match(reg);
+	    if(r!=null)return  unescape(r[2]); return null;
+	}
+	
+	function leftClose(){
+		api.closeFrame();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</html>

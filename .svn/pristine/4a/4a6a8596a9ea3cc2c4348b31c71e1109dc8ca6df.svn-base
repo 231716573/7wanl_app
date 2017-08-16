@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>云API</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/frame0.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+</head>
+<body>
+	<header id="headerTop">
+        <ul>
+            <li class="border-b active" style="height: 44px; line-height: 44px;">
+
+	    		<div class="am-sticky-placeholder" style="height: 44px; margin: 0px;"><div data-am-sticky="" style="margin: 0px;">
+				    <div id="header" class="homeHeader">
+				        <div class="left" tapmode onclick="openCitySelector()" ><span class="citychange"><em id="cityname"></em> <i class="am-icon-angle-down"></i></span> </div>
+				        <div class="cent">
+				            <div id="seach"tapmode onclick="searchActivity()" class="seach" data-am-modal="{target: '#my-seach'}">请输入活动/帖子/课程</div>
+				        </div>
+				        <div class="head-icon">
+				        	<a class="ico_my" id="ico_new"></a>
+				        	<a tapmode onclick="gologin()" class="ico_my" id="ico_my"></a>
+				        </div>
+				    </div>
+				</div></div>
+            </li>
+            
+        </ul>
+    </header>
+      <div class="swiper-slide">
+           <ul>
+                <li>
+                    <div class="slide-nav" onclick="goActivitydiy(12)">
+                        <i class="i-nav i-nav-8"></i>
+                        <div class="slide-nav-text">美食DIY</div>
+                    </div>
+                    <div class="slide-nav" onclick="goActivitydiy(27)">
+                        <i class="i-nav i-nav-9"></i>
+                        <div class="slide-nav-text">科普博览</div>
+                    </div>
+                    <div class="slide-nav" onclick="goActivitydiy(30)">
+                        <i class="i-nav i-nav-10"></i>
+                        <div class="slide-nav-text">职业体验</div>
+                    </div>
+                    <div class="slide-nav" onclick="goActivitydiy(11)">
+                        <i class="i-nav i-nav-11"></i>
+                        <div class="slide-nav-text">美术手工</div>
+                    </div>
+                    <div class="slide-nav" onclick="goActivitydiy(28)">
+                        <i class="i-nav i-nav-12"></i>
+                        <div class="slide-nav-text">亲子游</div>
+                    </div>
+                    <div class="slide-nav">
+                        <i class="i-nav i-nav-13"></i>
+                        <div class="slide-nav-text">活动日历</div>
+                    </div>
+                    <div class="slide-nav" onclick="classall()">
+                        <i class="i-nav i-nav-15"></i>
+                        <div class="slide-nav-text">全部分类</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="swiper-slide-kx"></div>
+        <div class="box item-list">
+            <h2>本周最新</h2>
+            <ul id="activitylist">
+            	
+            	<div class="clearboth" style="clear:both;"></div>
+            </ul>
+            <div class="tapmore item-list-all readmore" tapmode="tap-active" >
+               	 查看更多
+            </div>
+        </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script>
+
+	var headerHeight, cityArrow, footerHeight;
+    
+    var i =2;
+    
+	apiready = function (){
+	
+		$api.fixIos7Bar( $api.dom('header') );
+        api.setStatusBarStyle({
+            style: 'light'
+        });
+		
+		if($api.getStorage('cityname')){
+    		$api.byId('cityname').innerHTML = $api.getStorage('cityname');
+    	}
+		
+		var readmore = $api.dom(".readmore");
+		
+//		alert("city1:"+GetString("cityid"))
+
+		if($api.getStorage('cityid')){
+			
+			var url = "http://test.7wanl.com/7wanlsoa/app/index/getActivityList.json?cityId="+$api.getStorage('cityid')+"&pageSize=5&pageNumber=1";
+		
+			getActivityList($api.getStorage('cityid'));
+
+//		    $api.addEvt(readmore, 'click', function(){
+//				getActivityMore('readmore','http://test.7wanl.com/7wanlsoa/app/index/getActivityList.json?cityId='+$api.getStorage('cityid')+'&pageSize=5&pageNumber=');
+//			});
+			api.addEventListener({
+			    name:'scrolltobottom',
+			    extra:{
+			        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+			    }
+			},function(ret,err){
+			    getActivityMore('readmore','http://test.7wanl.com/7wanlsoa/app/index/getActivityList.json?cityId='+$api.getStorage('cityid')+'&pageSize=5&pageNumber=');
+			});
+
+		
+		}else{
+		
+			var url = "http://test.7wanl.com/7wanlsoa/app/index/getActivityList.json?cityId=289&pageSize=5&pageNumber=1";
+		
+			getActivityList("289");
+		    
+//		    $api.addEvt(readmore, 'click', function(){
+//				
+//			});
+			
+			api.addEventListener({
+			    name:'scrolltobottom',
+			    extra:{
+			        threshold:0            //设置距离底部多少距离时触发，默认值为0，数字类型
+			    }
+			},function(ret,err){
+			    getActivityMore('readmore','http://test.7wanl.com/7wanlsoa/app/index/getActivityList.json?cityId=289&pageSize=5&pageNumber=');
+			});
+		}
+		
+//		api.refreshHeaderLoading();
+		var listmorepic = $api.domAll("#activitylist li img");
+		        
+        for(var i=0;i<listmorepic.length;i++){
+        
+        	$api.css(listmorepic[i],"height:"+parseInt($api.cssVal(listmorepic[i],"width"))*2.5/4+"px")
+        }
+		
+		api.setRefreshHeaderInfo({
+		    visible: true,
+		    loadingImg: '../image/refreshing_image_01.png',
+		    bgColor: '#ccc',
+		    textColor: '#fff',
+		    textDown: '下拉刷新...',
+		    textLoadin:'加载中...',
+		    textUp: '松手刷新...',
+		    showTime: true
+		}, function (ret, err) {
+		    api.refreshHeaderLoadDone();
+		});
+		
+		var header = $api.byId("headerTop");
+ 
+
+        headerHeight = $api.offset(header).h;
+
+        cityArrow = $api.dom(".citychange .am-icon-angle-down");
+		
+	}
+	
+	
+	
+	function getActivityList(cityid){
+		
+		api.ajax({
+	        url:'http://test.7wanl.com/7wanlsoa/app/index/getActivityList.json?cityId='+cityid+'&pageNumber=1&pageSize=5',
+	        method:"get",
+	        cache:true
+        },function(ret,err){
+
+        	if(ret){
+        		var actlist = $api.byId('activitylist')
+        			
+    			while(actlist.hasChildNodes()){
+    				actlist.removeChild(actlist.firstChild)
+    			}
+    			
+    			$api.append(actlist, '<div class="clearboth" style="clear:both;"></div>');
+    			
+        		if(ret.code == 0){
+        		
+        			var $listmore = $api.dom(".clearboth");
+        			
+                	for(var i=0;i<ret.obj.length;i++){
+                		var _obj = ret.obj[i];
+                		
+                		$api.before($listmore,'<li class="tap clearfix" tapmode="tap-active"><a onclick="goActivity('+_obj.activityId+')"><div class="item-list-img"><img src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class="item-list-info"><div class="item-list-info-1 item_list-h3"><h3>'+_obj.title+'</h3></div><div class="item-list-info-2"><p>活动时间：'+_obj.startTime+'</p><p>报名截止：'+_obj.applyend+'</p></div><div class="item-list-info-3"><div class="flex-1"><span><em>'+_obj.price+'</em></span></div><div class="flex flex-3"></div></div></div></a></li>');
+         		
+                   	}  
+                }else{
+                	alert(ret.msg)
+                }
+             }else{
+                alert(err.msg+"...")
+             }
+        });
+	}
+
+	
+	function getActivityMore(id,url){
+	
+		var objclass = $api.dom("."+id);
+		
+		$api.html(objclass,'加载中...');
+	
+		url = url + i;
+		i = i+1;
+		
+		api.ajax({
+	        url:url,
+	        method:"get",
+	        cache:true
+        },function(ret,err){
+        	
+        	if(ret){
+        		if(ret.code == 0){
+        			
+        			var $listmore = $api.dom(".clearboth");
+        			
+                	for(var i=0;i<ret.obj.length;i++){
+                		var _obj = ret.obj[i];
+                		
+                		$api.before($listmore,'<li class="tap clearfix" tapmode="tap-active"><a onclick="goActivity('+_obj.activityId+')"><div class="item-list-img"><img src="'+_obj.pic+'" alt="'+_obj.title+'" style="width:100%;"></div><div class="item-list-info"><div class="item-list-info-1 item_list-h3"><h3>'+_obj.title+'</h3></div><div class="item-list-info-2"><p>活动时间：'+_obj.startTime+'</p><p>报名截止：'+_obj.applyend+'</p></div><div class="item-list-info-3"><div class="flex-1"><span><em>'+_obj.price+'</em></span></div><div class="flex flex-3"></div></div></div></a></li>');
+
+                   	}
+                   	var listmorepic = $api.domAll("#activitylist li img");
+		        
+			        for(var i=0;i<listmorepic.length;i++){
+			        
+			        	$api.css(listmorepic[i],"height:"+parseInt($api.cssVal(listmorepic[i],"width"))*2.5/4+"px")
+			        }
+                   
+                   	$api.html(objclass,'查看更多');
+                }else{
+                	$api.html(objclass,'没有更多数据');
+                }
+             }else{
+                alert(err.msg+"...")
+             }
+        });
+	}
+
+	
+	// 打开全部分类
+	function classall(){
+        api.openWin({
+	        name: 'classall',
+	        url: 'classall.html'
+	        
+        });
+	}
+	
+	function goActivitydiy(cateId){
+
+		if($api.getStorage('cityid')){
+
+			api.openWin({
+		        name: 'activitydiy',
+		        url: 'activitydiy.html?cateId='+cateId+'&cityid='+$api.getStorage('cityid')
+	        });
+        
+        }else{
+
+        	api.openWin({
+		        name: 'activitydiy',
+		        url: 'activitydiy.html?cateId='+cateId+'&cityid=289'
+	        });
+        }
+	}
+	
+	//	打开搜索
+	function searchActivity(){
+		api.openFrame({
+            name: 'searchact',
+            url: 'searchact.html?cityid'+$api.getStorage('cityid'),
+            bgColor: 'rgba(250,250,250,1)',
+            bounces: false,
+            rect: {
+	            x:0,
+	            y:0,
+	            w:'auto',
+	            h:'auto'
+            }
+        });
+	}
+	
+	
+	
+	function selectCity(cityid,cityname){
+		$api.byId('cityname').innerHTML = cityname;
+	
+		openCitySelector();
+		
+		getActivityList(cityid)
+
+	}
+
+	// 选择城市
+    var citySelectorStatus = false;
+    function openCitySelector(){
+    	citySelectorStatus = !citySelectorStatus;
+    	
+    	if(citySelectorStatus){
+
+    		api.openFrame({
+	            name: 'cityname',
+	            url: 'cityname.html',
+	            bgColor: 'rgba(250,250,250,0.7)',
+	            bounces: false,
+	            vScrollBarEnabled: false,
+	            hScrollBarEnabled: false,
+	            rect: {
+		            x:0,
+		            y:headerHeight,
+		            w:'auto',
+		            h:api.winHeight-headerHeight
+	            }
+            });
+			$api.css(cityArrow,'transform:rotate(135deg);margin-bottom:0px');
+    	}else{
+    		api.closeFrame({
+	            name: 'cityname'
+            });
+            $api.css(cityArrow,'transform:rotate(-45deg);margin-bottom:4px');
+    	}
+    }
+    
+	// 右上角头像
+    function gologin(){
+	
+		var userid = $api.getStorage("userid");
+		var url = "";
+	        	
+		if(userid == null||userid == ""||userid == undefined){
+    		url = 'frame32.html';
+    		api.openWin({
+		        name: 'frame32',
+		        url: url,
+		        
+		    });
+    	}else{
+    		url = 'frame3.html';
+    		api.openWin({
+		        name: 'frame3',
+		        url: url,
+		        
+		    });
+    	}
+
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

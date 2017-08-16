@@ -1,0 +1,191 @@
+h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+		    margin: 0;
+		    padding: 0;
+		    border: none;
+		    list-style-type: none;
+		    font-style: normal;
+		    font-weight: normal;
+		}
+    	body {
+		    background: #fff;
+		    font-size: 12px;
+		    font-family: "微软雅黑","宋体",Verdana;
+		    line-height: 150%;
+		    margin: 0px;
+		    padding: 0px;
+		    color: #404040;
+		}
+    	.am-cf:before, .am-cf:after {
+		    content: " ";
+		    display: table;
+		}
+		.am-cf:after {
+		    clear: both;
+		}
+    	.am-margin-top, .am-g {
+		    background-color: #FFFFFF;
+		}
+		.am-g {
+		    margin: 0 auto;
+		    width: 100%;
+		}
+		#favnav_div {
+		    min-height: 300px;
+		}
+		.newConp {
+		    margin: 15px 6px 0px;
+		}
+		.newConp ul {
+		    margin: 7px 0px;
+		    width: 100%;
+		    height: 120px;
+		    color: #fff;
+		    overflow: hidden;
+		}
+		.newConp_free {
+		    background-color: #7b56f4;
+		    position: relative;
+		}
+		#newConp_free_liid {
+		    line-height: 20px;
+		}
+		@media screen and (max-width: 320px){
+			.newConp ul li:first-child {
+			    font-size: 38px !important;
+			    width: 26% !important;
+			}
+		}
+		.newConp ul li:first-child {
+		    position: relative;
+		    width: 28%;
+		    border-right: 1px dashed #f3f3f3;
+		    height: 120px;
+		    line-height: 118px;
+		    text-align: center;
+		    font-size: 49px;
+		}
+		.newConp ul li {
+		    float: left;
+		}
+		ul li, .xl li {
+		    list-style: none;
+		}
+		.newConp ul li:first-child:before {
+		    content: " ";
+		    display: inline-block;
+		    width: 27px;
+		    height: 29px;
+		    border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    position: absolute;
+		    top: 50%;
+		    background-color: #fff;
+		    left: 0px;
+		    margin-left: -20px;
+		    margin-top: -14px;
+		}
+		.newConp ul li:first-child i {
+		    font-size: 24px;
+		}
+		
+		#newConp_free_liid .newConp_free_liids {
+		    padding-top: 19px;
+		    margin: 0 3px;
+		    font-weight: 600;
+		}
+		#newConp_free_liid span {
+		    width: 40px;
+		    display: inline-block;
+		    font-size: 36px;
+		    line-height: 37px;
+		}
+		#newConp_free_liid span:last-child {
+		    font-size: 12px;
+		    width: 10px;
+		    line-height: 12px;
+		    opacity: 0.5;
+		}
+		.newConp ul li:last-child {
+		    font-size: 12px;
+		    padding: 5px 0px 5px 9px;
+		    line-height: 21px;
+		}
+		.newConp ul li:last-child .newConp_free_span {
+		    color: #7b56f4;
+		}
+		.newConp ul li:last-child span {
+		    display: inline-block;
+		    padding: 0.1px 3px;
+		    background: #fff;
+		    font-weight: 500;
+		    -webkit-border-radius: 5px;
+		}
+		a:link, a:visited, a:hover {
+		    color: #4C4C4C;
+		    text-decoration: none;
+		}
+		a {
+		    text-decoration: none;
+		    color: #666;
+		}
+		.newConp ul li:first-child {
+		    position: relative;
+		    width: 28%;
+		    border-right: 1px dashed #f3f3f3;
+		    height: 120px;
+		    line-height: 118px;
+		    text-align: center;
+		    font-size: 49px;
+		}
+		.newConp ul li {
+		    float: left;
+		}
+		ul li, .xl li {
+		    list-style: none;
+		}
+		h1, h2, h3, h4, h5, h6, ol, ul, li, dl, dt, dd, form, img, p, a, i, b, div {
+		    margin: 0;
+		    padding: 0;
+		    border: none;
+		    list-style-type: none;
+		    font-style: normal;
+		    font-weight: normal;
+		}
+		.newConp ul li:first-child:before {
+		    content: " ";
+		    display: inline-block;
+		    width: 27px;
+		    height: 29px;
+		    border-radius: 50%;
+		    -webkit-border-radius: 50%;
+		    position: absolute;
+		    top: 50%;
+		    background-color: #fff;
+		    left: 0px;
+		    margin-left: -20px;
+		    margin-top: -14px;
+		}
+		.newConp ul li:first-child i {
+		    font-size: 24px;
+		}
+		.newConp ul li:last-child {
+		    font-size: 12px;
+		    padding: 5px 0px 5px 9px;
+		    line-height: 21px;
+		}
+		.newConp ul li {
+		    float: left;
+		}
+		.newConp ul li:last-child span {
+		    display: inline-block;
+		    padding: 0.1px 3px;
+		    background: #fff;
+		    color: #f43559;
+		    font-weight: 500;
+		    border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		}
+		.newConp_nofree {
+		    background-color: #f43559;
+		    position: relative;
+		}

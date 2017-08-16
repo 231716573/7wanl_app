@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>文档</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/frame3.css"/>
+</head>
+<body>
+    <div class="headernav">
+    	
+		<div class="headerimg"><img id="headerimg" onclick="loginIn()" /></div>
+		<p class="personerp" onclick="ownmsg()"></p>
+		<div class="nick">
+			<div><span class="nickname" id='nickname'></span><span style="display:none;" class="am-badge am-badge-warning am-radius">银牌会员</span></div>
+		</div>
+		<div class="nick_ul">
+			<ul>
+				<li class="floatl"><em></em><span>丸子<br><i id="wanzi"></i></span></li>
+				<li class="floatl"><em></em><span>经验值<br><i id="jingyan"></i></span></li>
+				<li class="floatl"><span>账户余额(元)<br><i id="yue"></i></span></li>
+			</ul>
+		</div>
+		<div class="headernavbg"></div>
+	</div>
+	<div class="homebody">
+	    <a class="c1" onclick="myactivity()">
+	        <i>我的活动<em></em><span class="homebody_msg"></span></i>
+	    </a>
+	    <a class="c2" onclick="mycourse()">
+	        <i>我的课程<em></em><span class="homebody_msg"></span></i>
+	    </a>
+	    <p></p>
+	    <a class="c7" onclick="myteam()">
+	        <i>我的定制<em></em></i>
+	    </a>
+	    <a class="c8" onclick="mycoupon()">
+	        <i>我的优惠劵<em></em></i>
+	    </a>
+	    <p></p>
+	    <a class="c3" onclick="mymessage()">
+	        <i>我的消息<em></em></i>
+	    </a>
+	    <a class="c4" onclick="myfavorite()">
+	        <i>我的收藏<em></em></i>
+	    </a>
+	    <a class="c6" onclick="mycomment()">
+	        <i>我的评价<em></em></i>
+	    </a>
+	    <a class="c5" onclick="myview()">
+	        <i>我的帖子<em></em></i>
+	    </a>
+	    <p></p>
+	    <a class="c8" onclick="myaccount()">
+	        <i>我的账户</i>
+	    </a>
+	    <div class="am-cf"></div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script>
+
+var url = "http://test.7wanl.com/7wanlsoa/app/member/getIndex.json?uid="+$api.getStorage("userid")+"&accessToken="+$api.getStorage("useraccessToken");
+
+apiready = function (){
+	getUserMsg();
+	
+}
+
+var userid = "";
+
+function getUserMsg(){
+	api.ajax({
+	    url:url,
+	    method:"get",
+	    cache:true,
+    },function(ret,err){
+    	
+    	if(ret){
+    		if(ret.code == 0){
+    			var nickname = document.getElementById("nickname");
+    			var wanzi = document.getElementById("wanzi");
+    			var jingyan = document.getElementById("jingyan");
+    			var yue = document.getElementById("yue");
+    			var headerimg = document.getElementById("headerimg");
+    			
+    			nickname.innerHTML = ret.obj.userName;
+    			wanzi.innerHTML = ret.obj.balls;
+    			jingyan.innerHTML = ret.obj.experiences;
+    			yue.innerHTML = ret.obj.balance;
+    			headerimg.src = ret.obj.userAvatar;
+    			
+    			userid = ret.obj.uid;
+    			
+    		}else{
+    			alert(ret.msg)
+    		}
+    	}else{
+            alert(err.msg)
+        }
+    	
+    });
+}
+
+// 我的活动
+function myactivity(){
+	api.openWin({
+		name:"myactivity",
+		url:'myactivity.html?userid='+userid,
+		animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+	})
+}
+
+// 我的课程
+function mycourse(){
+	api.openWin({
+		name:"mycourse",
+		url:'mycourse.html?userid='+userid,
+		animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+	})
+}
+
+// 我的团队定制
+function myteam(){
+	api.openWin({
+	    name: 'myteam',
+	    url: 'myteam.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+//我的优惠劵
+function mycoupon(){
+	api.openWin({
+	    name: 'mycoupon',
+	    url: 'mycoupon.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+//我的消息
+function mymessage(){
+	api.openWin({
+	    name: 'mymessage',
+	    url: 'mymessage.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+// 我的收藏
+function myfavorite(){
+	api.openWin({
+	    name: 'myfavorite',
+	    url: 'myfavorite.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+//我的评价
+function mycomment(){
+	api.openWin({
+	    name: 'mycomment',
+	    url: 'mycomment.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+// 我的帖子
+function myview(){
+	api.openWin({
+	    name: 'myview',
+	    url: 'myview.html?userid='+userid,
+	    animation:{
+            type:"movein",                //动画类型（详见动画类型常量）
+            subType:"from_right",       //动画子类型（详见动画子类型常量）
+            duration:300                //动画过渡时间，默认300毫秒
+        }
+    });
+}
+
+// 我的账户
+function myaccount(){
+	api.openWin({
+	    name: 'myaccount',
+	    url: 'myaccount.html?userid='+userid
+    });
+}
+
+function loginIn(){
+
+    api.openWin({
+        name: 'frame32',
+        url: 'frame32.html'
+    });
+}
+
+
+function ownmsg(){
+
+    api.openWin({
+        name: 'ownmsg',
+        url: 'ownmsg.html'
+    });
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</html>

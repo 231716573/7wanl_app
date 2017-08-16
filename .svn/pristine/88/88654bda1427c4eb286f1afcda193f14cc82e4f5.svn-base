@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>title</title>
+    <link rel="stylesheet" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/assets/css/amazeui.min.css">
+
+	<link rel="stylesheet" type="text/css" href="http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/portal/style.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/frame32.css"/>
+    <style>
+    .loading { display:none; }
+    </style>
+</head>
+<body>
+
+	<div class="loading" style="position:fixed;top:45%;left:45%;z-index:99;width:32px;height:32px;background:url('../image/loading.gif') no-repeat;background-size:100% 100%;"></div>
+	<div class="header">
+		<div class="left" ><a class="ico_back" onclick='leftClose()'></a></div>
+	    <div class="nav">
+	        <span>登录</span>
+	    </div>
+	</div>
+	<div class="loginbox">
+		<div id="layer_login_LNn2k">
+			<div class="login_from" id="login_from">
+				<ul>
+					<li style="background:url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/member/images/login_text.png) 3px 15px no-repeat;"><input id="username" type="text" value="" tabindex="1" class="px p_fre account" size="30" autocomplete="off" name="username" placeholder="请输入用户名\手机号" fwin="login"></li>
+					<li style="background:url(http://www.7wanl.com/template/7wanl_wap_v1.1/image/touch/member/images/login_password.png) 3px 15px no-repeat;"><input id="userpassword" type="password" tabindex="2" class="px p_fre password" size="30" value="" name="password" placeholder="请输入密码" fwin="login"></li>
+				</ul>
+			</div>
+			<div class="btn_login mbw" id="btn_login"><button id="btn_login_button" type="button" class="formdialog pn pnc" style="color: #FFF;">登录</button></div>
+
+			<p class="reg_link am-cf" style="padding: 10px ;">
+		        <a class="am-fl" tapmode onclick="register()">注册</a>
+		        <a class="am-fr" tapmode onclick="loginlostpw()">忘记密码？</a>
+		    </p>
+		    <p class="other_login">
+		    	<i></i>&nbsp;<span>其他方式登录</span>&nbsp;<i></i>
+		    </p>
+	        <div id="qq_login"><p class="qq_login" onclick="location.href='http://www.7wanl.com/connect.php?mod=login&amp;op=init&amp;referer=http%3A%2F%2Fwww.7wanl.com%2Fportal.php%3Fmobile%3D2&amp;statfrom=login_simple'">使用QQ帐号登录</p></div>
+	    </div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/comment.js"></script>
+<script type="text/javascript">
+	apiready = function(){
+		var newurl ="";
+
+//		$api.fixIos7Bar( $api.dom('.header') );
+		$api.fixStatusBar($api.dom('.header'));
+		
+		$api.addEvt($api.byId("btn_login_button"), "click",function(){
+
+			loginIn();
+			
+        });
+		
+	    var getname = $api.getStorage("username");
+	    var getPwd  = $api.getStorage("userpassword");
+	
+//		alert("getname:"+getname+"、getPwd:"+getPwd)
+
+
+	
+        if(getname){  
+            $api.val($api.dom("#username"), getname);
+        }else{
+        	$api.val($api.dom("#username"), "");
+        }
+        if(getPwd){  
+            $api.val($api.dom("#userpassword"), getPwd);
+        }else{
+            $api.val($api.dom("#userpassword"), "");
+        }
+        
+        
+	};
+	
+	
+//	'+userpassword+'  '+userpassword+'
+	
+	
+	
+	function loginframe31(url){
+
+        api.openWin({
+	        name: 'index',
+	        url: '../index.html?'+url
+	        
+        });
+	}
+	
+	function loginIn(){
+		$api.css($api.dom('.loading'),"display:block");
+	
+		var username = document.getElementById("username").value;
+		var userpassword = document.getElementById("userpassword").value;
+		
+//		'+username+'    '+userpassword+'
+
+		api.ajax({
+	        url:'http://test.7wanl.com/7wanlsoa/app/ucenter/login.json',
+	        method:'post',
+	        data: {
+		        body:{
+		        	"account":username,
+		        	"password":userpassword
+		        }
+		    },
+		    cache: false,
+		    timeout: 60*20,
+		    dataType: 'json',
+		    returnAll:false
+        },function(ret,err){
+        	if (ret) {
+        		if(ret.code == 0){
+					
+		         	// 保存到localStorage
+		         	
+		         	$api.setStorage("username",document.getElementById("username").value);
+		         	$api.setStorage("userpassword",document.getElementById("userpassword").value);
+		         	$api.setStorage("userid",ret.obj.uid);
+		         	$api.setStorage("useraccessToken",ret.obj.accessToken);
+		         	$api.setStorage("usertime",(new Date).getTime());
+
+		         	newurl = "uid=" + ret.obj.uid + "&accessToken=" + ret.obj.accessToken;
+		         	
+		         	loginframe31(newurl);
+		         	
+		         	alert(ret.msg);
+		         	
+		        }else{
+		         	alert(ret.msg);
+		        }
+		    } else {
+		        alert(JSON.stringify(err));
+		    }
+		    
+		    $api.css($api.dom('.loading'),"display:none");
+
+        });
+
+	}
+	
+	
+	
+//	忘记密码
+	function loginlostpw(){
+
+        api.openWin({
+	        name: 'lostpw',
+	        url: 'lostpw.html'
+	      
+        });
+	}
+	
+	
+	function leftClose(){
+    	api.closeWin();
+    }
+	
+//	注册
+	function register(){
+		api.openWin({
+	        name: 'register',
+	        url: 'register.html'
+        });
+	}
+	
+	
+	
+	
+</script>
+</html>
